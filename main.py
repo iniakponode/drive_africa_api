@@ -12,6 +12,12 @@ dotenv.load_dotenv()
 
 # Create FastAPI app
 app = FastAPI()
+
+# Example usage of environment variables
+DATABASE_URL = os.getenv("DATABASE_URL")
+SECRET_KEY = os.getenv("SECRET_KEY")
+DEBUG = os.getenv("DEBUG") == "True"
+
 app.include_router(api_router)
 
 # Run the app using uvicorn when executed directly
