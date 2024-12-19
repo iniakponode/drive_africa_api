@@ -6,6 +6,7 @@ from fastapi import FastAPI
 import sys
 import logging
 from safedrive import safe_drive_africa_api_router as api_router
+from fastapi.middleware.cors import CORSMiddleware
 
 # sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 dotenv.load_dotenv()
@@ -19,6 +20,21 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG") == "True"
 
 app.include_router(api_router)
+
+# Define allowed origins
+origins = [
+    "https://api.safedriveafrica.com",
+    "http://api.safedriveafrica.com",
+    # Add other origins if necessary
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allows CORS for the specified origins
+    allow_credentials=True,
+    allow_methods=["*"],    # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],    # Allows all headers
+)
 
 # Run the app using uvicorn when executed directly
 if __name__ == "__main__":
