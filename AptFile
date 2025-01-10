@@ -1,0 +1,5 @@
+g++
+gcc
+make
+libpq-dev
+python3-dev
