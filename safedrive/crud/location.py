@@ -30,17 +30,24 @@ class CRUDLocation:
         :return: The created Location.
         """
         try:
-            obj_data = obj_in.dict()
+            obj_data = obj_in.model_dump()
+
+            # Convert UUID fields to string representation if necessary
+            if 'id' in obj_data and isinstance(obj_data['id'], str):
+                obj_data['id'] = UUID(obj_data['id'])  # Convert to 36-character string format
+
             db_obj = self.model(**obj_data)
             db.add(db_obj)
             db.commit()
             db.refresh(db_obj)
-            logger.info(f"Created location with ID: {db_obj.id.hex()}")
+            logger.info(f"Created location with ID: {db_obj.id}")
             return db_obj
+
         except Exception as e:
             db.rollback()
             logger.exception("Error creating location in database.")
             raise e
+
 
     def get(self, db: Session, id: UUID) -> Optional[Location]:
         """
@@ -51,7 +58,7 @@ class CRUDLocation:
         :return: The retrieved Location or None if not found.
         """
         try:
-            location = db.query(self.model).filter(self.model.id == id.bytes).first()
+            location = db.query(self.model).filter(self.model.id == id).first()
             if location:
                 logger.info(f"Found location with ID: {id}")
             else:
@@ -93,7 +100,7 @@ class CRUDLocation:
                 setattr(db_obj, field, obj_data[field])
             db.commit()
             db.refresh(db_obj)
-            logger.info(f"Updated location with ID: {db_obj.id.hex()}")
+            logger.info(f"Updated location with ID: {db_obj.id}")
             return db_obj
         except Exception as e:
             db.rollback()
@@ -109,10 +116,11 @@ class CRUDLocation:
         :return: The deleted Location or None if not found.
         """
         try:
-            obj = db.query(self.model).filter(self.model.id == id.bytes).first()
+            obj = db.query(self.model).filter(self.model.id == id).first()
             if obj:
                 db.delete(obj)
                 db.commit()
+                db.refresh(obj)
                 logger.info(f"Deleted location with ID: {id}")
                 return obj
             else:
@@ -123,16 +131,41 @@ class CRUDLocation:
             logger.exception("Error deleting location from database.")
             raise e
     def batch_create(self, db: Session, data_in: List[LocationCreate]) -> List[Location]:
+        """
+        Batch create Location records in the database.
+
+        :param db: The database session.
+        :param data_in: List of LocationCreate schema instances.
+        :return: List of created Location records.
+        """
         try:
-            db_objs = [self.model(**data.model_dump()) for data in data_in]
+            db_objs = []
+            for data in data_in:
+                obj_data = data.model_dump()
+
+                # Convert UUID fields to string if necessary
+                if 'id' in obj_data and isinstance(obj_data['id'], str):
+                    obj_data['id'] = UUID(obj_data['id'])  # Convert to 36-character string format
+
+                db_obj = self.model(**obj_data)
+                db_objs.append(db_obj)
+
             db.add_all(db_objs)
+            db.flush()
             db.commit()
+
+            # Refresh each object to load the new state from the database
+            for db_obj in db_objs:
+                db.refresh(db_obj)
+
             logger.info(f"Batch created {len(db_objs)} Location records.")
             return db_objs
+
         except Exception as e:
             db.rollback()
             logger.error(f"Error in batch create Location: {str(e)}")
             raise e
+
 
     def batch_delete(self, db: Session, ids: List[UUID]):
         try:

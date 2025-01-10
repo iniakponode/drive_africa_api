@@ -15,22 +15,42 @@ class CRUDNLGReport:
         self.model = model
 
     def create(self, db: Session, obj_in: NLGReportCreate) -> NLGReport:
-        db_obj = self.model(**obj_in.model_dump(), id=generate_uuid_binary())
-        if hasattr(db_obj,'driver_profile_id') and isinstance(getattr(db_obj,'driver_profile_id'), UUID):
-            setattr(db_obj, 'driver_profile_id', getattr(db_obj,'driver_profile_id').bytes)
-        db.add(db_obj)
+        """
+        Create a new NLGReport record in the database.
+
+        :param db: The database session.
+        :param obj_in: The schema with input data for creation.
+        :return: The created NLGReport.
+        """
         try:
+            obj_data = obj_in.model_dump()
+
+            # Convert UUID fields to strings
+            for uuid_field in ['id', 'driverProfileId']:  # Add more fields as needed
+                if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
+                    obj_data[uuid_field] = UUID(obj_data[uuid_field])  # Convert to 36-character string format
+
+            # Create the database object
+            db_obj = self.model(**obj_data)
+            db.add(db_obj)
             db.commit()
+
             logger.info(f"Created NLGReport with ID: {db_obj.id}")
+
+            # Refresh the object to reflect database-assigned values (e.g., timestamps)
+            db.refresh(db_obj)
+
+            return db_obj
+
         except Exception as e:
             db.rollback()
             logger.error(f"Error creating NLGReport: {str(e)}")
             raise e
-        db.refresh(db_obj)
-        return db_obj
+
+
 
     def get(self, db: Session, id: UUID) -> Optional[NLGReport]:
-        report = db.query(self.model).filter(self.model.id == id.bytes).first()
+        report = db.query(self.model).filter(self.model.id == id).first()
         if report:
             logger.info(f"Retrieved NLGReport with ID: {id}")
         else:
@@ -58,11 +78,12 @@ class CRUDNLGReport:
         return db_obj
 
     def delete(self, db: Session, id: UUID) -> Optional[NLGReport]:
-        obj = db.query(self.model).filter(self.model.id == id.bytes).first()
+        obj = db.query(self.model).filter(self.model.id == id).first()
         if obj:
             db.delete(obj)
             try:
                 db.commit()
+                db.refresh(obj)
                 logger.info(f"Deleted NLGReport with ID: {id}")
             except Exception as e:
                 db.rollback()

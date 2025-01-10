@@ -1,6 +1,7 @@
 from sqlalchemy import Boolean, Column, String, Integer, DateTime, BINARY
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.mysql import BINARY
+from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
 from uuid import uuid4, UUID
 import logging

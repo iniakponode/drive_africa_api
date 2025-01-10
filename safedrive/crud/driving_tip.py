@@ -25,14 +25,15 @@ class CRUDDrivingTip:
 
     def create(self, db: Session, obj_in: DrivingTipCreate) -> DrivingTip:
         try:
-            # Convert UUID fields to the appropriate format for the database
-            db_obj = self.model(
-                **obj_in.model_dump(exclude={'profile_id'}),
-                tip_id=generate_uuid_binary(),
-                profile_id=obj_in.profile_id.bytes if isinstance(obj_in.profile_id, UUID) else obj_in.profile_id
-            )
+            # Convert UUID fields to strings
+            for uuid_field in ['tip_id', 'profile_id']:  # Adjust the fields based on your schema
+                if uuid_field in obj_in and isinstance(obj_in[uuid_field], str):
+                    obj_in[uuid_field] = UUID(obj_in[uuid_field])  # Convert to 36-character string format
+            
+            db_obj = self.model(**obj_in)
             db.add(db_obj)
             db.commit()
+            db.refresh(db_obj)
             logger.info(f"Created DrivingTip with ID: {db_obj.tip_id}")
             db.refresh(db_obj)
             return db_obj
@@ -51,7 +52,7 @@ class CRUDDrivingTip:
 
     def get(self, db: Session, id: UUID) -> Optional[DrivingTip]:
         try:
-            tip = db.query(self.model).filter(self.model.tip_id == id.bytes).first()
+            tip = db.query(self.model).filter(self.model.tip_id == id).first()
             if tip:
                 logger.info(f"Retrieved DrivingTip with ID: {id}")
             else:
@@ -71,13 +72,23 @@ class CRUDDrivingTip:
             raise ValueError("Error retrieving data from the database.")
 
     def update(self, db: Session, db_obj: DrivingTip, obj_in: DrivingTipUpdate) -> DrivingTip:
+        
+        
+        
+      
+         # Convert UUID fields to strings
+        for uuid_field in ['tip_id', 'profile_id']:  # Adjust the fields based on your schema
+            if uuid_field in obj_in and isinstance(obj_in[uuid_field], str):
+                obj_in[uuid_field] = UUID(obj_in[uuid_field])  # Convert to 36-character string format
+        
         obj_data = obj_in.model_dump(exclude_unset=True)
-        obj_data['profile_id'] = obj_in.profile_id.bytes if isinstance(obj_in.profile_id, UUID) else obj_in.profile_id
+       
         for field in obj_data:
             setattr(db_obj, field, obj_data[field])
         db.add(db_obj)
         try:
             db.commit()
+            db.refresh(db_obj)
             logger.info(f"Updated DrivingTip with ID: {db_obj.tip_id}")
             db.refresh(db_obj)
             return db_obj
@@ -96,10 +107,11 @@ class CRUDDrivingTip:
 
     def delete(self, db: Session, id: UUID) -> Optional[DrivingTip]:
         try:
-            obj = db.query(self.model).filter(self.model.tip_id == id.bytes).first()
+            obj = db.query(self.model).filter(self.model.tip_id == id).first()
             if obj:
                 db.delete(obj)
                 db.commit()
+                db.refresh(obj)
                 logger.info(f"Deleted DrivingTip with ID: {id}")
                 return obj
             else:

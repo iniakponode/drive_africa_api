@@ -12,7 +12,13 @@ from fastapi.middleware.cors import CORSMiddleware
 dotenv.load_dotenv()
 
 # Create FastAPI app
-app = FastAPI()
+app = FastAPI( title="Safe Drive API",
+    description="This is an API the powers the backend for Safe Drive Africa, an App that is a product of a PhD research",
+    version="1.0.0")
+
+
+
+
 
 # Example usage of environment variables
 DATABASE_URL = os.getenv("DATABASE_URL")

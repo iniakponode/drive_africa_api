@@ -23,15 +23,48 @@ class CRUDUnsafeBehaviour:
         
     def batch_create(self, db: Session, data_in: List[UnsafeBehaviourCreate]) -> List[UnsafeBehaviour]:
         try:
-            db_objs = [self.model(**data.model_dump()) for data in data_in]
-            db.bulk_save_objects(db_objs)
+            db_objs = []
+            skipped_count = 0
+
+            for data in data_in:
+                obj_data = data.model_dump()
+
+                # Convert string UUID fields to actual UUID objects
+                for uuid_field in ['id', 'trip_id', 'location_id', 'driver_profile_id']:
+                    if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
+                        obj_data[uuid_field] = UUID(obj_data[uuid_field])
+
+                # If an ID is provided, check for duplicates
+                record_id = obj_data.get('id')
+                if record_id is not None:
+                    existing_record = db.query(self.model).filter_by(id=record_id).first()
+                    if existing_record:
+                        logger.info(f"Skipping duplicate UnsafeBehaviour with ID {record_id}")
+                        skipped_count += 1
+                        continue
+
+                db_obj = self.model(**obj_data)
+                db.add(db_obj)
+                db_objs.append(db_obj)
+
+            db.flush()
             db.commit()
-            logger.info(f"Batch inserted {len(db_objs)} UnsafeBehaviour records.")
+
+            for obj in db_objs:
+                db.refresh(obj)
+
+            logger.info(f"Batch inserted {len(db_objs)} UnsafeBehaviour records. Skipped {skipped_count} duplicates.")
             return db_objs
+
+        except IntegrityError as e:
+            db.rollback()
+            logger.error(f"IntegrityError during batch insertion of UnsafeBehaviour: {str(e)}")
+            raise HTTPException(status_code=400, detail="Database integrity error occurred.")
         except Exception as e:
             db.rollback()
             logger.error(f"Error during batch insertion of UnsafeBehaviour: {str(e)}")
             raise e
+
 
     def batch_delete(self, db: Session, ids: List[int]) -> None:
         try:
@@ -53,23 +86,24 @@ class CRUDUnsafeBehaviour:
         """
         try:
             obj_data = obj_in.model_dump()
-            # Convert UUID fields to bytes
-            if 'trip_id' in obj_data and isinstance(obj_data['trip_id'], UUID):
-                obj_data['trip_id'] = obj_data['trip_id'].bytes
-            if 'location_id' in obj_data and isinstance(obj_data['location_id'], UUID):
-                obj_data['location_id'] = obj_data['location_id'].bytes
-            if 'driver_profile_id' in obj_data and isinstance(obj_data['driver_profile_id'], UUID):
-                obj_data['driver_profile_id'] = obj_data['driver_profile_id'].bytes
+
+            # Convert UUID fields to strings
+            for uuid_field in ['id', 'trip_id', 'location_id', 'driverProfileId']:
+                if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
+                    obj_data[uuid_field] = UUID(obj_data[uuid_field])  # Convert to 36-character string format
+
             db_obj = self.model(**obj_data)
             db.add(db_obj)
             db.commit()
             db.refresh(db_obj)
-            logger.info(f"Created unsafe behaviour with ID: {db_obj.id.hex()}")
+            logger.info(f"Created unsafe behaviour with ID: {db_obj.id}")
             return db_obj
+
         except Exception as e:
             db.rollback()
             logger.exception("Error creating unsafe behaviour in database.")
             raise e
+
 
     def get(self, db: Session, id: UUID) -> Optional[UnsafeBehaviour]:
         """
@@ -80,7 +114,7 @@ class CRUDUnsafeBehaviour:
         :return: The retrieved unsafe behaviour or None if not found.
         """
         try:
-            behaviour = db.query(self.model).filter(self.model.id == id.bytes).first()
+            behaviour = db.query(self.model).filter(self.model.id == id).first()
             if behaviour:
                 logger.info(f"Found unsafe behaviour with ID: {id}")
             else:
@@ -120,12 +154,12 @@ class CRUDUnsafeBehaviour:
             obj_data = obj_in.dict(exclude_unset=True)
             for field in obj_data:
                 if field in ['trip_id', 'location_id'] and isinstance(obj_data[field], UUID):
-                    setattr(db_obj, field, obj_data[field].bytes)
+                    setattr(db_obj, field, obj_data[field])
                 else:
                     setattr(db_obj, field, obj_data[field])
             db.commit()
             db.refresh(db_obj)
-            logger.info(f"Updated unsafe behaviour with ID: {db_obj.id.hex()}")
+            logger.info(f"Updated unsafe behaviour with ID: {db_obj.id}")
             return db_obj
         except Exception as e:
             db.rollback()
@@ -141,10 +175,11 @@ class CRUDUnsafeBehaviour:
         :return: The deleted unsafe behaviour or None if not found.
         """
         try:
-            obj = db.query(self.model).filter(self.model.id == id.bytes).first()
+            obj = db.query(self.model).filter(self.model.id == id).first()
             if obj:
                 db.delete(obj)
                 db.commit()
+                db.refresh(obj)
                 logger.info(f"Deleted unsafe behaviour with ID: {id}")
                 return obj
             else:

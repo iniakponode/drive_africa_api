@@ -1,6 +1,7 @@
 from uuid import uuid4, UUID
-from sqlalchemy import Column, String, Boolean, BINARY, DateTime, ForeignKey
+from sqlalchemy import Column, String, Boolean, BINARY, Date, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
+from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
 import logging
 
@@ -9,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 def generate_uuid_binary():
     """Generate a binary UUID."""
-    return uuid4().bytes
+    return uuid4()
 
 class DrivingTip(Base):
     """
@@ -34,7 +35,7 @@ class DrivingTip(Base):
     """
     __tablename__ = "driving_tips"
 
-    tip_id = Column(BINARY(16), primary_key=True, unique=True, default=generate_uuid_binary)
+    tip_id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
     title = Column(String(255), nullable=False)
     meaning = Column(String(255), nullable=True)
     penalty = Column(String(255), nullable=True)
@@ -43,8 +44,8 @@ class DrivingTip(Base):
     hostility = Column(String(255), nullable=True)
     summary_tip = Column(String(255), nullable=True)
     sync = Column(Boolean, nullable=False)
-    date = Column(DateTime, nullable=False)
-    profile_id = Column(BINARY(16), ForeignKey('driver_profile.driver_profile_id'), nullable=False)
+    date = Column(Date, nullable=False)
+    profile_id = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)
     llm = Column(String(255), nullable=True)
 
     # Relationships

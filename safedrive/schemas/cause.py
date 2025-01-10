@@ -9,7 +9,8 @@ class CauseBase(BaseModel):
 
     Attributes:
     - **id**: Unique identifier for the cause.
-    - **unsafe_behaviour_id**: Identifier of the associated unsafe behavior.
+    - **unsafe_behaviour_id**: Identifier of the associated 
+    unsafe behavior.
     - **name**: Description of the cause.
     - **influence**: Indicates if the cause is influential.
     - **created_at**: Creation timestamp.

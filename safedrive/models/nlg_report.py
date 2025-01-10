@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, DateTime, Boolean, BINARY, ForeignKey
 from uuid import uuid4, UUID
 from sqlalchemy.orm import relationship
+from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
 import logging
 
@@ -22,8 +23,8 @@ class NLGReport(Base):
     """
     __tablename__ = "nlg_report"
 
-    id = Column(BINARY(16), primary_key=True, default=generate_uuid_binary)
-    driver_profile_id = Column(BINARY(16), ForeignKey('driver_profile.driver_profile_id'), nullable=False)
+    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
+    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)
     report_text = Column(String(500), nullable=False)
     generated_at = Column(DateTime, nullable=False)
     synced = Column(Boolean, nullable=False, default=False)
@@ -31,7 +32,7 @@ class NLGReport(Base):
     driver_profile=relationship("DriverProfile", back_populates="nlg_reports")
 
     def __repr__(self):
-        return f"<NLGReport(id={self.id.hex()}, driver_profile_id={self.driver_profile_id.hex()}, synced={self.synced})>"
+        return f"<NLGReport(id={self.id.hex()}, driver_profile_id={self.driverProfileId.hex()}, synced={self.synced})>"
 
     @property
     def id_uuid(self):
@@ -39,4 +40,4 @@ class NLGReport(Base):
 
     @property
     def user_id_uuid(self):
-        return UUID(bytes=self.driver_profile_id)
+        return UUID(bytes=self.driverProfileId)

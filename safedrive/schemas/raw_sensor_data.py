@@ -37,6 +37,7 @@ class RawSensorDataCreate(BaseModel):
     """
     Schema for creating a new Raw Sensor Data record.
     """
+    id: UUID=Field(..., description="The identifier for a particular raw_sensor instance")
     sensor_type: int = Field(..., description="The type of sensor (e.g., accelerometer, gyroscope).")
     sensor_type_name: str = Field(..., description="The name of the sensor type.")
     values: List[float] = Field(..., description="A list of sensor readings.")

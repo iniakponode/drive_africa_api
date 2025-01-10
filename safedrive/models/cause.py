@@ -2,6 +2,7 @@ from uuid import uuid4, UUID
 from sqlalchemy import Column, String, Boolean, BINARY, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from safedrive.database.base import Base
+from sqlalchemy_utils import UUIDType
 import logging
 
 # Logger setup
@@ -29,7 +30,7 @@ class Cause(Base):
     __tablename__ = "causes"
 
     id = Column(BINARY(16), primary_key=True, unique=True, default=generate_uuid_binary)
-    unsafe_behaviour_id = Column(BINARY(16), ForeignKey('unsafe_behaviour.id', ondelete='CASCADE'), nullable=False)
+    unsafe_behaviour_id = Column(UUIDType(binary=True), ForeignKey('unsafe_behaviour.id', ondelete='CASCADE'), nullable=False)
     name = Column(String(255), nullable=False)
     influence = Column(Boolean, nullable=True)
     created_at = Column(DateTime, nullable=False)

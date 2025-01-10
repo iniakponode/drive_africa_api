@@ -2,6 +2,7 @@ from typing import Optional
 from sqlalchemy import JSON, Column, Integer, String, Float, DateTime, ForeignKey, Boolean
 from sqlalchemy.dialects.mysql import BINARY
 from sqlalchemy.orm import relationship
+from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
 from uuid import uuid4, UUID
 import json
@@ -28,15 +29,15 @@ class RawSensorData(Base):
 
     __tablename__ = "raw_sensor_data"
 
-    id = Column(BINARY(16), primary_key=True, unique=True, default=generate_uuid_binary)
+    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
     sensor_type = Column(Integer, nullable=False)
     sensor_type_name = Column(String(255), nullable=False)
     values = Column(JSON, nullable=False)  # Use JSON to store list data
     timestamp = Column(Integer, nullable=False)
     date = Column(DateTime)
     accuracy = Column(Integer, nullable=False)
-    location_id = Column(BINARY(16), ForeignKey('location.id'))
-    trip_id = Column(BINARY(16), ForeignKey('trip.id'))
+    location_id = Column(UUIDType(binary=True), ForeignKey('location.id'), nullable=True)
+    trip_id = Column(UUIDType(binary=True), ForeignKey('trip.id'))
     sync = Column(Boolean, nullable=False)
 
     # Relationships
@@ -44,22 +45,22 @@ class RawSensorData(Base):
     trip = relationship("Trip", back_populates="raw_sensor_data")
 
     def __repr__(self):
-        return f"<RawSensorData(id={self.id.hex()}, sensor_type={self.sensor_type}, sensor_type_name='{self.sensor_type_name}')>"
+        return f"<RawSensorData(id={self.id}, sensor_type={self.sensor_type}, sensor_type_name='{self.sensor_type_name}')>"
 
     @property
     def id_uuid(self) -> UUID:
         """Return the UUID representation of the binary ID."""
-        return UUID(bytes=self.id)
+        return self.id
 
     @property
     def location_id_uuid(self) -> Optional[UUID]:
         """Return the UUID representation of the binary location_id."""
-        return UUID(bytes=self.location_id) if self.location_id else None
+        return self.location_id if self.location_id else None
 
     @property
     def trip_id_uuid(self) -> Optional[UUID]:
         """Return the UUID representation of the binary trip_id."""
-        return UUID(bytes=self.trip_id) if self.trip_id else None
+        return self.trip_id if self.trip_id else None
 
     def to_dict(self):
         """Converts the RawSensorData object to a dictionary representation."""

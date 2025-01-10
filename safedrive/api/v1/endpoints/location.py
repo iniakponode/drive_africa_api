@@ -38,7 +38,7 @@ def create_location(
             logger.error("Latitude and longitude are required to create a location.")
             raise HTTPException(status_code=400, detail="Latitude and longitude are required")
         new_location = location_crud.create(db=db, obj_in=location_in)
-        logger.info(f"Location created with ID: {new_location.id.hex()}")
+        logger.info(f"Location created with ID: {new_location.id}")
         return LocationResponse.model_validate(new_location)
     except Exception as e:
         logger.exception("Error creating location")

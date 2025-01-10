@@ -39,7 +39,7 @@ def create_ai_model_input(
             logger.error("Trip ID is required to create AI model input.")
             raise HTTPException(status_code=400, detail="Trip ID is required")
         new_input = ai_model_inputs_crud.create(db=db, obj_in=input_in)
-        logger.info(f"AI model input created with ID: {new_input.id.hex()}")
+        logger.info(f"AI model input created with ID: {new_input.id}")
         return AIModelInputResponse.model_validate(new_input)
     except Exception as e:
         logger.exception("Error creating AI model input")

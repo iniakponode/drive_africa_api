@@ -21,9 +21,9 @@ class UnsafeBehaviourBase(BaseModel):
     - **alcohol_influence**: Indicator if alcohol influence was detected.
     """
     id: UUID = Field(..., description="Unique identifier for the unsafe behaviour.")
-    trip_id: UUID = Field(..., description="UUID of the trip associated with this unsafe behaviour.")
+    trip_id: Optional[UUID] = Field(..., description="UUID of the trip associated with this unsafe behaviour.")
     location_id: Optional[UUID] = Field(None, description="UUID of the location associated with this behaviour.")
-    driver_profile_id: UUID = Field(..., description="UUID of the driving profile associated with this unsafe behaviour.")
+    driverProfileId: UUID = Field(..., description="UUID of the driving profile associated with this unsafe behaviour.")
     behaviour_type: str = Field(..., description="Type of unsafe behaviour observed.")
     severity: float = Field(..., description="Severity level of the unsafe behaviour.")
     timestamp: int = Field(..., description="Epoch timestamp when the behaviour was recorded.")
@@ -43,7 +43,7 @@ class UnsafeBehaviourCreate(BaseModel):
     """
     trip_id: UUID = Field(..., description="UUID of the trip associated with this unsafe behaviour.")
     location_id: Optional[UUID] = Field(None, description="UUID of the location associated with this behaviour.")
-    driver_profile_id: UUID = Field(..., description="UUID of the driving profile associated with this unsafe behaviour.")
+    driverProfileId: UUID = Field(..., description="UUID of the driving profile associated with this unsafe behaviour.")
     behaviour_type: str = Field(..., description="Type of unsafe behaviour observed.")
     severity: float = Field(..., description="Severity level of the unsafe behaviour.")
     timestamp: int = Field(..., description="Epoch timestamp when the behaviour was recorded.")
@@ -62,7 +62,7 @@ class UnsafeBehaviourUpdate(BaseModel):
     """
     location_id: Optional[UUID] = Field(None, description="Optionally update the location associated with this behaviour.")
     trip_id: UUID = Field(..., description="UUID of the trip associated with this unsafe behaviour.")
-    driver_profile_id: UUID = Field(..., description="UUID of the driving profile associated with this unsafe behaviour.")
+    driverProfileId: UUID = Field(..., description="UUID of the driving profile associated with this unsafe behaviour.")
     behaviour_type: Optional[str] = Field(None, description="Optionally update the type of unsafe behaviour.")
     severity: Optional[float] = Field(None, description="Optionally update the severity level.")
     timestamp: Optional[int] = Field(None, description="Optionally update the timestamp when the behaviour was recorded.")

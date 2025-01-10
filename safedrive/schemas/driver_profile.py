@@ -6,7 +6,7 @@ class DriverProfileBase(BaseModel):
     """
     Base schema for DriverProfile, including common attributes.
     """
-    driver_profile_id: UUID
+    driverProfileId: UUID
     email: str
     sync: bool
 
@@ -18,9 +18,11 @@ class DriverProfileCreate(BaseModel):
     Schema for creating a new DriverProfile.
     
     Attributes:
+    - **driverProfileId**: The driver's profile Id
     - **email**: The driver's email (unique).
     - **sync**: Indicates if data is synced (optional).
     """
+    driverProfileId: UUID
     email: str
     sync: Optional[bool] = False
 
@@ -39,7 +41,7 @@ class DriverProfileResponse(DriverProfileBase):
     """
     Response schema for DriverProfile, with UUID conversion for JSON responses.
     """
-    driver_profile_id: UUID
+    driverProfileId: UUID
     email: str
     sync: bool
     

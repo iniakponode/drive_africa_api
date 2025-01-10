@@ -13,7 +13,7 @@ class EmbeddingBase(BaseModel):
     synced: bool
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class EmbeddingCreate(BaseModel):
     chunk_text: str

@@ -1,6 +1,7 @@
 from sqlalchemy import Boolean, Column, DateTime, Float, ForeignKey, BINARY
 from sqlalchemy.orm import relationship
 from safedrive.database.base import Base
+from sqlalchemy_utils import UUIDType
 from uuid import uuid4, UUID
 
 def generate_uuid_binary():
@@ -23,8 +24,8 @@ class AIModelInput(Base):
     """
     __tablename__ = 'ai_model_inputs'
     
-    id = Column(BINARY(16), primary_key=True, default=generate_uuid_binary)
-    trip_id = Column(BINARY(16), ForeignKey('trip.id', ondelete='CASCADE'), nullable=False)
+    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
+    trip_id = Column(UUIDType(binary=True), ForeignKey('trip.id', ondelete='CASCADE'), nullable=False)
     timestamp = Column(DateTime, nullable=False)
     date = Column(DateTime, nullable=False)
     hour_of_day_mean = Column(Float, nullable=False)

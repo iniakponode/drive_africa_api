@@ -1,6 +1,7 @@
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, Boolean, BINARY
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, Boolean, BINARY, BigInteger
 from sqlalchemy.orm import relationship
 from uuid import uuid4, UUID
+from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
 
 def generate_uuid_binary():
@@ -9,12 +10,12 @@ def generate_uuid_binary():
 class Trip(Base):
     __tablename__ = "trip"
 
-    id = Column(BINARY(16), primary_key=True, default=generate_uuid_binary)
-    driver_profile_id = Column(BINARY(16), ForeignKey('driver_profile.driver_profile_id'), nullable=False)
+    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
+    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)
     start_date = Column(DateTime)
-    end_date = Column(DateTime)
-    start_time = Column(Integer, nullable=False)
-    end_time = Column(Integer)
+    end_date = Column(DateTime, nullable=True)
+    start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger
+    end_time = Column(BigInteger, nullable=True) 
     synced = Column(Boolean, nullable=False)
 
     # Relationships
@@ -24,7 +25,7 @@ class Trip(Base):
     unsafe_behaviours = relationship("UnsafeBehaviour", back_populates="trip")
 
     def __repr__(self):
-        return f"<Trip(id={self.id.hex()}, driver_profile_id={self.driver_profile_id.hex()})>"
+        return f"<Trip(id={self.id}, driver_profile_id={self.driverProfileId})>"
 
     @property
     def id_uuid(self) -> UUID:
@@ -32,4 +33,4 @@ class Trip(Base):
 
     @property
     def driver_profile_id_uuid(self) -> UUID:
-        return UUID(bytes=self.driver_profile_id)
+        return UUID(bytes=self.driverProfileId)

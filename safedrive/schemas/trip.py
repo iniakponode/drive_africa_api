@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+import sqlalchemy
 from typing import Optional
 from uuid import UUID
 from datetime import datetime
@@ -9,7 +10,7 @@ class TripBase(BaseModel):
 
     Attributes:
     - **id**: The unique identifier for the trip.
-    - **driver_profile_id**: The foreign key reference to the driver's profile.
+    - **driverProfileId**: The foreign key reference to the driver's profile.
     - **start_date**: The start date of the trip.
     - **end_date**: The end date of the trip.
     - **start_time**: The start time of the trip in epoch milliseconds.
@@ -17,10 +18,10 @@ class TripBase(BaseModel):
     - **synced**: Indicator whether the trip data has been synced.
     """
     id: UUID = Field(..., description="The unique identifier for the trip.")
-    driver_profile_id: UUID = Field(..., description="The UUID of the driver's profile.")
+    driverProfileId: UUID = Field(..., description="The UUID of the driver's profile.")
     start_date: Optional[datetime] = Field(None, description="The start date of the trip.")
     end_date: Optional[datetime] = Field(None, description="The end date of the trip.")
-    start_time: int = Field(..., description="The start time of the trip in epoch milliseconds.")
+    start_time: Optional[int] = Field(..., description="The start time of the trip in epoch milliseconds.")
     end_time: Optional[int] = Field(None, description="The end time of the trip in epoch milliseconds.")
     synced: bool = Field(False, description="Indicates whether the trip data has been synced.")
 
@@ -31,7 +32,8 @@ class TripCreate(BaseModel):
     """
     Schema for creating a new Trip record.
     """
-    driver_profile_id: UUID = Field(..., description="The UUID of the driver's profile.")
+    id: UUID=Field(..., description="The UUID of the trip's profile.")
+    driverProfileId: UUID = Field(..., description="The UUID of the driver's profile.")
     start_date: Optional[datetime] = Field(None, description="The start date of the trip.")
     end_date: Optional[datetime] = Field(None, description="The end date of the trip.")
     start_time: int = Field(..., description="The start time of the trip in epoch milliseconds.")
@@ -47,7 +49,7 @@ class TripUpdate(BaseModel):
 
     All fields are optional.
     """
-    driver_profile_id: Optional[UUID] = Field(None, description="Optionally update the driver's profile reference.")
+    driverProfileId: Optional[UUID] = Field(None, description="Optionally update the driver's profile reference.")
     start_date: Optional[datetime] = Field(None, description="Optionally update the start date of the trip.")
     end_date: Optional[datetime] = Field(None, description="Optionally update the end date of the trip.")
     start_time: Optional[int] = Field(None, description="Optionally update the start time of the trip in epoch milliseconds.")

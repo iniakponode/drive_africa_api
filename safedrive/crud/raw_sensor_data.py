@@ -1,3 +1,5 @@
+from fastapi import HTTPException
+from pymysql import IntegrityError
 from sqlalchemy.orm import Session
 from uuid import UUID
 from typing import List, Optional
@@ -21,51 +23,86 @@ class CRUDRawSensorData:
         """
         self.model = model
 
-    def batch_create(self, db: Session, data_in: List[RawSensorDataCreate]) -> List[RawSensorData]:
-        try:
-            db_objs = [self.model(**data.model_dump()) for data in data_in]
-            db.bulk_save_objects(db_objs)
-            db.commit()
-            logger.info(f"Batch inserted {len(db_objs)} RawSensorData records.")
-            return db_objs
-        except Exception as e:
-            db.rollback()
-            logger.error(f"Error during batch insertion of RawSensorData: {str(e)}")
-            raise e
+    def batch_create(
+            self, db: Session, data_in: List[RawSensorDataCreate]
+        ) -> List[RawSensorData]:
+            try:
+                db_objs = []
+                skipped_count = 0
 
-    def batch_delete(self, db: Session, ids: List[int]) -> None:
-        try:
-            db.query(self.model).filter(self.model.id.in_(ids)).delete(synchronize_session=False)
-            db.commit()
-            logger.info(f"Batch deleted {len(ids)} RawSensorData records.")
-        except Exception as e:
-            db.rollback()
-            logger.error(f"Error during batch deletion of RawSensorData: {str(e)}")
-            raise e
+                for data in data_in:
+                    obj_data = data.model_dump()
+
+                    # Convert string UUID fields to actual UUID objects
+                    for uuid_field in ["id", "location_id", "driverProfileId", "trip_id"]:
+                        if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
+                            obj_data[uuid_field] = UUID(obj_data[uuid_field])
+
+                    # If an ID is provided, check for duplicates
+                    record_id = obj_data.get("id")
+                    if record_id is not None:
+                        existing_record = (
+                            db.query(self.model).filter_by(id=record_id).first()
+                        )
+                        if existing_record:
+                            logger.info(f"Skipping duplicate RawSensorData with ID {record_id}")
+                            skipped_count += 1
+                            continue
+
+                    db_obj = self.model(**obj_data)
+                    db.add(db_obj)
+                    db_objs.append(db_obj)
+
+                db.flush()
+                db.commit()
+
+                for obj in db_objs:
+                    db.refresh(obj)
+
+                inserted_count = len(db_objs)
+                logger.info(
+                    f"Batch inserted {inserted_count} RawSensorData records. Skipped {skipped_count} duplicates."
+                )
+                return db_objs
+
+            except IntegrityError as e:
+                db.rollback()
+                logger.error(
+                    f"IntegrityError during batch insertion of RawSensorData: {str(e)}"
+                )
+                raise HTTPException(
+                    status_code=400, detail="Database integrity error occurred."
+                )
+            except Exception as e:
+                db.rollback()
+                logger.error(f"Error during batch insertion of RawSensorData: {str(e)}")
+                raise e
+
 
     def create(self, db: Session, obj_in: RawSensorDataCreate) -> RawSensorData:
-        # Convert UUID fields to bytes
-        obj_in_data = obj_in.model_dump(exclude={'values'})
-        if 'location_id' in obj_in_data and isinstance(obj_in_data['location_id'], UUID):
-            obj_in_data['location_id'] = obj_in_data['location_id'].bytes
-        if 'trip_id' in obj_in_data and isinstance(obj_in_data['trip_id'], UUID):
-            obj_in_data['trip_id'] = obj_in_data['trip_id'].bytes
-
-        db_obj = self.model(
-            **obj_in_data,  # Unpack the modified dictionary
-            values=obj_in.values  # Automatically serialize list as JSON
-        )
-        
-        db.add(db_obj)
         try:
+            # Convert UUID fields to 36-character strings
+            obj_in_data = obj_in.model_dump(exclude={'values'})
+            for uuid_field in ['id', 'location_id', 'driverProfileId', 'trip_id']:
+                if uuid_field in obj_in_data and isinstance(obj_in_data[uuid_field], str):
+                    obj_in_data[uuid_field] = UUID(obj_in_data[uuid_field])
+
+            db_obj = self.model(
+                **obj_in_data,  # Unpack the modified dictionary
+                values=obj_in.values  # Automatically serialize list as JSON
+            )
+
+            db.add(db_obj)
             db.commit()
+            db.refresh(db_obj)
             logger.info(f"Created RawSensorData with ID: {db_obj.id}")
+            return db_obj
+
         except Exception as e:
             db.rollback()
             logger.error(f"Error creating RawSensorData: {str(e)}")
             raise e
-        db.refresh(db_obj)
-        return db_obj
+
 
     def get(self, db: Session, id: UUID) -> Optional[RawSensorData]:
         """
@@ -76,7 +113,7 @@ class CRUDRawSensorData:
         :return: The retrieved raw sensor data or None if not found.
         """
         try:
-            data = db.query(self.model).filter(self.model.id == id.bytes).first()
+            data = db.query(self.model).filter(self.model.id == id).first()
             if data:
                 logger.info(f"Found raw sensor data with ID: {id}")
             else:
@@ -116,12 +153,12 @@ class CRUDRawSensorData:
             obj_data = obj_in.dict(exclude_unset=True)
             for field in obj_data:
                 if field in ['location_id', 'trip_id'] and isinstance(obj_data[field], UUID):
-                    setattr(db_obj, field, obj_data[field].bytes)
+                    setattr(db_obj, field, obj_data[field])
                 else:
                     setattr(db_obj, field, obj_data[field])
             db.commit()
             db.refresh(db_obj)
-            logger.info(f"Updated raw sensor data with ID: {db_obj.id.hex()}")
+            logger.info(f"Updated raw sensor data with ID: {db_obj.id}")
             return db_obj
         except Exception as e:
             db.rollback()
@@ -137,10 +174,11 @@ class CRUDRawSensorData:
         :return: The deleted raw sensor data or None if not found.
         """
         try:
-            obj = db.query(self.model).filter(self.model.id == id.bytes).first()
+            obj = db.query(self.model).filter(self.model.id == id).first()
             if obj:
                 db.delete(obj)
                 db.commit()
+                db.refresh(obj)
                 logger.info(f"Deleted raw sensor data with ID: {id}")
                 return obj
             else:

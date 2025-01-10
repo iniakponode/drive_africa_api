@@ -24,52 +24,32 @@ class CRUDDriverProfile:
         self.model = model
 
     def create(self, db: Session, obj_in: DriverProfileCreate) -> DriverProfile:
-        """
-        Creates a new driver profile in the database.
-        - **db**: Database session.
-        - **obj_in**: Data for creating the driver profile.
-
-        Returns the created DriverProfile instance.
-        """
-        db_obj = self.model(**obj_in.model_dump(), driver_profile_id=generate_uuid_binary())
-        db.add(db_obj)
-        
         try:
+            obj_data = obj_in.model_dump()
+
+            # Convert to a UUID only if it's a string
+            if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
+                obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
+
+            db_obj = self.model(**obj_data)
+            db.add(db_obj)
             db.commit()
-            logger.info(f"Created DriverProfile with ID: {db_obj.driver_profile_id}")
-        
-        except IntegrityError as e:
-            db.rollback()
-            logger.error(f"IntegrityError while creating DriverProfile: {str(e)}")
-            # Check for specific error messages or codes, such as unique constraint violations
-            if "Duplicate entry" in str(e.orig):
-                raise HTTPException(status_code=400, detail="Duplicate entry: this email already exists.")
-            else:
-                raise HTTPException(status_code=400, detail="Database integrity error occurred.")
-        
-        except DataError as e:
-            db.rollback()
-            logger.error(f"DataError while creating DriverProfile: {str(e)}")
-            # This error may occur due to type mismatch or data length issues
-            raise HTTPException(status_code=400, detail="Invalid data provided.")
-        
-        except OperationalError as e:
-            db.rollback()
-            logger.error(f"OperationalError while creating DriverProfile: {str(e)}")
-            # This error could indicate issues with the database connection or transaction
-            raise HTTPException(status_code=503, detail="Database operation failed. Please try again later.")
-        
+            db.flush()
+            db.refresh(db_obj)
+            logger.info(f"Created DriverProfile with ID: {db_obj.driverProfileId}")
+            print(str(db_obj.driverProfileId))
+            return db_obj
+
         except Exception as e:
             db.rollback()
             logger.error(f"Unexpected error while creating DriverProfile: {str(e)}")
-            # Handle any other unexpected exceptions
-            raise HTTPException(status_code=500, detail="An unexpected error occurred while creating the driver profile.")
-        
-        db.refresh(db_obj)
-        return db_obj
+            raise HTTPException(status_code=500, detail="An unexpected error occurred.")
+
+
+
 
     def get(self, db: Session, id: UUID) -> Optional[DriverProfile]:
-        profile = db.query(self.model).filter(self.model.driver_profile_id == id.bytes).first()
+        profile = db.query(self.model).filter(self.model.driverProfileId == id).first()
         if profile:
             logger.info(f"Retrieved DriverProfile with ID: {id}")
         else:
@@ -88,7 +68,8 @@ class CRUDDriverProfile:
         db.add(db_obj)
         try:
             db.commit()
-            logger.info(f"Updated DriverProfile with ID: {db_obj.driver_profile_id}")
+            db.refresh(db_obj)
+            logger.info(f"Updated DriverProfile with ID: {db_obj.driverProfileId}")
         except Exception as e:
             db.rollback()
             logger.error(f"Error updating DriverProfile: {str(e)}")
@@ -97,11 +78,12 @@ class CRUDDriverProfile:
         return db_obj
 
     def delete(self, db: Session, id: UUID) -> Optional[DriverProfile]:
-        obj = db.query(self.model).filter(self.model.driver_profile_id == id.bytes).first()
+        obj = db.query(self.model).filter(self.model.driverProfileId == id).first()
         if obj:
             db.delete(obj)
             try:
                 db.commit()
+                db.refresh(obj)
                 logger.info(f"Deleted DriverProfile with ID: {id}")
             except Exception as e:
                 db.rollback()

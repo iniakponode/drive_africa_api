@@ -22,22 +22,22 @@ router = APIRouter()
 def create_trip(*, db: Session = Depends(get_db), trip_in: TripCreate) -> TripResponse:
     try:
         # Check for required fields
-        if not trip_in.driver_profile_id or not trip_in.start_time:
+        if not trip_in.driverProfileId or not trip_in.start_time:
             logger.warning("Driver Profile ID and start time are required to create a trip.")
             raise HTTPException(status_code=400, detail="Driver Profile ID and start time are required to create a trip.")
         
         # Validate if the driver profile exists
-        profile_exists = driver_profile_crud.get(db=db, id=trip_in.driver_profile_id)
+        profile_exists = driver_profile_crud.get(db=db, id=trip_in.driverProfileId)
         if not profile_exists:
-            logger.warning(f"DriverProfile with ID {trip_in.driver_profile_id} not found.")
+            logger.warning(f"DriverProfile with ID {trip_in.driverProfileId} not found.")
             raise HTTPException(status_code=404, detail="Driver Profile ID does not exist in the database.")
         
         # Create the new trip
         new_trip = trip_crud.create(db=db, obj_in=trip_in)
-        logger.info(f"Created Trip with ID: {new_trip.id_uuid}")
+        logger.info(f"Created Trip with ID: {new_trip.id}")
         return TripResponse(
-            id=new_trip.id_uuid,
-            driver_profile_id=new_trip.driver_profile_id_uuid,
+            id=new_trip.id,
+            driverProfileId=new_trip.driverProfileId,
             start_date=new_trip.start_date,
             end_date=new_trip.end_date,
             start_time=new_trip.start_time,

@@ -16,134 +16,6 @@
         "documentation": {}
     },
     {
-        "label": "Sequence",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Sequence",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Sequence",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Sequence",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Sequence",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Sequence",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Sequence",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Sequence",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -485,70 +357,6 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "op",
-        "importPath": "alembic",
-        "description": "alembic",
-        "isExtraImport": true,
-        "detail": "alembic",
-        "documentation": {}
-    },
-    {
-        "label": "op",
-        "importPath": "alembic",
-        "description": "alembic",
-        "isExtraImport": true,
-        "detail": "alembic",
-        "documentation": {}
-    },
-    {
-        "label": "op",
-        "importPath": "alembic",
-        "description": "alembic",
-        "isExtraImport": true,
-        "detail": "alembic",
-        "documentation": {}
-    },
-    {
-        "label": "op",
-        "importPath": "alembic",
-        "description": "alembic",
-        "isExtraImport": true,
-        "detail": "alembic",
-        "documentation": {}
-    },
-    {
-        "label": "op",
-        "importPath": "alembic",
-        "description": "alembic",
-        "isExtraImport": true,
-        "detail": "alembic",
-        "documentation": {}
-    },
-    {
-        "label": "op",
-        "importPath": "alembic",
-        "description": "alembic",
-        "isExtraImport": true,
-        "detail": "alembic",
-        "documentation": {}
-    },
-    {
-        "label": "op",
-        "importPath": "alembic",
-        "description": "alembic",
-        "isExtraImport": true,
-        "detail": "alembic",
-        "documentation": {}
-    },
-    {
-        "label": "op",
-        "importPath": "alembic",
-        "description": "alembic",
-        "isExtraImport": true,
-        "detail": "alembic",
         "documentation": {}
     },
     {
@@ -786,6 +594,14 @@
     },
     {
         "label": "BINARY",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Date",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -1065,6 +881,14 @@
         "documentation": {}
     },
     {
+        "label": "BigInteger",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "Column",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -1129,27 +953,92 @@
         "documentation": {}
     },
     {
-        "label": "mysql",
-        "importPath": "sqlalchemy.dialects",
-        "description": "sqlalchemy.dialects",
+        "label": "sqlalchemy_utils",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "sqlalchemy.dialects",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
+        "detail": "sqlalchemy_utils",
         "documentation": {}
     },
     {
-        "label": "mysql",
-        "importPath": "sqlalchemy.dialects",
-        "description": "sqlalchemy.dialects",
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
         "isExtraImport": true,
-        "detail": "sqlalchemy.dialects",
+        "detail": "sqlalchemy_utils",
         "documentation": {}
     },
     {
-        "label": "mysql",
-        "importPath": "sqlalchemy.dialects",
-        "description": "sqlalchemy.dialects",
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
         "isExtraImport": true,
-        "detail": "sqlalchemy.dialects",
+        "detail": "sqlalchemy_utils",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils",
         "documentation": {}
     },
     {
@@ -1835,6 +1724,22 @@
     },
     {
         "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -2739,6 +2644,14 @@
         "documentation": {}
     },
     {
+        "label": "IntegrityError",
+        "importPath": "pymysql",
+        "description": "pymysql",
+        "isExtraImport": true,
+        "detail": "pymysql",
+        "documentation": {}
+    },
+    {
         "label": "DataError",
         "importPath": "pymysql",
         "description": "pymysql",
@@ -2756,6 +2669,14 @@
     },
     {
         "label": "OperationalError",
+        "importPath": "pymysql",
+        "description": "pymysql",
+        "isExtraImport": true,
+        "detail": "pymysql",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
         "importPath": "pymysql",
         "description": "pymysql",
         "isExtraImport": true,
@@ -3462,12 +3383,21 @@
         "documentation": {}
     },
     {
-        "label": "uvicorn",
+        "label": "glob",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "uvicorn",
-        "description": "uvicorn",
-        "detail": "uvicorn",
+        "importPath": "glob",
+        "description": "glob",
+        "detail": "glob",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
         "documentation": {}
     },
     {
@@ -3480,6 +3410,51 @@
         "documentation": {}
     },
     {
+        "label": "sysconfig",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sysconfig",
+        "description": "sysconfig",
+        "detail": "sysconfig",
+        "documentation": {}
+    },
+    {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "uvicorn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uvicorn",
+        "description": "uvicorn",
+        "detail": "uvicorn",
+        "documentation": {}
+    },
+    {
         "label": "safe_drive_africa_api_router",
         "importPath": "safedrive",
         "description": "safedrive",
@@ -3488,165 +3463,38 @@
         "documentation": {}
     },
     {
-        "label": "upgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.312dc76426e0_added_s_to_unsafe_behaviours_in_trip",
-        "description": "alembic.versions.312dc76426e0_added_s_to_unsafe_behaviours_in_trip",
-        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
-        "detail": "alembic.versions.312dc76426e0_added_s_to_unsafe_behaviours_in_trip",
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
         "documentation": {}
     },
     {
-        "label": "downgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.312dc76426e0_added_s_to_unsafe_behaviours_in_trip",
-        "description": "alembic.versions.312dc76426e0_added_s_to_unsafe_behaviours_in_trip",
-        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
-        "detail": "alembic.versions.312dc76426e0_added_s_to_unsafe_behaviours_in_trip",
-        "documentation": {}
-    },
-    {
-        "label": "upgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.360b0d5fe847_added_driver_profile_mapper_in_unsafe_",
-        "description": "alembic.versions.360b0d5fe847_added_driver_profile_mapper_in_unsafe_",
-        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
-        "detail": "alembic.versions.360b0d5fe847_added_driver_profile_mapper_in_unsafe_",
-        "documentation": {}
-    },
-    {
-        "label": "downgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.360b0d5fe847_added_driver_profile_mapper_in_unsafe_",
-        "description": "alembic.versions.360b0d5fe847_added_driver_profile_mapper_in_unsafe_",
-        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
-        "detail": "alembic.versions.360b0d5fe847_added_driver_profile_mapper_in_unsafe_",
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
         "documentation": {}
     },
     {
         "label": "upgrade",
         "kind": 2,
-        "importPath": "alembic.versions.38a895d8d600_refactored_nlg_report_codebase",
-        "description": "alembic.versions.38a895d8d600_refactored_nlg_report_codebase",
-        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('nlg_report', sa.Column('driver_profile_id', sa.BINARY(length=16), nullable=False))\n    op.add_column('nlg_report', sa.Column('generated_at', sa.DateTime(), nullable=False))\n    op.alter_column('nlg_report', 'id',\n               existing_type=mysql.INTEGER(display_width=11),\n               type_=sa.BINARY(length=16),\n               existing_nullable=False)\n    op.alter_column('nlg_report', 'report_text',\n               existing_type=mysql.VARCHAR(length=2000),",
-        "detail": "alembic.versions.38a895d8d600_refactored_nlg_report_codebase",
+        "importPath": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
+        "description": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('driver_profile',\n    sa.Column('driverProfileId', sqlalchemy_utils.types.uuid.UUIDType(), nullable=False),\n    sa.Column('email', sa.String(length=50), nullable=False),\n    sa.Column('sync', sa.Boolean(), nullable=False),\n    sa.PrimaryKeyConstraint('driverProfileId'),\n    sa.UniqueConstraint('email')\n    )\n    op.create_table('embedding',",
+        "detail": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
         "documentation": {}
     },
     {
         "label": "downgrade",
         "kind": 2,
-        "importPath": "alembic.versions.38a895d8d600_refactored_nlg_report_codebase",
-        "description": "alembic.versions.38a895d8d600_refactored_nlg_report_codebase",
-        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('nlg_report', sa.Column('user_id', mysql.VARCHAR(length=255), nullable=False))\n    op.add_column('nlg_report', sa.Column('date_range', mysql.VARCHAR(length=255), nullable=False))\n    op.drop_constraint(None, 'nlg_report', type_='foreignkey')\n    op.alter_column('nlg_report', 'synced',\n               existing_type=mysql.TINYINT(display_width=1),\n               nullable=True)\n    op.alter_column('nlg_report', 'report_text',\n               existing_type=sa.String(length=500),",
-        "detail": "alembic.versions.38a895d8d600_refactored_nlg_report_codebase",
-        "documentation": {}
-    },
-    {
-        "label": "upgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.4b58a4ecc8fa_edited_raw_sensor_data_to_make_the_",
-        "description": "alembic.versions.4b58a4ecc8fa_edited_raw_sensor_data_to_make_the_",
-        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.alter_column('raw_sensor_data', 'values',\n               existing_type=mysql.VARCHAR(length=1024),\n               type_=sa.JSON(),\n               existing_nullable=False)\n    op.alter_column('raw_sensor_data', 'sync',\n               existing_type=mysql.TINYINT(display_width=1),\n               nullable=False)\n    op.create_unique_constraint(None, 'raw_sensor_data', ['id'])",
-        "detail": "alembic.versions.4b58a4ecc8fa_edited_raw_sensor_data_to_make_the_",
-        "documentation": {}
-    },
-    {
-        "label": "downgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.4b58a4ecc8fa_edited_raw_sensor_data_to_make_the_",
-        "description": "alembic.versions.4b58a4ecc8fa_edited_raw_sensor_data_to_make_the_",
-        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_constraint(None, 'raw_sensor_data', type_='unique')\n    op.alter_column('raw_sensor_data', 'sync',\n               existing_type=mysql.TINYINT(display_width=1),\n               nullable=True)\n    op.alter_column('raw_sensor_data', 'values',\n               existing_type=sa.JSON(),\n               type_=mysql.VARCHAR(length=1024),\n               existing_nullable=False)",
-        "detail": "alembic.versions.4b58a4ecc8fa_edited_raw_sensor_data_to_make_the_",
-        "documentation": {}
-    },
-    {
-        "label": "upgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.537b5697b6a3_initial_migration",
-        "description": "alembic.versions.537b5697b6a3_initial_migration",
-        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('driver_profile',\n    sa.Column('driver_profile_id', sa.BINARY(length=16), nullable=False),\n    sa.Column('email', sa.String(length=50), nullable=False),\n    sa.Column('sync', sa.Boolean(), nullable=False),\n    sa.PrimaryKeyConstraint('driver_profile_id'),\n    sa.UniqueConstraint('driver_profile_id'),\n    sa.UniqueConstraint('email')\n    )",
-        "detail": "alembic.versions.537b5697b6a3_initial_migration",
-        "documentation": {}
-    },
-    {
-        "label": "downgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.537b5697b6a3_initial_migration",
-        "description": "alembic.versions.537b5697b6a3_initial_migration",
-        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_table('causes')\n    op.drop_table('unsafe_behaviour')\n    op.drop_table('raw_sensor_data')\n    op.drop_table('ai_model_inputs')\n    op.drop_table('trip')\n    op.drop_table('driving_tips')\n    op.drop_table('nlg_report')\n    op.drop_table('location')",
-        "detail": "alembic.versions.537b5697b6a3_initial_migration",
-        "documentation": {}
-    },
-    {
-        "label": "upgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.84146a01839e_refactored_embedding_code",
-        "description": "alembic.versions.84146a01839e_refactored_embedding_code",
-        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('embedding',\n    sa.Column('chunk_id', sa.BINARY(length=16), nullable=False),\n    sa.Column('chunk_text', sa.String(length=255), nullable=False),\n    sa.Column('embedding', sa.String(length=1024), nullable=False),\n    sa.Column('source_type', sa.String(length=50), nullable=False),\n    sa.Column('source_page', sa.Integer(), nullable=False),\n    sa.Column('created_at', sa.DateTime(), nullable=True),\n    sa.PrimaryKeyConstraint('chunk_id')",
-        "detail": "alembic.versions.84146a01839e_refactored_embedding_code",
-        "documentation": {}
-    },
-    {
-        "label": "downgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.84146a01839e_refactored_embedding_code",
-        "description": "alembic.versions.84146a01839e_refactored_embedding_code",
-        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('embeddings',\n    sa.Column('chunk_id', sa.BINARY(length=16), nullable=False, comment='Unique identifier for each chunk of text.'),\n    sa.Column('chunk_text', mysql.VARCHAR(length=5000), nullable=False, comment='The text content of the chunk.'),\n    sa.Column('embedding', sa.BLOB(), nullable=False, comment='Serialized embedding vector for the chunk.'),\n    sa.Column('source_type', mysql.VARCHAR(length=255), nullable=False, comment='The type of source (e.g., nat_dr_reg_law, ng_high_way_code).'),\n    sa.Column('source_page', mysql.INTEGER(display_width=11), autoincrement=False, nullable=True, comment='The page number for traceability.'),\n    sa.Column('created_at', mysql.TIMESTAMP(), server_default=sa.text('current_timestamp() ON UPDATE current_timestamp()'), nullable=False, comment='The timestamp indicating when the embedding was created.'),\n    sa.PrimaryKeyConstraint('chunk_id'),",
-        "detail": "alembic.versions.84146a01839e_refactored_embedding_code",
-        "documentation": {}
-    },
-    {
-        "label": "upgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.a281668694a0_added_driver_profile_id_to_unsafe_",
-        "description": "alembic.versions.a281668694a0_added_driver_profile_id_to_unsafe_",
-        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('unsafe_behaviour', sa.Column('driver_profile_id', sa.BINARY(length=16), nullable=False))\n    op.create_foreign_key(None, 'unsafe_behaviour', 'driver_profile', ['driver_profile_id'], ['driver_profile_id'])\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_constraint(None, 'unsafe_behaviour', type_='foreignkey')\n    op.drop_column('unsafe_behaviour', 'driver_profile_id')\n    # ### end Alembic commands ###",
-        "detail": "alembic.versions.a281668694a0_added_driver_profile_id_to_unsafe_",
-        "documentation": {}
-    },
-    {
-        "label": "downgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.a281668694a0_added_driver_profile_id_to_unsafe_",
-        "description": "alembic.versions.a281668694a0_added_driver_profile_id_to_unsafe_",
-        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_constraint(None, 'unsafe_behaviour', type_='foreignkey')\n    op.drop_column('unsafe_behaviour', 'driver_profile_id')\n    # ### end Alembic commands ###",
-        "detail": "alembic.versions.a281668694a0_added_driver_profile_id_to_unsafe_",
-        "documentation": {}
-    },
-    {
-        "label": "upgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.ad0f1d66a756_added_synced_column_to_ai_module_input",
-        "description": "alembic.versions.ad0f1d66a756_added_synced_column_to_ai_module_input",
-        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('ai_model_inputs', sa.Column('synced', sa.Boolean(), nullable=False))\n    op.add_column('embedding', sa.Column('synced', sa.Boolean(), nullable=False))\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_column('embedding', 'synced')\n    op.drop_column('ai_model_inputs', 'synced')\n    # ### end Alembic commands ###",
-        "detail": "alembic.versions.ad0f1d66a756_added_synced_column_to_ai_module_input",
-        "documentation": {}
-    },
-    {
-        "label": "downgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.ad0f1d66a756_added_synced_column_to_ai_module_input",
-        "description": "alembic.versions.ad0f1d66a756_added_synced_column_to_ai_module_input",
-        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_column('embedding', 'synced')\n    op.drop_column('ai_model_inputs', 'synced')\n    # ### end Alembic commands ###",
-        "detail": "alembic.versions.ad0f1d66a756_added_synced_column_to_ai_module_input",
-        "documentation": {}
-    },
-    {
-        "label": "upgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.ef70aac5ee1c_added_synced_column_to_unsafe_behaviours",
-        "description": "alembic.versions.ef70aac5ee1c_added_synced_column_to_unsafe_behaviours",
-        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('causes', sa.Column('synced', sa.Boolean(), nullable=False))\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_column('causes', 'synced')\n    # ### end Alembic commands ###",
-        "detail": "alembic.versions.ef70aac5ee1c_added_synced_column_to_unsafe_behaviours",
-        "documentation": {}
-    },
-    {
-        "label": "downgrade",
-        "kind": 2,
-        "importPath": "alembic.versions.ef70aac5ee1c_added_synced_column_to_unsafe_behaviours",
-        "description": "alembic.versions.ef70aac5ee1c_added_synced_column_to_unsafe_behaviours",
-        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_column('causes', 'synced')\n    # ### end Alembic commands ###",
-        "detail": "alembic.versions.ef70aac5ee1c_added_synced_column_to_unsafe_behaviours",
+        "importPath": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
+        "description": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_table('causes')\n    op.drop_table('unsafe_behaviour')\n    op.drop_table('raw_sensor_data')\n    op.drop_table('ai_model_inputs')\n    op.drop_table('trip')\n    op.drop_table('nlg_report')\n    op.drop_table('driving_tips')\n    op.drop_table('location')",
+        "detail": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
         "documentation": {}
     },
     {
@@ -3870,7 +3718,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n     \"\"\"\n    Creates a new driver profile.\n    - **profile_in**: Data for creating the driver profile.\n    \"\"\"\n     try:\n            new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n            logger.info(f\"DriverProfile created with ID: {new_profile.id_uuid}\")\n            return DriverProfileResponse(driver_profile_id=new_profile.id_uuid, **profile_in.model_dump())\n     except IntegrityError as e:",
+        "peekOfCode": "def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create the driver profile using the schema's driver_profile_id, email, and sync\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        return DriverProfileResponse(\n            driverProfileId=profile_in.driverProfileId,\n            email=profile_in.email,\n            sync=profile_in.sync\n        )",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -3879,7 +3727,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    logger.info(f\"Retrieved DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driver_profile_id=profile.id_uuid, email=profile.email, sync=profile.sync)\n@router.get(\"/driver_profiles/\", response_model=List[DriverProfileResponse])\ndef get_all_driver_profiles(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:\n    profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)",
+        "peekOfCode": "def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    logger.info(f\"Retrieved DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync)\n@router.get(\"/driver_profiles/\", response_model=List[DriverProfileResponse])\ndef get_all_driver_profiles(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:\n    profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -3888,7 +3736,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def get_all_driver_profiles(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:\n    profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(profiles)} DriverProfiles.\")\n    return [DriverProfileResponse(driver_profile_id=profile.id_uuid, email=profile.email, sync=profile.sync) for profile in profiles]\n@router.put(\"/driver_profiles/{profile_id}\", response_model=DriverProfileResponse)\ndef update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")",
+        "peekOfCode": "def get_all_driver_profiles(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:\n    profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(profiles)} DriverProfiles.\")\n    return [DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync) for profile in profiles]\n@router.put(\"/driver_profiles/{profile_id}\", response_model=DriverProfileResponse)\ndef update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -3897,7 +3745,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    updated_profile = driver_profile_crud.update(db=db, db_obj=profile, obj_in=profile_in)\n    logger.info(f\"Updated DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driver_profile_id=updated_profile.id_uuid, email=updated_profile.email, sync=updated_profile.sync)\n@router.delete(\"/driver_profiles/{profile_id}\", response_model=DriverProfileResponse)\ndef delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:",
+        "peekOfCode": "def update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    updated_profile = driver_profile_crud.update(db=db, db_obj=profile, obj_in=profile_in)\n    logger.info(f\"Updated DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=updated_profile.id_uuid, email=updated_profile.email, sync=updated_profile.sync)\n@router.delete(\"/driver_profiles/{profile_id}\", response_model=DriverProfileResponse)\ndef delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -3906,7 +3754,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    deleted_profile = driver_profile_crud.delete(db=db, id=profile_id)\n    logger.info(f\"Deleted DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driver_profile_id=deleted_profile.id_uuid, email=deleted_profile.email, sync=deleted_profile.sync)",
+        "peekOfCode": "def delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    deleted_profile = driver_profile_crud.delete(db=db, id=profile_id)\n    logger.info(f\"Deleted DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=deleted_profile.id_uuid, email=deleted_profile.email, sync=deleted_profile.sync)",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -3915,7 +3763,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n     \"\"\"\n    Creates a new driver profile.\n    - **profile_in**: Data for creating the driver profile.\n    \"\"\"\n     try:\n            new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create the driver profile using the schema's driver_profile_id, email, and sync\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        return DriverProfileResponse(\n            driverProfileId=profile_in.driverProfileId,",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -3924,7 +3772,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n     \"\"\"\n    Creates a new driver profile.\n    - **profile_in**: Data for creating the driver profile.\n    \"\"\"\n     try:\n            new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n            logger.info(f\"DriverProfile created with ID: {new_profile.id_uuid}\")",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create the driver profile using the schema's driver_profile_id, email, and sync\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        return DriverProfileResponse(\n            driverProfileId=profile_in.driverProfileId,\n            email=profile_in.email,",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -4158,7 +4006,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "def get_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    return NLGReportResponse(id=report.id_uuid, driver_profile_id=report.driver_profile_id, report_text=report.report_text, generated_at=report.generated_at, synced=report.synced)\n@router.get(\"/nlg_reports/\", response_model=List[NLGReportResponse])\ndef get_all_nlg_reports(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[NLGReportResponse]:\n    reports = nlg_report_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(reports)} NLGReports.\")",
+        "peekOfCode": "def get_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    return NLGReportResponse(id=report.id_uuid, driverProfileId=report.driverProfileId, report_text=report.report_text, generated_at=report.generated_at, synced=report.synced)\n@router.get(\"/nlg_reports/\", response_model=List[NLGReportResponse])\ndef get_all_nlg_reports(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[NLGReportResponse]:\n    reports = nlg_report_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(reports)} NLGReports.\")",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -4167,7 +4015,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "def get_all_nlg_reports(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[NLGReportResponse]:\n    reports = nlg_report_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(reports)} NLGReports.\")\n    return [NLGReportResponse(id=report.id_uuid, driver_profile_id=report.driver_profile_id, report_text=report.report_text, generated_at=report.generated_at, synced=report.synced) for report in reports]\n@router.put(\"/nlg_reports/{report_id}\", response_model=NLGReportResponse)\ndef update_nlg_report(report_id: UUID, *, db: Session = Depends(get_db), report_in: NLGReportUpdate) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")",
+        "peekOfCode": "def get_all_nlg_reports(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[NLGReportResponse]:\n    reports = nlg_report_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(reports)} NLGReports.\")\n    return [NLGReportResponse(id=report.id_uuid, driverProfileId=report.driverProfileId, report_text=report.report_text, generated_at=report.generated_at, synced=report.synced) for report in reports]\n@router.put(\"/nlg_reports/{report_id}\", response_model=NLGReportResponse)\ndef update_nlg_report(report_id: UUID, *, db: Session = Depends(get_db), report_in: NLGReportUpdate) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -4176,7 +4024,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "def update_nlg_report(report_id: UUID, *, db: Session = Depends(get_db), report_in: NLGReportUpdate) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    updated_report = nlg_report_crud.update(db=db, db_obj=report, obj_in=report_in)\n    logger.info(f\"Updated NLGReport with ID: {report_id}\")\n    return NLGReportResponse(id=updated_report.id_uuid, driver_profile_id=updated_report.driver_profile_id, report_text=updated_report.report_text, generated_at=updated_report.generated_at, synced=updated_report.synced)\n@router.delete(\"/nlg_reports/{report_id}\", response_model=NLGReportResponse)\ndef delete_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:",
+        "peekOfCode": "def update_nlg_report(report_id: UUID, *, db: Session = Depends(get_db), report_in: NLGReportUpdate) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    updated_report = nlg_report_crud.update(db=db, db_obj=report, obj_in=report_in)\n    logger.info(f\"Updated NLGReport with ID: {report_id}\")\n    return NLGReportResponse(id=updated_report.id_uuid, driverProfileId=updated_report.driverProfileId, report_text=updated_report.report_text, generated_at=updated_report.generated_at, synced=updated_report.synced)\n@router.delete(\"/nlg_reports/{report_id}\", response_model=NLGReportResponse)\ndef delete_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -4185,7 +4033,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "def delete_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    deleted_report = nlg_report_crud.delete(db=db, id=report_id)\n    logger.info(f\"Deleted NLGReport with ID: {report_id}\")\n    return NLGReportResponse(id=deleted_report.id_uuid, driver_profile_id=deleted_report.driver_profile_id, report_text=deleted_report.report_text, generated_at=deleted_report.generated_at, synced=deleted_report.synced)",
+        "peekOfCode": "def delete_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    deleted_report = nlg_report_crud.delete(db=db, id=report_id)\n    logger.info(f\"Deleted NLGReport with ID: {report_id}\")\n    return NLGReportResponse(id=deleted_report.id_uuid, driverProfileId=deleted_report.driverProfileId, report_text=deleted_report.report_text, generated_at=deleted_report.generated_at, synced=deleted_report.synced)",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -4293,7 +4141,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.trip",
         "description": "safedrive.api.v1.endpoints.trip",
-        "peekOfCode": "def create_trip(*, db: Session = Depends(get_db), trip_in: TripCreate) -> TripResponse:\n    try:\n        # Check for required fields\n        if not trip_in.driver_profile_id or not trip_in.start_time:\n            logger.warning(\"Driver Profile ID and start time are required to create a trip.\")\n            raise HTTPException(status_code=400, detail=\"Driver Profile ID and start time are required to create a trip.\")\n        # Validate if the driver profile exists\n        profile_exists = driver_profile_crud.get(db=db, id=trip_in.driver_profile_id)\n        if not profile_exists:\n            logger.warning(f\"DriverProfile with ID {trip_in.driver_profile_id} not found.\")",
+        "peekOfCode": "def create_trip(*, db: Session = Depends(get_db), trip_in: TripCreate) -> TripResponse:\n    try:\n        # Check for required fields\n        if not trip_in.driverProfileId or not trip_in.start_time:\n            logger.warning(\"Driver Profile ID and start time are required to create a trip.\")\n            raise HTTPException(status_code=400, detail=\"Driver Profile ID and start time are required to create a trip.\")\n        # Validate if the driver profile exists\n        profile_exists = driver_profile_crud.get(db=db, id=trip_in.driverProfileId)\n        if not profile_exists:\n            logger.warning(f\"DriverProfile with ID {trip_in.driverProfileId} not found.\")",
         "detail": "safedrive.api.v1.endpoints.trip",
         "documentation": {}
     },
@@ -4356,7 +4204,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.trip",
         "description": "safedrive.api.v1.endpoints.trip",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)\nrouter = APIRouter()\n@router.post(\"/trips/\", response_model=TripResponse)\ndef create_trip(*, db: Session = Depends(get_db), trip_in: TripCreate) -> TripResponse:\n    try:\n        # Check for required fields\n        if not trip_in.driver_profile_id or not trip_in.start_time:\n            logger.warning(\"Driver Profile ID and start time are required to create a trip.\")\n            raise HTTPException(status_code=400, detail=\"Driver Profile ID and start time are required to create a trip.\")",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)\nrouter = APIRouter()\n@router.post(\"/trips/\", response_model=TripResponse)\ndef create_trip(*, db: Session = Depends(get_db), trip_in: TripCreate) -> TripResponse:\n    try:\n        # Check for required fields\n        if not trip_in.driverProfileId or not trip_in.start_time:\n            logger.warning(\"Driver Profile ID and start time are required to create a trip.\")\n            raise HTTPException(status_code=400, detail=\"Driver Profile ID and start time are required to create a trip.\")",
         "detail": "safedrive.api.v1.endpoints.trip",
         "documentation": {}
     },
@@ -4365,7 +4213,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.trip",
         "description": "safedrive.api.v1.endpoints.trip",
-        "peekOfCode": "router = APIRouter()\n@router.post(\"/trips/\", response_model=TripResponse)\ndef create_trip(*, db: Session = Depends(get_db), trip_in: TripCreate) -> TripResponse:\n    try:\n        # Check for required fields\n        if not trip_in.driver_profile_id or not trip_in.start_time:\n            logger.warning(\"Driver Profile ID and start time are required to create a trip.\")\n            raise HTTPException(status_code=400, detail=\"Driver Profile ID and start time are required to create a trip.\")\n        # Validate if the driver profile exists\n        profile_exists = driver_profile_crud.get(db=db, id=trip_in.driver_profile_id)",
+        "peekOfCode": "router = APIRouter()\n@router.post(\"/trips/\", response_model=TripResponse)\ndef create_trip(*, db: Session = Depends(get_db), trip_in: TripCreate) -> TripResponse:\n    try:\n        # Check for required fields\n        if not trip_in.driverProfileId or not trip_in.start_time:\n            logger.warning(\"Driver Profile ID and start time are required to create a trip.\")\n            raise HTTPException(status_code=400, detail=\"Driver Profile ID and start time are required to create a trip.\")\n        # Validate if the driver profile exists\n        profile_exists = driver_profile_crud.get(db=db, id=trip_in.driverProfileId)",
         "detail": "safedrive.api.v1.endpoints.trip",
         "documentation": {}
     },
@@ -4635,7 +4483,7 @@
         "kind": 6,
         "importPath": "safedrive.crud.nlg_report",
         "description": "safedrive.crud.nlg_report",
-        "peekOfCode": "class CRUDNLGReport:\n    \"\"\"\n    CRUD operations for NLGReport.\n    \"\"\"\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: NLGReportCreate) -> NLGReport:\n        db_obj = self.model(**obj_in.model_dump(), id=generate_uuid_binary())\n        if hasattr(db_obj,'driver_profile_id') and isinstance(getattr(db_obj,'driver_profile_id'), UUID):\n            setattr(db_obj, 'driver_profile_id', getattr(db_obj,'driver_profile_id').bytes)",
+        "peekOfCode": "class CRUDNLGReport:\n    \"\"\"\n    CRUD operations for NLGReport.\n    \"\"\"\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: NLGReportCreate) -> NLGReport:\n        \"\"\"\n        Create a new NLGReport record in the database.\n        :param db: The database session.",
         "detail": "safedrive.crud.nlg_report",
         "documentation": {}
     },
@@ -4644,7 +4492,7 @@
         "kind": 5,
         "importPath": "safedrive.crud.nlg_report",
         "description": "safedrive.crud.nlg_report",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nclass CRUDNLGReport:\n    \"\"\"\n    CRUD operations for NLGReport.\n    \"\"\"\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: NLGReportCreate) -> NLGReport:\n        db_obj = self.model(**obj_in.model_dump(), id=generate_uuid_binary())\n        if hasattr(db_obj,'driver_profile_id') and isinstance(getattr(db_obj,'driver_profile_id'), UUID):",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass CRUDNLGReport:\n    \"\"\"\n    CRUD operations for NLGReport.\n    \"\"\"\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: NLGReportCreate) -> NLGReport:\n        \"\"\"\n        Create a new NLGReport record in the database.",
         "detail": "safedrive.crud.nlg_report",
         "documentation": {}
     },
@@ -4833,7 +4681,7 @@
         "kind": 6,
         "importPath": "safedrive.models.driver_profile",
         "description": "safedrive.models.driver_profile",
-        "peekOfCode": "class DriverProfile(Base):\n    __tablename__ = \"driver_profile\"\n    driver_profile_id = Column(BINARY(16), primary_key=True, unique=True, default=generate_uuid_binary)\n    email = Column(String(50), unique=True, nullable=False)\n    sync = Column(Boolean, nullable=False)\n    # Relationships\n    driving_tips = relationship(\"DrivingTip\", back_populates=\"profile\", cascade=\"all, delete-orphan\")\n    trips = relationship(\"Trip\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")\n    unsafe_behaviours= relationship(\"UnsafeBehaviour\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")\n    nlg_reports=relationship(\"NLGReport\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")",
+        "peekOfCode": "class DriverProfile(Base):\n    __tablename__ = \"driver_profile\"\n    driverProfileId = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    email = Column(String(50), unique=True, nullable=False)\n    sync = Column(Boolean, nullable=False)\n    # Relationships\n    driving_tips = relationship(\"DrivingTip\", back_populates=\"profile\", cascade=\"all, delete-orphan\")\n    trips = relationship(\"Trip\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")\n    unsafe_behaviours= relationship(\"UnsafeBehaviour\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")\n    nlg_reports=relationship(\"NLGReport\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")",
         "detail": "safedrive.models.driver_profile",
         "documentation": {}
     },
@@ -4842,7 +4690,7 @@
         "kind": 2,
         "importPath": "safedrive.models.driver_profile",
         "description": "safedrive.models.driver_profile",
-        "peekOfCode": "def generate_uuid_binary():\n    \"\"\"Generate a binary UUID.\"\"\"\n    return uuid4().bytes\nclass DriverProfile(Base):\n    __tablename__ = \"driver_profile\"\n    driver_profile_id = Column(BINARY(16), primary_key=True, unique=True, default=generate_uuid_binary)\n    email = Column(String(50), unique=True, nullable=False)\n    sync = Column(Boolean, nullable=False)\n    # Relationships\n    driving_tips = relationship(\"DrivingTip\", back_populates=\"profile\", cascade=\"all, delete-orphan\")",
+        "peekOfCode": "def generate_uuid_binary():\n    \"\"\"Generate a binary UUID.\"\"\"\n    return uuid4().bytes\nclass DriverProfile(Base):\n    __tablename__ = \"driver_profile\"\n    driverProfileId = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    email = Column(String(50), unique=True, nullable=False)\n    sync = Column(Boolean, nullable=False)\n    # Relationships\n    driving_tips = relationship(\"DrivingTip\", back_populates=\"profile\", cascade=\"all, delete-orphan\")",
         "detail": "safedrive.models.driver_profile",
         "documentation": {}
     },
@@ -4851,7 +4699,7 @@
         "kind": 5,
         "importPath": "safedrive.models.driver_profile",
         "description": "safedrive.models.driver_profile",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef generate_uuid_binary():\n    \"\"\"Generate a binary UUID.\"\"\"\n    return uuid4().bytes\nclass DriverProfile(Base):\n    __tablename__ = \"driver_profile\"\n    driver_profile_id = Column(BINARY(16), primary_key=True, unique=True, default=generate_uuid_binary)\n    email = Column(String(50), unique=True, nullable=False)\n    sync = Column(Boolean, nullable=False)\n    # Relationships",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef generate_uuid_binary():\n    \"\"\"Generate a binary UUID.\"\"\"\n    return uuid4().bytes\nclass DriverProfile(Base):\n    __tablename__ = \"driver_profile\"\n    driverProfileId = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    email = Column(String(50), unique=True, nullable=False)\n    sync = Column(Boolean, nullable=False)\n    # Relationships",
         "detail": "safedrive.models.driver_profile",
         "documentation": {}
     },
@@ -4869,7 +4717,7 @@
         "kind": 2,
         "importPath": "safedrive.models.driving_tip",
         "description": "safedrive.models.driving_tip",
-        "peekOfCode": "def generate_uuid_binary():\n    \"\"\"Generate a binary UUID.\"\"\"\n    return uuid4().bytes\nclass DrivingTip(Base):\n    \"\"\"\n    DrivingTip model representing driving advice and regulations.\n    Attributes:\n    - **tip_id**: Unique identifier for each driving tip.\n    - **title**: Title or summary of the tip.\n    - **meaning**: Explanation of the driving tip's meaning.",
+        "peekOfCode": "def generate_uuid_binary():\n    \"\"\"Generate a binary UUID.\"\"\"\n    return uuid4()\nclass DrivingTip(Base):\n    \"\"\"\n    DrivingTip model representing driving advice and regulations.\n    Attributes:\n    - **tip_id**: Unique identifier for each driving tip.\n    - **title**: Title or summary of the tip.\n    - **meaning**: Explanation of the driving tip's meaning.",
         "detail": "safedrive.models.driving_tip",
         "documentation": {}
     },
@@ -4878,7 +4726,7 @@
         "kind": 5,
         "importPath": "safedrive.models.driving_tip",
         "description": "safedrive.models.driving_tip",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef generate_uuid_binary():\n    \"\"\"Generate a binary UUID.\"\"\"\n    return uuid4().bytes\nclass DrivingTip(Base):\n    \"\"\"\n    DrivingTip model representing driving advice and regulations.\n    Attributes:\n    - **tip_id**: Unique identifier for each driving tip.\n    - **title**: Title or summary of the tip.",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef generate_uuid_binary():\n    \"\"\"Generate a binary UUID.\"\"\"\n    return uuid4()\nclass DrivingTip(Base):\n    \"\"\"\n    DrivingTip model representing driving advice and regulations.\n    Attributes:\n    - **tip_id**: Unique identifier for each driving tip.\n    - **title**: Title or summary of the tip.",
         "detail": "safedrive.models.driving_tip",
         "documentation": {}
     },
@@ -4986,7 +4834,7 @@
         "kind": 6,
         "importPath": "safedrive.models.trip",
         "description": "safedrive.models.trip",
-        "peekOfCode": "class Trip(Base):\n    __tablename__ = \"trip\"\n    id = Column(BINARY(16), primary_key=True, default=generate_uuid_binary)\n    driver_profile_id = Column(BINARY(16), ForeignKey('driver_profile.driver_profile_id'), nullable=False)\n    start_date = Column(DateTime)\n    end_date = Column(DateTime)\n    start_time = Column(Integer, nullable=False)\n    end_time = Column(Integer)\n    synced = Column(Boolean, nullable=False)\n    # Relationships",
+        "peekOfCode": "class Trip(Base):\n    __tablename__ = \"trip\"\n    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)\n    start_date = Column(DateTime)\n    end_date = Column(DateTime, nullable=True)\n    start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger\n    end_time = Column(BigInteger, nullable=True) \n    synced = Column(Boolean, nullable=False)\n    # Relationships",
         "detail": "safedrive.models.trip",
         "documentation": {}
     },
@@ -4995,7 +4843,7 @@
         "kind": 2,
         "importPath": "safedrive.models.trip",
         "description": "safedrive.models.trip",
-        "peekOfCode": "def generate_uuid_binary():\n    return uuid4().bytes\nclass Trip(Base):\n    __tablename__ = \"trip\"\n    id = Column(BINARY(16), primary_key=True, default=generate_uuid_binary)\n    driver_profile_id = Column(BINARY(16), ForeignKey('driver_profile.driver_profile_id'), nullable=False)\n    start_date = Column(DateTime)\n    end_date = Column(DateTime)\n    start_time = Column(Integer, nullable=False)\n    end_time = Column(Integer)",
+        "peekOfCode": "def generate_uuid_binary():\n    return uuid4().bytes\nclass Trip(Base):\n    __tablename__ = \"trip\"\n    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)\n    start_date = Column(DateTime)\n    end_date = Column(DateTime, nullable=True)\n    start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger\n    end_time = Column(BigInteger, nullable=True) ",
         "detail": "safedrive.models.trip",
         "documentation": {}
     },
@@ -5058,7 +4906,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.cause",
         "description": "safedrive.schemas.cause",
-        "peekOfCode": "class CauseBase(BaseModel):\n    \"\"\"\n    Base schema for Cause containing common attributes.\n    Attributes:\n    - **id**: Unique identifier for the cause.\n    - **unsafe_behaviour_id**: Identifier of the associated unsafe behavior.\n    - **name**: Description of the cause.\n    - **influence**: Indicates if the cause is influential.\n    - **created_at**: Creation timestamp.\n    - **updated_at**: Last update timestamp.",
+        "peekOfCode": "class CauseBase(BaseModel):\n    \"\"\"\n    Base schema for Cause containing common attributes.\n    Attributes:\n    - **id**: Unique identifier for the cause.\n    - **unsafe_behaviour_id**: Identifier of the associated \n    unsafe behavior.\n    - **name**: Description of the cause.\n    - **influence**: Indicates if the cause is influential.\n    - **created_at**: Creation timestamp.",
         "detail": "safedrive.schemas.cause",
         "documentation": {}
     },
@@ -5094,7 +4942,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.driver_profile",
         "description": "safedrive.schemas.driver_profile",
-        "peekOfCode": "class DriverProfileBase(BaseModel):\n    \"\"\"\n    Base schema for DriverProfile, including common attributes.\n    \"\"\"\n    driver_profile_id: UUID\n    email: str\n    sync: bool\n    class Config:\n        from_attributes = True\nclass DriverProfileCreate(BaseModel):",
+        "peekOfCode": "class DriverProfileBase(BaseModel):\n    \"\"\"\n    Base schema for DriverProfile, including common attributes.\n    \"\"\"\n    driverProfileId: UUID\n    email: str\n    sync: bool\n    class Config:\n        from_attributes = True\nclass DriverProfileCreate(BaseModel):",
         "detail": "safedrive.schemas.driver_profile",
         "documentation": {}
     },
@@ -5103,7 +4951,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.driver_profile",
         "description": "safedrive.schemas.driver_profile",
-        "peekOfCode": "class DriverProfileCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new DriverProfile.\n    Attributes:\n    - **email**: The driver's email (unique).\n    - **sync**: Indicates if data is synced (optional).\n    \"\"\"\n    email: str\n    sync: Optional[bool] = False\nclass DriverProfileUpdate(BaseModel):",
+        "peekOfCode": "class DriverProfileCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new DriverProfile.\n    Attributes:\n    - **driverProfileId**: The driver's profile Id\n    - **email**: The driver's email (unique).\n    - **sync**: Indicates if data is synced (optional).\n    \"\"\"\n    driverProfileId: UUID\n    email: str",
         "detail": "safedrive.schemas.driver_profile",
         "documentation": {}
     },
@@ -5121,7 +4969,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.driver_profile",
         "description": "safedrive.schemas.driver_profile",
-        "peekOfCode": "class DriverProfileResponse(DriverProfileBase):\n    \"\"\"\n    Response schema for DriverProfile, with UUID conversion for JSON responses.\n    \"\"\"\n    driver_profile_id: UUID\n    email: str\n    sync: bool\n    class Config:\n        from_attributes = True",
+        "peekOfCode": "class DriverProfileResponse(DriverProfileBase):\n    \"\"\"\n    Response schema for DriverProfile, with UUID conversion for JSON responses.\n    \"\"\"\n    driverProfileId: UUID\n    email: str\n    sync: bool\n    class Config:\n        from_attributes = True",
         "detail": "safedrive.schemas.driver_profile",
         "documentation": {}
     },
@@ -5139,7 +4987,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.driving_tip_sch",
         "description": "safedrive.schemas.driving_tip_sch",
-        "peekOfCode": "class DrivingTipCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new DrivingTip.\n    \"\"\"\n    title: str\n    meaning: Optional[str] = None\n    penalty: Optional[str] = None\n    fine: Optional[str] = None\n    law: Optional[str] = None\n    hostility: Optional[str] = None",
+        "peekOfCode": "class DrivingTipCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new DrivingTip.\n    \"\"\"\n    tip_id: UUID\n    title: str\n    meaning: Optional[str] = None\n    penalty: Optional[str] = None\n    fine: Optional[str] = None\n    law: Optional[str] = None",
         "detail": "safedrive.schemas.driving_tip_sch",
         "documentation": {}
     },
@@ -5166,7 +5014,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.embedding",
         "description": "safedrive.schemas.embedding",
-        "peekOfCode": "class EmbeddingBase(BaseModel):\n    chunk_id: UUID\n    chunk_text: str\n    embedding: str\n    source_type: str\n    source_page: int\n    created_at: datetime\n    synced: bool\n    class Config:\n        orm_mode = True",
+        "peekOfCode": "class EmbeddingBase(BaseModel):\n    chunk_id: UUID\n    chunk_text: str\n    embedding: str\n    source_type: str\n    source_page: int\n    created_at: datetime\n    synced: bool\n    class Config:\n        from_attributes = True",
         "detail": "safedrive.schemas.embedding",
         "documentation": {}
     },
@@ -5211,7 +5059,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.location",
         "description": "safedrive.schemas.location",
-        "peekOfCode": "class LocationCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Location record.\n    \"\"\"\n    latitude: float = Field(..., description=\"The latitude coordinate of the location.\")\n    longitude: float = Field(..., description=\"The longitude coordinate of the location.\")\n    timestamp: int = Field(..., description=\"The timestamp when the location data was recorded (epoch milliseconds).\")\n    date: datetime = Field(..., description=\"The date corresponding to the location data.\")\n    altitude: float = Field(..., description=\"The altitude of the location in meters.\")\n    speed: float = Field(..., description=\"The speed at the given location.\")",
+        "peekOfCode": "class LocationCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Location record.\n    \"\"\"\n    id: UUID=Field(..., description=\"The unique identifier for each location entry.\")\n    latitude: float = Field(..., description=\"The latitude coordinate of the location.\")\n    longitude: float = Field(..., description=\"The longitude coordinate of the location.\")\n    timestamp: int = Field(..., description=\"The timestamp when the location data was recorded (epoch milliseconds).\")\n    date: datetime = Field(..., description=\"The date corresponding to the location data.\")\n    altitude: float = Field(..., description=\"The altitude of the location in meters.\")",
         "detail": "safedrive.schemas.location",
         "documentation": {}
     },
@@ -5247,7 +5095,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.nlg_report",
         "description": "safedrive.schemas.nlg_report",
-        "peekOfCode": "class NLGReportCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new NLG Report.\n    Attributes:\n    - **user_id**: Identifier for the user who generated the report.\n    - **report_text**: Text content of the report.\n    - **generated_at**: Generation date and time of the report.\n    - **synced**: Boolean indicating if the report has been synced.\n    \"\"\"\n    driver_profile_id: UUID",
+        "peekOfCode": "class NLGReportCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new NLG Report.\n    Attributes:\n    -**id**: Idenifier for the particular nlg report\n    - **user_id**: Identifier for the user who generated the report.\n    - **report_text**: Text content of the report.\n    - **generated_at**: Generation date and time of the report.\n    - **synced**: Boolean indicating if the report has been synced.\n    \"\"\"",
         "detail": "safedrive.schemas.nlg_report",
         "documentation": {}
     },
@@ -5283,7 +5131,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.raw_sensor_data",
         "description": "safedrive.schemas.raw_sensor_data",
-        "peekOfCode": "class RawSensorDataCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Raw Sensor Data record.\n    \"\"\"\n    sensor_type: int = Field(..., description=\"The type of sensor (e.g., accelerometer, gyroscope).\")\n    sensor_type_name: str = Field(..., description=\"The name of the sensor type.\")\n    values: List[float] = Field(..., description=\"A list of sensor readings.\")\n    timestamp: int = Field(..., description=\"The timestamp when the data was recorded.\")\n    date: Optional[datetime] = Field(None, description=\"The date when the data was recorded.\")\n    accuracy: int = Field(..., description=\"The accuracy level of the sensor data.\")",
+        "peekOfCode": "class RawSensorDataCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Raw Sensor Data record.\n    \"\"\"\n    id: UUID=Field(..., description=\"The identifier for a particular raw_sensor instance\")\n    sensor_type: int = Field(..., description=\"The type of sensor (e.g., accelerometer, gyroscope).\")\n    sensor_type_name: str = Field(..., description=\"The name of the sensor type.\")\n    values: List[float] = Field(..., description=\"A list of sensor readings.\")\n    timestamp: int = Field(..., description=\"The timestamp when the data was recorded.\")\n    date: Optional[datetime] = Field(None, description=\"The date when the data was recorded.\")",
         "detail": "safedrive.schemas.raw_sensor_data",
         "documentation": {}
     },
@@ -5310,7 +5158,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.trip",
         "description": "safedrive.schemas.trip",
-        "peekOfCode": "class TripBase(BaseModel):\n    \"\"\"\n    Base schema for the Trip model.\n    Attributes:\n    - **id**: The unique identifier for the trip.\n    - **driver_profile_id**: The foreign key reference to the driver's profile.\n    - **start_date**: The start date of the trip.\n    - **end_date**: The end date of the trip.\n    - **start_time**: The start time of the trip in epoch milliseconds.\n    - **end_time**: The end time of the trip in epoch milliseconds.",
+        "peekOfCode": "class TripBase(BaseModel):\n    \"\"\"\n    Base schema for the Trip model.\n    Attributes:\n    - **id**: The unique identifier for the trip.\n    - **driverProfileId**: The foreign key reference to the driver's profile.\n    - **start_date**: The start date of the trip.\n    - **end_date**: The end date of the trip.\n    - **start_time**: The start time of the trip in epoch milliseconds.\n    - **end_time**: The end time of the trip in epoch milliseconds.",
         "detail": "safedrive.schemas.trip",
         "documentation": {}
     },
@@ -5319,7 +5167,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.trip",
         "description": "safedrive.schemas.trip",
-        "peekOfCode": "class TripCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Trip record.\n    \"\"\"\n    driver_profile_id: UUID = Field(..., description=\"The UUID of the driver's profile.\")\n    start_date: Optional[datetime] = Field(None, description=\"The start date of the trip.\")\n    end_date: Optional[datetime] = Field(None, description=\"The end date of the trip.\")\n    start_time: int = Field(..., description=\"The start time of the trip in epoch milliseconds.\")\n    end_time: Optional[int] = Field(None, description=\"The end time of the trip in epoch milliseconds.\")\n    synced: Optional[bool] = Field(False, description=\"Indicates whether the trip data has been synced.\")",
+        "peekOfCode": "class TripCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Trip record.\n    \"\"\"\n    id: UUID=Field(..., description=\"The UUID of the trip's profile.\")\n    driverProfileId: UUID = Field(..., description=\"The UUID of the driver's profile.\")\n    start_date: Optional[datetime] = Field(None, description=\"The start date of the trip.\")\n    end_date: Optional[datetime] = Field(None, description=\"The end date of the trip.\")\n    start_time: int = Field(..., description=\"The start time of the trip in epoch milliseconds.\")\n    end_time: Optional[int] = Field(None, description=\"The end time of the trip in epoch milliseconds.\")",
         "detail": "safedrive.schemas.trip",
         "documentation": {}
     },
@@ -5328,7 +5176,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.trip",
         "description": "safedrive.schemas.trip",
-        "peekOfCode": "class TripUpdate(BaseModel):\n    \"\"\"\n    Schema for updating an existing Trip record.\n    All fields are optional.\n    \"\"\"\n    driver_profile_id: Optional[UUID] = Field(None, description=\"Optionally update the driver's profile reference.\")\n    start_date: Optional[datetime] = Field(None, description=\"Optionally update the start date of the trip.\")\n    end_date: Optional[datetime] = Field(None, description=\"Optionally update the end date of the trip.\")\n    start_time: Optional[int] = Field(None, description=\"Optionally update the start time of the trip in epoch milliseconds.\")\n    end_time: Optional[int] = Field(None, description=\"Optionally update the end time of the trip in epoch milliseconds.\")",
+        "peekOfCode": "class TripUpdate(BaseModel):\n    \"\"\"\n    Schema for updating an existing Trip record.\n    All fields are optional.\n    \"\"\"\n    driverProfileId: Optional[UUID] = Field(None, description=\"Optionally update the driver's profile reference.\")\n    start_date: Optional[datetime] = Field(None, description=\"Optionally update the start date of the trip.\")\n    end_date: Optional[datetime] = Field(None, description=\"Optionally update the end date of the trip.\")\n    start_time: Optional[int] = Field(None, description=\"Optionally update the start time of the trip in epoch milliseconds.\")\n    end_time: Optional[int] = Field(None, description=\"Optionally update the end time of the trip in epoch milliseconds.\")",
         "detail": "safedrive.schemas.trip",
         "documentation": {}
     },
@@ -5355,7 +5203,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.unsafe_behaviour",
         "description": "safedrive.schemas.unsafe_behaviour",
-        "peekOfCode": "class UnsafeBehaviourCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Unsafe Behaviour record.\n    \"\"\"\n    trip_id: UUID = Field(..., description=\"UUID of the trip associated with this unsafe behaviour.\")\n    location_id: Optional[UUID] = Field(None, description=\"UUID of the location associated with this behaviour.\")\n    driver_profile_id: UUID = Field(..., description=\"UUID of the driving profile associated with this unsafe behaviour.\")\n    behaviour_type: str = Field(..., description=\"Type of unsafe behaviour observed.\")\n    severity: float = Field(..., description=\"Severity level of the unsafe behaviour.\")\n    timestamp: int = Field(..., description=\"Epoch timestamp when the behaviour was recorded.\")",
+        "peekOfCode": "class UnsafeBehaviourCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Unsafe Behaviour record.\n    \"\"\"\n    trip_id: UUID = Field(..., description=\"UUID of the trip associated with this unsafe behaviour.\")\n    location_id: Optional[UUID] = Field(None, description=\"UUID of the location associated with this behaviour.\")\n    driverProfileId: UUID = Field(..., description=\"UUID of the driving profile associated with this unsafe behaviour.\")\n    behaviour_type: str = Field(..., description=\"Type of unsafe behaviour observed.\")\n    severity: float = Field(..., description=\"Severity level of the unsafe behaviour.\")\n    timestamp: int = Field(..., description=\"Epoch timestamp when the behaviour was recorded.\")",
         "detail": "safedrive.schemas.unsafe_behaviour",
         "documentation": {}
     },
@@ -5364,7 +5212,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.unsafe_behaviour",
         "description": "safedrive.schemas.unsafe_behaviour",
-        "peekOfCode": "class UnsafeBehaviourUpdate(BaseModel):\n    \"\"\"\n    Schema for updating an existing Unsafe Behaviour record.\n    All fields are optional.\n    \"\"\"\n    location_id: Optional[UUID] = Field(None, description=\"Optionally update the location associated with this behaviour.\")\n    trip_id: UUID = Field(..., description=\"UUID of the trip associated with this unsafe behaviour.\")\n    driver_profile_id: UUID = Field(..., description=\"UUID of the driving profile associated with this unsafe behaviour.\")\n    behaviour_type: Optional[str] = Field(None, description=\"Optionally update the type of unsafe behaviour.\")\n    severity: Optional[float] = Field(None, description=\"Optionally update the severity level.\")",
+        "peekOfCode": "class UnsafeBehaviourUpdate(BaseModel):\n    \"\"\"\n    Schema for updating an existing Unsafe Behaviour record.\n    All fields are optional.\n    \"\"\"\n    location_id: Optional[UUID] = Field(None, description=\"Optionally update the location associated with this behaviour.\")\n    trip_id: UUID = Field(..., description=\"UUID of the trip associated with this unsafe behaviour.\")\n    driverProfileId: UUID = Field(..., description=\"UUID of the driving profile associated with this unsafe behaviour.\")\n    behaviour_type: Optional[str] = Field(None, description=\"Optionally update the type of unsafe behaviour.\")\n    severity: Optional[float] = Field(None, description=\"Optionally update the severity level.\")",
         "detail": "safedrive.schemas.unsafe_behaviour",
         "documentation": {}
     },
@@ -5378,12 +5226,345 @@
         "documentation": {}
     },
     {
+        "label": "Tee",
+        "kind": 6,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "class Tee:\n    def __init__(self, file):\n        self.f = file\n    def write(self, what):\n        if self.f is not None:\n            try:\n                self.f.write(what.replace(\"\\n\", \"\\r\\n\"))\n            except IOError:\n                pass\n        tee_f.write(what)",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "CopyTo",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def CopyTo(desc, src, dest):\n    import win32api\n    import win32con\n    while 1:\n        try:\n            win32api.CopyFile(src, dest, 0)\n            return\n        except win32api.error as details:\n            if details.winerror == 5:  # access denied - user not admin.\n                raise",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "LoadSystemModule",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def LoadSystemModule(lib_dir, modname):\n    # See if this is a debug build.\n    import importlib.machinery\n    import importlib.util\n    suffix = \"_d\" if \"_d.pyd\" in importlib.machinery.EXTENSION_SUFFIXES else \"\"\n    filename = \"%s%d%d%s.dll\" % (\n        modname,\n        sys.version_info[0],\n        sys.version_info[1],\n        suffix,",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "SetPyKeyVal",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def SetPyKeyVal(key_name, value_name, value):\n    root_hkey = get_root_hkey()\n    root_key = winreg.OpenKey(root_hkey, root_key_name)\n    try:\n        my_key = winreg.CreateKey(root_key, key_name)\n        try:\n            winreg.SetValueEx(my_key, value_name, 0, winreg.REG_SZ, value)\n            if verbose:\n                print(\"-> %s\\\\%s[%s]=%r\" % (root_key_name, key_name, value_name, value))\n        finally:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "UnsetPyKeyVal",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def UnsetPyKeyVal(key_name, value_name, delete_key=False):\n    root_hkey = get_root_hkey()\n    root_key = winreg.OpenKey(root_hkey, root_key_name)\n    try:\n        my_key = winreg.OpenKey(root_key, key_name, 0, winreg.KEY_SET_VALUE)\n        try:\n            winreg.DeleteValue(my_key, value_name)\n            if verbose:\n                print(\"-> DELETE %s\\\\%s[%s]\" % (root_key_name, key_name, value_name))\n        finally:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterCOMObjects",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterCOMObjects(register=True):\n    import win32com.server.register\n    if register:\n        func = win32com.server.register.RegisterClasses\n    else:\n        func = win32com.server.register.UnregisterClasses\n    flags = {}\n    if not verbose:\n        flags[\"quiet\"] = 1\n    for module, klass_name in com_modules:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterHelpFile",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterHelpFile(register=True, lib_dir=None):\n    if lib_dir is None:\n        lib_dir = sysconfig.get_paths()[\"platlib\"]\n    if register:\n        # Register the .chm help file.\n        chm_file = os.path.join(lib_dir, \"PyWin32.chm\")\n        if os.path.isfile(chm_file):\n            # This isn't recursive, so if 'Help' doesn't exist, we croak\n            SetPyKeyVal(\"Help\", None, None)\n            SetPyKeyVal(\"Help\\\\Pythonwin Reference\", None, chm_file)",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterPythonwin",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterPythonwin(register=True, lib_dir=None):\n    \"\"\"Add (or remove) Pythonwin to context menu for python scripts.\n    ??? Should probably also add Edit command for pys files also.\n    Also need to remove these keys on uninstall, but there's no function\n        like file_created to add registry entries to uninstall log ???\n    \"\"\"\n    import os\n    if lib_dir is None:\n        lib_dir = sysconfig.get_paths()[\"platlib\"]\n    classes_root = get_root_hkey()",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "get_shortcuts_folder",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def get_shortcuts_folder():\n    if get_root_hkey() == winreg.HKEY_LOCAL_MACHINE:\n        try:\n            fldr = get_special_folder_path(\"CSIDL_COMMON_PROGRAMS\")\n        except OSError:\n            # No CSIDL_COMMON_PROGRAMS on this platform\n            fldr = get_special_folder_path(\"CSIDL_PROGRAMS\")\n    else:\n        # non-admin install - always goes in this user's start menu.\n        fldr = get_special_folder_path(\"CSIDL_PROGRAMS\")",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "get_system_dir",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def get_system_dir():\n    import win32api  # we assume this exists.\n    try:\n        import pythoncom\n        import win32process\n        from win32com.shell import shell, shellcon\n        try:\n            if win32process.IsWow64Process():\n                return shell.SHGetSpecialFolderPath(0, shellcon.CSIDL_SYSTEMX86)\n            return shell.SHGetSpecialFolderPath(0, shellcon.CSIDL_SYSTEM)",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "fixup_dbi",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def fixup_dbi():\n    # We used to have a dbi.pyd with our .pyd files, but now have a .py file.\n    # If the user didn't uninstall, they will find the .pyd which will cause\n    # problems - so handle that.\n    import win32api\n    import win32con\n    pyd_name = os.path.join(os.path.dirname(win32api.__file__), \"dbi.pyd\")\n    pyd_d_name = os.path.join(os.path.dirname(win32api.__file__), \"dbi_d.pyd\")\n    py_name = os.path.join(os.path.dirname(win32con.__file__), \"dbi.py\")\n    for this_pyd in (pyd_name, pyd_d_name):",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "install",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def install(lib_dir):\n    import traceback\n    # The .pth file is now installed as a regular file.\n    # Create the .pth file in the site-packages dir, and use only relative paths\n    # We used to write a .pth directly to sys.prefix - clobber it.\n    if os.path.isfile(os.path.join(sys.prefix, \"pywin32.pth\")):\n        os.unlink(os.path.join(sys.prefix, \"pywin32.pth\"))\n    # The .pth may be new and therefore not loaded in this session.\n    # Setup the paths just in case.\n    for name in \"win32 win32\\\\lib Pythonwin\".split():",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "uninstall",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def uninstall(lib_dir):\n    # First ensure our system modules are loaded from pywin32_system, so\n    # we can remove the ones we copied...\n    LoadSystemModule(lib_dir, \"pywintypes\")\n    LoadSystemModule(lib_dir, \"pythoncom\")\n    try:\n        RegisterCOMObjects(False)\n    except Exception as why:\n        print(\"Failed to unregister COM objects: %s\" % (why,))\n    try:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "verify_destination",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def verify_destination(location):\n    if not os.path.isdir(location):\n        raise argparse.ArgumentTypeError('Path \"{}\" does not exist!'.format(location))\n    return location\ndef main():\n    import argparse\n    parser = argparse.ArgumentParser(\n        formatter_class=argparse.RawDescriptionHelpFormatter,\n        description=\"\"\"A post-install script for the pywin32 extensions.\n    * Typical usage:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def main():\n    import argparse\n    parser = argparse.ArgumentParser(\n        formatter_class=argparse.RawDescriptionHelpFormatter,\n        description=\"\"\"A post-install script for the pywin32 extensions.\n    * Typical usage:\n    > python pywin32_postinstall.py -install\n    If you installed pywin32 via a .exe installer, this should be run\n    automatically after installation, but if it fails you can run it again.\n    If you installed pywin32 via PIP, you almost certainly need to run this to",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "tee_f",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "tee_f = open(os.path.join(tempfile.gettempdir(), \"pywin32_postinstall.log\"), \"w\")\nclass Tee:\n    def __init__(self, file):\n        self.f = file\n    def write(self, what):\n        if self.f is not None:\n            try:\n                self.f.write(what.replace(\"\\n\", \"\\r\\n\"))\n            except IOError:\n                pass",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "sys.stderr",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "sys.stderr = Tee(sys.stderr)\nsys.stdout = Tee(sys.stdout)\ncom_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\", \"Interpreter\"),\n    (\"win32com.servers.dictionary\", \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\", \"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "sys.stdout",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "sys.stdout = Tee(sys.stdout)\ncom_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\", \"Interpreter\"),\n    (\"win32com.servers.dictionary\", \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\", \"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'\nsilent = 0",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "com_modules",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "com_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\", \"Interpreter\"),\n    (\"win32com.servers.dictionary\", \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\", \"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'\nsilent = 0\n# Verbosity of output messages.",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "silent",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "silent = 0\n# Verbosity of output messages.\nverbose = 1\nroot_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ntry:\n    # When this script is run from inside the bdist_wininst installer,\n    # file_created() and directory_created() are additional builtin\n    # functions which write lines to Python23\\pywin32-install.log. This is\n    # a list of actions for the uninstaller, the format is inspired by what\n    # the Wise installer also creates.",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "verbose",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "verbose = 1\nroot_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ntry:\n    # When this script is run from inside the bdist_wininst installer,\n    # file_created() and directory_created() are additional builtin\n    # functions which write lines to Python23\\pywin32-install.log. This is\n    # a list of actions for the uninstaller, the format is inspired by what\n    # the Wise installer also creates.\n    file_created\n    is_bdist_wininst = True",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "root_key_name",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_postinstall",
+        "description": "venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "root_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ntry:\n    # When this script is run from inside the bdist_wininst installer,\n    # file_created() and directory_created() are additional builtin\n    # functions which write lines to Python23\\pywin32-install.log. This is\n    # a list of actions for the uninstaller, the format is inspired by what\n    # the Wise installer also creates.\n    file_created\n    is_bdist_wininst = True\nexcept NameError:",
+        "detail": "venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "run_test",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_testall",
+        "description": "venv.Scripts.pywin32_testall",
+        "peekOfCode": "def run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_extras\n    print(\"--- Running '%s' ---\" % script)\n    sys.stdout.flush()\n    result = subprocess.run(cmd, check=False, cwd=dirname)\n    print(\"*** Test script '%s' exited with %s\" % (script, result.returncode))\n    sys.stdout.flush()\n    if result.returncode:",
+        "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "find_and_run",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_testall",
+        "description": "venv.Scripts.pywin32_testall",
+        "peekOfCode": "def find_and_run(possible_locations, extras):\n    for maybe in possible_locations:\n        if os.path.isfile(maybe):\n            run_test(maybe, extras)\n            break\n    else:\n        raise RuntimeError(\n            \"Failed to locate a test script in one of %s\" % possible_locations\n        )\ndef main():",
+        "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "venv.Scripts.pywin32_testall",
+        "description": "venv.Scripts.pywin32_testall",
+        "peekOfCode": "def main():\n    import argparse\n    code_directories = [this_dir] + site_packages\n    parser = argparse.ArgumentParser(\n        description=\"A script to trigger tests in all subprojects of PyWin32.\"\n    )\n    parser.add_argument(\n        \"-no-user-interaction\",\n        default=False,\n        action=\"store_true\",",
+        "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "this_dir",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_testall",
+        "description": "venv.Scripts.pywin32_testall",
+        "peekOfCode": "this_dir = os.path.dirname(__file__)\nsite_packages = [\n    site.getusersitepackages(),\n] + site.getsitepackages()\nfailures = []\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error, but we don't\n# abort immediately - we run as many tests as we can.\ndef run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)",
+        "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "site_packages",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_testall",
+        "description": "venv.Scripts.pywin32_testall",
+        "peekOfCode": "site_packages = [\n    site.getusersitepackages(),\n] + site.getsitepackages()\nfailures = []\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error, but we don't\n# abort immediately - we run as many tests as we can.\ndef run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.",
+        "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "failures",
+        "kind": 5,
+        "importPath": "venv.Scripts.pywin32_testall",
+        "description": "venv.Scripts.pywin32_testall",
+        "peekOfCode": "failures = []\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error, but we don't\n# abort immediately - we run as many tests as we can.\ndef run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_extras\n    print(\"--- Running '%s' ---\" % script)\n    sys.stdout.flush()",
+        "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
         "label": "app",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "app = FastAPI()\napp.include_router(api_router)\n# Run the app using uvicorn when executed directly\nif __name__ == \"__main__\":\n    logging.basicConfig(\n    level=logging.INFO,\n    format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',\n    handlers=[\n        logging.StreamHandler()\n    ]",
+        "peekOfCode": "app = FastAPI()\n# Example usage of environment variables\nDATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\napp.include_router(api_router)\n# Define allowed origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",",
         "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_URL",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "DATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\napp.include_router(api_router)\n# Define allowed origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "SECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\napp.include_router(api_router)\n# Define allowed origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]\napp.add_middleware(",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "DEBUG = os.getenv(\"DEBUG\") == \"True\"\napp.include_router(api_router)\n# Define allowed origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]\napp.add_middleware(\n    CORSMiddleware,",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "origins",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "origins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,  # Allows CORS for the specified origins\n    allow_credentials=True,\n    allow_methods=[\"*\"],    # Allows all methods (GET, POST, etc.)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "player1",
+        "kind": 2,
+        "importPath": "stud",
+        "description": "stud",
+        "peekOfCode": "def player1():\n  target_num=random.randint(-100, 100)\n  print(\"Target number: \", target_num)\ndef player1():\n    target_number=random.randint(-100, 100)\n    print(target_number)\n    #return target_number\ndef player2():\n    guess_number=int(input(\"Please guess the number: \"))\n    print(guess_number)",
+        "detail": "stud",
+        "documentation": {}
+    },
+    {
+        "label": "player1",
+        "kind": 2,
+        "importPath": "stud",
+        "description": "stud",
+        "peekOfCode": "def player1():\n    target_number=random.randint(-100, 100)\n    print(target_number)\n    #return target_number\ndef player2():\n    guess_number=int(input(\"Please guess the number: \"))\n    print(guess_number)\n    return guess_number\ndef check_guess(guess_number, target_number):\n    if guess_number<target_number:",
+        "detail": "stud",
+        "documentation": {}
+    },
+    {
+        "label": "player2",
+        "kind": 2,
+        "importPath": "stud",
+        "description": "stud",
+        "peekOfCode": "def player2():\n    guess_number=int(input(\"Please guess the number: \"))\n    print(guess_number)\n    return guess_number\ndef check_guess(guess_number, target_number):\n    if guess_number<target_number:\n      print(\"Higher\")\n      return \"higher\"\n    elif guess_number>target_number:\n      print(\"Lower\")",
+        "detail": "stud",
+        "documentation": {}
+    },
+    {
+        "label": "check_guess",
+        "kind": 2,
+        "importPath": "stud",
+        "description": "stud",
+        "peekOfCode": "def check_guess(guess_number, target_number):\n    if guess_number<target_number:\n      print(\"Higher\")\n      return \"higher\"\n    elif guess_number>target_number:\n      print(\"Lower\")\n      return \"lower\"\n    else:\n      print(\"Correct\")\n      return \"correct\"",
+        "detail": "stud",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "stud",
+        "description": "stud",
+        "peekOfCode": "def main():\n  target_number=player1()\n  guess_number=0\n  round=5\n  for num in range(5):\n      guess_number=player2(guess_number=int(input(\"Please guess the number: \")))\n      #guess_count +=1\n    #result=check_guess(guess_number, target_number)\n      if result==\"correct\":\n        print(f\"You have guessed the correct number in: {num} attempts. \")",
+        "detail": "stud",
         "documentation": {}
     }
 ]

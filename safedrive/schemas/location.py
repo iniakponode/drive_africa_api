@@ -35,6 +35,7 @@ class LocationCreate(BaseModel):
     """
     Schema for creating a new Location record.
     """
+    id: UUID=Field(..., description="The unique identifier for each location entry.")
     latitude: float = Field(..., description="The latitude coordinate of the location.")
     longitude: float = Field(..., description="The longitude coordinate of the location.")
     timestamp: int = Field(..., description="The timestamp when the location data was recorded (epoch milliseconds).")

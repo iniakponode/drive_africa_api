@@ -41,6 +41,7 @@ class DrivingTipCreate(BaseModel):
     """
     Schema for creating a new DrivingTip.
     """
+    tip_id: UUID
     title: str
     meaning: Optional[str] = None
     penalty: Optional[str] = None

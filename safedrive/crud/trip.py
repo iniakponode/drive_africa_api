@@ -53,14 +53,17 @@ class CRUDTrip:
         """
         try:
             obj_data = obj_in.model_dump()
-            # Convert UUID fields to bytes
-            if 'driver_profile_id' in obj_data and isinstance(obj_data['driver_profile_id'], UUID):
-                obj_data['driver_profile_id'] = obj_data['driver_profile_id'].bytes
+          
+            # Convert UUID fields to strings
+            for uuid_field in ['trip_id', 'driverProfileId']:  # Adjust the fields based on your schema
+                if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
+                    obj_data[uuid_field] = UUID(obj_data[uuid_field])  # Convert to 36-character string format
+
             db_obj = self.model(**obj_data)
             db.add(db_obj)
             db.commit()
             db.refresh(db_obj)
-            logger.info(f"Created trip with ID: {db_obj.id.hex()}")
+            logger.info(f"Created trip with ID: {db_obj.id}")
             return db_obj
         except Exception as e:
             db.rollback()
@@ -76,7 +79,7 @@ class CRUDTrip:
         :return: The retrieved trip or None if not found.
         """
         try:
-            trip = db.query(self.model).filter(self.model.id == id.bytes).first()
+            trip = db.query(self.model).filter(self.model.id == id).first()
             if trip:
                 logger.info(f"Found trip with ID: {id}")
             else:
@@ -114,19 +117,26 @@ class CRUDTrip:
         """
         try:
             obj_data = obj_in.dict(exclude_unset=True)
-            for field in obj_data:
-                if field == 'driver_profile_id' and isinstance(obj_data[field], UUID):
-                    setattr(db_obj, field, obj_data[field].bytes)
-                else:
-                    setattr(db_obj, field, obj_data[field])
+
+            # Convert UUID fields to strings
+            for uuid_field in ['id', 'driverProfileId']:
+                if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
+                    obj_data[uuid_field] = UUID(obj_data[uuid_field])
+
+            # Set updated fields
+            for field, value in obj_data.items():
+                setattr(db_obj, field, value)
+
             db.commit()
             db.refresh(db_obj)
-            logger.info(f"Updated trip with ID: {db_obj.id.hex()}")
+            logger.info(f"Updated trip with ID: {db_obj.id}")
             return db_obj
+
         except Exception as e:
             db.rollback()
             logger.exception("Error updating trip in database.")
             raise
+
 
     def delete(self, db: Session, id: UUID) -> Optional[Trip]:
         """
@@ -137,10 +147,11 @@ class CRUDTrip:
         :return: The deleted trip or None if not found.
         """
         try:
-            obj = db.query(self.model).filter(self.model.id == id.bytes).first()
+            obj = db.query(self.model).filter(self.model.id == id).first()
             if obj:
                 db.delete(obj)
                 db.commit()
+                db.refresh(obj)
                 logger.info(f"Deleted trip with ID: {id}")
                 return obj
             else:

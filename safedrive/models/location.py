@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Float, DateTime, Boolean, BINARY, Integer
 from sqlalchemy.orm import relationship
 from safedrive.database.base import Base
+from sqlalchemy_utils import UUIDType
 from uuid import uuid4, UUID
 
 def generate_uuid_binary():
@@ -28,7 +29,7 @@ class Location(Base):
 
     __tablename__ = 'location'
 
-    id = Column(BINARY(16), primary_key=True, default=generate_uuid_binary)
+    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
     timestamp = Column(Integer, nullable=False)  # Epoch milliseconds
@@ -44,7 +45,7 @@ class Location(Base):
 
     def __repr__(self):
         return (
-            f"<Location(id={self.id.hex()}, latitude={self.latitude}, longitude={self.longitude}, "
+            f"<Location(id={self.id}, latitude={self.latitude}, longitude={self.longitude}, "
             f"timestamp={self.timestamp}, date={self.date}, altitude={self.altitude}, "
             f"speed={self.speed}, distance={self.distance}, sync={self.sync})>"
         )
@@ -52,4 +53,4 @@ class Location(Base):
     @property
     def id_uuid(self) -> UUID:
         """Return the UUID representation of the binary ID."""
-        return UUID(bytes=self.id)
+        return self.id

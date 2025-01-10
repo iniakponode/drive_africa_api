@@ -1,3 +1,5 @@
+from fastapi import HTTPException
+from pymysql import IntegrityError
 from sqlalchemy.orm import Session
 from uuid import UUID
 from datetime import datetime
@@ -22,22 +24,58 @@ class CRUDModelInputs:
         """
         self.model = model
     
-    def batch_create(self, db: Session, data_in: List[AIModelInputCreate]) -> List[AIModelInput]:
+    def batch_create(self, db: Session, data_in: List[AIModelInputCreate]) -> List[str]:
         try:
-            db_objs = [self.model(**data.model_dump()) for data in data_in]
-            db.bulk_save_objects(db_objs)
+            db_objs = []
+            skipped_count = 0
+
+            for data in data_in:
+                fields = data.model_dump()
+
+                if isinstance(fields.get('id'), str):
+                    fields['id'] = UUID(fields['id'])
+                if isinstance(fields.get('trip_id'), str):
+                    fields['trip_id'] = UUID(fields['trip_id'])
+                if isinstance(fields.get('driverProfileId'), str):
+                    fields['driverProfileId'] = UUID(fields['driverProfileId'])
+
+                record_id = fields.get('id')
+                if record_id is not None:
+                    existing_record = db.query(self.model).filter_by(id=record_id).first()
+                    if existing_record:
+                        logger.info(f"Skipping duplicate AIModelInput with ID {record_id}")
+                        skipped_count += 1
+                        continue
+
+                db_obj = self.model(**fields)
+                db.add(db_obj)
+                db_objs.append(db_obj)
+
+            db.flush()
             db.commit()
-            logger.info(f"Batch inserted {len(db_objs)} AIModelInput records.")
-            return db_objs
+
+            for obj in db_objs:
+                db.refresh(obj)
+
+            logger.info(f"Batch inserted {len(db_objs)} AIModelInput records. Skipped {skipped_count} duplicates.")
+            return [str(obj.id) for obj in db_objs]
+
+        except IntegrityError as e:
+            db.rollback()
+            logger.error(f"IntegrityError during batch insertion of AIModelInput: {str(e)}")
+            raise HTTPException(status_code=400, detail="Database integrity error occurred.")
         except Exception as e:
             db.rollback()
             logger.error(f"Error during batch insertion of AIModelInput: {str(e)}")
-            raise e
+            raise HTTPException(status_code=500, detail="An unexpected error occurred.")
+
+
 
     def batch_delete(self, db: Session, ids: List[int]) -> None:
         try:
             db.query(self.model).filter(self.model.id.in_(ids)).delete(synchronize_session=False)
             db.commit()
+
             logger.info(f"Batch deleted {len(ids)} AIModelInput records.")
         except Exception as e:
             db.rollback()
@@ -53,15 +91,17 @@ class CRUDModelInputs:
         :return: The created AI model input.
         """
         try:
-            obj_data = obj_in.dict()
-            # Convert UUID fields to bytes
-            if 'trip_id' in obj_data and isinstance(obj_data['trip_id'], UUID):
-                obj_data['trip_id'] = obj_data['trip_id'].bytes
+            obj_data = obj_in.model_dump()
+            # Convert UUID fields to strings
+            for uuid_field in ['trip_id', 'id', 'driver_profile_id']:
+                if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
+                    obj_data[uuid_field] = UUID(obj_data[uuid_field])  # Convert to 36-character UUID string
+
             db_obj = self.model(**obj_data)
             db.add(db_obj)
             db.commit()
             db.refresh(db_obj)
-            logger.info(f"Created AI model input with ID: {db_obj.id.hex()}")
+            logger.info(f"Created AI model input with ID: {db_obj.id}")
             return db_obj
         except Exception as e:
             db.rollback()
@@ -118,12 +158,12 @@ class CRUDModelInputs:
             for field in obj_data:
                 # Handle UUID fields if necessary
                 if isinstance(getattr(db_obj, field), bytes) and isinstance(obj_data[field], UUID):
-                    setattr(db_obj, field, obj_data[field].bytes)
+                    setattr(db_obj, field, obj_data[field])
                 else:
                     setattr(db_obj, field, obj_data[field])
             db.commit()
             db.refresh(db_obj)
-            logger.info(f"Updated AI model input with ID: {db_obj.id.hex()}")
+            logger.info(f"Updated AI model input with ID: {db_obj.id}")
             return db_obj
         except Exception as e:
             db.rollback()
@@ -143,6 +183,7 @@ class CRUDModelInputs:
             if obj:
                 db.delete(obj)
                 db.commit()
+                db.refresh(obj)
                 logger.info(f"Deleted AI model input with ID: {id}")
                 return obj
             else:

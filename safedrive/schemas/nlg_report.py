@@ -15,7 +15,7 @@ class NLGReportBase(BaseModel):
     - **synced**: Indicates if the report has been synced.
     """
     id: UUID
-    driver_profile_id: UUID
+    driverProfileId: UUID
     report_text: str
     generated_at: datetime
     synced: bool
@@ -28,12 +28,14 @@ class NLGReportCreate(BaseModel):
     Schema for creating a new NLG Report.
 
     Attributes:
+    -**id**: Idenifier for the particular nlg report
     - **user_id**: Identifier for the user who generated the report.
     - **report_text**: Text content of the report.
     - **generated_at**: Generation date and time of the report.
     - **synced**: Boolean indicating if the report has been synced.
     """
-    driver_profile_id: UUID
+    id: UUID
+    driverProfileId: UUID
     report_text: str
     generated_at: datetime
     synced: Optional[bool] = False

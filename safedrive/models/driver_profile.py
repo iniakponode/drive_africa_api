@@ -1,6 +1,7 @@
 from uuid import uuid4, UUID
 from sqlalchemy import Column, String, Boolean, BINARY
 from sqlalchemy.orm import relationship
+from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
 import logging
 
@@ -13,7 +14,7 @@ def generate_uuid_binary():
 class DriverProfile(Base):
     __tablename__ = "driver_profile"
 
-    driver_profile_id = Column(BINARY(16), primary_key=True, unique=True, default=generate_uuid_binary)
+    driverProfileId = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
     email = Column(String(50), unique=True, nullable=False)
     sync = Column(Boolean, nullable=False)
 
@@ -24,10 +25,10 @@ class DriverProfile(Base):
     nlg_reports=relationship("NLGReport", back_populates="driver_profile", cascade="all, delete-orphan")
 
     def __repr__(self):
-        return f"<DriverProfile(driver_profile_id={self.driver_profile_id.hex()}, email={self.email})>"
+        return f"<DriverProfile(driver_profile_id={self.driverProfileId}, email={self.email})>"
 
     @property
     def id_uuid(self) -> UUID:
-        uuid_value = UUID(bytes=self.driver_profile_id)
+        uuid_value = self.driverProfileId
         logger.debug(f"Retrieved UUID for DriverProfile: {uuid_value}")
         return uuid_value

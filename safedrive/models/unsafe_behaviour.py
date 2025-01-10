@@ -1,6 +1,7 @@
 from typing import Optional
 from sqlalchemy import Column, Float, String, DateTime, Boolean, ForeignKey, BINARY, Integer
 from sqlalchemy.orm import relationship
+from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
 from uuid import uuid4, UUID
 
@@ -31,10 +32,10 @@ class UnsafeBehaviour(Base):
 
     __tablename__ = "unsafe_behaviour"
 
-    id = Column(BINARY(16), primary_key=True, default=generate_uuid_binary)
-    trip_id = Column(BINARY(16), ForeignKey('trip.id'), nullable=False)
-    driver_profile_id = Column(BINARY(16), ForeignKey('driver_profile.driver_profile_id'), nullable=False)
-    location_id = Column(BINARY(16), ForeignKey('location.id'), nullable=True)
+    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
+    trip_id = Column(UUIDType(binary=True), ForeignKey('trip.id'), nullable=True)
+    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)
+    location_id = Column(UUIDType(binary=True), ForeignKey('location.id'), nullable=True)
     behaviour_type = Column(String(255), nullable=False)
     severity = Column(Float, nullable=False)
     timestamp = Column(Integer, nullable=False)
@@ -56,19 +57,19 @@ class UnsafeBehaviour(Base):
     @property
     def id_uuid(self) -> UUID:
         """Return the UUID representation of the binary ID."""
-        return UUID(bytes=self.id)
+        return self.id
 
     @property
     def trip_id_uuid(self) -> UUID:
         """Return the UUID representation of the binary trip_id."""
-        return UUID(bytes=self.trip_id)
+        return self.trip_id
 
     @property
     def location_id_uuid(self) -> Optional[UUID]:
         """Return the UUID representation of the binary location_id."""
-        return UUID(bytes=self.location_id) if self.location_id else None
+        return location_id if self.location_id else None
     
     @property
     def driver_profile_id_uuid(self) -> UUID:
         """Return the UUID representation of the binary driver_profile_id."""
-        return UUID(bytes=self.driver_profile_id)
+        return self.driverProfileId
