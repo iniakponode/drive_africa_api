@@ -18,3 +18,8 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Base class for our classes definitions
 Base = declarative_base()
+
+# Run this function to create tables
+@app.on_event("startup")
+def on_startup():
+    Base.metadata.create_all(bind=engine)
