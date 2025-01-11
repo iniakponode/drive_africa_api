@@ -5,7 +5,7 @@ router = APIRouter()
 
 @router.get("/")
 async def root():
-    return _responses.RedirectResponse("/api/redoc")
+    return _responses.RedirectResponse("/docs")
 # async def index():
 #     """
 #     Provides an overview of all available endpoints in the Safe Drive Africa API.
