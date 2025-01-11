@@ -4,7 +4,11 @@ import uvicorn
 from fastapi import FastAPI
 import logging
 from safedrive import safe_drive_africa_api_router as api_router
+from safedrive.database.base import Base, engine
 from fastapi.middleware.cors import CORSMiddleware
+from alembic.config import Config
+from alembic import command
+
 
 # Load .env only for local development
 ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
@@ -42,10 +46,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Create tables on app startup
+# Alembic configuration file path
+ALEMBIC_CONFIG_PATH = "./alembic.ini"
+
 @app.on_event("startup")
 async def on_startup():
-    Base.metadata.create_all(bind=engine)  # Ensure tables are created
+    # Run Alembic migrations programmatically
+    alembic_cfg = Config(ALEMBIC_CONFIG_PATH)
+    alembic_cfg.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
+
+    print("Running Alembic migrations...")
+    command.upgrade(alembic_cfg, "head")  # Upgrade database schema to latest
+    print("Migrations completed successfully.")
 
 # Run the app using uvicorn when executed directly
 if __name__ == "__main__":
