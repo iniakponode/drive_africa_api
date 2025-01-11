@@ -4,22 +4,18 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 import os
 import dotenv
 
-# load the .env file
+# Load the .env file
 dotenv.load_dotenv()
 
-# Database URL from settings
+# Database URL from environment variables
 DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set")
 
-# Create a new SQLAlchemy engine instance
+# SQLAlchemy engine and session
 engine = create_engine(DATABASE_URL)
-
-# Create a configured "Session" class
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Base class for our classes definitions
+# Declarative base for ORM models
 Base = declarative_base()
 
-# Run this function to create tables
-@app.on_event("startup")
-def on_startup():
-    Base.metadata.create_all(bind=engine)

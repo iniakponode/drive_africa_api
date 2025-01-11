@@ -42,6 +42,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Create tables on app startup
+@app.on_event("startup")
+async def on_startup():
+    Base.metadata.create_all(bind=engine)  # Ensure tables are created
+
 # Run the app using uvicorn when executed directly
 if __name__ == "__main__":
     logging.basicConfig(
