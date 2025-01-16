@@ -16,7 +16,63 @@
         "documentation": {}
     },
     {
-        "label": "List",
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -81,6 +137,38 @@
     },
     {
         "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -233,14 +321,6 @@
     },
     {
         "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -368,6 +448,38 @@
         "documentation": {}
     },
     {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
         "label": "context",
         "importPath": "alembic",
         "description": "alembic",
@@ -377,6 +489,14 @@
     },
     {
         "label": "context",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "command",
         "importPath": "alembic",
         "description": "alembic",
         "isExtraImport": true,
@@ -409,7 +529,7 @@
         "documentation": {}
     },
     {
-        "label": "engine_from_config",
+        "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -482,6 +602,54 @@
     },
     {
         "label": "BINARY",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Boolean",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Text",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -1042,6 +1210,22 @@
         "documentation": {}
     },
     {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils.types.uuid",
+        "description": "sqlalchemy_utils.types.uuid",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils.types.uuid",
+        "documentation": {}
+    },
+    {
         "label": "fileConfig",
         "importPath": "logging.config",
         "description": "logging.config",
@@ -1179,6 +1363,30 @@
     },
     {
         "label": "Base",
+        "importPath": "safedrive.database.base",
+        "description": "safedrive.database.base",
+        "isExtraImport": true,
+        "detail": "safedrive.database.base",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "safedrive.database.base",
+        "description": "safedrive.database.base",
+        "isExtraImport": true,
+        "detail": "safedrive.database.base",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "safedrive.database.base",
+        "description": "safedrive.database.base",
+        "isExtraImport": true,
+        "detail": "safedrive.database.base",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
         "importPath": "safedrive.database.base",
         "description": "safedrive.database.base",
         "isExtraImport": true,
@@ -1539,79 +1747,7 @@
         "documentation": {}
     },
     {
-        "label": "APIRouter",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "Depends",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPException",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "APIRouter",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "Depends",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPException",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "APIRouter",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "Depends",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPException",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "APIRouter",
+        "label": "status",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -1723,6 +1859,14 @@
         "documentation": {}
     },
     {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "Depends",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -1739,7 +1883,143 @@
         "documentation": {}
     },
     {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -1776,6 +2056,22 @@
         "description": "fastapi",
         "isExtraImport": true,
         "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
         "documentation": {}
     },
     {
@@ -2043,6 +2339,30 @@
         "documentation": {}
     },
     {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
         "label": "UUID",
         "importPath": "uuid",
         "description": "uuid",
@@ -2227,70 +2547,6 @@
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
         "label": "uuid4",
         "importPath": "uuid",
         "description": "uuid",
@@ -2356,6 +2612,86 @@
     },
     {
         "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
         "importPath": "uuid",
         "description": "uuid",
         "isExtraImport": true,
@@ -2540,6 +2876,22 @@
         "documentation": {}
     },
     {
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
+        "isExtraImport": true,
+        "detail": "safedrive.database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
+        "isExtraImport": true,
+        "detail": "safedrive.database.db",
+        "documentation": {}
+    },
+    {
         "label": "AIModelInputCreate",
         "importPath": "safedrive.schemas.ai_model_input",
         "description": "safedrive.schemas.ai_model_input",
@@ -2585,6 +2937,46 @@
         "description": "safedrive.crud.ai_model_inputs",
         "isExtraImport": true,
         "detail": "safedrive.crud.ai_model_inputs",
+        "documentation": {}
+    },
+    {
+        "label": "AlcoholQuestionnaireCreateSchema",
+        "importPath": "safedrive.schemas.alcohol_questionnaire",
+        "description": "safedrive.schemas.alcohol_questionnaire",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "AlcoholQuestionnaireResponseSchema",
+        "importPath": "safedrive.schemas.alcohol_questionnaire",
+        "description": "safedrive.schemas.alcohol_questionnaire",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "AlcoholQuestionnaireCreateSchema",
+        "importPath": "safedrive.schemas.alcohol_questionnaire",
+        "description": "safedrive.schemas.alcohol_questionnaire",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "AlcoholQuestionnaireResponseSchema",
+        "importPath": "safedrive.schemas.alcohol_questionnaire",
+        "description": "safedrive.schemas.alcohol_questionnaire",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "AlcoholQuestionnaireCRUD",
+        "importPath": "safedrive.crud.alcohol_questionnaire",
+        "description": "safedrive.crud.alcohol_questionnaire",
+        "isExtraImport": true,
+        "detail": "safedrive.crud.alcohol_questionnaire",
         "documentation": {}
     },
     {
@@ -3093,6 +3485,102 @@
         "documentation": {}
     },
     {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.trip",
+        "description": "safedrive.api.v1.endpoints.trip",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.trip",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.index",
+        "description": "safedrive.api.v1.endpoints.index",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.index",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.unsafe_behaviour",
+        "description": "safedrive.api.v1.endpoints.unsafe_behaviour",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.unsafe_behaviour",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.raw_sensor_data",
+        "description": "safedrive.api.v1.endpoints.raw_sensor_data",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.raw_sensor_data",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.driver_profile",
+        "description": "safedrive.api.v1.endpoints.driver_profile",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.driving_tips",
+        "description": "safedrive.api.v1.endpoints.driving_tips",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.driving_tips",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.cause",
+        "description": "safedrive.api.v1.endpoints.cause",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.cause",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.embedding",
+        "description": "safedrive.api.v1.endpoints.embedding",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.embedding",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.nlg_report",
+        "description": "safedrive.api.v1.endpoints.nlg_report",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.nlg_report",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.ai_model_inputs_router",
+        "description": "safedrive.api.v1.endpoints.ai_model_inputs_router",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.ai_model_inputs_router",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.location",
+        "description": "safedrive.api.v1.endpoints.location",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.location",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "description": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
         "label": "BaseSettings",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -3125,54 +3613,6 @@
         "documentation": {}
     },
     {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "Field",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "Field",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
         "label": "Field",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -3229,6 +3669,70 @@
         "documentation": {}
     },
     {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "Field",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -3322,6 +3826,22 @@
         "description": "datetime",
         "isExtraImport": true,
         "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemyError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
         "documentation": {}
     },
     {
@@ -3338,6 +3858,14 @@
         "description": "sqlalchemy.exc",
         "isExtraImport": true,
         "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "AlcoholQuestionnaire",
+        "importPath": "safedrive.models.alcohol_questionnaire",
+        "description": "safedrive.models.alcohol_questionnaire",
+        "isExtraImport": true,
+        "detail": "safedrive.models.alcohol_questionnaire",
         "documentation": {}
     },
     {
@@ -3471,12 +3999,56 @@
         "documentation": {}
     },
     {
+        "label": "Config",
+        "importPath": "alembic.config",
+        "description": "alembic.config",
+        "isExtraImport": true,
+        "detail": "alembic.config",
+        "documentation": {}
+    },
+    {
         "label": "random",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "random",
         "description": "random",
         "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.5345e3d93918_added_alcohol",
+        "description": "alembic.versions.5345e3d93918_added_alcohol",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.5345e3d93918_added_alcohol",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.5345e3d93918_added_alcohol",
+        "description": "alembic.versions.5345e3d93918_added_alcohol",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.5345e3d93918_added_alcohol",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.54ff87bff66e_change_alcohol_questionnaire_model_",
+        "description": "alembic.versions.54ff87bff66e_change_alcohol_questionnaire_model_",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.54ff87bff66e_change_alcohol_questionnaire_model_",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.54ff87bff66e_change_alcohol_questionnaire_model_",
+        "description": "alembic.versions.54ff87bff66e_change_alcohol_questionnaire_model_",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.54ff87bff66e_change_alcohol_questionnaire_model_",
         "documentation": {}
     },
     {
@@ -3495,6 +4067,42 @@
         "description": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
         "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_table('causes')\n    op.drop_table('unsafe_behaviour')\n    op.drop_table('raw_sensor_data')\n    op.drop_table('ai_model_inputs')\n    op.drop_table('trip')\n    op.drop_table('nlg_report')\n    op.drop_table('driving_tips')\n    op.drop_table('location')",
         "detail": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.b3076df7bfa5_corrected_wrong_base_imports_in_",
+        "description": "alembic.versions.b3076df7bfa5_corrected_wrong_base_imports_in_",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('alcohol_questionnaire',\n    sa.Column('id', UUIDType(), nullable=False),\n    sa.Column('driverProfileId', UUIDType(), nullable=False),\n    sa.Column('drankAlcohol', sa.Boolean(), nullable=False),\n    sa.Column('selectedAlcoholTypes', sa.Text(), nullable=False),\n    sa.Column('beerQuantity', sa.String(length=255), nullable=False),\n    sa.Column('wineQuantity', sa.String(length=255), nullable=False),\n    sa.Column('spiritsQuantity', sa.String(length=255), nullable=False),",
+        "detail": "alembic.versions.b3076df7bfa5_corrected_wrong_base_imports_in_",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.b3076df7bfa5_corrected_wrong_base_imports_in_",
+        "description": "alembic.versions.b3076df7bfa5_corrected_wrong_base_imports_in_",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_table('alcohol_questionnaire')\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.b3076df7bfa5_corrected_wrong_base_imports_in_",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.ba5ad2d9bb18_change_alcohol_questionnaire_model_",
+        "description": "alembic.versions.ba5ad2d9bb18_change_alcohol_questionnaire_model_",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.ba5ad2d9bb18_change_alcohol_questionnaire_model_",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.ba5ad2d9bb18_change_alcohol_questionnaire_model_",
+        "description": "alembic.versions.ba5ad2d9bb18_change_alcohol_questionnaire_model_",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.ba5ad2d9bb18_change_alcohol_questionnaire_model_",
         "documentation": {}
     },
     {
@@ -3547,7 +4155,7 @@
         "kind": 2,
         "importPath": "safedrive.alembic.env",
         "description": "safedrive.alembic.env",
-        "peekOfCode": "def run_migrations_online():\n    \"\"\"Run migrations in 'online' mode.\"\"\"\n    connectable = engine_from_config(\n        config.get_section(config.config_ini_section),\n        prefix=\"sqlalchemy.\",\n        poolclass=pool.NullPool,\n    )\n    with connectable.connect() as connection:\n        context.configure(connection=connection, target_metadata=target_metadata)\n        with context.begin_transaction():",
+        "peekOfCode": "def run_migrations_online():\n    \"\"\"Run migrations in 'online' mode.\"\"\"\n    connectable = create_engine(database_url, poolclass=pool.NullPool)\n    with connectable.connect() as connection:\n        context.configure(connection=connection, target_metadata=target_metadata)\n        with context.begin_transaction():\n            context.run_migrations()\nif context.is_offline_mode():\n    run_migrations_offline()\nelse:",
         "detail": "safedrive.alembic.env",
         "documentation": {}
     },
@@ -3556,7 +4164,16 @@
         "kind": 5,
         "importPath": "safedrive.alembic.env",
         "description": "safedrive.alembic.env",
-        "peekOfCode": "config = context.config\n# Set the database URL here\n# config.set_main_option('sqlalchemy.url', os.getenv('DATABASE_URL', 'mysql+pymysql://dev2:ProgressIniks2018@localhost:3306/drive_safe_db'))\n# Interpret the config file for Python logging.\n# This line sets up loggers basically.\nfileConfig(config.config_file_name)\n# add your model's MetaData object here\n# for 'autogenerate' support\ntarget_metadata = Base.metadata\ndef run_migrations_offline():",
+        "peekOfCode": "config = context.config\n# Set database URL from environment\ndatabase_url = os.getenv('DATABASE_URL')\nif not database_url:\n    raise RuntimeError(\"DATABASE_URL environment variable is not set.\")\nconfig.set_main_option('sqlalchemy.url', database_url)\n# Interpret config file for logging\nfileConfig(config.config_file_name)\n# MetaData for 'autogenerate' support\ntarget_metadata = Base.metadata",
+        "detail": "safedrive.alembic.env",
+        "documentation": {}
+    },
+    {
+        "label": "database_url",
+        "kind": 5,
+        "importPath": "safedrive.alembic.env",
+        "description": "safedrive.alembic.env",
+        "peekOfCode": "database_url = os.getenv('DATABASE_URL')\nif not database_url:\n    raise RuntimeError(\"DATABASE_URL environment variable is not set.\")\nconfig.set_main_option('sqlalchemy.url', database_url)\n# Interpret config file for logging\nfileConfig(config.config_file_name)\n# MetaData for 'autogenerate' support\ntarget_metadata = Base.metadata\ndef run_migrations_offline():\n    \"\"\"Run migrations in 'offline' mode.\"\"\"",
         "detail": "safedrive.alembic.env",
         "documentation": {}
     },
@@ -3648,6 +4265,42 @@
         "description": "safedrive.api.v1.endpoints.ai_model_inputs_router",
         "peekOfCode": "router = APIRouter()\n# Endpoint to create a new AI model input\n@router.post(\"/ai_model_inputs/\", response_model=AIModelInputResponse)\ndef create_ai_model_input(\n    *,\n    db: Session = Depends(get_db),\n    input_in: AIModelInputCreate,\n) -> AIModelInputResponse:\n    \"\"\"\n    Create a new AI model input.",
         "detail": "safedrive.api.v1.endpoints.ai_model_inputs_router",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "description": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)\nhandler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\n# Endpoint to submit a new alcohol questionnaire\n@router.post(\"/questionnaire/\", response_model=AlcoholQuestionnaireResponseSchema)\nasync def submit_alcohol_questionnaire(",
+        "detail": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "description": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)\nhandler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\n# Endpoint to submit a new alcohol questionnaire\n@router.post(\"/questionnaire/\", response_model=AlcoholQuestionnaireResponseSchema)\nasync def submit_alcohol_questionnaire(\n    questionnaire_data: AlcoholQuestionnaireCreateSchema,",
+        "detail": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "handler",
+        "kind": 5,
+        "importPath": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "description": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "peekOfCode": "handler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\n# Endpoint to submit a new alcohol questionnaire\n@router.post(\"/questionnaire/\", response_model=AlcoholQuestionnaireResponseSchema)\nasync def submit_alcohol_questionnaire(\n    questionnaire_data: AlcoholQuestionnaireCreateSchema,\n    db: Session = Depends(get_db),\n):",
+        "detail": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "formatter",
+        "kind": 5,
+        "importPath": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "description": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "peekOfCode": "formatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\n# Endpoint to submit a new alcohol questionnaire\n@router.post(\"/questionnaire/\", response_model=AlcoholQuestionnaireResponseSchema)\nasync def submit_alcohol_questionnaire(\n    questionnaire_data: AlcoholQuestionnaireCreateSchema,\n    db: Session = Depends(get_db),\n):\n    try:",
+        "detail": "safedrive.api.v1.endpoints.alcohol_questionnaire",
         "documentation": {}
     },
     {
@@ -3907,7 +4560,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.index",
         "description": "safedrive.api.v1.endpoints.index",
-        "peekOfCode": "router = APIRouter()\n@router.get(\"/\")\nasync def index():\n    \"\"\"\n    Provides an overview of all available endpoints in the Safe Drive Africa API.\n    \"\"\"\n    return {\n        \"message\": \"Welcome to the Safe Drive Africa API\",\n        \"endpoints\": {\n            \"/api/ai_model_inputs/\": {",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/\")\nasync def root():\n    return _responses.RedirectResponse(\"/docs\")\n# async def index():\n#     \"\"\"\n#     Provides an overview of all available endpoints in the Safe Drive Africa API.\n#     \"\"\"\n#     return {\n#         \"message\": \"Welcome to the Safe Drive Africa API\",",
         "detail": "safedrive.api.v1.endpoints.index",
         "documentation": {}
     },
@@ -4299,6 +4952,15 @@
         "documentation": {}
     },
     {
+        "label": "safe_drive_africa_api_router",
+        "kind": 5,
+        "importPath": "safedrive.api.v1.api_router",
+        "description": "safedrive.api.v1.api_router",
+        "peekOfCode": "safe_drive_africa_api_router = APIRouter()\nsafe_drive_africa_api_router.include_router(index_router, prefix=\"/api\", tags=[\"Index\"])\nsafe_drive_africa_api_router.include_router(trips_router, prefix=\"/api\", tags=[\"Trips\"])\n# safe_drive_africa_api_router.include_router(alcohol_questionnaire_router, prefix=\"/api\", tags=[\"Alcohol Questionnaire\"])\nsafe_drive_africa_api_router.include_router(\n    alcohol_questionnaire_router, prefix=\"/api/alcohol-questionnaire\", tags=[\"Alcohol Questionnaire\"]\n)\nlogger.info(\"Including alcohol_questionnaire_router in API router\")\nsafe_drive_africa_api_router.include_router(\n    alcohol_questionnaire_router, prefix=\"/api/alcohol_questionnaire\", tags=[\"Alcohol Questionnaire\"]",
+        "detail": "safedrive.api.v1.api_router",
+        "documentation": {}
+    },
+    {
         "label": "Settings",
         "kind": 6,
         "importPath": "safedrive.core.config",
@@ -4341,6 +5003,24 @@
         "description": "safedrive.crud.ai_model_inputs",
         "peekOfCode": "ai_model_inputs_crud = CRUDModelInputs(AIModelInput)",
         "detail": "safedrive.crud.ai_model_inputs",
+        "documentation": {}
+    },
+    {
+        "label": "AlcoholQuestionnaireCRUD",
+        "kind": 6,
+        "importPath": "safedrive.crud.alcohol_questionnaire",
+        "description": "safedrive.crud.alcohol_questionnaire",
+        "peekOfCode": "class AlcoholQuestionnaireCRUD:\n    def __init__(self, db: Session):\n        self.db = db\n    def create(self, questionnaire_data: AlcoholQuestionnaireCreateSchema) -> AlcoholQuestionnaire:\n        try:\n            db_questionnaire = AlcoholQuestionnaire(\n                id=questionnaire_data.id,\n                driverProfileId=questionnaire_data.driverProfileId,\n                drankAlcohol=questionnaire_data.drankAlcohol,\n                selectedAlcoholTypes=questionnaire_data.selectedAlcoholTypes,",
+        "detail": "safedrive.crud.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "safedrive.crud.alcohol_questionnaire",
+        "description": "safedrive.crud.alcohol_questionnaire",
+        "peekOfCode": "router = APIRouter()\nclass AlcoholQuestionnaireCRUD:\n    def __init__(self, db: Session):\n        self.db = db\n    def create(self, questionnaire_data: AlcoholQuestionnaireCreateSchema) -> AlcoholQuestionnaire:\n        try:\n            db_questionnaire = AlcoholQuestionnaire(\n                id=questionnaire_data.id,\n                driverProfileId=questionnaire_data.driverProfileId,\n                drankAlcohol=questionnaire_data.drankAlcohol,",
+        "detail": "safedrive.crud.alcohol_questionnaire",
         "documentation": {}
     },
     {
@@ -4591,7 +5271,7 @@
         "kind": 5,
         "importPath": "safedrive.database.base",
         "description": "safedrive.database.base",
-        "peekOfCode": "DATABASE_URL = os.getenv(\"DATABASE_URL\")\n# Create a new SQLAlchemy engine instance\nengine = create_engine(DATABASE_URL)\n# Create a configured \"Session\" class\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Base class for our classes definitions\nBase = declarative_base()",
+        "peekOfCode": "DATABASE_URL = os.getenv(\"DATABASE_URL\")\nif not DATABASE_URL:\n    raise RuntimeError(\"DATABASE_URL is not set\")\n# SQLAlchemy engine and session\nengine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Declarative base for ORM models\nBase = declarative_base()",
         "detail": "safedrive.database.base",
         "documentation": {}
     },
@@ -4600,7 +5280,7 @@
         "kind": 5,
         "importPath": "safedrive.database.base",
         "description": "safedrive.database.base",
-        "peekOfCode": "engine = create_engine(DATABASE_URL)\n# Create a configured \"Session\" class\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Base class for our classes definitions\nBase = declarative_base()",
+        "peekOfCode": "engine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Declarative base for ORM models\nBase = declarative_base()",
         "detail": "safedrive.database.base",
         "documentation": {}
     },
@@ -4609,7 +5289,7 @@
         "kind": 5,
         "importPath": "safedrive.database.base",
         "description": "safedrive.database.base",
-        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Base class for our classes definitions\nBase = declarative_base()",
+        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Declarative base for ORM models\nBase = declarative_base()",
         "detail": "safedrive.database.base",
         "documentation": {}
     },
@@ -4650,6 +5330,15 @@
         "documentation": {}
     },
     {
+        "label": "AlcoholQuestionnaire",
+        "kind": 6,
+        "importPath": "safedrive.models.alcohol_questionnaire",
+        "description": "safedrive.models.alcohol_questionnaire",
+        "peekOfCode": "class AlcoholQuestionnaire(Base):\n    __tablename__ = \"alcohol_questionnaire\"\n    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    driverProfileId = Column(UUIDType(binary=True), ForeignKey(\"driver_profile.driverProfileId\"), nullable=False)\n    drankAlcohol = Column(Boolean, nullable=False)\n    selectedAlcoholTypes = Column(Text, nullable=False)\n    beerQuantity = Column(String(255), nullable=False)\n    wineQuantity = Column(String(255), nullable=False)\n    spiritsQuantity = Column(String(255), nullable=False)\n    firstDrinkTime = Column(String(255), nullable=False)",
+        "detail": "safedrive.models.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
         "label": "Cause",
         "kind": 6,
         "importPath": "safedrive.models.cause",
@@ -4681,7 +5370,7 @@
         "kind": 6,
         "importPath": "safedrive.models.driver_profile",
         "description": "safedrive.models.driver_profile",
-        "peekOfCode": "class DriverProfile(Base):\n    __tablename__ = \"driver_profile\"\n    driverProfileId = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    email = Column(String(50), unique=True, nullable=False)\n    sync = Column(Boolean, nullable=False)\n    # Relationships\n    driving_tips = relationship(\"DrivingTip\", back_populates=\"profile\", cascade=\"all, delete-orphan\")\n    trips = relationship(\"Trip\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")\n    unsafe_behaviours= relationship(\"UnsafeBehaviour\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")\n    nlg_reports=relationship(\"NLGReport\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")",
+        "peekOfCode": "class DriverProfile(Base):\n    __tablename__ = \"driver_profile\"\n    driverProfileId = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    email = Column(String(50), unique=True, nullable=False)\n    sync = Column(Boolean, nullable=False)\n    # Relationships\n    alcohol_questionnaires = relationship(\"AlcoholQuestionnaire\", back_populates=\"driver_profile\")\n    driving_tips = relationship(\"DrivingTip\", back_populates=\"profile\", cascade=\"all, delete-orphan\")\n    trips = relationship(\"Trip\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")\n    unsafe_behaviours= relationship(\"UnsafeBehaviour\", back_populates=\"driver_profile\", cascade=\"all, delete-orphan\")",
         "detail": "safedrive.models.driver_profile",
         "documentation": {}
     },
@@ -4690,7 +5379,7 @@
         "kind": 2,
         "importPath": "safedrive.models.driver_profile",
         "description": "safedrive.models.driver_profile",
-        "peekOfCode": "def generate_uuid_binary():\n    \"\"\"Generate a binary UUID.\"\"\"\n    return uuid4().bytes\nclass DriverProfile(Base):\n    __tablename__ = \"driver_profile\"\n    driverProfileId = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    email = Column(String(50), unique=True, nullable=False)\n    sync = Column(Boolean, nullable=False)\n    # Relationships\n    driving_tips = relationship(\"DrivingTip\", back_populates=\"profile\", cascade=\"all, delete-orphan\")",
+        "peekOfCode": "def generate_uuid_binary():\n    \"\"\"Generate a binary UUID.\"\"\"\n    return uuid4().bytes\nclass DriverProfile(Base):\n    __tablename__ = \"driver_profile\"\n    driverProfileId = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    email = Column(String(50), unique=True, nullable=False)\n    sync = Column(Boolean, nullable=False)\n    # Relationships\n    alcohol_questionnaires = relationship(\"AlcoholQuestionnaire\", back_populates=\"driver_profile\")",
         "detail": "safedrive.models.driver_profile",
         "documentation": {}
     },
@@ -4899,6 +5588,33 @@
         "description": "safedrive.schemas.ai_model_input",
         "peekOfCode": "class AIModelInputResponse(AIModelInputBase):\n    \"\"\"\n    Schema for representing an AI Model Input response.\n    Inherits from AIModelInputBase and adds the `id` field.\n    \"\"\"\n    id: UUID = Field(..., description=\"UUID of the AI model input.\")\n    class Config:\n        from_attributes = True",
         "detail": "safedrive.schemas.ai_model_input",
+        "documentation": {}
+    },
+    {
+        "label": "AlcoholQuestionnaireBaseSchema",
+        "kind": 6,
+        "importPath": "safedrive.schemas.alcohol_questionnaire",
+        "description": "safedrive.schemas.alcohol_questionnaire",
+        "peekOfCode": "class AlcoholQuestionnaireBaseSchema(BaseModel):\n    id: UUID\n    driverProfileId: UUID\n    drankAlcohol: bool\n    selectedAlcoholTypes: Optional[str] = None\n    beerQuantity: Optional[str] = None\n    wineQuantity: Optional[str] = None\n    spiritsQuantity: Optional[str] = None\n    firstDrinkTime: Optional[str] = None\n    lastDrinkTime: Optional[str] = None",
+        "detail": "safedrive.schemas.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "AlcoholQuestionnaireCreateSchema",
+        "kind": 6,
+        "importPath": "safedrive.schemas.alcohol_questionnaire",
+        "description": "safedrive.schemas.alcohol_questionnaire",
+        "peekOfCode": "class AlcoholQuestionnaireCreateSchema(BaseModel):\n    id: UUID\n    driverProfileId: UUID = Field(..., description=\"userId\")\n    drankAlcohol: bool = Field(..., description=\"drankAlcohol\")\n    selectedAlcoholTypes: Optional[str] = Field(..., description=\"selectedAlcoholTypes\")\n    beerQuantity: Optional[str] = Field(..., description=\"beerQuantity\")\n    wineQuantity: Optional[str] = Field(..., description=\"wineQuantity\")\n    spiritsQuantity: Optional[str] = Field(..., description=\"spiritsQuantity\")\n    firstDrinkTime: str = Field(..., description=\"firstDrinkTime\")\n    lastDrinkTime: str = Field(..., description=\"lastDrinkTime\")",
+        "detail": "safedrive.schemas.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "AlcoholQuestionnaireResponseSchema",
+        "kind": 6,
+        "importPath": "safedrive.schemas.alcohol_questionnaire",
+        "description": "safedrive.schemas.alcohol_questionnaire",
+        "peekOfCode": "class AlcoholQuestionnaireResponseSchema(AlcoholQuestionnaireBaseSchema):\n    pass",
+        "detail": "safedrive.schemas.alcohol_questionnaire",
         "documentation": {}
     },
     {
@@ -5478,11 +6194,20 @@
         "documentation": {}
     },
     {
+        "label": "ENVIRONMENT",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "ENVIRONMENT = os.getenv(\"ENVIRONMENT\", \"development\")\nif ENVIRONMENT == \"development\":\n    dotenv.load_dotenv()\n# Create FastAPI app\napp = FastAPI(\n    title=\"Safe Drive API\",\n    description=\"This is an API powering Safe Drive Africa, a PhD research app\",\n    version=\"1.0.0\"\n)\n# Example usage of environment variables",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
         "label": "app",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "app = FastAPI()\n# Example usage of environment variables\nDATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\napp.include_router(api_router)\n# Define allowed origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",",
+        "peekOfCode": "app = FastAPI(\n    title=\"Safe Drive API\",\n    description=\"This is an API powering Safe Drive Africa, a PhD research app\",\n    version=\"1.0.0\"\n)\n# Example usage of environment variables\nDATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router",
         "detail": "main",
         "documentation": {}
     },
@@ -5491,7 +6216,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "DATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\napp.include_router(api_router)\n# Define allowed origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]",
+        "peekOfCode": "DATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary",
         "detail": "main",
         "documentation": {}
     },
@@ -5500,7 +6225,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "SECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\napp.include_router(api_router)\n# Define allowed origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]\napp.add_middleware(",
+        "peekOfCode": "SECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]",
         "detail": "main",
         "documentation": {}
     },
@@ -5509,7 +6234,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "DEBUG = os.getenv(\"DEBUG\") == \"True\"\napp.include_router(api_router)\n# Define allowed origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]\napp.add_middleware(\n    CORSMiddleware,",
+        "peekOfCode": "DEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]\n# Add CORS Middleware",
         "detail": "main",
         "documentation": {}
     },
@@ -5518,7 +6243,16 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "origins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,  # Allows CORS for the specified origins\n    allow_credentials=True,\n    allow_methods=[\"*\"],    # Allows all methods (GET, POST, etc.)",
+        "peekOfCode": "origins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]\n# Add CORS Middleware\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins if ENVIRONMENT == \"production\" else [\"*\"],  # Allow all in local dev\n    allow_credentials=True,",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "ALEMBIC_CONFIG_PATH",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "ALEMBIC_CONFIG_PATH = \"./alembic.ini\"\n# for route in app.routes:\n#     print(route.path, route.name)\n# @app.on_event(\"startup\")\n# async def on_startup():\n    # Run Alembic migrations programmatically\n    # alembic_cfg = Config(ALEMBIC_CONFIG_PATH)\n    # alembic_cfg.set_main_option(\"sqlalchemy.url\", os.getenv(\"DATABASE_URL\"))\n    # print(\"Running Alembic migrations...\")\n    # command.upgrade(alembic_cfg, \"head\")  # Upgrade database schema to latest",
         "detail": "main",
         "documentation": {}
     },

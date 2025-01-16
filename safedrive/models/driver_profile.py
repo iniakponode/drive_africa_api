@@ -19,11 +19,11 @@ class DriverProfile(Base):
     sync = Column(Boolean, nullable=False)
 
     # Relationships
+    alcohol_questionnaires = relationship("AlcoholQuestionnaire", back_populates="driver_profile")
     driving_tips = relationship("DrivingTip", back_populates="profile", cascade="all, delete-orphan")
     trips = relationship("Trip", back_populates="driver_profile", cascade="all, delete-orphan")
     unsafe_behaviours= relationship("UnsafeBehaviour", back_populates="driver_profile", cascade="all, delete-orphan")
     nlg_reports=relationship("NLGReport", back_populates="driver_profile", cascade="all, delete-orphan")
-
     def __repr__(self):
         return f"<DriverProfile(driver_profile_id={self.driverProfileId}, email={self.email})>"
 

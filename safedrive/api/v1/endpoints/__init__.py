@@ -12,6 +12,7 @@
 # from safedrive.api.v1.endpoints.index import router as index_router
 # from safedrive.api.v1.endpoints.location import router as location_router
 # from safedrive import safe_drive_africa_api_router as safe_drive_africa_api_router
+# from safedrive.api.v1.endpoints.alcohol_questionnaire import router as alcohol_questionnaire_router
 
 # safe_drive_africa_api_router.include_router(index_router, prefix="/api", tags=["Index"])
 # safe_drive_africa_api_router.include_router(trips_router, prefix="/api", tags=["Trips"])
@@ -24,3 +25,4 @@
 # safe_drive_africa_api_router.include_router(nlg_report_router, prefix="/api", tags=["NLG Report"])
 # safe_drive_africa_api_router.include_router(ai_model_inputs_router, prefix="/api", tags=["AI Model Inputs"])
 # safe_drive_africa_api_router.include_router(location_router, prefix="/api", tags=["Location"])
+# safedrive_africa_api_router.include_router(alcohol_questionnaire_router, prefix="/api", tags=["Alcohol Questionnaire"])

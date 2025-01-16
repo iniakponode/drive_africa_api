@@ -12,11 +12,22 @@ from safedrive.api.v1.endpoints.embedding import router as embedding_router
 from safedrive.api.v1.endpoints.nlg_report import router as nlg_report_router
 from safedrive.api.v1.endpoints.ai_model_inputs_router import router as ai_model_inputs_router
 from safedrive.api.v1.endpoints.location import router as location_router
+from safedrive.api.v1.endpoints.alcohol_questionnaire import router as alcohol_questionnaire_router
 
 safe_drive_africa_api_router = APIRouter()
 
 safe_drive_africa_api_router.include_router(index_router, prefix="/api", tags=["Index"])
 safe_drive_africa_api_router.include_router(trips_router, prefix="/api", tags=["Trips"])
+# safe_drive_africa_api_router.include_router(alcohol_questionnaire_router, prefix="/api", tags=["Alcohol Questionnaire"])
+safe_drive_africa_api_router.include_router(
+    alcohol_questionnaire_router, prefix="/api/alcohol-questionnaire", tags=["Alcohol Questionnaire"]
+)
+
+logger.info("Including alcohol_questionnaire_router in API router")
+safe_drive_africa_api_router.include_router(
+    alcohol_questionnaire_router, prefix="/api/alcohol_questionnaire", tags=["Alcohol Questionnaire"]
+)
+
 safe_drive_africa_api_router.include_router(unsafe_behaviour_router, prefix="/api", tags=["Unsafe Behaviour"])
 safe_drive_africa_api_router.include_router(raw_sensor_data_router, prefix="/api", tags=["Raw Sensor Data"])
 safe_drive_africa_api_router.include_router(driver_profile_router, prefix="/api", tags=["Driver Profile"])
@@ -26,3 +37,4 @@ safe_drive_africa_api_router.include_router(embedding_router, prefix="/api", tag
 safe_drive_africa_api_router.include_router(nlg_report_router, prefix="/api", tags=["NLG Report"])
 safe_drive_africa_api_router.include_router(ai_model_inputs_router, prefix="/api", tags=["AI Model Inputs"])
 safe_drive_africa_api_router.include_router(location_router, prefix="/api", tags=["Location"])
+
