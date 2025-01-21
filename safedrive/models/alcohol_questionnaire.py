@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Boolean, Integer, ForeignKey, Text
+from sqlalchemy import Column, String, Boolean, Integer, DateTime, ForeignKey, Text
 from sqlalchemy.orm import relationship
 from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
@@ -19,6 +19,7 @@ class AlcoholQuestionnaire(Base):
     emptyStomach = Column(Boolean, nullable=False)
     caffeinatedDrink = Column(Boolean, nullable=False)
     impairmentLevel = Column(Integer, nullable=False)
+    date = Column(DateTime)
     plansToDrive = Column(Boolean, nullable=False)
 
     driver_profile = relationship("DriverProfile", back_populates="alcohol_questionnaires")

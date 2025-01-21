@@ -39,6 +39,46 @@ def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverPr
         logger.error(f"Unexpected error creating DriverProfile: {str(e)}")
         raise HTTPException(status_code=500, detail="An unexpected error occurred while creating the driver profile.")
 
+@router.post("/driver_profiles/batch_create", response_model=List[DriverProfileResponse])
+def batch_create_driver_profiles(
+    *,
+    db: Session = Depends(get_db),
+    profiles_in: List[DriverProfileCreate]
+) -> List[DriverProfileResponse]:
+    try:
+        # Use bulk creation for all profiles at once
+        new_profiles = driver_profile_crud.batch_create(db=db, objs_in=profiles_in)
+
+        if not new_profiles:
+            raise HTTPException(
+                status_code=400,
+                detail="No profiles were created due to errors or duplicates."
+            )
+
+        # Map the created profiles to the response model
+        created_profiles = [
+            DriverProfileResponse(
+                driverProfileId=profile.driverProfileId,
+                email=profile.email,
+                sync=profile.sync
+            )
+            for profile in new_profiles
+        ]
+
+        return created_profiles
+
+    except IntegrityError as e:
+        # Handle database integrity issues if they arise during the bulk operation
+        logger.error(f"Database integrity error during batch creation: {str(e)}")
+        raise HTTPException(status_code=500, detail="Database integrity error.")
+    except Exception as e:
+        # Catch-all for unexpected errors
+        logger.error(f"Unexpected error during batch creation: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail="An unexpected error occurred while creating driver profiles."
+        )
+
 @router.get("/driver_profiles/{profile_id}", response_model=DriverProfileResponse)
 def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:
     profile = driver_profile_crud.get(db=db, id=profile_id)

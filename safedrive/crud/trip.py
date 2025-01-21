@@ -162,5 +162,35 @@ class CRUDTrip:
             logger.exception("Error deleting trip from database.")
             raise
 
+    def batch_create(self, db: Session, objs_in: List[TripCreate]) -> List[Trip]:
+        try:
+            db_objs = []
+
+            for obj_in in objs_in:
+                obj_data = obj_in.model_dump()
+
+                # Convert UUID fields if needed
+                if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
+                    obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
+
+                # Create a new Trip instance
+                db_obj = self.model(**obj_data)
+                db_objs.append(db_obj)
+
+            db.add_all(db_objs)
+            db.commit()
+            db.flush()
+
+            for db_obj in db_objs:
+                db.refresh(db_obj)
+                # Optionally log creation: logger.info(f"Created Trip with ID: {db_obj.id}")
+
+            return db_objs
+
+        except Exception as e:
+            db.rollback()
+            # Log error as appropriate
+            raise HTTPException(status_code=500, detail="An unexpected error occurred during batch creation.")
+
 # Initialize CRUD instance for Trip
 trip_crud = CRUDTrip(Trip)

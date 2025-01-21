@@ -164,3 +164,38 @@ def batch_delete_trips(ids: List[UUID], db: Session = Depends(get_db)):
     except Exception as e:
         logger.error(f"Error in batch delete Trip: {str(e)}")
         raise HTTPException(status_code=500, detail="Batch deletion failed.")
+
+@router.post("/trips/batch_create", response_model=List[TripResponse])
+def batch_create_trips(
+        *,
+        db: Session = Depends(get_db),
+        trips_in: List[TripCreate]
+    ) -> List[TripResponse]:
+    try:
+        new_trips = trip_crud.batch_create(db=db, objs_in=trips_in)
+
+        if not new_trips:
+            raise HTTPException(
+                status_code=400,
+                detail="No trips were created due to errors or duplicates."
+            )
+
+        created_trips = [
+            TripResponse(
+                id=new_trip.id,  # Or new_trip.id_uuid for UUID conversion if needed
+                driverProfileId=new_trip.driverProfileId,
+                start_date=new_trip.start_date,
+                end_date=new_trip.end_date,
+                start_time=new_trip.start_time,
+                end_time=new_trip.end_time,
+                synced=new_trip.synced
+                # Include other fields as needed
+            )
+            for new_trip in new_trips
+        ]
+
+        return created_trips
+
+    except Exception as e:
+        # Log error appropriately
+        raise HTTPException(status_code=500, detail="An unexpected error occurred while creating trips.")

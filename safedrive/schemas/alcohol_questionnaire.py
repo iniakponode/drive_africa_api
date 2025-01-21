@@ -16,6 +16,7 @@ class AlcoholQuestionnaireBaseSchema(BaseModel):
     emptyStomach: bool
     caffeinatedDrink: bool
     impairmentLevel: int
+    date: datetime
     plansToDrive: bool
 
     class Config:
@@ -34,6 +35,7 @@ class AlcoholQuestionnaireCreateSchema(BaseModel):
     emptyStomach: bool = Field(..., description="emptyStomach")
     caffeinatedDrink: bool = Field(..., description="caffeinatedDrink")
     impairmentLevel: int = Field(..., description="impairmentLevel")
+    date: datetime = Field(None, description="The date when the data was recorded.")
     plansToDrive: bool = Field(..., description="plansToDrive")
 
     class Config:

@@ -58,7 +58,7 @@ ALEMBIC_CONFIG_PATH = "./alembic.ini"
 #     # Run Alembic migrations programmatically
 #     alembic_cfg = Config(ALEMBIC_CONFIG_PATH)
 #     alembic_cfg.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
-
+ 
 #     print("Running Alembic migrations...")
 #     command.upgrade(alembic_cfg, "head")  # Upgrade database schema to latest
 #     print("Migrations completed successfully.")

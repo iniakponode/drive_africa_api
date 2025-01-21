@@ -32,6 +32,7 @@ class AlcoholQuestionnaireCRUD:
                 emptyStomach=questionnaire_data.emptyStomach,
                 caffeinatedDrink=questionnaire_data.caffeinatedDrink,
                 impairmentLevel=questionnaire_data.impairmentLevel,
+                date=questionnaire_data.date,
                 plansToDrive=questionnaire_data.plansToDrive,
             )
 

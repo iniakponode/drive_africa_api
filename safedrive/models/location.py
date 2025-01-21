@@ -36,6 +36,7 @@ class Location(Base):
     date = Column(DateTime, nullable=False)
     altitude = Column(Float, nullable=False)
     speed = Column(Float, nullable=False)
+    speedLimit=Column(Float, nullable=False)
     distance = Column(Float, nullable=False)
     sync = Column(Boolean, default=False, nullable=False)
 

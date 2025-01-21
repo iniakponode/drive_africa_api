@@ -25,6 +25,7 @@ class LocationBase(BaseModel):
     date: datetime = Field(..., description="The date corresponding to the location data.")
     altitude: float = Field(..., description="The altitude of the location in meters.")
     speed: float = Field(..., description="The speed at the given location.")
+    speedLimit: float = Field(..., description="The speedLimit at the given location.")
     distance: float = Field(..., description="The distance traveled from the previous location.")
     sync: bool = Field(False, description="Indicates whether the data has been synced.")
 
@@ -42,6 +43,7 @@ class LocationCreate(BaseModel):
     date: datetime = Field(..., description="The date corresponding to the location data.")
     altitude: float = Field(..., description="The altitude of the location in meters.")
     speed: float = Field(..., description="The speed at the given location.")
+    speedLimit: float = Field(..., description="The speedLimit at the given location.")
     distance: float = Field(..., description="The distance traveled from the previous location.")
     sync: Optional[bool] = Field(False, description="Indicates whether the data has been synced.")
 
@@ -60,6 +62,7 @@ class LocationUpdate(BaseModel):
     date: Optional[datetime] = Field(None, description="Optionally update the date of the location.")
     altitude: Optional[float] = Field(None, description="Optionally update the altitude.")
     speed: Optional[float] = Field(None, description="Optionally update the speed at the given location.")
+    speedLimit: float = Field(..., description="The speedLimit at the given location.")
     distance: Optional[float] = Field(None, description="Optionally update the distance traveled from the previous location.")
     sync: Optional[bool] = Field(None, description="Optionally update the sync status.")
 
