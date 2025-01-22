@@ -22,6 +22,7 @@ class RoadBase(BaseModel):
     speedLimit: int
     latitude: float
     longitude: float
+    radius: float
 
     class Config:
         from_attributes = True
@@ -43,6 +44,7 @@ class RoadUpdate(BaseModel):
     speedLimit: Optional[int] = None
     latitude: Optional[float] = None
     longitude: Optional[float] = None
+    radius: Optional[float]=None
 
     class Config:
         from_attributes = True

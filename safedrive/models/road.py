@@ -14,6 +14,7 @@ class Road(Base):
     speedLimit = Column(Integer, nullable=False)
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
+    radius=Column(Float, nullable=False)
     
     # Define relationship with DriverProfile if needed
     driver_profile = relationship("DriverProfile", back_populates="roads")
