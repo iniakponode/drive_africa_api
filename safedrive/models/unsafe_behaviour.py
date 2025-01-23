@@ -42,7 +42,7 @@ class UnsafeBehaviour(Base):
     date = Column(DateTime, nullable=True)
     updated_at = Column(DateTime, nullable=True)
     updated = Column(Boolean, default=False)
-    synced = Column(Boolean, default=False)
+    sync = Column(Boolean, default=False)
     alcohol_influence = Column(Boolean, default=False)
 
     # Relationships

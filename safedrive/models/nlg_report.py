@@ -27,7 +27,7 @@ class NLGReport(Base):
     driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)
     report_text = Column(String(500), nullable=False)
     generated_at = Column(DateTime, nullable=False)
-    synced = Column(Boolean, nullable=False, default=False)
+    sync = Column(Boolean, nullable=False, default=False)
     
     driver_profile=relationship("DriverProfile", back_populates="nlg_reports")
 

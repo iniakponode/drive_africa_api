@@ -16,7 +16,7 @@ class Trip(Base):
     end_date = Column(DateTime, nullable=True)
     start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger
     end_time = Column(BigInteger, nullable=True) 
-    synced = Column(Boolean, nullable=False)
+    sync = Column(Boolean, nullable=False)
 
     # Relationships
     ai_model_inputs = relationship("AIModelInput", back_populates="trip", cascade="all, delete-orphan")

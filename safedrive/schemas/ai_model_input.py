@@ -25,7 +25,7 @@ class AIModelInputBase(BaseModel):
     speed_std: float = Field(..., description="Standard deviation of speed.")
     course_std: float = Field(..., description="Standard deviation of course.")
     acceleration_y_original_mean: float = Field(..., description="Mean of original Y-axis acceleration.")
-    synced: Optional[bool] = Field(False, description="Indicates whether the AI model input has been synced.")
+    sync: Optional[bool] = Field(False, description="Indicates whether the AI model input has been synced.")
 
     class Config:
         from_attributes = True  # For Pydantic v2
@@ -49,7 +49,7 @@ class AIModelInputUpdate(BaseModel):
     speed_std: Optional[float] = Field(None, description="Standard deviation of speed.")
     course_std: Optional[float] = Field(None, description="Standard deviation of course.")
     acceleration_y_original_mean: Optional[float] = Field(None, description="Mean of original Y-axis acceleration.")
-    synced: Optional[bool] = Field(None, description="Indicates whether the AI model input has been synced.")
+    sync: Optional[bool] = Field(None, description="Indicates whether the AI model input has been synced.")
 
     class Config:
         from_attributes = True

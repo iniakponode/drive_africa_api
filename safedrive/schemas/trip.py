@@ -23,7 +23,7 @@ class TripBase(BaseModel):
     end_date: Optional[datetime] = Field(None, description="The end date of the trip.")
     start_time: Optional[int] = Field(..., description="The start time of the trip in epoch milliseconds.")
     end_time: Optional[int] = Field(None, description="The end time of the trip in epoch milliseconds.")
-    synced: bool = Field(False, description="Indicates whether the trip data has been synced.")
+    sync: bool = Field(False, description="Indicates whether the trip data has been synced.")
 
     class Config:
         from_attributes = True  # For Pydantic v2
@@ -38,7 +38,7 @@ class TripCreate(BaseModel):
     end_date: Optional[datetime] = Field(None, description="The end date of the trip.")
     start_time: int = Field(..., description="The start time of the trip in epoch milliseconds.")
     end_time: Optional[int] = Field(None, description="The end time of the trip in epoch milliseconds.")
-    synced: Optional[bool] = Field(False, description="Indicates whether the trip data has been synced.")
+    sync: Optional[bool] = Field(False, description="Indicates whether the trip data has been synced.")
 
     class Config:
         from_attributes = True
@@ -54,7 +54,7 @@ class TripUpdate(BaseModel):
     end_date: Optional[datetime] = Field(None, description="Optionally update the end date of the trip.")
     start_time: Optional[int] = Field(None, description="Optionally update the start time of the trip in epoch milliseconds.")
     end_time: Optional[int] = Field(None, description="Optionally update the end time of the trip in epoch milliseconds.")
-    synced: Optional[bool] = Field(None, description="Optionally update the sync status.")
+    sync: Optional[bool] = Field(None, description="Optionally update the sync status.")
 
     class Config:
         from_attributes = True

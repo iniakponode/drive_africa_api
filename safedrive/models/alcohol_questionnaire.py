@@ -21,5 +21,6 @@ class AlcoholQuestionnaire(Base):
     impairmentLevel = Column(Integer, nullable=False)
     date = Column(DateTime)
     plansToDrive = Column(Boolean, nullable=False)
+    sync=Column(Boolean, nullable=False)
 
     driver_profile = relationship("DriverProfile", back_populates="alcohol_questionnaires")

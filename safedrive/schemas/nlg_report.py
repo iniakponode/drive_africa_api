@@ -18,7 +18,7 @@ class NLGReportBase(BaseModel):
     driverProfileId: UUID
     report_text: str
     generated_at: datetime
-    synced: bool
+    sync: bool
 
     class Config:
         from_attributes = True
@@ -38,7 +38,7 @@ class NLGReportCreate(BaseModel):
     driverProfileId: UUID
     report_text: str
     generated_at: datetime
-    synced: Optional[bool] = False
+    sync: Optional[bool] = False
 
     class Config:
         from_attributes = True
@@ -52,7 +52,7 @@ class NLGReportUpdate(BaseModel):
     - **synced**: Optional update to sync status.
     """
     report_text: Optional[str] = None
-    synced: Optional[bool] = None
+    sync: Optional[bool] = None
 
     class Config:
         from_attributes = True

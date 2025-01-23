@@ -33,7 +33,7 @@ class AIModelInput(Base):
     speed_std = Column(Float, nullable=False)
     course_std = Column(Float, nullable=False)
     acceleration_y_original_mean = Column(Float, nullable=False)
-    synced=Column(Boolean, nullable=False, default=False)
+    sync=Column(Boolean, nullable=False, default=False)
 
     # Relationships
     trip = relationship('Trip', back_populates='ai_model_inputs')

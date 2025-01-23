@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Float, Integer, ForeignKey
+from sqlalchemy import Boolean, Column, String, Float, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
@@ -15,6 +15,7 @@ class Road(Base):
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
     radius=Column(Float, nullable=False)
+    sync=Column(Boolean, nullable=False)
     
     # Define relationship with DriverProfile if needed
     driver_profile = relationship("DriverProfile", back_populates="roads")

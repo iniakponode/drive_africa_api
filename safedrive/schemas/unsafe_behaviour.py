@@ -32,7 +32,7 @@ class UnsafeBehaviourBase(BaseModel):
     updated: bool = Field(False, description="Indicator of whether the record has been updated.")
     synced: bool = Field(False, description="Indicator whether the data has been synced.")
     alcohol_influence: bool = Field(False, description="Indicator if alcohol influence was detected.")
-    synced: bool = Field(False, description="Indicates whether the data has been synced.")
+    sync: bool = Field(False, description="Indicates whether the data has been synced.")
 
     class Config:
         from_attributes = True  # For Pydantic v2
@@ -49,7 +49,7 @@ class UnsafeBehaviourCreate(BaseModel):
     timestamp: int = Field(..., description="Epoch timestamp when the behaviour was recorded.")
     date: Optional[datetime] = Field(None, description="Date when the behaviour occurred.")
     alcohol_influence: bool = Field(False, description="Indicator if alcohol influence was detected.")
-    synced: Optional[bool] = Field(False, description="Indicates whether the data has been synced.")
+    sync: Optional[bool] = Field(False, description="Indicates whether the data has been synced.")
 
     class Config:
         from_attributes = True
@@ -69,9 +69,9 @@ class UnsafeBehaviourUpdate(BaseModel):
     date: Optional[datetime] = Field(None, description="Optionally update the date when the behaviour occurred.")
     updated_at: Optional[datetime] = Field(None, description="Optionally update the last updated timestamp.")
     updated: Optional[bool] = Field(None, description="Optionally update the updated indicator.")
-    synced: Optional[bool] = Field(None, description="Optionally update the sync status.")
+    sync: Optional[bool] = Field(None, description="Optionally update the sync status.")
     alcohol_influence: Optional[bool] = Field(None, description="Optionally update the alcohol influence indicator.")
-    synced: Optional[bool] = Field(None, description="Optionally update the sync status.")
+    sync: Optional[bool] = Field(None, description="Optionally update the sync status.")
 
     class Config:
         from_attributes = True

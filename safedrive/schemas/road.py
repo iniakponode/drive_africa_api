@@ -23,6 +23,7 @@ class RoadBase(BaseModel):
     latitude: float
     longitude: float
     radius: float
+    sync: bool
 
     class Config:
         from_attributes = True
@@ -45,6 +46,7 @@ class RoadUpdate(BaseModel):
     latitude: Optional[float] = None
     longitude: Optional[float] = None
     radius: Optional[float]=None
+    sync:Optional[float]=None
 
     class Config:
         from_attributes = True
