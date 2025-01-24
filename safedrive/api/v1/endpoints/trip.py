@@ -147,14 +147,14 @@ def delete_trip(
         logger.exception("Error deleting trip")
         raise HTTPException(status_code=500, detail="Internal Server Error")
     
-@router.post("/trips/batch_create", status_code=201)
-def batch_create_trips(data: List[TripCreate], db: Session = Depends(get_db)):
-    try:
-        created_trips = trip_crud.batch_create(db=db, data_in=data)
-        return {"message": f"{len(created_trips)} Trip records created."}
-    except Exception as e:
-        logger.error(f"Error in batch create Trip: {str(e)}")
-        raise HTTPException(status_code=500, detail="Batch creation failed.")
+# @router.post("/trips/batch_create", status_code=201)
+# def batch_create_trips(data: List[TripCreate], db: Session = Depends(get_db)):
+#     try:
+#         created_trips = trip_crud.batch_create(db=db, data_in=data)
+#         return {"message": f"{len(created_trips)} Trip records created."}
+#     except Exception as e:
+#         logger.error(f"Error in batch create Trip: {str(e)}")
+#         raise HTTPException(status_code=500, detail="Batch creation failed.")
 
 @router.delete("/trips/batch_delete", status_code=204)
 def batch_delete_trips(ids: List[UUID], db: Session = Depends(get_db)):
