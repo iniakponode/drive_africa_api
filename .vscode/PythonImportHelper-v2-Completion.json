@@ -80,7 +80,95 @@
         "documentation": {}
     },
     {
-        "label": "List",
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -168,14 +256,6 @@
         "documentation": {}
     },
     {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -201,14 +281,6 @@
     },
     {
         "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -328,6 +400,54 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Optional",
         "importPath": "typing",
         "description": "typing",
@@ -437,6 +557,62 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
         "documentation": {}
     },
     {
@@ -634,6 +810,14 @@
     },
     {
         "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -1001,6 +1185,54 @@
         "documentation": {}
     },
     {
+        "label": "Boolean",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Float",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "Column",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -1121,6 +1353,30 @@
         "documentation": {}
     },
     {
+        "label": "mysql",
+        "importPath": "sqlalchemy.dialects",
+        "description": "sqlalchemy.dialects",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.dialects",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils.types.uuid",
+        "description": "sqlalchemy_utils.types.uuid",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils.types.uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils.types.uuid",
+        "description": "sqlalchemy_utils.types.uuid",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils.types.uuid",
+        "documentation": {}
+    },
+    {
         "label": "sqlalchemy_utils",
         "kind": 6,
         "isExtraImport": true,
@@ -1219,10 +1475,10 @@
     },
     {
         "label": "UUIDType",
-        "importPath": "sqlalchemy_utils.types.uuid",
-        "description": "sqlalchemy_utils.types.uuid",
+        "importPath": "sqlalchemy_utils",
+        "description": "sqlalchemy_utils",
         "isExtraImport": true,
-        "detail": "sqlalchemy_utils.types.uuid",
+        "detail": "sqlalchemy_utils",
         "documentation": {}
     },
     {
@@ -1283,6 +1539,14 @@
     },
     {
         "label": "SessionLocal",
+        "importPath": "safedrive.database.base",
+        "description": "safedrive.database.base",
+        "isExtraImport": true,
+        "detail": "safedrive.database.base",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
         "importPath": "safedrive.database.base",
         "description": "safedrive.database.base",
         "isExtraImport": true,
@@ -1987,6 +2251,30 @@
         "documentation": {}
     },
     {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "HTTPException",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -2056,6 +2344,22 @@
         "description": "fastapi",
         "isExtraImport": true,
         "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
         "documentation": {}
     },
     {
@@ -2347,6 +2651,30 @@
         "documentation": {}
     },
     {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
         "label": "UUID",
         "importPath": "uuid",
         "description": "uuid",
@@ -2684,6 +3012,30 @@
     },
     {
         "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
         "importPath": "uuid",
         "description": "uuid",
         "isExtraImport": true,
@@ -2793,6 +3145,14 @@
         "importPath": "logging",
         "description": "logging",
         "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
+        "isExtraImport": true,
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
@@ -3389,6 +3749,54 @@
         "documentation": {}
     },
     {
+        "label": "RoadCreate",
+        "importPath": "safedrive.schemas.road",
+        "description": "safedrive.schemas.road",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.road",
+        "documentation": {}
+    },
+    {
+        "label": "RoadUpdate",
+        "importPath": "safedrive.schemas.road",
+        "description": "safedrive.schemas.road",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.road",
+        "documentation": {}
+    },
+    {
+        "label": "RoadResponse",
+        "importPath": "safedrive.schemas.road",
+        "description": "safedrive.schemas.road",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.road",
+        "documentation": {}
+    },
+    {
+        "label": "RoadCreate",
+        "importPath": "safedrive.schemas.road",
+        "description": "safedrive.schemas.road",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.road",
+        "documentation": {}
+    },
+    {
+        "label": "RoadUpdate",
+        "importPath": "safedrive.schemas.road",
+        "description": "safedrive.schemas.road",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.road",
+        "documentation": {}
+    },
+    {
+        "label": "crud_road",
+        "importPath": "safedrive.crud.road",
+        "description": "safedrive.crud.road",
+        "isExtraImport": true,
+        "detail": "safedrive.crud.road",
+        "documentation": {}
+    },
+    {
         "label": "trip_crud",
         "importPath": "safedrive.crud.trip",
         "description": "safedrive.crud.trip",
@@ -3717,6 +4125,14 @@
         "documentation": {}
     },
     {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "Field",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -3869,6 +4285,14 @@
         "documentation": {}
     },
     {
+        "label": "Road",
+        "importPath": "safedrive.models.road",
+        "description": "safedrive.models.road",
+        "isExtraImport": true,
+        "detail": "safedrive.models.road",
+        "documentation": {}
+    },
+    {
         "label": "dotenv",
         "kind": 6,
         "isExtraImport": true,
@@ -4018,6 +4442,96 @@
     {
         "label": "upgrade",
         "kind": 2,
+        "importPath": "alembic.versions.391abecaf0e0_added_speedlimit_to_location_model",
+        "description": "alembic.versions.391abecaf0e0_added_speedlimit_to_location_model",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('location', sa.Column('speedLimit', sa.Float(), nullable=False))\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_column('location', 'speedLimit')\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.391abecaf0e0_added_speedlimit_to_location_model",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.391abecaf0e0_added_speedlimit_to_location_model",
+        "description": "alembic.versions.391abecaf0e0_added_speedlimit_to_location_model",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_column('location', 'speedLimit')\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.391abecaf0e0_added_speedlimit_to_location_model",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.3f37686ddcb9_update_sync_feidl_in_all_models",
+        "description": "alembic.versions.3f37686ddcb9_update_sync_feidl_in_all_models",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('ai_model_inputs', sa.Column('sync', sa.Boolean(), nullable=False))\n    op.drop_column('ai_model_inputs', 'synced')\n    op.add_column('alcohol_questionnaire', sa.Column('sync', sa.Boolean(), nullable=False))\n    op.add_column('nlg_report', sa.Column('sync', sa.Boolean(), nullable=False))\n    op.drop_column('nlg_report', 'synced')\n    op.add_column('roads', sa.Column('sync', sa.Boolean(), nullable=False))\n    op.add_column('trip', sa.Column('sync', sa.Boolean(), nullable=False))\n    op.drop_column('trip', 'synced')",
+        "detail": "alembic.versions.3f37686ddcb9_update_sync_feidl_in_all_models",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.3f37686ddcb9_update_sync_feidl_in_all_models",
+        "description": "alembic.versions.3f37686ddcb9_update_sync_feidl_in_all_models",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('unsafe_behaviour', sa.Column('synced', mysql.TINYINT(display_width=1), autoincrement=False, nullable=True))\n    op.drop_column('unsafe_behaviour', 'sync')\n    op.add_column('trip', sa.Column('synced', mysql.TINYINT(display_width=1), autoincrement=False, nullable=False))\n    op.drop_column('trip', 'sync')\n    op.drop_column('roads', 'sync')\n    op.add_column('nlg_report', sa.Column('synced', mysql.TINYINT(display_width=1), autoincrement=False, nullable=False))\n    op.drop_column('nlg_report', 'sync')\n    op.drop_column('alcohol_questionnaire', 'sync')",
+        "detail": "alembic.versions.3f37686ddcb9_update_sync_feidl_in_all_models",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.408ff5ca4b2b_added_road_api_code",
+        "description": "alembic.versions.408ff5ca4b2b_added_road_api_code",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('roads',\n    sa.Column('id', UUIDType(), nullable=False),\n    sa.Column('driverProfileId', UUIDType(), nullable=False),\n    sa.Column('name', sa.String(length=255), nullable=False),\n    sa.Column('roadType', sa.String(length=100), nullable=False),\n    sa.Column('speedLimit', sa.Integer(), nullable=False),\n    sa.Column('latitude', sa.Float(), nullable=False),\n    sa.Column('longitude', sa.Float(), nullable=False),",
+        "detail": "alembic.versions.408ff5ca4b2b_added_road_api_code",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.408ff5ca4b2b_added_road_api_code",
+        "description": "alembic.versions.408ff5ca4b2b_added_road_api_code",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_table('roads')\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.408ff5ca4b2b_added_road_api_code",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.4951d9a0fb5c_added_radius_to_road_model",
+        "description": "alembic.versions.4951d9a0fb5c_added_radius_to_road_model",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('roads', sa.Column('radius', sa.Float(), nullable=False))\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_column('roads', 'radius')\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.4951d9a0fb5c_added_radius_to_road_model",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.4951d9a0fb5c_added_radius_to_road_model",
+        "description": "alembic.versions.4951d9a0fb5c_added_radius_to_road_model",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_column('roads', 'radius')\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.4951d9a0fb5c_added_radius_to_road_model",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.50e7147a2977_added_date_field_into_alcohol_",
+        "description": "alembic.versions.50e7147a2977_added_date_field_into_alcohol_",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('alcohol_questionnaire', sa.Column('date', sa.DateTime(), nullable=True))\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_column('alcohol_questionnaire', 'date')\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.50e7147a2977_added_date_field_into_alcohol_",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.50e7147a2977_added_date_field_into_alcohol_",
+        "description": "alembic.versions.50e7147a2977_added_date_field_into_alcohol_",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_column('alcohol_questionnaire', 'date')\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.50e7147a2977_added_date_field_into_alcohol_",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
         "importPath": "alembic.versions.5345e3d93918_added_alcohol",
         "description": "alembic.versions.5345e3d93918_added_alcohol",
         "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
@@ -4067,6 +4581,24 @@
         "description": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
         "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_table('causes')\n    op.drop_table('unsafe_behaviour')\n    op.drop_table('raw_sensor_data')\n    op.drop_table('ai_model_inputs')\n    op.drop_table('trip')\n    op.drop_table('nlg_report')\n    op.drop_table('driving_tips')\n    op.drop_table('location')",
         "detail": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.9fee028b17c3_created_mapper_from_driverprofile_to_",
+        "description": "alembic.versions.9fee028b17c3_created_mapper_from_driverprofile_to_",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.9fee028b17c3_created_mapper_from_driverprofile_to_",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.9fee028b17c3_created_mapper_from_driverprofile_to_",
+        "description": "alembic.versions.9fee028b17c3_created_mapper_from_driverprofile_to_",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.9fee028b17c3_created_mapper_from_driverprofile_to_",
         "documentation": {}
     },
     {
@@ -4372,6 +4904,15 @@
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
         "peekOfCode": "def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create the driver profile using the schema's driver_profile_id, email, and sync\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        return DriverProfileResponse(\n            driverProfileId=profile_in.driverProfileId,\n            email=profile_in.email,\n            sync=profile_in.sync\n        )",
+        "detail": "safedrive.api.v1.endpoints.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "batch_create_driver_profiles",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.driver_profile",
+        "description": "safedrive.api.v1.endpoints.driver_profile",
+        "peekOfCode": "def batch_create_driver_profiles(\n    *,\n    db: Session = Depends(get_db),\n    profiles_in: List[DriverProfileCreate]\n) -> List[DriverProfileResponse]:\n    try:\n        # Use bulk creation for all profiles at once\n        new_profiles = driver_profile_crud.batch_create(db=db, objs_in=profiles_in)\n        if not new_profiles:\n            raise HTTPException(",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -4790,6 +5331,78 @@
         "documentation": {}
     },
     {
+        "label": "create_road",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.road",
+        "description": "safedrive.api.v1.endpoints.road",
+        "peekOfCode": "def create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadResponse:\n    try:\n        new_road = crud_road.create(db=db, obj_in=road_in)\n        logger.info(f\"Created Road with ID: {new_road.id}\")\n        return RoadResponse.from_orm(new_road)\n    except Exception as e:\n        logger.error(f\"Error creating Road: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating road\")\n@router.get(\"/roads/{road_id}\", response_model=RoadResponse)\ndef get_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:",
+        "detail": "safedrive.api.v1.endpoints.road",
+        "documentation": {}
+    },
+    {
+        "label": "get_road",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.road",
+        "description": "safedrive.api.v1.endpoints.road",
+        "peekOfCode": "def get_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")\n    return RoadResponse.from_orm(road)\n@router.get(\"/roads/\", response_model=List[RoadResponse])\ndef get_all_roads(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[RoadResponse]:\n    roads = crud_road.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(roads)} Roads.\")",
+        "detail": "safedrive.api.v1.endpoints.road",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_roads",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.road",
+        "description": "safedrive.api.v1.endpoints.road",
+        "peekOfCode": "def get_all_roads(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[RoadResponse]:\n    roads = crud_road.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(roads)} Roads.\")\n    return [RoadResponse.from_orm(road) for road in roads]\n@router.put(\"/roads/{road_id}\", response_model=RoadResponse)\ndef update_road(road_id: UUID, *, db: Session = Depends(get_db), road_in: RoadUpdate) -> RoadResponse:\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")",
+        "detail": "safedrive.api.v1.endpoints.road",
+        "documentation": {}
+    },
+    {
+        "label": "update_road",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.road",
+        "description": "safedrive.api.v1.endpoints.road",
+        "peekOfCode": "def update_road(road_id: UUID, *, db: Session = Depends(get_db), road_in: RoadUpdate) -> RoadResponse:\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")\n    updated_road = crud_road.update(db=db, db_obj=road, obj_in=road_in)\n    logger.info(f\"Updated Road with ID: {road_id}\")\n    return RoadResponse.from_orm(updated_road)\n@router.delete(\"/roads/{road_id}\", response_model=RoadResponse)\ndef delete_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:",
+        "detail": "safedrive.api.v1.endpoints.road",
+        "documentation": {}
+    },
+    {
+        "label": "delete_road",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.road",
+        "description": "safedrive.api.v1.endpoints.road",
+        "peekOfCode": "def delete_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")\n    deleted_road = crud_road.delete(db=db, id=road_id)\n    logger.info(f\"Deleted Road with ID: {road_id}\")\n    return RoadResponse.from_orm(deleted_road)\n@router.post(\"/roads/batch_create\", response_model=List[RoadResponse])\ndef batch_create_roads(",
+        "detail": "safedrive.api.v1.endpoints.road",
+        "documentation": {}
+    },
+    {
+        "label": "batch_create_roads",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.road",
+        "description": "safedrive.api.v1.endpoints.road",
+        "peekOfCode": "def batch_create_roads(\n        *,\n        db: Session = Depends(get_db),\n        roads_in: List[RoadCreate]\n    ) -> List[RoadResponse]:\n    try:\n        new_roads = road_crud.batch_create(db=db, objs_in=roads_in)\n        if not new_roads:\n            raise HTTPException(\n                status_code=400,",
+        "detail": "safedrive.api.v1.endpoints.road",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "safedrive.api.v1.endpoints.road",
+        "description": "safedrive.api.v1.endpoints.road",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/roads/\", response_model=RoadResponse)\ndef create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadResponse:\n    try:\n        new_road = crud_road.create(db=db, obj_in=road_in)\n        logger.info(f\"Created Road with ID: {new_road.id}\")\n        return RoadResponse.from_orm(new_road)\n    except Exception as e:\n        logger.error(f\"Error creating Road: {str(e)}\")",
+        "detail": "safedrive.api.v1.endpoints.road",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "safedrive.api.v1.endpoints.road",
+        "description": "safedrive.api.v1.endpoints.road",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/roads/\", response_model=RoadResponse)\ndef create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadResponse:\n    try:\n        new_road = crud_road.create(db=db, obj_in=road_in)\n        logger.info(f\"Created Road with ID: {new_road.id}\")\n        return RoadResponse.from_orm(new_road)\n    except Exception as e:\n        logger.error(f\"Error creating Road: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating road\")",
+        "detail": "safedrive.api.v1.endpoints.road",
+        "documentation": {}
+    },
+    {
         "label": "create_trip",
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.trip",
@@ -4848,7 +5461,16 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.trip",
         "description": "safedrive.api.v1.endpoints.trip",
-        "peekOfCode": "def batch_delete_trips(ids: List[UUID], db: Session = Depends(get_db)):\n    try:\n        trip_crud.batch_delete(db=db, ids=ids)\n        return {\"message\": f\"{len(ids)} Trip records deleted.\"}\n    except Exception as e:\n        logger.error(f\"Error in batch delete Trip: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Batch deletion failed.\")",
+        "peekOfCode": "def batch_delete_trips(ids: List[UUID], db: Session = Depends(get_db)):\n    try:\n        trip_crud.batch_delete(db=db, ids=ids)\n        return {\"message\": f\"{len(ids)} Trip records deleted.\"}\n    except Exception as e:\n        logger.error(f\"Error in batch delete Trip: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Batch deletion failed.\")\n@router.post(\"/trips/batch_create\", response_model=List[TripResponse])\ndef batch_create_trips(\n        *,",
+        "detail": "safedrive.api.v1.endpoints.trip",
+        "documentation": {}
+    },
+    {
+        "label": "batch_create_trips",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.trip",
+        "description": "safedrive.api.v1.endpoints.trip",
+        "peekOfCode": "def batch_create_trips(\n        *,\n        db: Session = Depends(get_db),\n        trips_in: List[TripCreate]\n    ) -> List[TripResponse]:\n    try:\n        new_trips = trip_crud.batch_create(db=db, objs_in=trips_in)\n        if not new_trips:\n            raise HTTPException(\n                status_code=400,",
         "detail": "safedrive.api.v1.endpoints.trip",
         "documentation": {}
     },
@@ -5213,6 +5835,33 @@
         "documentation": {}
     },
     {
+        "label": "CRUDRoad",
+        "kind": 6,
+        "importPath": "safedrive.crud.road",
+        "description": "safedrive.crud.road",
+        "peekOfCode": "class CRUDRoad:\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: RoadCreate) -> Road:\n        try:\n            obj_data = obj_in.dict()\n            # Convert UUID strings to UUID objects if necessary\n            for uuid_field in ['id', 'driverProfileId']:\n                if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):\n                    obj_data[uuid_field] = UUID(obj_data[uuid_field])",
+        "detail": "safedrive.crud.road",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "safedrive.crud.road",
+        "description": "safedrive.crud.road",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass CRUDRoad:\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: RoadCreate) -> Road:\n        try:\n            obj_data = obj_in.dict()\n            # Convert UUID strings to UUID objects if necessary\n            for uuid_field in ['id', 'driverProfileId']:\n                if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):",
+        "detail": "safedrive.crud.road",
+        "documentation": {}
+    },
+    {
+        "label": "crud_road",
+        "kind": 5,
+        "importPath": "safedrive.crud.road",
+        "description": "safedrive.crud.road",
+        "peekOfCode": "crud_road = CRUDRoad(Road)",
+        "detail": "safedrive.crud.road",
+        "documentation": {}
+    },
+    {
         "label": "CRUDTrip",
         "kind": 6,
         "importPath": "safedrive.crud.trip",
@@ -5519,11 +6168,20 @@
         "documentation": {}
     },
     {
+        "label": "Road",
+        "kind": 6,
+        "importPath": "safedrive.models.road",
+        "description": "safedrive.models.road",
+        "peekOfCode": "class Road(Base):\n    __tablename__ = \"roads\"\n    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)\n    name = Column(String(255), nullable=False)\n    roadType = Column(String(100), nullable=False)\n    speedLimit = Column(Integer, nullable=False)\n    latitude = Column(Float, nullable=False)\n    longitude = Column(Float, nullable=False)\n    radius=Column(Float, nullable=False)",
+        "detail": "safedrive.models.road",
+        "documentation": {}
+    },
+    {
         "label": "Trip",
         "kind": 6,
         "importPath": "safedrive.models.trip",
         "description": "safedrive.models.trip",
-        "peekOfCode": "class Trip(Base):\n    __tablename__ = \"trip\"\n    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)\n    start_date = Column(DateTime)\n    end_date = Column(DateTime, nullable=True)\n    start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger\n    end_time = Column(BigInteger, nullable=True) \n    synced = Column(Boolean, nullable=False)\n    # Relationships",
+        "peekOfCode": "class Trip(Base):\n    __tablename__ = \"trip\"\n    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)\n    start_date = Column(DateTime)\n    end_date = Column(DateTime, nullable=True)\n    start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger\n    end_time = Column(BigInteger, nullable=True) \n    sync = Column(Boolean, nullable=False)\n    # Relationships",
         "detail": "safedrive.models.trip",
         "documentation": {}
     },
@@ -5820,7 +6478,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.nlg_report",
         "description": "safedrive.schemas.nlg_report",
-        "peekOfCode": "class NLGReportUpdate(BaseModel):\n    \"\"\"\n    Schema for updating an existing NLG Report.\n    Attributes:\n    - **report_text**: Optional update to the report content.\n    - **synced**: Optional update to sync status.\n    \"\"\"\n    report_text: Optional[str] = None\n    synced: Optional[bool] = None\n    class Config:",
+        "peekOfCode": "class NLGReportUpdate(BaseModel):\n    \"\"\"\n    Schema for updating an existing NLG Report.\n    Attributes:\n    - **report_text**: Optional update to the report content.\n    - **synced**: Optional update to sync status.\n    \"\"\"\n    report_text: Optional[str] = None\n    sync: Optional[bool] = None\n    class Config:",
         "detail": "safedrive.schemas.nlg_report",
         "documentation": {}
     },
@@ -5867,6 +6525,42 @@
         "description": "safedrive.schemas.raw_sensor_data",
         "peekOfCode": "class RawSensorDataResponse(RawSensorDataBase):\n    \"\"\"\n    Schema for the response format of a Raw Sensor Data record.\n    \"\"\"\n    pass",
         "detail": "safedrive.schemas.raw_sensor_data",
+        "documentation": {}
+    },
+    {
+        "label": "RoadBase",
+        "kind": 6,
+        "importPath": "safedrive.schemas.road",
+        "description": "safedrive.schemas.road",
+        "peekOfCode": "class RoadBase(BaseModel):\n    \"\"\"\n    Base schema for Road.\n    Attributes:\n    - **id**: Unique identifier for the road.\n    - **driverProfileId**: Identifier for the driver profile.\n    - **name**: The road's name.\n    - **roadType**: The type of the road (e.g., residential, primary).\n    - **speedLimit**: Speed limit of the road.\n    - **latitude**: Geographic latitude.",
+        "detail": "safedrive.schemas.road",
+        "documentation": {}
+    },
+    {
+        "label": "RoadCreate",
+        "kind": 6,
+        "importPath": "safedrive.schemas.road",
+        "description": "safedrive.schemas.road",
+        "peekOfCode": "class RoadCreate(RoadBase):\n    \"\"\"\n    Schema for creating a new Road entry.\n    \"\"\"\n    pass  # Inherits all fields from RoadBase; adjust if needed.\nclass RoadUpdate(BaseModel):\n    \"\"\"\n    Schema for updating an existing Road entry.\n    All fields are optional for partial updates.\n    \"\"\"",
+        "detail": "safedrive.schemas.road",
+        "documentation": {}
+    },
+    {
+        "label": "RoadUpdate",
+        "kind": 6,
+        "importPath": "safedrive.schemas.road",
+        "description": "safedrive.schemas.road",
+        "peekOfCode": "class RoadUpdate(BaseModel):\n    \"\"\"\n    Schema for updating an existing Road entry.\n    All fields are optional for partial updates.\n    \"\"\"\n    name: Optional[str] = None\n    roadType: Optional[str] = None\n    speedLimit: Optional[int] = None\n    latitude: Optional[float] = None\n    longitude: Optional[float] = None",
+        "detail": "safedrive.schemas.road",
+        "documentation": {}
+    },
+    {
+        "label": "RoadResponse",
+        "kind": 6,
+        "importPath": "safedrive.schemas.road",
+        "description": "safedrive.schemas.road",
+        "peekOfCode": "class RoadResponse(RoadBase):\n    \"\"\"\n    Schema for Road response format, inherits from RoadBase.\n    \"\"\"\n    pass",
+        "detail": "safedrive.schemas.road",
         "documentation": {}
     },
     {
@@ -6198,7 +6892,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "ENVIRONMENT = os.getenv(\"ENVIRONMENT\", \"development\")\nif ENVIRONMENT == \"development\":\n    dotenv.load_dotenv()\n# Create FastAPI app\napp = FastAPI(\n    title=\"Safe Drive API\",\n    description=\"This is an API powering Safe Drive Africa, a PhD research app\",\n    version=\"1.0.0\"\n)\n# Example usage of environment variables",
+        "peekOfCode": "ENVIRONMENT = os.getenv(\"ENVIRONMENT\", \"development\")\nif ENVIRONMENT == \"development\":\n    dotenv.load_dotenv()\n# Create FastAPI app\napp = FastAPI(\n    title=\"Safe Drive API\",\n    description=\"This is an API powering Safe Drive Africa, a PhD research app\",\n    version=\"1.0.0\",\n    docs_url=\"/docs\",      # Ensure this is not set to None\n    redoc_url=\"/redoc\"",
         "detail": "main",
         "documentation": {}
     },
@@ -6207,7 +6901,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "app = FastAPI(\n    title=\"Safe Drive API\",\n    description=\"This is an API powering Safe Drive Africa, a PhD research app\",\n    version=\"1.0.0\"\n)\n# Example usage of environment variables\nDATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router",
+        "peekOfCode": "app = FastAPI(\n    title=\"Safe Drive API\",\n    description=\"This is an API powering Safe Drive Africa, a PhD research app\",\n    version=\"1.0.0\",\n    docs_url=\"/docs\",      # Ensure this is not set to None\n    redoc_url=\"/redoc\"\n)\n# Example usage of environment variables\nDATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")",
         "detail": "main",
         "documentation": {}
     },
@@ -6252,7 +6946,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "ALEMBIC_CONFIG_PATH = \"./alembic.ini\"\n# for route in app.routes:\n#     print(route.path, route.name)\n# @app.on_event(\"startup\")\n# async def on_startup():\n#     # Run Alembic migrations programmatically\n#     alembic_cfg = Config(ALEMBIC_CONFIG_PATH)\n#     alembic_cfg.set_main_option(\"sqlalchemy.url\", os.getenv(\"DATABASE_URL\"))\n#     print(\"Running Alembic migrations...\")\n#     command.upgrade(alembic_cfg, \"head\")  # Upgrade database schema to latest",
+        "peekOfCode": "ALEMBIC_CONFIG_PATH = \"./alembic.ini\"\n# for route in app.routes:\n#     print(route.path, route.name)\n@app.on_event(\"startup\")\nasync def on_startup():\n    # Run Alembic migrations programmatically\n    alembic_cfg = Config(ALEMBIC_CONFIG_PATH)\n    alembic_cfg.set_main_option(\"sqlalchemy.url\", os.getenv(\"DATABASE_URL\"))\n    print(\"Running Alembic migrations...\")\n    command.upgrade(alembic_cfg, \"head\")  # Upgrade database schema to latest",
         "detail": "main",
         "documentation": {}
     },

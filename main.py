@@ -19,7 +19,9 @@ if ENVIRONMENT == "development":
 app = FastAPI(
     title="Safe Drive API",
     description="This is an API powering Safe Drive Africa, a PhD research app",
-    version="1.0.0"
+    version="1.0.0",
+    docs_url="/docs",      # Ensure this is not set to None
+    redoc_url="/redoc"
 )
 
 # Example usage of environment variables
@@ -53,18 +55,22 @@ ALEMBIC_CONFIG_PATH = "./alembic.ini"
 #     print(route.path, route.name)
 
 
-# @app.on_event("startup")
-# async def on_startup():
-#     # Run Alembic migrations programmatically
-#     alembic_cfg = Config(ALEMBIC_CONFIG_PATH)
-#     alembic_cfg.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
+@app.on_event("startup")
+async def on_startup():
+    # Run Alembic migrations programmatically
+    alembic_cfg = Config(ALEMBIC_CONFIG_PATH)
+    alembic_cfg.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
  
-#     print("Running Alembic migrations...")
-#     command.upgrade(alembic_cfg, "head")  # Upgrade database schema to latest
-#     print("Migrations completed successfully.")
+    print("Running Alembic migrations...")
+    command.upgrade(alembic_cfg, "head")  # Upgrade database schema to latest
+    print("Migrations completed successfully.")
 
 # Run the app using uvicorn when executed directly
 if __name__ == "__main__":
+    @app.get("/")
+    def read_root():
+        return {"message": "Welcome to Safe Drive Africa API!"}
+
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',

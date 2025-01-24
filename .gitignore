@@ -3,3 +3,4 @@ venv/
 env.txt
 appNewUploadWorker.kt
 AppUploadOldCode.kt
+fastapi.service
