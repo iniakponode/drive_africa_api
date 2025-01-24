@@ -42,7 +42,7 @@ def create_trip(*, db: Session = Depends(get_db), trip_in: TripCreate) -> TripRe
             end_date=new_trip.end_date,
             start_time=new_trip.start_time,
             end_time=new_trip.end_time,
-            synced=new_trip.synced
+            sync=new_trip.sync
         )
     except HTTPException as http_exc:
         raise http_exc
