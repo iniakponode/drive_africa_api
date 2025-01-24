@@ -20,7 +20,7 @@ app = FastAPI(
     title="Safe Drive API",
     description="This is an API powering Safe Drive Africa, a PhD research app",
     version="1.0.0",
-    docs_url="/docs",      # Ensure this is not set to None
+    # docs_url="/docs",      # Ensure this is not set to None
     # redoc_url="/redoc"
 )
 

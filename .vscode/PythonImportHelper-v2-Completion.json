@@ -6892,7 +6892,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "ENVIRONMENT = os.getenv(\"ENVIRONMENT\", \"development\")\nif ENVIRONMENT == \"development\":\n    dotenv.load_dotenv()\n# Create FastAPI app\napp = FastAPI(\n    title=\"Safe Drive API\",\n    description=\"This is an API powering Safe Drive Africa, a PhD research app\",\n    version=\"1.0.0\",\n    docs_url=\"/docs\",      # Ensure this is not set to None\n    # redoc_url=\"/redoc\"",
+        "peekOfCode": "ENVIRONMENT = os.getenv(\"ENVIRONMENT\", \"development\")\nif ENVIRONMENT == \"development\":\n    dotenv.load_dotenv()\n# Create FastAPI app\napp = FastAPI(\n    title=\"Safe Drive API\",\n    description=\"This is an API powering Safe Drive Africa, a PhD research app\",\n    version=\"1.0.0\",\n    # docs_url=\"/docs\",      # Ensure this is not set to None\n    # redoc_url=\"/redoc\"",
         "detail": "main",
         "documentation": {}
     },
@@ -6901,7 +6901,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "app = FastAPI(\n    title=\"Safe Drive API\",\n    description=\"This is an API powering Safe Drive Africa, a PhD research app\",\n    version=\"1.0.0\",\n    docs_url=\"/docs\",      # Ensure this is not set to None\n    # redoc_url=\"/redoc\"\n)\n# Example usage of environment variables\nDATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")",
+        "peekOfCode": "app = FastAPI(\n    title=\"Safe Drive API\",\n    description=\"This is an API powering Safe Drive Africa, a PhD research app\",\n    version=\"1.0.0\",\n    # docs_url=\"/docs\",      # Ensure this is not set to None\n    # redoc_url=\"/redoc\"\n)\n# Example usage of environment variables\nDATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")",
         "detail": "main",
         "documentation": {}
     },
