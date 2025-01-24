@@ -21,7 +21,7 @@ app = FastAPI(
     description="This is an API powering Safe Drive Africa, a PhD research app",
     version="1.0.0",
     docs_url="/docs",      # Ensure this is not set to None
-    redoc_url="/redoc"
+    # redoc_url="/redoc"
 )
 
 # Example usage of environment variables
