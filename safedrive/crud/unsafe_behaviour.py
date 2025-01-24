@@ -1,3 +1,5 @@
+from fastapi import HTTPException
+from pymysql import IntegrityError
 from sqlalchemy.orm import Session
 from uuid import UUID
 from typing import List, Optional
@@ -21,52 +23,54 @@ class CRUDUnsafeBehaviour:
         """
         self.model = model
         
-    def batch_create(self, db: Session, data_in: List[UnsafeBehaviourCreate]) -> List[UnsafeBehaviour]:
-        try:
-            db_objs = []
-            skipped_count = 0
+    def batch_create(self, db: Session, data_in: List["UnsafeBehaviourCreate"]) -> List["UnsafeBehaviour"]:
+        db_objs = []
+        skipped_count = 0
 
-            for data in data_in:
-                obj_data = data.model_dump()
+        for data in data_in:
+            obj_data = data.model_dump()
 
-                # Convert string UUID fields to actual UUID objects
-                for uuid_field in ['id', 'trip_id', 'location_id', 'driver_profile_id']:
-                    if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
-                        obj_data[uuid_field] = UUID(obj_data[uuid_field])
+            # Convert string UUID fields
+            for uuid_field in ['id', 'trip_id', 'location_id', 'driver_profile_id']:
+                if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
+                    obj_data[uuid_field] = UUID(obj_data[uuid_field])
 
-                # If an ID is provided, check for duplicates
-                record_id = obj_data.get('id')
-                if record_id is not None:
-                    existing_record = db.query(self.model).filter_by(id=record_id).first()
-                    if existing_record:
-                        logger.info(f"Skipping duplicate UnsafeBehaviour with ID {record_id}")
-                        skipped_count += 1
-                        continue
+            # Optional: skip duplicates if ID is provided
+            record_id = obj_data.get('id')
+            if record_id:
+                existing_record = db.query(self.model).filter_by(id=record_id).first()
+                if existing_record:
+                    logger.info(f"Skipping duplicate UnsafeBehaviour with ID {record_id}")
+                    skipped_count += 1
+                    continue
 
+            try:
                 db_obj = self.model(**obj_data)
                 db.add(db_obj)
+                db.flush()
                 db_objs.append(db_obj)
+            except IntegrityError as e:
+                db.rollback()
+                skipped_count += 1
+                logger.warning(f"Skipping UnsafeBehaviour due to IntegrityError: {str(e)}")
+            except Exception as e:
+                db.rollback()
+                skipped_count += 1
+                logger.error(f"Unexpected error inserting UnsafeBehaviour: {str(e)}")
 
-            db.flush()
-            db.commit()
+        db.commit()
 
-            for obj in db_objs:
-                db.refresh(obj)
+        for obj in db_objs:
+            db.refresh(obj)
 
-            logger.info(f"Batch inserted {len(db_objs)} UnsafeBehaviour records. Skipped {skipped_count} duplicates.")
-            return db_objs
-
-        except IntegrityError as e:
-            db.rollback()
-            logger.error(f"IntegrityError during batch insertion of UnsafeBehaviour: {str(e)}")
-            raise HTTPException(status_code=400, detail="Database integrity error occurred.")
-        except Exception as e:
-            db.rollback()
-            logger.error(f"Error during batch insertion of UnsafeBehaviour: {str(e)}")
-            raise e
-
-
+        inserted_count = len(db_objs)
+        logger.info(f"Batch inserted {inserted_count} UnsafeBehaviour records. Skipped {skipped_count} duplicates.")
+        return db_objs
+    
     def batch_delete(self, db: Session, ids: List[int]) -> None:
+        """
+        All-or-nothing batch delete. 
+        """
         try:
             db.query(self.model).filter(self.model.id.in_(ids)).delete(synchronize_session=False)
             db.commit()

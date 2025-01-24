@@ -1,3 +1,4 @@
+from pymysql import IntegrityError
 from sqlalchemy.orm import Session
 from uuid import UUID
 from typing import List, Optional
@@ -130,46 +131,52 @@ class CRUDLocation:
             db.rollback()
             logger.exception("Error deleting location from database.")
             raise e
-    def batch_create(self, db: Session, data_in: List[LocationCreate]) -> List[Location]:
+
+    def batch_create(self, db: Session, data_in: List["LocationCreate"]) -> List["Location"]:
         """
-        Batch create Location records in the database.
-
-        :param db: The database session.
-        :param data_in: List of LocationCreate schema instances.
-        :return: List of created Location records.
+        Batch create Location records, skipping any that fail constraints.
         """
-        try:
-            db_objs = []
-            for data in data_in:
-                obj_data = data.model_dump()
+        db_objs = []
+        skipped_count = 0
 
-                # Convert UUID fields to string if necessary
-                if 'id' in obj_data and isinstance(obj_data['id'], str):
-                    obj_data['id'] = UUID(obj_data['id'])  # Convert to 36-character string format
+        for data in data_in:
+            obj_data = data.model_dump()
 
+            # Convert string UUID to UUID object if needed
+            if 'id' in obj_data and isinstance(obj_data['id'], str):
+                obj_data['id'] = UUID(obj_data['id'])
+
+            try:
                 db_obj = self.model(**obj_data)
+                db.add(db_obj)
+                db.flush()  # Insert now
                 db_objs.append(db_obj)
+            except IntegrityError as e:
+                db.rollback()
+                skipped_count += 1
+                logger.warning(f"Skipping Location due to IntegrityError: {str(e)}")
+            except Exception as e:
+                db.rollback()
+                skipped_count += 1
+                logger.error(f"Unexpected error inserting Location: {str(e)}")
 
-            db.add_all(db_objs)
-            db.flush()
-            db.commit()
+        db.commit()
 
-            # Refresh each object to load the new state from the database
-            for db_obj in db_objs:
-                db.refresh(db_obj)
+        for db_obj in db_objs:
+            db.refresh(db_obj)
 
-            logger.info(f"Batch created {len(db_objs)} Location records.")
-            return db_objs
-
-        except Exception as e:
-            db.rollback()
-            logger.error(f"Error in batch create Location: {str(e)}")
-            raise e
+        logger.info(f"Batch created {len(db_objs)} Location records. Skipped {skipped_count}.")
+        return db_objs
 
 
-    def batch_delete(self, db: Session, ids: List[UUID]):
+    def batch_delete(self, db: Session, ids: List[UUID]) -> None:
+        """
+        All-or-nothing batch delete. If you wanted partial success, you'd loop over each ID.
+        """
         try:
-            deleted_count = db.query(self.model).filter(self.model.id.in_([id.bytes for id in ids])).delete(synchronize_session=False)
+            deleted_count = db.query(self.model).filter(
+                self.model.id.in_([id_ for id_ in ids])
+            ).delete(synchronize_session=False)
             db.commit()
             logger.info(f"Batch deleted {deleted_count} Location records.")
         except Exception as e:

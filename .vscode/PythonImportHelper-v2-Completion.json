@@ -2339,6 +2339,30 @@
         "documentation": {}
     },
     {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -3421,6 +3445,38 @@
     },
     {
         "label": "OperationalError",
+        "importPath": "pymysql",
+        "description": "pymysql",
+        "isExtraImport": true,
+        "detail": "pymysql",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "pymysql",
+        "description": "pymysql",
+        "isExtraImport": true,
+        "detail": "pymysql",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "pymysql",
+        "description": "pymysql",
+        "isExtraImport": true,
+        "detail": "pymysql",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
+        "importPath": "pymysql",
+        "description": "pymysql",
+        "isExtraImport": true,
+        "detail": "pymysql",
+        "documentation": {}
+    },
+    {
+        "label": "IntegrityError",
         "importPath": "pymysql",
         "description": "pymysql",
         "isExtraImport": true,

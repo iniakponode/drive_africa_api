@@ -24,50 +24,68 @@ class CRUDModelInputs:
         """
         self.model = model
     
-    def batch_create(self, db: Session, data_in: List[AIModelInputCreate]) -> List[str]:
-        try:
-            db_objs = []
-            skipped_count = 0
+    def batch_create(self, db: Session, data_in: List["AIModelInputCreate"]) -> List[str]:
+        """
+        Insert multiple AIModelInput records, skipping those that fail constraints.
+        
+        :param db: SQLAlchemy Session object.
+        :param data_in: A list of `AIModelInputCreate` objects to insert.
+        :return: A list of string IDs that were successfully inserted.
+        """
+        db_objs = []
+        skipped_count = 0
 
-            for data in data_in:
-                fields = data.model_dump()
+        for data in data_in:
+            fields = data.model_dump()
 
-                if isinstance(fields.get('id'), str):
-                    fields['id'] = UUID(fields['id'])
-                if isinstance(fields.get('trip_id'), str):
-                    fields['trip_id'] = UUID(fields['trip_id'])
-                if isinstance(fields.get('driverProfileId'), str):
-                    fields['driverProfileId'] = UUID(fields['driverProfileId'])
+            # Convert string UUIDs to actual UUID objects if needed
+            if isinstance(fields.get('id'), str):
+                fields['id'] = UUID(fields['id'])
+            if isinstance(fields.get('trip_id'), str):
+                fields['trip_id'] = UUID(fields['trip_id'])
+            if isinstance(fields.get('driverProfileId'), str):
+                fields['driverProfileId'] = UUID(fields['driverProfileId'])
 
-                record_id = fields.get('id')
-                if record_id is not None:
-                    existing_record = db.query(self.model).filter_by(id=record_id).first()
-                    if existing_record:
-                        logger.info(f"Skipping duplicate AIModelInput with ID {record_id}")
-                        skipped_count += 1
-                        continue
+            record_id = fields.get('id')
+            if record_id is not None:
+                existing_record = db.query(self.model).filter_by(id=record_id).first()
+                if existing_record:
+                    logger.info(f"Skipping duplicate AIModelInput with ID {record_id}")
+                    skipped_count += 1
+                    continue
 
+            # Attempt to create and flush each record individually
+            try:
                 db_obj = self.model(**fields)
                 db.add(db_obj)
+                db.flush()  # flush so we can catch any IntegrityErrors right here
                 db_objs.append(db_obj)
 
-            db.flush()
-            db.commit()
+            except IntegrityError as e:
+                db.rollback()  # rollback this one record
+                logger.warning(
+                    f"Skipping AIModelInput due to IntegrityError: {str(e)}. "
+                    f"Fields: {fields}"
+                )
+                skipped_count += 1
+                continue  # move on to the next record
 
-            for obj in db_objs:
-                db.refresh(obj)
+            except Exception as e:
+                # If something else goes wrong, decide if you want to skip or raise
+                db.rollback()
+                logger.error(f"Unexpected error inserting AIModelInput: {str(e)}. Skipping this record.")
+                skipped_count += 1
+                continue
 
-            logger.info(f"Batch inserted {len(db_objs)} AIModelInput records. Skipped {skipped_count} duplicates.")
-            return [str(obj.id) for obj in db_objs]
+        # Commit all successfully flushed objects
+        db.commit()
 
-        except IntegrityError as e:
-            db.rollback()
-            logger.error(f"IntegrityError during batch insertion of AIModelInput: {str(e)}")
-            raise HTTPException(status_code=400, detail="Database integrity error occurred.")
-        except Exception as e:
-            db.rollback()
-            logger.error(f"Error during batch insertion of AIModelInput: {str(e)}")
-            raise HTTPException(status_code=500, detail="An unexpected error occurred.")
+        # Refresh each to get updated data from DB (like auto-generated timestamps)
+        for obj in db_objs:
+            db.refresh(obj)
+
+        logger.info(f"Batch inserted {len(db_objs)} records. Skipped {skipped_count} records.")
+        return [str(obj.id) for obj in db_objs]
 
 
 

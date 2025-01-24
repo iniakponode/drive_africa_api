@@ -1,3 +1,5 @@
+from fastapi import HTTPException
+from pymysql import IntegrityError
 from sqlalchemy.orm import Session
 from uuid import UUID
 from typing import List, Optional
@@ -30,36 +32,40 @@ class CRUDRoad:
             raise e
 
 # Assuming `self.model` is set to the Road SQLAlchemy model
-    def batch_create(self, db: Session, objs_in: List[RoadCreate]) -> List[Road]:
-        try:
-            db_objs = []
+    def batch_create(self, db: Session, objs_in: List["RoadCreate"]) -> List["Road"]:
+        db_objs = []
+        skipped_count = 0
 
-            for obj_in in objs_in:
-                obj_data = obj_in.model_dump()
+        for obj_in in objs_in:
+            obj_data = obj_in.model_dump()
 
-                # Convert UUID fields if needed
-                if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
-                    obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
+            # Convert UUID fields if needed
+            if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
+                obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
 
-                # Create a new Road instance
+            try:
                 db_obj = self.model(**obj_data)
+                db.add(db_obj)
+                db.flush()
                 db_objs.append(db_obj)
+            except IntegrityError as e:
+                db.rollback()
+                skipped_count += 1
+                logger.warning(f"Skipping Road record due to IntegrityError: {str(e)}")
+            except Exception as e:
+                db.rollback()
+                skipped_count += 1
+                logger.error(f"Unexpected error inserting Road record: {str(e)}")
 
-            db.add_all(db_objs)
-            db.commit()
-            db.flush()
+        db.commit()
 
-            for db_obj in db_objs:
-                db.refresh(db_obj)
-                # Optionally log creation: logger.info(f"Created Road with ID: {db_obj.id}")
+        for db_obj in db_objs:
+            db.refresh(db_obj)
+            # Optionally log creation: logger.info(f"Created Road with ID: {db_obj.id}")
 
-            return db_objs
-
-        except Exception as e:
-            db.rollback()
-            # Log error as appropriate
-            raise HTTPException(status_code=500, detail="An unexpected error occurred during batch creation.")
-
+        logger.info(f"Batch inserted {len(db_objs)} Road records. Skipped {skipped_count}.")
+        return db_objs
+    
     def get(self, db: Session, id: UUID) -> Optional[Road]:
         road = db.query(self.model).filter(self.model.id == id).first()
         if road:

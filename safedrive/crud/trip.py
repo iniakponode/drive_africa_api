@@ -1,3 +1,5 @@
+from fastapi import HTTPException
+from pymysql import IntegrityError
 from sqlalchemy.orm import Session
 from uuid import UUID
 from typing import List, Optional
@@ -21,19 +23,44 @@ class CRUDTrip:
         """
         self.model = model
         
-    def batch_create(self, db: Session, data_in: List[TripCreate]) -> List[Trip]:
-        try:
-            db_objs = [self.model(**data.model_dump()) for data in data_in]
-            db.bulk_save_objects(db_objs)
+    def batch_create(self, db: Session, objs_in: List["TripCreate"]) -> List["Trip"]:
+            db_objs = []
+            skipped_count = 0
+
+            for obj_in in objs_in:
+                obj_data = obj_in.model_dump()
+
+                # Convert UUID fields if needed
+                if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
+                    obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
+
+                try:
+                    db_obj = self.model(**obj_data)
+                    db.add(db_obj)
+                    db.flush()
+                    db_objs.append(db_obj)
+                except IntegrityError as e:
+                    db.rollback()
+                    skipped_count += 1
+                    logger.warning(f"Skipping Trip record due to IntegrityError: {str(e)}")
+                except Exception as e:
+                    db.rollback()
+                    skipped_count += 1
+                    logger.error(f"Unexpected error inserting Trip record: {str(e)}")
+
             db.commit()
-            logger.info(f"Batch inserted {len(db_objs)} Trip records.")
+
+            for db_obj in db_objs:
+                db.refresh(db_obj)
+                # Optionally log: logger.info(f"Created Trip with ID: {db_obj.id}")
+
+            logger.info(f"Batch inserted {len(db_objs)} Trip records. Skipped {skipped_count}.")
             return db_objs
-        except Exception as e:
-            db.rollback()
-            logger.error(f"Error during batch insertion of Trip: {str(e)}")
-            raise e
 
     def batch_delete(self, db: Session, ids: List[int]) -> None:
+        """
+        All-or-nothing batch delete. 
+        """
         try:
             db.query(self.model).filter(self.model.id.in_(ids)).delete(synchronize_session=False)
             db.commit()
