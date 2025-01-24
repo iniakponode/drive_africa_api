@@ -6946,7 +6946,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "ALEMBIC_CONFIG_PATH = \"./alembic.ini\"\n# for route in app.routes:\n#     print(route.path, route.name)\n@app.on_event(\"startup\")\nasync def on_startup():\n    # Run Alembic migrations programmatically\n    alembic_cfg = Config(ALEMBIC_CONFIG_PATH)\n    alembic_cfg.set_main_option(\"sqlalchemy.url\", os.getenv(\"DATABASE_URL\"))\n    print(\"Running Alembic migrations...\")\n    command.upgrade(alembic_cfg, \"head\")  # Upgrade database schema to latest",
+        "peekOfCode": "ALEMBIC_CONFIG_PATH = \"./alembic.ini\"\n# for route in app.routes:\n#     print(route.path, route.name)\n# @app.on_event(\"startup\")\n# async def on_startup():\n#     # Run Alembic migrations programmatically\n#     alembic_cfg = Config(ALEMBIC_CONFIG_PATH)\n#     alembic_cfg.set_main_option(\"sqlalchemy.url\", os.getenv(\"DATABASE_URL\"))\n#     print(\"Running Alembic migrations...\")\n#     command.upgrade(alembic_cfg, \"head\")  # Upgrade database schema to latest",
         "detail": "main",
         "documentation": {}
     },
