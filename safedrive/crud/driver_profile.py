@@ -130,6 +130,15 @@ class CRUDDriverProfile:
         else:
             logger.warning(f"DriverProfile with ID {id} not found for deletion.")
         return obj
+    
+    def delete_by_email_cascade(self, db: Session, email: str) -> Optional[DriverProfile]:
+        profile = self.get_by_email(db, email)
+        if not profile:
+            return None
+
+        db.delete(profile)
+        db.commit()
+        return profile
 
 # Initialize CRUD instance for DriverProfile
 driver_profile_crud = CRUDDriverProfile(DriverProfile)

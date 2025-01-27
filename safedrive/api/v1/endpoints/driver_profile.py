@@ -173,3 +173,19 @@ def delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> Dr
     deleted_profile = driver_profile_crud.delete(db=db, id=profile_id)
     logger.info(f"Deleted DriverProfile with ID: {profile_id}")
     return DriverProfileResponse(driverProfileId=deleted_profile.id_uuid, email=deleted_profile.email, sync=deleted_profile.sync)
+
+@router.delete("/driver_profiles/by-profile-id/{email}", response_model=DriverProfileResponse)
+def delete_driver_profile_by_email(
+    email: str,
+    db: Session = Depends(get_db),
+) -> DriverProfileResponse:
+    """
+    Deletes a driver profile (by email) and all related child records.
+    Returns the deleted driver profile data.
+    """
+    deleted_profile = driver_profile_crud.delete_by_email_cascade(db, email)
+    if not deleted_profile:
+        raise HTTPException(status_code=404, detail="Driver profile not found")
+
+    # Convert the (already deleted) SQLAlchemy object to a response schema.
+    return DriverProfileResponse.model_validate(deleted_profile)
