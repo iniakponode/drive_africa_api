@@ -110,7 +110,7 @@ def get_driver_profile_by_email(
     for trip in driver_profile.trips:
         # Use the custom property we defined
         data = (db.query(RawSensorData)
-                  .filter(RawSensorData.trip_id == trip.trip_id)
+                  .filter(RawSensorData.trip_id == trip.id)
                   .limit(limit_sensor_data)
                   .all())
         trip.raw_sensor_data = data
@@ -137,7 +137,7 @@ def get_driver_profile_by_email(
     for trip in driver_profile.trips:
         data = (
             db.query(RawSensorData)
-            .filter(RawSensorData.trip_id == trip.trip_id)
+            .filter(RawSensorData.trip_id == trip.id)
             .limit(limit_sensor_data)
             .all()
         )
