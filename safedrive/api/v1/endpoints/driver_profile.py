@@ -91,7 +91,7 @@ def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> Drive
     logger.info(f"Retrieved DriverProfile with ID: {profile_id}")
     return DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync)
 
-@router.get("/driver-profiles/by-profile_id/{email}", response_model=DriverProfileOut)
+@router.get("/driver-profiles/by-profile-id/{email}", response_model=DriverProfileOut)
 def get_driver_profile_by_email(
     email: str,
     db: Session = Depends(get_db),

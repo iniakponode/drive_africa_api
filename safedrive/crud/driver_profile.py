@@ -45,6 +45,16 @@ class CRUDDriverProfile:
             logger.error(f"Unexpected error while creating DriverProfile: {str(e)}")
             raise HTTPException(status_code=500, detail="An unexpected error occurred.")
 
+    def get_by_email(self, db: Session, email: str) -> Optional[DriverProfile]:
+            """
+            Retrieve a DriverProfile by its email address.
+
+            :param db: Active SQLAlchemy session
+            :param email: The email address to search for
+            :return: DriverProfile object if found, otherwise None
+            """
+            return db.query(DriverProfile).filter(DriverProfile.email == email).one_or_none()
+        
     def batch_create(self, db: Session, objs_in: List["DriverProfileCreate"]) -> List["DriverProfile"]:
         """
         Insert multiple DriverProfile records, skipping any that violate constraints.
