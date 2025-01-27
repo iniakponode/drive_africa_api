@@ -13,7 +13,7 @@ class Trip(Base):
     __tablename__ = "trip"
 
     id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
-    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)
+    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId', ondelete="CASCADE"), nullable=False)
     start_date = Column(DateTime)
     end_date = Column(DateTime, nullable=True)
     start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger
@@ -23,7 +23,7 @@ class Trip(Base):
     # Relationships
     ai_model_inputs = relationship("AIModelInput", back_populates="trip", cascade="all, delete-orphan")
     driver_profile = relationship("DriverProfile", back_populates="trips")
-    raw_sensor_data = relationship("RawSensorData", back_populates="trip")
+    raw_sensor_data = relationship("RawSensorData", back_populates="trip", cascade="all, delete-orphan")
     unsafe_behaviours = relationship("UnsafeBehaviour", back_populates="trip")
     
     # "Limited" relationship: you'd need a separate technique,

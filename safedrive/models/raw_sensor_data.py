@@ -37,7 +37,7 @@ class RawSensorData(Base):
     date = Column(DateTime)
     accuracy = Column(Integer, nullable=False)
     location_id = Column(UUIDType(binary=True), ForeignKey('location.id'), nullable=True)
-    trip_id = Column(UUIDType(binary=True), ForeignKey('trip.id'))
+    trip_id = Column(UUIDType(binary=True), ForeignKey('trip.id',ondelete="CASCADE"))
     sync = Column(Boolean, nullable=False)
 
     # Relationships
