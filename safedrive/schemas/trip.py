@@ -33,7 +33,8 @@ class TripBase(BaseModel):
         
 
 class TripOut(BaseModel):
-    trip_id: UUID
+    id: UUID
+    driverProfileId: UUID
     # We'll store a limited set of raw sensor data here
     raw_sensor_data: List[RawSensorDataOut] = []
 
