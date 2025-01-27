@@ -1,6 +1,9 @@
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import List, Optional
 from uuid import UUID
+
+from safedrive.models.trip import Trip
+from safedrive.schemas.trip import TripOut
 
 class DriverProfileBase(BaseModel):
     """
@@ -9,6 +12,15 @@ class DriverProfileBase(BaseModel):
     driverProfileId: UUID
     email: str
     sync: bool
+
+    class Config:
+        from_attributes = True
+        
+class DriverProfileOut(BaseModel):
+    driverProfileId: UUID
+    email: str
+    # A list of trips, each containing raw sensor data
+    trips: List[TripOut] = []
 
     class Config:
         from_attributes = True
@@ -25,6 +37,15 @@ class DriverProfileCreate(BaseModel):
     driverProfileId: UUID
     email: str
     sync: Optional[bool] = False
+    
+
+# class DriverProfileOut(BaseModel):
+#     driverProfileId: UUID = Field(...)
+#     email: str
+#     trips: List[TripOut] = []
+
+#     class Config:
+#         from_attributes = True
 
 class DriverProfileUpdate(BaseModel):
     """
@@ -36,6 +57,9 @@ class DriverProfileUpdate(BaseModel):
     """
     email: Optional[str] = None
     sync: Optional[bool] = None
+    
+    
+        
 
 class DriverProfileResponse(DriverProfileBase):
     """

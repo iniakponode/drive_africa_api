@@ -32,6 +32,16 @@ class RawSensorDataBase(BaseModel):
 
     class Config:
         from_attributes = True  # For Pydantic v2
+        
+class RawSensorDataOut(BaseModel):
+    id: UUID = Field(...)
+    # ... other fields you want to expose
+
+    class Config:
+        # In Pydantic v2, 'orm_mode' is replaced by:
+        # (or) model_config = ConfigDict(from_attributes=True)
+        from_attributes = True
+        
 
 class RawSensorDataCreate(BaseModel):
     """

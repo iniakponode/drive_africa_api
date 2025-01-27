@@ -1,8 +1,10 @@
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, Boolean, BINARY, BigInteger
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, object_session
 from uuid import uuid4, UUID
 from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
+from safedrive.models.raw_sensor_data import RawSensorData
+
 
 def generate_uuid_binary():
     return uuid4().bytes
@@ -23,6 +25,19 @@ class Trip(Base):
     driver_profile = relationship("DriverProfile", back_populates="trips")
     raw_sensor_data = relationship("RawSensorData", back_populates="trip")
     unsafe_behaviours = relationship("UnsafeBehaviour", back_populates="trip")
+    
+    # "Limited" relationship: you'd need a separate technique,
+    # e.g. a property that queries the top N sensor data.
+    @property
+    def limited_raw_sensor_data(self):
+        session = object_session(self)
+        if not session:
+            return []
+
+        return (session.query(RawSensorData)
+                       .filter(RawSensorData.trip_id == self.trip_id)
+                       .limit(10)
+                       .all())
 
     def __repr__(self):
         return f"<Trip(id={self.id}, driver_profile_id={self.driverProfileId})>"

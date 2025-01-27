@@ -1,8 +1,11 @@
 from pydantic import BaseModel, Field
 import sqlalchemy
-from typing import Optional
+from typing import List, Optional
 from uuid import UUID
 from datetime import datetime
+
+from safedrive.models.raw_sensor_data import RawSensorData
+from safedrive.schemas.raw_sensor_data import RawSensorDataOut
 
 class TripBase(BaseModel):
     """
@@ -27,6 +30,15 @@ class TripBase(BaseModel):
 
     class Config:
         from_attributes = True  # For Pydantic v2
+        
+
+class TripOut(BaseModel):
+    trip_id: UUID
+    # We'll store a limited set of raw sensor data here
+    raw_sensor_data: List[RawSensorDataOut] = []
+
+    class Config:
+        from_attributes = True
 
 class TripCreate(BaseModel):
     """

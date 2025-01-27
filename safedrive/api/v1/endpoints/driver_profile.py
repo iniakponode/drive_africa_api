@@ -1,11 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException
 from pymysql import IntegrityError
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, subqueryload
 from typing import List
 from uuid import UUID
 from safedrive.database.db import get_db
+from safedrive.models.driver_profile import DriverProfile
+from safedrive.models.raw_sensor_data import RawSensorData
 from safedrive.schemas.driver_profile import (
     DriverProfileCreate,
+    DriverProfileOut,
     DriverProfileUpdate,
     DriverProfileResponse
 )
@@ -87,6 +90,63 @@ def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> Drive
         raise HTTPException(status_code=404, detail="Driver profile not found")
     logger.info(f"Retrieved DriverProfile with ID: {profile_id}")
     return DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync)
+
+@router.get("/driver-profiles/by-profile_id/{email}", response_model=DriverProfileOut)
+def get_driver_profile_by_email(
+    email: str,
+    db: Session = Depends(get_db),
+    limit_sensor_data: int = 10
+):
+    driver_profile = (
+        db.query(DriverProfile)
+        .filter(DriverProfile.email == email)
+        .options(subqueryload(DriverProfile.trips))  # load trips eagerly
+        .one_or_none()
+    )
+    if not driver_profile:
+        raise HTTPException(status_code=404, detail="DriverProfile not found.")
+
+    # Now for each trip in driver_profile.trips, we can do:
+    for trip in driver_profile.trips:
+        # Use the custom property we defined
+        data = (db.query(RawSensorData)
+                  .filter(RawSensorData.trip_id == trip.trip_id)
+                  .limit(limit_sensor_data)
+                  .all())
+        trip.raw_sensor_data = data
+
+    return driver_profile
+
+@router.get("/driver-profiles/by-email/{email}", response_model=DriverProfileOut)
+def get_driver_profile_by_email(
+    email: str,
+    db: Session = Depends(get_db),
+    limit_sensor_data: int = 10
+):
+    # 1) Get the driver profile + eager load trips
+    driver_profile = (
+        db.query(DriverProfile)
+        .filter(DriverProfile.email == email)
+        .options(subqueryload(DriverProfile.trips))  # optional eager load
+        .one_or_none()
+    )
+    if not driver_profile:
+        raise HTTPException(status_code=404, detail="DriverProfile not found.")
+
+    # 2) For each trip, limit raw sensor data
+    for trip in driver_profile.trips:
+        data = (
+            db.query(RawSensorData)
+            .filter(RawSensorData.trip_id == trip.trip_id)
+            .limit(limit_sensor_data)
+            .all()
+        )
+        trip.raw_sensor_data = data
+
+    # 3) Convert the SQLAlchemy object to your Pydantic model with nested trips
+    #    Because `DriverProfileOut` -> `List[TripOut]` -> `List[RawSensorDataOut]`,
+    #    you must ensure each of those Pydantic classes has `from_attributes = True`.
+    return DriverProfileOut.model_validate(driver_profile)
 
 @router.get("/driver_profiles/", response_model=List[DriverProfileResponse])
 def get_all_driver_profiles(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:
