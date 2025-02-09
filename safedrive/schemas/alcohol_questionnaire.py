@@ -18,7 +18,7 @@ class AlcoholQuestionnaireBaseSchema(BaseModel):
     impairmentLevel: int
     date: datetime
     plansToDrive: bool
-    sync: bool
+    sync: bool=True
 
     class Config:
         from_attributes = True
@@ -36,7 +36,7 @@ class AlcoholQuestionnaireCreateSchema(BaseModel):
     emptyStomach: bool = Field(..., description="emptyStomach")
     caffeinatedDrink: bool = Field(..., description="caffeinatedDrink")
     impairmentLevel: int = Field(..., description="impairmentLevel")
-    date: datetime = Field(None, description="The date when the data was recorded.")
+    date: Optional[datetime] = Field(None, description="The date when the data was recorded.")
     plansToDrive: bool = Field(..., description="plansToDrive")
     sync: bool = Field(..., description="Sync status")
 

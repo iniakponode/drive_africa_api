@@ -25,18 +25,27 @@ class CRUDDrivingTip:
 
     def create(self, db: Session, obj_in: DrivingTipCreate) -> DrivingTip:
         try:
-            # Convert UUID fields to strings
-            for uuid_field in ['tip_id', 'profile_id']:  # Adjust the fields based on your schema
-                if uuid_field in obj_in and isinstance(obj_in[uuid_field], str):
-                    obj_in[uuid_field] = UUID(obj_in[uuid_field])  # Convert to 36-character string format
+            # Convert the Pydantic model to a dictionary
+            data = obj_in.model_dump()
             
-            db_obj = self.model(**obj_in)
+            # Convert UUID fields if they are provided as strings
+            for uuid_field in ['tip_id', 'profile_id']:
+                value = data.get(uuid_field)
+                if value and isinstance(value, str):
+                    try:
+                        data[uuid_field] = UUID(value)
+                    except Exception as e:
+                        logger.error(f"Error converting {uuid_field} with value '{value}' to UUID: {e}")
+                        raise ValueError(f"Invalid UUID format for field '{uuid_field}'")
+            
+            # Create the database object using the dumped data
+            db_obj = self.model(**data)
             db.add(db_obj)
             db.commit()
             db.refresh(db_obj)
             logger.info(f"Created DrivingTip with ID: {db_obj.tip_id}")
-            db.refresh(db_obj)
             return db_obj
+
         except IntegrityError as e:
             db.rollback()
             logger.error(f"Integrity error while creating DrivingTip: {e.orig}")

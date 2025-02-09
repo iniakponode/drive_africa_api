@@ -67,7 +67,7 @@ class UnsafeBehaviour(Base):
     @property
     def location_id_uuid(self) -> Optional[UUID]:
         """Return the UUID representation of the binary location_id."""
-        return location_id if self.location_id else None
+        return self.location_id if self.location_id else None
     
     @property
     def driver_profile_id_uuid(self) -> UUID:

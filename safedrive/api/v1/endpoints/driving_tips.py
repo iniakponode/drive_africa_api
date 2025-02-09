@@ -15,7 +15,7 @@ def create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreat
     try:
         new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)
         logger.info(f"Created DrivingTip with ID: {new_tip.tip_id}")
-        return DrivingTipResponse(tip_id=new_tip.tip_id, **tip_in.model_dump())
+        return DrivingTipResponse(**tip_in.model_dump())
     except ValueError as e:
         logger.error(f"Validation error while creating DrivingTip: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))

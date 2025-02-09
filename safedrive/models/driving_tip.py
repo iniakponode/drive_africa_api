@@ -44,7 +44,7 @@ class DrivingTip(Base):
     hostility = Column(String(255), nullable=True)
     summary_tip = Column(String(255), nullable=True)
     sync = Column(Boolean, nullable=False)
-    date = Column(Date, nullable=False)
+    date = Column(DateTime, nullable=False)
     profile_id = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)
     llm = Column(String(255), nullable=True)
 
