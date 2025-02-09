@@ -95,7 +95,7 @@ def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> Drive
 def get_driver_profile_by_email(
     email: str,
     db: Session = Depends(get_db),
-    limit_sensor_data: int = 10
+    limit_sensor_data: int = 100
 ):
     driver_profile = (
         db.query(DriverProfile)
