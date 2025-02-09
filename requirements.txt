@@ -83,7 +83,7 @@ pyreadline3==3.5.4
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pytz==2024.1
-# pywin32==306
+pywin32==306
 PyYAML==6.0.2
 pyzmq==25.1.2
 regex==2024.9.11
@@ -102,8 +102,8 @@ SQLAlchemy-Utils==0.41.2
 sqlparse==0.5.0
 stack-data==0.6.3
 starlette==0.41.2
+starlette-context==0.3.6
 sympy==1.13.3
-sqlalchemy_utils==0.41.2
 threadpoolctl==3.4.0
 tokenizers==0.20.0
 tornado==6.4
