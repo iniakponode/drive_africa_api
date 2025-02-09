@@ -45,7 +45,7 @@ class RawSensorData(Base):
     trip = relationship("Trip", back_populates="raw_sensor_data")
 
     def __repr__(self):
-        return f"<RawSensorData(id={self.id}, sensor_type={self.sensor_type}, sensor_type_name='{self.sensor_type_name}')>"
+        return f"<RawSensorData(id={self.id}, sensor_type={self.sensor_type}, trip_id={self.trip_id},values={self.values},sensor_type_name='{self.sensor_type_name}')>"
 
     @property
     def id_uuid(self) -> UUID:
