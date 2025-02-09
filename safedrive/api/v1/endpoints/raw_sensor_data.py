@@ -68,7 +68,7 @@ def get_raw_sensor_data(
 @router.get("/raw_sensor_data/", response_model=List[RawSensorDataResponse])
 def get_all_raw_sensor_data(
     skip: int = 0,
-    limit: int = 20,
+    limit: int = 5000,
     db: Session = Depends(get_db),
 ) -> List[RawSensorDataResponse]:
     """
@@ -78,9 +78,9 @@ def get_all_raw_sensor_data(
     - **limit**: Maximum number of records to retrieve (max 100).
     """
     try:
-        if limit > 100:
-            logger.error("Limit cannot exceed 100 items.")
-            raise HTTPException(status_code=400, detail="Limit cannot exceed 100 items")
+        # if limit > 100:
+        #     logger.error("Limit cannot exceed 100 items.")
+        #     raise HTTPException(status_code=400, detail="Limit cannot exceed 100 items")
         data_list = raw_sensor_data_crud.get_all(db=db, skip=skip, limit=limit)
         logger.info(f"Retrieved {len(data_list)} raw sensor data entries.")
         return [RawSensorDataResponse.model_validate(data) for data in data_list]

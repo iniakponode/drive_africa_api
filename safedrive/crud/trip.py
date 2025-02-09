@@ -116,7 +116,7 @@ class CRUDTrip:
             logger.exception("Error retrieving trip from database.")
             raise
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[Trip]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 5000) -> List[Trip]:
         """
         Retrieve all trip records from the database.
 

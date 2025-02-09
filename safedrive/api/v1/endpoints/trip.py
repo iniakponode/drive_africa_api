@@ -76,7 +76,7 @@ def get_trip(
 @router.get("/trips/", response_model=List[TripResponse])
 def get_all_trips(
     skip: int = 0,
-    limit: int = 20,
+    limit: int = 5000,
     db: Session = Depends(get_db),
 ) -> List[TripResponse]:
     """
@@ -86,9 +86,9 @@ def get_all_trips(
     - **limit**: Maximum number of records to retrieve (max 100).
     """
     try:
-        if limit > 100:
-            logger.error("Limit cannot exceed 100 items.")
-            raise HTTPException(status_code=400, detail="Limit cannot exceed 100 items")
+        # if limit > 100:
+        #     logger.error("Limit cannot exceed 100 items.")
+        #     raise HTTPException(status_code=400, detail="Limit cannot exceed 100 items")
         trips = trip_crud.get_all(db=db, skip=skip, limit=limit)
         logger.info(f"Retrieved {len(trips)} trips.")
         return [TripResponse.model_validate(trip) for trip in trips]

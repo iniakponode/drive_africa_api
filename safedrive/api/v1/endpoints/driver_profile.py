@@ -95,7 +95,7 @@ def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> Drive
 def get_driver_profile_by_email(
     email: str,
     db: Session = Depends(get_db),
-    limit_sensor_data: int = 100
+    limit_sensor_data: int = 5000
 ):
     driver_profile = (
         db.query(DriverProfile)
@@ -121,7 +121,7 @@ def get_driver_profile_by_email(
 def get_driver_profile_by_email(
     email: str,
     db: Session = Depends(get_db),
-    limit_sensor_data: int = 10
+    limit_sensor_data: int = 5000
 ):
     # 1) Get the driver profile + eager load trips
     driver_profile = (
@@ -149,7 +149,7 @@ def get_driver_profile_by_email(
     return DriverProfileOut.model_validate(driver_profile)
 
 @router.get("/driver_profiles/", response_model=List[DriverProfileResponse])
-def get_all_driver_profiles(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:
+def get_all_driver_profiles(skip: int = 0, limit: int = 5000, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:
     profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)
     logger.info(f"Retrieved {len(profiles)} DriverProfiles.")
     return [DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync) for profile in profiles]

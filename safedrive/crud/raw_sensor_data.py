@@ -112,7 +112,7 @@ class CRUDRawSensorData:
             logger.exception("Error retrieving raw sensor data from database.")
             raise
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[RawSensorData]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 5000) -> List[RawSensorData]:
         """
         Retrieve all raw sensor data records from the database.
 
