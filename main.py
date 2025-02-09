@@ -8,6 +8,9 @@ from safedrive.database.base import Base, engine
 from fastapi.middleware.cors import CORSMiddleware
 from alembic.config import Config
 from alembic import command
+from starlette.middleware.proxy_headers import ProxyHeadersMiddleware
+
+
 
 
 # Load .env only for local development
@@ -23,6 +26,7 @@ app = FastAPI(
     docs_url="/docs",      # Ensure this is not set to None
     redoc_url="/redoc"
 )
+app.add_middleware(ProxyHeadersMiddleware)
 
 # Example usage of environment variables
 DATABASE_URL = os.getenv("DATABASE_URL")
