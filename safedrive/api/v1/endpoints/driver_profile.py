@@ -21,13 +21,14 @@ logger = logging.getLogger(__name__)
 @router.post("/driver_profiles/", response_model=DriverProfileResponse)
 def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:
     try:
-        # Create the driver profile using the schema's driver_profile_id, email, and sync
+        # Create or get the driver profile.
         new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)
         logger.info(f"DriverProfile created with ID: {new_profile.driverProfileId}")
+        # Build the response using the values from the returned database record.
         return DriverProfileResponse(
-            driverProfileId=profile_in.driverProfileId,
-            email=profile_in.email,
-            sync=profile_in.sync
+            driverProfileId=new_profile.driverProfileId,
+            email=new_profile.email,
+            sync=new_profile.sync
         )
 
     except IntegrityError as e:
@@ -41,6 +42,7 @@ def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverPr
     except Exception as e:
         logger.error(f"Unexpected error creating DriverProfile: {str(e)}")
         raise HTTPException(status_code=500, detail="An unexpected error occurred while creating the driver profile.")
+
 
 @router.post("/driver_profiles/batch_create", response_model=List[DriverProfileResponse])
 def batch_create_driver_profiles(
