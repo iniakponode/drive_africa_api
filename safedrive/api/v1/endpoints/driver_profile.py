@@ -148,6 +148,18 @@ def get_driver_profile_by_email(
     #    you must ensure each of those Pydantic classes has `from_attributes = True`.
     return DriverProfileOut.model_validate(driver_profile)
 
+@router.get("/driver-profile-by-email/{email}", response_model=DriverProfileResponse)
+def get_driver_profile_by_email( email: str, db: Session = Depends(get_db), limit: int = 1):
+    # 1) Get the driver profile + eager load trips
+    driver_profile = (
+        db.query(DriverProfile)
+        .filter(DriverProfile.email == email)
+    )
+    if not driver_profile:
+        raise HTTPException(status_code=404, detail="DriverProfile not found.")
+
+    return DriverProfileResponse.model_validate(driver_profile)
+
 @router.get("/driver_profiles/", response_model=List[DriverProfileResponse])
 def get_all_driver_profiles(skip: int = 0, limit: int = 5000, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:
     profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)
