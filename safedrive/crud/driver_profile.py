@@ -26,19 +26,26 @@ class CRUDDriverProfile:
     def create(self, db: Session, obj_in: DriverProfileCreate) -> DriverProfile:
         try:
             obj_data = obj_in.model_dump()
-
-            # Convert to a UUID only if it's a string
-            if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
-                obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
-
-            db_obj = self.model(**obj_data)
-            db.add(db_obj)
-            db.commit()
-            db.flush()
-            db.refresh(db_obj)
-            logger.info(f"Created DriverProfile with ID: {db_obj.driverProfileId}")
-            print(str(db_obj.driverProfileId))
-            return db_obj
+            email = obj_data.get("email")
+            
+            # Check if a profile with the given email already exists.
+            existing_profile = db.query(self.model).filter(self.model.email == email).first()
+            if existing_profile:
+                logger.info(f"Profile with email {email} already exists. Returning the existing profile.")
+                return existing_profile
+            else:
+                # Convert driverProfileId to UUID if it's provided as a string.
+                if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
+                    obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
+                
+                # Create a new DriverProfile record.
+                db_obj = self.model(**obj_data)
+                db.add(db_obj)
+                db.commit()
+                db.flush()
+                db.refresh(db_obj)
+                logger.info(f"Created DriverProfile with ID: {db_obj.driverProfileId}")
+                return db_obj
 
         except Exception as e:
             db.rollback()
