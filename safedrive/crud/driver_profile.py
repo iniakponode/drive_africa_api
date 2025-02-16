@@ -26,31 +26,33 @@ class CRUDDriverProfile:
     def create(self, db: Session, obj_in: DriverProfileCreate) -> DriverProfile:
         try:
             obj_data = obj_in.model_dump()
-            email = obj_data.get("email")
-            
-            # Check if a profile with the given email already exists.
-            existing_profile = db.query(self.model).filter(self.model.email == email).first()
-            if existing_profile:
-                logger.info(f"Profile with email {email} already exists. Returning the existing profile.")
-                return existing_profile
-            else:
-                # Convert driverProfileId to UUID if it's provided as a string.
-                if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
-                    obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
-                
-                # Create a new DriverProfile record.
-                db_obj = self.model(**obj_data)
-                db.add(db_obj)
-                db.commit()
-                db.flush()
-                db.refresh(db_obj)
-                logger.info(f"Created DriverProfile with ID: {db_obj.driverProfileId}")
-                return db_obj
 
-        except Exception as e:
+            # Ensure driverProfileId is a proper UUID regardless of input type.
+            if 'driverProfileId' in obj_data:
+                if isinstance(obj_data['driverProfileId'], str):
+                    obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
+                elif isinstance(obj_data['driverProfileId'], bytes):
+                    obj_data['driverProfileId'] = UUID(bytes=obj_data['driverProfileId'])
+            
+            db_obj = self.model(**obj_data)
+            db.add(db_obj)
+            db.commit()
+            db.refresh(db_obj)
+            logger.info(f"Created DriverProfile with ID: {db_obj.driverProfileId}")
+            return db_obj
+
+        except IntegrityError as e:
             db.rollback()
+            # Check if the error is due to a duplicate email.
+            if "Duplicate entry" in str(e.orig) and "for key 'email'" in str(e.orig):
+                email = obj_data.get("email")
+                logger.info(f"Profile with email {email} already exists. Retrieving existing profile.")
+                existing_profile = db.query(self.model).filter(self.model.email == email).first()
+                if existing_profile:
+                    return existing_profile
             logger.error(f"Unexpected error while creating DriverProfile: {str(e)}")
             raise HTTPException(status_code=500, detail="An unexpected error occurred.")
+
 
     def get_by_email(self, db: Session, email: str) -> Optional[DriverProfile]:
             """

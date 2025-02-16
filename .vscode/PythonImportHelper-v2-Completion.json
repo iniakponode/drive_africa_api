@@ -176,7 +176,31 @@
         "documentation": {}
     },
     {
-        "label": "List",
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -265,54 +289,6 @@
     },
     {
         "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -329,6 +305,14 @@
     },
     {
         "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -448,7 +432,7 @@
         "documentation": {}
     },
     {
-        "label": "Optional",
+        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -464,7 +448,7 @@
         "documentation": {}
     },
     {
-        "label": "Optional",
+        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -480,7 +464,7 @@
         "documentation": {}
     },
     {
-        "label": "Optional",
+        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -565,6 +549,86 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
         "documentation": {}
     },
     {
@@ -1690,6 +1754,14 @@
         "documentation": {}
     },
     {
+        "label": "Trip",
+        "importPath": "safedrive.models.trip",
+        "description": "safedrive.models.trip",
+        "isExtraImport": true,
+        "detail": "safedrive.models.trip",
+        "documentation": {}
+    },
+    {
         "label": "UnsafeBehaviour",
         "importPath": "safedrive.models.unsafe_behaviour",
         "description": "safedrive.models.unsafe_behaviour",
@@ -1826,6 +1898,14 @@
         "documentation": {}
     },
     {
+        "label": "DriverProfile",
+        "importPath": "safedrive.models.driver_profile",
+        "description": "safedrive.models.driver_profile",
+        "isExtraImport": true,
+        "detail": "safedrive.models.driver_profile",
+        "documentation": {}
+    },
+    {
         "label": "generate_uuid_binary",
         "importPath": "safedrive.models.driver_profile",
         "description": "safedrive.models.driver_profile",
@@ -1927,6 +2007,30 @@
         "description": "safedrive.models.nlg_report",
         "isExtraImport": true,
         "detail": "safedrive.models.nlg_report",
+        "documentation": {}
+    },
+    {
+        "label": "RawSensorData",
+        "importPath": "safedrive.models.raw_sensor_data",
+        "description": "safedrive.models.raw_sensor_data",
+        "isExtraImport": true,
+        "detail": "safedrive.models.raw_sensor_data",
+        "documentation": {}
+    },
+    {
+        "label": "RawSensorData",
+        "importPath": "safedrive.models.raw_sensor_data",
+        "description": "safedrive.models.raw_sensor_data",
+        "isExtraImport": true,
+        "detail": "safedrive.models.raw_sensor_data",
+        "documentation": {}
+    },
+    {
+        "label": "RawSensorData",
+        "importPath": "safedrive.models.raw_sensor_data",
+        "description": "safedrive.models.raw_sensor_data",
+        "isExtraImport": true,
+        "detail": "safedrive.models.raw_sensor_data",
         "documentation": {}
     },
     {
@@ -2403,6 +2507,14 @@
         "documentation": {}
     },
     {
+        "label": "subqueryload",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "Session",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
@@ -2668,6 +2780,14 @@
     },
     {
         "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "object_session",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
         "isExtraImport": true,
@@ -3500,6 +3620,14 @@
         "documentation": {}
     },
     {
+        "label": "DriverProfileOut",
+        "importPath": "safedrive.schemas.driver_profile",
+        "description": "safedrive.schemas.driver_profile",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.driver_profile",
+        "documentation": {}
+    },
+    {
         "label": "DriverProfileUpdate",
         "importPath": "safedrive.schemas.driver_profile",
         "description": "safedrive.schemas.driver_profile",
@@ -3797,6 +3925,14 @@
         "documentation": {}
     },
     {
+        "label": "RawSensorDataOut",
+        "importPath": "safedrive.schemas.raw_sensor_data",
+        "description": "safedrive.schemas.raw_sensor_data",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.raw_sensor_data",
+        "documentation": {}
+    },
+    {
         "label": "raw_sensor_data_crud",
         "importPath": "safedrive.crud.raw_sensor_data",
         "description": "safedrive.crud.raw_sensor_data",
@@ -3894,6 +4030,14 @@
     },
     {
         "label": "TripUpdate",
+        "importPath": "safedrive.schemas.trip",
+        "description": "safedrive.schemas.trip",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.trip",
+        "documentation": {}
+    },
+    {
+        "label": "TripOut",
         "importPath": "safedrive.schemas.trip",
         "description": "safedrive.schemas.trip",
         "isExtraImport": true,
@@ -4102,6 +4246,14 @@
     },
     {
         "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "field_validator",
         "importPath": "pydantic",
         "description": "pydantic",
         "isExtraImport": true,
@@ -4624,6 +4776,24 @@
     {
         "label": "upgrade",
         "kind": 2,
+        "importPath": "alembic.versions.61044d328713_mad_datefeild_of_questionnaire_nullable",
+        "description": "alembic.versions.61044d328713_mad_datefeild_of_questionnaire_nullable",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.alter_column('driving_tips', 'date',\n               existing_type=sa.DATE(),\n               type_=sa.DateTime(),\n               existing_nullable=False)\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.alter_column('driving_tips', 'date',",
+        "detail": "alembic.versions.61044d328713_mad_datefeild_of_questionnaire_nullable",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.61044d328713_mad_datefeild_of_questionnaire_nullable",
+        "description": "alembic.versions.61044d328713_mad_datefeild_of_questionnaire_nullable",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.alter_column('driving_tips', 'date',\n               existing_type=sa.DateTime(),\n               type_=sa.DATE(),\n               existing_nullable=False)\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.61044d328713_mad_datefeild_of_questionnaire_nullable",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
         "importPath": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
         "description": "alembic.versions.9c6105106ad6_remodelled_all_uuid_fields_to_be_",
         "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('driver_profile',\n    sa.Column('driverProfileId', sqlalchemy_utils.types.uuid.UUIDType(), nullable=False),\n    sa.Column('email', sa.String(length=50), nullable=False),\n    sa.Column('sync', sa.Boolean(), nullable=False),\n    sa.PrimaryKeyConstraint('driverProfileId'),\n    sa.UniqueConstraint('email')\n    )\n    op.create_table('embedding',",
@@ -4691,6 +4861,24 @@
         "description": "alembic.versions.ba5ad2d9bb18_change_alcohol_questionnaire_model_",
         "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    pass\n    # ### end Alembic commands ###",
         "detail": "alembic.versions.ba5ad2d9bb18_change_alcohol_questionnaire_model_",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.da45a384a8ac_changed_driving_tips_date_type_to_",
+        "description": "alembic.versions.da45a384a8ac_changed_driving_tips_date_type_to_",
+        "peekOfCode": "def upgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_constraint('raw_sensor_data_ibfk_2', 'raw_sensor_data', type_='foreignkey')\n    op.create_foreign_key(None, 'raw_sensor_data', 'trip', ['trip_id'], ['id'], ondelete='CASCADE')\n    op.drop_constraint('trip_ibfk_1', 'trip', type_='foreignkey')\n    op.create_foreign_key(None, 'trip', 'driver_profile', ['driverProfileId'], ['driverProfileId'], ondelete='CASCADE')\n    # ### end Alembic commands ###\ndef downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_constraint(None, 'trip', type_='foreignkey')",
+        "detail": "alembic.versions.da45a384a8ac_changed_driving_tips_date_type_to_",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.da45a384a8ac_changed_driving_tips_date_type_to_",
+        "description": "alembic.versions.da45a384a8ac_changed_driving_tips_date_type_to_",
+        "peekOfCode": "def downgrade() -> None:\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.drop_constraint(None, 'trip', type_='foreignkey')\n    op.create_foreign_key('trip_ibfk_1', 'trip', 'driver_profile', ['driverProfileId'], ['driverProfileId'])\n    op.drop_constraint(None, 'raw_sensor_data', type_='foreignkey')\n    op.create_foreign_key('raw_sensor_data_ibfk_2', 'raw_sensor_data', 'trip', ['trip_id'], ['id'])\n    # ### end Alembic commands ###",
+        "detail": "alembic.versions.da45a384a8ac_changed_driving_tips_date_type_to_",
         "documentation": {}
     },
     {
@@ -4959,7 +5147,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create the driver profile using the schema's driver_profile_id, email, and sync\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        return DriverProfileResponse(\n            driverProfileId=profile_in.driverProfileId,\n            email=profile_in.email,\n            sync=profile_in.sync\n        )",
+        "peekOfCode": "def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(\n            driverProfileId=new_profile.driverProfileId,\n            email=new_profile.email,\n            sync=new_profile.sync",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -4977,7 +5165,34 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    logger.info(f\"Retrieved DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync)\n@router.get(\"/driver_profiles/\", response_model=List[DriverProfileResponse])\ndef get_all_driver_profiles(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:\n    profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)",
+        "peekOfCode": "def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    logger.info(f\"Retrieved DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync)\n@router.get(\"/driver-profiles/by-profile-id/{email}\", response_model=DriverProfileOut)\ndef get_driver_profile_by_email(\n    email: str,",
+        "detail": "safedrive.api.v1.endpoints.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver_profile_by_email",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.driver_profile",
+        "description": "safedrive.api.v1.endpoints.driver_profile",
+        "peekOfCode": "def get_driver_profile_by_email(\n    email: str,\n    db: Session = Depends(get_db),\n    limit_sensor_data: int = 5000\n):\n    driver_profile = (\n        db.query(DriverProfile)\n        .filter(DriverProfile.email == email)\n        .options(subqueryload(DriverProfile.trips))  # load trips eagerly\n        .one_or_none()",
+        "detail": "safedrive.api.v1.endpoints.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver_profile_by_email",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.driver_profile",
+        "description": "safedrive.api.v1.endpoints.driver_profile",
+        "peekOfCode": "def get_driver_profile_by_email(\n    email: str,\n    db: Session = Depends(get_db),\n    limit_sensor_data: int = 5000\n):\n    # 1) Get the driver profile + eager load trips\n    driver_profile = (\n        db.query(DriverProfile)\n        .filter(DriverProfile.email == email)\n        .options(subqueryload(DriverProfile.trips))  # optional eager load",
+        "detail": "safedrive.api.v1.endpoints.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "get_driver_profile_by_email",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.driver_profile",
+        "description": "safedrive.api.v1.endpoints.driver_profile",
+        "peekOfCode": "def get_driver_profile_by_email( email: str, db: Session = Depends(get_db), limit: int = 1):\n    # 1) Get the driver profile + eager load trips\n    driver_profile = (\n        db.query(DriverProfile)\n        .filter(DriverProfile.email == email)\n    )\n    if not driver_profile:\n        raise HTTPException(status_code=404, detail=\"DriverProfile not found.\")\n    return DriverProfileResponse.model_validate(driver_profile)\n@router.get(\"/driver_profiles/\", response_model=List[DriverProfileResponse])",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -4986,7 +5201,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def get_all_driver_profiles(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:\n    profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(profiles)} DriverProfiles.\")\n    return [DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync) for profile in profiles]\n@router.put(\"/driver_profiles/{profile_id}\", response_model=DriverProfileResponse)\ndef update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")",
+        "peekOfCode": "def get_all_driver_profiles(skip: int = 0, limit: int = 5000, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:\n    profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(profiles)} DriverProfiles.\")\n    return [DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync) for profile in profiles]\n@router.put(\"/driver_profiles/{profile_id}\", response_model=DriverProfileResponse)\ndef update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5004,7 +5219,16 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    deleted_profile = driver_profile_crud.delete(db=db, id=profile_id)\n    logger.info(f\"Deleted DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=deleted_profile.id_uuid, email=deleted_profile.email, sync=deleted_profile.sync)",
+        "peekOfCode": "def delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    deleted_profile = driver_profile_crud.delete(db=db, id=profile_id)\n    logger.info(f\"Deleted DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=deleted_profile.id_uuid, email=deleted_profile.email, sync=deleted_profile.sync)\n@router.delete(\"/driver_profiles/by-profile-id/{email}\", response_model=DriverProfileResponse)\ndef delete_driver_profile_by_email(",
+        "detail": "safedrive.api.v1.endpoints.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "delete_driver_profile_by_email",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.driver_profile",
+        "description": "safedrive.api.v1.endpoints.driver_profile",
+        "peekOfCode": "def delete_driver_profile_by_email(\n    email: str,\n    db: Session = Depends(get_db),\n) -> DriverProfileResponse:\n    \"\"\"\n    Deletes a driver profile (by email) and all related child records.\n    Returns the deleted driver profile data.\n    \"\"\"\n    deleted_profile = driver_profile_crud.delete_by_email_cascade(db, email)\n    if not deleted_profile:",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5013,7 +5237,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create the driver profile using the schema's driver_profile_id, email, and sync\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        return DriverProfileResponse(\n            driverProfileId=profile_in.driverProfileId,",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5022,7 +5246,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create the driver profile using the schema's driver_profile_id, email, and sync\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        return DriverProfileResponse(\n            driverProfileId=profile_in.driverProfileId,\n            email=profile_in.email,",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(\n            driverProfileId=new_profile.driverProfileId,",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5031,7 +5255,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driving_tips",
         "description": "safedrive.api.v1.endpoints.driving_tips",
-        "peekOfCode": "def create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(tip_id=new_tip.tip_id, **tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")\n        raise HTTPException(status_code=400, detail=str(e))\n    except Exception as e:\n        logger.error(f\"Unexpected error while creating DrivingTip: {str(e)}\")",
+        "peekOfCode": "def create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(**tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")\n        raise HTTPException(status_code=400, detail=str(e))\n    except Exception as e:\n        logger.error(f\"Unexpected error while creating DrivingTip: {str(e)}\")",
         "detail": "safedrive.api.v1.endpoints.driving_tips",
         "documentation": {}
     },
@@ -5076,7 +5300,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driving_tips",
         "description": "safedrive.api.v1.endpoints.driving_tips",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driving_tips/\", response_model=DrivingTipResponse)\ndef create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(tip_id=new_tip.tip_id, **tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driving_tips/\", response_model=DrivingTipResponse)\ndef create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(**tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")",
         "detail": "safedrive.api.v1.endpoints.driving_tips",
         "documentation": {}
     },
@@ -5085,7 +5309,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driving_tips",
         "description": "safedrive.api.v1.endpoints.driving_tips",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driving_tips/\", response_model=DrivingTipResponse)\ndef create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(tip_id=new_tip.tip_id, **tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")\n        raise HTTPException(status_code=400, detail=str(e))",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driving_tips/\", response_model=DrivingTipResponse)\ndef create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(**tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")\n        raise HTTPException(status_code=400, detail=str(e))",
         "detail": "safedrive.api.v1.endpoints.driving_tips",
         "documentation": {}
     },
@@ -5328,7 +5552,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.raw_sensor_data",
         "description": "safedrive.api.v1.endpoints.raw_sensor_data",
-        "peekOfCode": "def get_all_raw_sensor_data(\n    skip: int = 0,\n    limit: int = 20,\n    db: Session = Depends(get_db),\n) -> List[RawSensorDataResponse]:\n    \"\"\"\n    Retrieve all raw sensor data entries with optional pagination.\n    - **skip**: Number of records to skip.\n    - **limit**: Maximum number of records to retrieve (max 100).\n    \"\"\"",
+        "peekOfCode": "def get_all_raw_sensor_data(\n    skip: int = 0,\n    limit: int = 5000,\n    db: Session = Depends(get_db),\n) -> List[RawSensorDataResponse]:\n    \"\"\"\n    Retrieve all raw sensor data entries with optional pagination.\n    - **skip**: Number of records to skip.\n    - **limit**: Maximum number of records to retrieve (max 100).\n    \"\"\"",
         "detail": "safedrive.api.v1.endpoints.raw_sensor_data",
         "documentation": {}
     },
@@ -5481,7 +5705,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.trip",
         "description": "safedrive.api.v1.endpoints.trip",
-        "peekOfCode": "def get_all_trips(\n    skip: int = 0,\n    limit: int = 20,\n    db: Session = Depends(get_db),\n) -> List[TripResponse]:\n    \"\"\"\n    Retrieve all trips with optional pagination.\n    - **skip**: Number of records to skip.\n    - **limit**: Maximum number of records to retrieve (max 100).\n    \"\"\"",
+        "peekOfCode": "def get_all_trips(\n    skip: int = 0,\n    limit: int = 5000,\n    db: Session = Depends(get_db),\n) -> List[TripResponse]:\n    \"\"\"\n    Retrieve all trips with optional pagination.\n    - **skip**: Number of records to skip.\n    - **limit**: Maximum number of records to retrieve (max 100).\n    \"\"\"",
         "detail": "safedrive.api.v1.endpoints.trip",
         "documentation": {}
     },
@@ -6228,7 +6452,7 @@
         "kind": 6,
         "importPath": "safedrive.models.trip",
         "description": "safedrive.models.trip",
-        "peekOfCode": "class Trip(Base):\n    __tablename__ = \"trip\"\n    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)\n    start_date = Column(DateTime)\n    end_date = Column(DateTime, nullable=True)\n    start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger\n    end_time = Column(BigInteger, nullable=True) \n    sync = Column(Boolean, nullable=False)\n    # Relationships",
+        "peekOfCode": "class Trip(Base):\n    __tablename__ = \"trip\"\n    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId', ondelete=\"CASCADE\"), nullable=False)\n    start_date = Column(DateTime)\n    end_date = Column(DateTime, nullable=True)\n    start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger\n    end_time = Column(BigInteger, nullable=True) \n    sync = Column(Boolean, nullable=False)\n    # Relationships",
         "detail": "safedrive.models.trip",
         "documentation": {}
     },
@@ -6237,7 +6461,7 @@
         "kind": 2,
         "importPath": "safedrive.models.trip",
         "description": "safedrive.models.trip",
-        "peekOfCode": "def generate_uuid_binary():\n    return uuid4().bytes\nclass Trip(Base):\n    __tablename__ = \"trip\"\n    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)\n    start_date = Column(DateTime)\n    end_date = Column(DateTime, nullable=True)\n    start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger\n    end_time = Column(BigInteger, nullable=True) ",
+        "peekOfCode": "def generate_uuid_binary():\n    return uuid4().bytes\nclass Trip(Base):\n    __tablename__ = \"trip\"\n    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)\n    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId', ondelete=\"CASCADE\"), nullable=False)\n    start_date = Column(DateTime)\n    end_date = Column(DateTime, nullable=True)\n    start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger\n    end_time = Column(BigInteger, nullable=True) ",
         "detail": "safedrive.models.trip",
         "documentation": {}
     },
@@ -6363,7 +6587,16 @@
         "kind": 6,
         "importPath": "safedrive.schemas.driver_profile",
         "description": "safedrive.schemas.driver_profile",
-        "peekOfCode": "class DriverProfileBase(BaseModel):\n    \"\"\"\n    Base schema for DriverProfile, including common attributes.\n    \"\"\"\n    driverProfileId: UUID\n    email: str\n    sync: bool\n    class Config:\n        from_attributes = True\nclass DriverProfileCreate(BaseModel):",
+        "peekOfCode": "class DriverProfileBase(BaseModel):\n    \"\"\"\n    Base schema for DriverProfile, including common attributes.\n    \"\"\"\n    driverProfileId: UUID\n    email: str\n    sync: bool\n    class Config:\n        from_attributes = True\nclass DriverProfileOut(BaseModel):",
+        "detail": "safedrive.schemas.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "DriverProfileOut",
+        "kind": 6,
+        "importPath": "safedrive.schemas.driver_profile",
+        "description": "safedrive.schemas.driver_profile",
+        "peekOfCode": "class DriverProfileOut(BaseModel):\n    driverProfileId: UUID\n    email: str\n    # A list of trips, each containing raw sensor data\n    trips: List[TripOut] = []\n    class Config:\n        from_attributes = True\nclass DriverProfileCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new DriverProfile.",
         "detail": "safedrive.schemas.driver_profile",
         "documentation": {}
     },
@@ -6390,7 +6623,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.driver_profile",
         "description": "safedrive.schemas.driver_profile",
-        "peekOfCode": "class DriverProfileResponse(DriverProfileBase):\n    \"\"\"\n    Response schema for DriverProfile, with UUID conversion for JSON responses.\n    \"\"\"\n    driverProfileId: UUID\n    email: str\n    sync: bool\n    class Config:\n        from_attributes = True",
+        "peekOfCode": "class DriverProfileResponse(DriverProfileBase):\n    \"\"\"\n    Response schema for DriverProfile, with UUID conversion for JSON responses.\n    \"\"\"\n    driverProfileId: UUID\n    email: str\n    sync: bool\n    @field_validator(\"driverProfileId\", pre=True, always=True)\n    def convert_driver_profile_id(cls, v):\n        if isinstance(v, bytes):",
         "detail": "safedrive.schemas.driver_profile",
         "documentation": {}
     },
@@ -6548,6 +6781,15 @@
         "documentation": {}
     },
     {
+        "label": "RawSensorDataOut",
+        "kind": 6,
+        "importPath": "safedrive.schemas.raw_sensor_data",
+        "description": "safedrive.schemas.raw_sensor_data",
+        "peekOfCode": "class RawSensorDataOut(BaseModel):\n    id: UUID = Field(...)\n    # ... other fields you want to expose\n    class Config:\n        # In Pydantic v2, 'orm_mode' is replaced by:\n        # (or) model_config = ConfigDict(from_attributes=True)\n        from_attributes = True\nclass RawSensorDataCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Raw Sensor Data record.",
+        "detail": "safedrive.schemas.raw_sensor_data",
+        "documentation": {}
+    },
+    {
         "label": "RawSensorDataCreate",
         "kind": 6,
         "importPath": "safedrive.schemas.raw_sensor_data",
@@ -6616,6 +6858,15 @@
         "importPath": "safedrive.schemas.trip",
         "description": "safedrive.schemas.trip",
         "peekOfCode": "class TripBase(BaseModel):\n    \"\"\"\n    Base schema for the Trip model.\n    Attributes:\n    - **id**: The unique identifier for the trip.\n    - **driverProfileId**: The foreign key reference to the driver's profile.\n    - **start_date**: The start date of the trip.\n    - **end_date**: The end date of the trip.\n    - **start_time**: The start time of the trip in epoch milliseconds.\n    - **end_time**: The end time of the trip in epoch milliseconds.",
+        "detail": "safedrive.schemas.trip",
+        "documentation": {}
+    },
+    {
+        "label": "TripOut",
+        "kind": 6,
+        "importPath": "safedrive.schemas.trip",
+        "description": "safedrive.schemas.trip",
+        "peekOfCode": "class TripOut(BaseModel):\n    id: UUID\n    driverProfileId: UUID\n    # We'll store a limited set of raw sensor data here\n    raw_sensor_data: List[RawSensorDataOut] = []\n    class Config:\n        from_attributes = True\nclass TripCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Trip record.",
         "detail": "safedrive.schemas.trip",
         "documentation": {}
     },
@@ -6957,7 +7208,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "DATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary",
+        "peekOfCode": "DATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    \"https://datahub.safedriveafrica.com\",",
         "detail": "main",
         "documentation": {}
     },
@@ -6966,7 +7217,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "SECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]",
+        "peekOfCode": "SECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    \"https://datahub.safedriveafrica.com\",\n    \"http://datahub.safedriveafrica.com\"",
         "detail": "main",
         "documentation": {}
     },
@@ -6975,7 +7226,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "DEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]\n# Add CORS Middleware",
+        "peekOfCode": "DEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    \"https://datahub.safedriveafrica.com\",\n    \"http://datahub.safedriveafrica.com\"\n    # Add other origins if necessary",
         "detail": "main",
         "documentation": {}
     },
@@ -6984,7 +7235,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "origins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    # Add other origins if necessary\n]\n# Add CORS Middleware\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins if ENVIRONMENT == \"production\" else [\"*\"],  # Allow all in local dev\n    allow_credentials=True,",
+        "peekOfCode": "origins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    \"https://datahub.safedriveafrica.com\",\n    \"http://datahub.safedriveafrica.com\"\n    # Add other origins if necessary\n]\n# Add CORS Middleware\napp.add_middleware(\n    CORSMiddleware,",
         "detail": "main",
         "documentation": {}
     },
