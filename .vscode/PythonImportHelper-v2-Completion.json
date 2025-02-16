@@ -5213,7 +5213,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(\n    *,\n    db: Session = Depends(get_db),\n    profile_in: DriverProfileCreate\n) -> DriverProfileResponse:\n    \"\"\"\n    Creates a new driver profile, or returns the existing one if there's a duplicate email.",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)\nhandler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(\n    *,",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5222,7 +5222,25 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(\n    *,\n    db: Session = Depends(get_db),\n    profile_in: DriverProfileCreate\n) -> DriverProfileResponse:\n    \"\"\"\n    Creates a new driver profile, or returns the existing one if there's a duplicate email.\n    \"\"\"",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)\nhandler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(\n    *,\n    db: Session = Depends(get_db),",
+        "detail": "safedrive.api.v1.endpoints.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "handler",
+        "kind": 5,
+        "importPath": "safedrive.api.v1.endpoints.driver_profile",
+        "description": "safedrive.api.v1.endpoints.driver_profile",
+        "peekOfCode": "handler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(\n    *,\n    db: Session = Depends(get_db),\n    profile_in: DriverProfileCreate\n) -> DriverProfileResponse:",
+        "detail": "safedrive.api.v1.endpoints.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "formatter",
+        "kind": 5,
+        "importPath": "safedrive.api.v1.endpoints.driver_profile",
+        "description": "safedrive.api.v1.endpoints.driver_profile",
+        "peekOfCode": "formatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(\n    *,\n    db: Session = Depends(get_db),\n    profile_in: DriverProfileCreate\n) -> DriverProfileResponse:\n    \"\"\"",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5933,7 +5951,25 @@
         "kind": 5,
         "importPath": "safedrive.crud.driver_profile",
         "description": "safedrive.crud.driver_profile",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nclass CRUDDriverProfile:\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: DriverProfileCreate) -> DriverProfile:\n        try:\n            obj_data = obj_in.model_dump()\n            # Ensure driverProfileId is a proper UUID, regardless of input type.\n            if 'driverProfileId' in obj_data:\n                if isinstance(obj_data['driverProfileId'], str):",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)\nhandler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\nclass CRUDDriverProfile:\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: DriverProfileCreate) -> DriverProfile:",
+        "detail": "safedrive.crud.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "handler",
+        "kind": 5,
+        "importPath": "safedrive.crud.driver_profile",
+        "description": "safedrive.crud.driver_profile",
+        "peekOfCode": "handler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\nclass CRUDDriverProfile:\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: DriverProfileCreate) -> DriverProfile:\n        try:\n            obj_data = obj_in.model_dump()",
+        "detail": "safedrive.crud.driver_profile",
+        "documentation": {}
+    },
+    {
+        "label": "formatter",
+        "kind": 5,
+        "importPath": "safedrive.crud.driver_profile",
+        "description": "safedrive.crud.driver_profile",
+        "peekOfCode": "formatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\nclass CRUDDriverProfile:\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: DriverProfileCreate) -> DriverProfile:\n        try:\n            obj_data = obj_in.model_dump()\n            # Ensure driverProfileId is a proper UUID, regardless of input type.",
         "detail": "safedrive.crud.driver_profile",
         "documentation": {}
     },
