@@ -55,7 +55,7 @@ class CRUDDriverProfile:
                 if existing_profile:
                     return existing_profile
             logger.error(f"Unexpected error while creating DriverProfile: {error_message}")
-            raise HTTPException(status_code=500, detail="An unexpected error occurred.")
+            raise HTTPException(status_code=500, detail="An unexpected error occurred again.")
 
 
     def get_by_email(self, db: Session, email: str) -> Optional[DriverProfile]:
