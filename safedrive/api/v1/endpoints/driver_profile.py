@@ -19,16 +19,23 @@ router = APIRouter()
 logger = logging.getLogger(__name__)
 
 @router.post("/driver_profiles/", response_model=DriverProfileResponse)
-def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:
-        # Create or get the driver profile.
-        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)
-        logger.info(f"DriverProfile created with ID: {new_profile.driverProfileId}")
-        # Build the response using the values from the returned database record.
-        return DriverProfileResponse(
-            driverProfileId=new_profile.driverProfileId,
-            email=new_profile.email,
-            sync=new_profile.sync
-        )
+def create_driver_profile(
+    *,
+    db: Session = Depends(get_db),
+    profile_in: DriverProfileCreate
+) -> DriverProfileResponse:
+    """
+    Creates a new driver profile, or returns the existing one if there's a duplicate email.
+    """
+    # No `try/except IntegrityError` block here, because CRUD function handles it.
+    new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)
+    logger.info(f"DriverProfile created or retrieved with ID: {new_profile.driverProfileId}")
+
+    return DriverProfileResponse(
+        driverProfileId=new_profile.driverProfileId,
+        email=new_profile.email,
+        sync=new_profile.sync
+    )
 
 
 @router.post("/driver_profiles/batch_create", response_model=List[DriverProfileResponse])

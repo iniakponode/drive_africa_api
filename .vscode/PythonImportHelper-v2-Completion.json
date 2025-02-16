@@ -1906,14 +1906,6 @@
         "documentation": {}
     },
     {
-        "label": "generate_uuid_binary",
-        "importPath": "safedrive.models.driver_profile",
-        "description": "safedrive.models.driver_profile",
-        "isExtraImport": true,
-        "detail": "safedrive.models.driver_profile",
-        "documentation": {}
-    },
-    {
         "label": "Cause",
         "importPath": "safedrive.models.cause",
         "description": "safedrive.models.cause",
@@ -3548,30 +3540,6 @@
         "documentation": {}
     },
     {
-        "label": "DataError",
-        "importPath": "pymysql",
-        "description": "pymysql",
-        "isExtraImport": true,
-        "detail": "pymysql",
-        "documentation": {}
-    },
-    {
-        "label": "IntegrityError",
-        "importPath": "pymysql",
-        "description": "pymysql",
-        "isExtraImport": true,
-        "detail": "pymysql",
-        "documentation": {}
-    },
-    {
-        "label": "OperationalError",
-        "importPath": "pymysql",
-        "description": "pymysql",
-        "isExtraImport": true,
-        "detail": "pymysql",
-        "documentation": {}
-    },
-    {
         "label": "IntegrityError",
         "importPath": "pymysql",
         "description": "pymysql",
@@ -4477,6 +4445,14 @@
         "documentation": {}
     },
     {
+        "label": "IntegrityError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
         "label": "SQLAlchemyError",
         "importPath": "sqlalchemy.exc",
         "description": "sqlalchemy.exc",
@@ -4490,14 +4466,6 @@
         "description": "safedrive.models.alcohol_questionnaire",
         "isExtraImport": true,
         "detail": "safedrive.models.alcohol_questionnaire",
-        "documentation": {}
-    },
-    {
-        "label": "origins",
-        "importPath": "main",
-        "description": "main",
-        "isExtraImport": true,
-        "detail": "main",
         "documentation": {}
     },
     {
@@ -5155,7 +5123,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(\n            driverProfileId=new_profile.driverProfileId,\n            email=new_profile.email,\n            sync=new_profile.sync\n        )",
+        "peekOfCode": "def create_driver_profile(\n    *,\n    db: Session = Depends(get_db),\n    profile_in: DriverProfileCreate\n) -> DriverProfileResponse:\n    \"\"\"\n    Creates a new driver profile, or returns the existing one if there's a duplicate email.\n    \"\"\"\n    # No `try/except IntegrityError` block here, because CRUD function handles it.\n    new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5245,7 +5213,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(\n            driverProfileId=new_profile.driverProfileId,",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(\n    *,\n    db: Session = Depends(get_db),\n    profile_in: DriverProfileCreate\n) -> DriverProfileResponse:\n    \"\"\"\n    Creates a new driver profile, or returns the existing one if there's a duplicate email.",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5254,7 +5222,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(\n            driverProfileId=new_profile.driverProfileId,\n            email=new_profile.email,",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(\n    *,\n    db: Session = Depends(get_db),\n    profile_in: DriverProfileCreate\n) -> DriverProfileResponse:\n    \"\"\"\n    Creates a new driver profile, or returns the existing one if there's a duplicate email.\n    \"\"\"",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5956,7 +5924,7 @@
         "kind": 6,
         "importPath": "safedrive.crud.driver_profile",
         "description": "safedrive.crud.driver_profile",
-        "peekOfCode": "class CRUDDriverProfile:\n    \"\"\"\n    CRUD operations for DriverProfile.\n    Methods:\n    - **create**: Adds a new DriverProfile record.\n    - **get**: Retrieves a DriverProfile by UUID.\n    - **get_all**: Retrieves all DriverProfiles.\n    - **update**: Updates a DriverProfile record.\n    - **delete**: Deletes a DriverProfile record.\n    \"\"\"",
+        "peekOfCode": "class CRUDDriverProfile:\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: DriverProfileCreate) -> DriverProfile:\n        try:\n            obj_data = obj_in.model_dump()\n            # Ensure driverProfileId is a proper UUID, regardless of input type.\n            if 'driverProfileId' in obj_data:\n                if isinstance(obj_data['driverProfileId'], str):\n                    obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])",
         "detail": "safedrive.crud.driver_profile",
         "documentation": {}
     },
@@ -5965,7 +5933,7 @@
         "kind": 5,
         "importPath": "safedrive.crud.driver_profile",
         "description": "safedrive.crud.driver_profile",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nclass CRUDDriverProfile:\n    \"\"\"\n    CRUD operations for DriverProfile.\n    Methods:\n    - **create**: Adds a new DriverProfile record.\n    - **get**: Retrieves a DriverProfile by UUID.\n    - **get_all**: Retrieves all DriverProfiles.\n    - **update**: Updates a DriverProfile record.\n    - **delete**: Deletes a DriverProfile record.",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass CRUDDriverProfile:\n    def __init__(self, model):\n        self.model = model\n    def create(self, db: Session, obj_in: DriverProfileCreate) -> DriverProfile:\n        try:\n            obj_data = obj_in.model_dump()\n            # Ensure driverProfileId is a proper UUID, regardless of input type.\n            if 'driverProfileId' in obj_data:\n                if isinstance(obj_data['driverProfileId'], str):",
         "detail": "safedrive.crud.driver_profile",
         "documentation": {}
     },
