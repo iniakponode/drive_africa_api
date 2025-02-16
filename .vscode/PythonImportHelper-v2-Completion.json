@@ -6643,7 +6643,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.driver_profile",
         "description": "safedrive.schemas.driver_profile",
-        "peekOfCode": "class DriverProfileResponse(DriverProfileBase):\n    \"\"\"\n    Response schema for DriverProfile, with UUID conversion for JSON responses.\n    \"\"\"\n    driverProfileId: UUID\n    email: str\n    sync: bool\n    @validator(\"driverProfileId\", pre=True, always=True)\n    def convert_driver_profile_id(cls, v):\n        if isinstance(v, bytes):",
+        "peekOfCode": "class DriverProfileResponse(DriverProfileBase):\n    \"\"\"\n    Response schema for DriverProfile, with UUID conversion for JSON responses.\n    \"\"\"\n    driverProfileId: UUID\n    email: str\n    sync: bool\n    @field_validator(\"driverProfileId\", mode=\"before\")\n    def convert_driver_profile_id(cls, v):\n        if isinstance(v, bytes):",
         "detail": "safedrive.schemas.driver_profile",
         "documentation": {}
     },

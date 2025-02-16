@@ -69,7 +69,7 @@ class DriverProfileResponse(DriverProfileBase):
     email: str
     sync: bool
     
-    @validator("driverProfileId", pre=True, always=True)
+    @field_validator("driverProfileId", mode="before")
     def convert_driver_profile_id(cls, v):
         if isinstance(v, bytes):
             return UUID(bytes=v)
