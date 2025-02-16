@@ -44,6 +44,7 @@ class CRUDDriverProfile:
             return db_obj
 
         except IntegrityError as e:
+            print("Underlying DB-API error:", e.orig)
             db.rollback()
             # Check if the error is due to a duplicate email.
             error_message = str(e.origins) if e.origins() else str(e)
