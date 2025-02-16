@@ -5155,7 +5155,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(\n            driverProfileId=new_profile.driverProfileId,\n            email=new_profile.email,\n            sync=new_profile.sync",
+        "peekOfCode": "def create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(\n            driverProfileId=new_profile.driverProfileId,\n            email=new_profile.email,\n            sync=new_profile.sync\n        )",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5245,7 +5245,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(\n            driverProfileId=new_profile.driverProfileId,",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5254,7 +5254,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n    try:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(\n            driverProfileId=new_profile.driverProfileId,",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driver_profiles/\", response_model=DriverProfileResponse)\ndef create_driver_profile(*, db: Session = Depends(get_db), profile_in: DriverProfileCreate) -> DriverProfileResponse:\n        # Create or get the driver profile.\n        new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)\n        logger.info(f\"DriverProfile created with ID: {new_profile.driverProfileId}\")\n        # Build the response using the values from the returned database record.\n        return DriverProfileResponse(\n            driverProfileId=new_profile.driverProfileId,\n            email=new_profile.email,",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },

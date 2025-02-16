@@ -44,11 +44,11 @@ class CRUDDriverProfile:
             return db_obj
 
         except IntegrityError as e:
-            logger.warning(f"Underlying DB-API error: {e.orig}")
+            logger.error(f"IntegrityError details: {str(e.orig)}")
             db.rollback()
             # Check if the error is due to a duplicate email.
             error_message = str(e.origins) if e.origins() else str(e)
-            if "Duplicate entry" in error_message and "for key 'email'" in error_message:
+            if "Duplicate entry" in error_message:
                 email = obj_data.get("email")
                 logger.warning(f"Duplicate entry for email {email}. Retrieving existing profile...")
                 existing_profile = db.query(self.model).filter(self.model.email == email).first()
