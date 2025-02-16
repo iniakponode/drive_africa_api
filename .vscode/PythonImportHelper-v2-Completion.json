@@ -4221,6 +4221,14 @@
         "documentation": {}
     },
     {
+        "label": "validator",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "field_validator",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -6635,7 +6643,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.driver_profile",
         "description": "safedrive.schemas.driver_profile",
-        "peekOfCode": "class DriverProfileResponse(DriverProfileBase):\n    \"\"\"\n    Response schema for DriverProfile, with UUID conversion for JSON responses.\n    \"\"\"\n    driverProfileId: UUID\n    email: str\n    sync: bool\n    @field_validator(\"driverProfileId\", pre=True, always=True)\n    def convert_driver_profile_id(cls, v):\n        if isinstance(v, bytes):",
+        "peekOfCode": "class DriverProfileResponse(DriverProfileBase):\n    \"\"\"\n    Response schema for DriverProfile, with UUID conversion for JSON responses.\n    \"\"\"\n    driverProfileId: UUID\n    email: str\n    sync: bool\n    @validator(\"driverProfileId\", pre=True, always=True)\n    def convert_driver_profile_id(cls, v):\n        if isinstance(v, bytes):",
         "detail": "safedrive.schemas.driver_profile",
         "documentation": {}
     },
@@ -7195,6 +7203,51 @@
         "description": "venv.Scripts.pywin32_testall",
         "peekOfCode": "failures = []\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error, but we don't\n# abort immediately - we run as many tests as we can.\ndef run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_extras\n    print(\"--- Running '%s' ---\" % script)\n    sys.stdout.flush()",
         "detail": "venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "loglevel",
+        "kind": 5,
+        "importPath": "gunicorn.conf",
+        "description": "gunicorn.conf",
+        "peekOfCode": "loglevel = 'info'\naccesslog = '-'       # Send access logs to stdout\nerrorlog = '-'        # Send error logs to stderr\ncapture_output = True # Capture worker stdout/stderr\nenable_stdio_inheritance = True\n# Optionally, configure Python logging here as well\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s %(levelname)s [%(name)s] %(message)s\"\n)",
+        "detail": "gunicorn.conf",
+        "documentation": {}
+    },
+    {
+        "label": "accesslog",
+        "kind": 5,
+        "importPath": "gunicorn.conf",
+        "description": "gunicorn.conf",
+        "peekOfCode": "accesslog = '-'       # Send access logs to stdout\nerrorlog = '-'        # Send error logs to stderr\ncapture_output = True # Capture worker stdout/stderr\nenable_stdio_inheritance = True\n# Optionally, configure Python logging here as well\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s %(levelname)s [%(name)s] %(message)s\"\n)",
+        "detail": "gunicorn.conf",
+        "documentation": {}
+    },
+    {
+        "label": "errorlog",
+        "kind": 5,
+        "importPath": "gunicorn.conf",
+        "description": "gunicorn.conf",
+        "peekOfCode": "errorlog = '-'        # Send error logs to stderr\ncapture_output = True # Capture worker stdout/stderr\nenable_stdio_inheritance = True\n# Optionally, configure Python logging here as well\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s %(levelname)s [%(name)s] %(message)s\"\n)",
+        "detail": "gunicorn.conf",
+        "documentation": {}
+    },
+    {
+        "label": "capture_output",
+        "kind": 5,
+        "importPath": "gunicorn.conf",
+        "description": "gunicorn.conf",
+        "peekOfCode": "capture_output = True # Capture worker stdout/stderr\nenable_stdio_inheritance = True\n# Optionally, configure Python logging here as well\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s %(levelname)s [%(name)s] %(message)s\"\n)",
+        "detail": "gunicorn.conf",
+        "documentation": {}
+    },
+    {
+        "label": "enable_stdio_inheritance",
+        "kind": 5,
+        "importPath": "gunicorn.conf",
+        "description": "gunicorn.conf",
+        "peekOfCode": "enable_stdio_inheritance = True\n# Optionally, configure Python logging here as well\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s %(levelname)s [%(name)s] %(message)s\"\n)",
+        "detail": "gunicorn.conf",
         "documentation": {}
     },
     {

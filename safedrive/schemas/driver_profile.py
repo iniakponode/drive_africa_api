@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, validator, field_validator
 from typing import List, Optional
 from uuid import UUID
 
@@ -69,7 +69,7 @@ class DriverProfileResponse(DriverProfileBase):
     email: str
     sync: bool
     
-    @field_validator("driverProfileId", pre=True, always=True)
+    @validator("driverProfileId", pre=True, always=True)
     def convert_driver_profile_id(cls, v):
         if isinstance(v, bytes):
             return UUID(bytes=v)
