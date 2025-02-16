@@ -4493,6 +4493,14 @@
         "documentation": {}
     },
     {
+        "label": "origins",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
+        "documentation": {}
+    },
+    {
         "label": "Road",
         "importPath": "safedrive.models.road",
         "description": "safedrive.models.road",

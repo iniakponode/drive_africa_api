@@ -6,6 +6,7 @@ from typing import List, Optional
 from safedrive.models.driver_profile import DriverProfile, generate_uuid_binary
 from safedrive.schemas.driver_profile import DriverProfileCreate, DriverProfileUpdate
 import logging
+from main import origins
 
 logger = logging.getLogger(__name__)
 
@@ -33,24 +34,26 @@ class CRUDDriverProfile:
                     obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
                 elif isinstance(obj_data['driverProfileId'], bytes):
                     obj_data['driverProfileId'] = UUID(bytes=obj_data['driverProfileId'])
-            
+
             db_obj = self.model(**obj_data)
             db.add(db_obj)
             db.commit()
             db.refresh(db_obj)
+
             logger.info(f"Created DriverProfile with ID: {db_obj.driverProfileId}")
             return db_obj
 
         except IntegrityError as e:
             db.rollback()
             # Check if the error is due to a duplicate email.
-            if "Duplicate entry" in str(e.orig) and "for key 'email'" in str(e.orig):
+            error_message = str(e.origins) if e.origins() else str(e)
+            if "Duplicate entry" in error_message and "for key 'email'" in error_message:
                 email = obj_data.get("email")
-                logger.info(f"Profile with email {email} already exists. Retrieving existing profile.")
+                logger.warning(f"Duplicate entry for email {email}. Retrieving existing profile...")
                 existing_profile = db.query(self.model).filter(self.model.email == email).first()
                 if existing_profile:
                     return existing_profile
-            logger.error(f"Unexpected error while creating DriverProfile: {str(e)}")
+            logger.error(f"Unexpected error while creating DriverProfile: {error_message}")
             raise HTTPException(status_code=500, detail="An unexpected error occurred.")
 
 
