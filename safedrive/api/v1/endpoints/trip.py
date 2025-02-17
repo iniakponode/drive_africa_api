@@ -42,7 +42,8 @@ def create_trip(*, db: Session = Depends(get_db), trip_in: TripCreate) -> TripRe
             end_date=new_trip.end_date,
             start_time=new_trip.start_time,
             end_time=new_trip.end_time,
-            sync=new_trip.sync
+            sync=new_trip.sync,
+            influence=new_trip.influence
         )
     except HTTPException as http_exc:
         raise http_exc
@@ -188,7 +189,8 @@ def batch_create_trips(
                 end_date=new_trip.end_date,
                 start_time=new_trip.start_time,
                 end_time=new_trip.end_time,
-                synced=new_trip.synced
+                synced=new_trip.synced,
+                influence=new_trip.influence
                 # Include other fields as needed
             )
             for new_trip in new_trips

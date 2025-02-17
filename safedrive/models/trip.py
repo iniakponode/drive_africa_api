@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, Boolean, BINARY, BigInteger
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, Boolean, BINARY, BigInteger, String
 from sqlalchemy.orm import relationship, object_session
 from uuid import uuid4, UUID
 from sqlalchemy_utils import UUIDType
@@ -17,7 +17,8 @@ class Trip(Base):
     start_date = Column(DateTime)
     end_date = Column(DateTime, nullable=True)
     start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger
-    end_time = Column(BigInteger, nullable=True) 
+    end_time = Column(BigInteger, nullable=True)
+    influence = Column(String(50), nullable=True)
     sync = Column(Boolean, nullable=False)
 
     # Relationships

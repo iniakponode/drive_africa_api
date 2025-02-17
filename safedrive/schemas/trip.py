@@ -27,6 +27,7 @@ class TripBase(BaseModel):
     start_time: Optional[int] = Field(..., description="The start time of the trip in epoch milliseconds.")
     end_time: Optional[int] = Field(None, description="The end time of the trip in epoch milliseconds.")
     sync: bool = Field(False, description="Indicates whether the trip data has been synced.")
+    influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
 
     class Config:
         from_attributes = True  # For Pydantic v2
@@ -52,6 +53,7 @@ class TripCreate(BaseModel):
     start_time: int = Field(..., description="The start time of the trip in epoch milliseconds.")
     end_time: Optional[int] = Field(None, description="The end time of the trip in epoch milliseconds.")
     sync: Optional[bool] = Field(False, description="Indicates whether the trip data has been synced.")
+    influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
 
     class Config:
         from_attributes = True
@@ -68,6 +70,7 @@ class TripUpdate(BaseModel):
     start_time: Optional[int] = Field(None, description="Optionally update the start time of the trip in epoch milliseconds.")
     end_time: Optional[int] = Field(None, description="Optionally update the end time of the trip in epoch milliseconds.")
     sync: Optional[bool] = Field(None, description="Optionally update the sync status.")
+    influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
 
     class Config:
         from_attributes = True
