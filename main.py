@@ -60,15 +60,15 @@ ALEMBIC_CONFIG_PATH = "./alembic.ini"
 #     print(route.path, route.name)
 
 
-# @app.on_event("startup")
-# async def on_startup():
-#     # Run Alembic migrations programmatically
-#     alembic_cfg = Config(ALEMBIC_CONFIG_PATH)
-#     alembic_cfg.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
+@app.on_event("startup")
+async def on_startup():
+    # Run Alembic migrations programmatically
+    alembic_cfg = Config(ALEMBIC_CONFIG_PATH)
+    alembic_cfg.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
  
-#     print("Running Alembic migrations...")
-#     command.upgrade(alembic_cfg, "head")  # Upgrade database schema to latest
-#     print("Migrations completed successfully.")
+    print("Running Alembic migrations...")
+    command.upgrade(alembic_cfg, "head")  # Upgrade database schema to latest
+    print("Migrations completed successfully.")
     
 
 # Run the app using uvicorn when executed directly
