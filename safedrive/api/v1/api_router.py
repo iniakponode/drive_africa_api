@@ -1,5 +1,5 @@
 # safedrive/api/v1/api_router.py
-from fastapi import APIRouter
+from fastapi import APIRouter, logger
 
 from safedrive.api.v1.endpoints.trip import router as trips_router
 from safedrive.api.v1.endpoints.index import router as index_router

@@ -106,7 +106,7 @@ class CRUDTrip:
         :return: The retrieved trip or None if not found.
         """
         try:
-            trip = db.query(self.model).filter(self.model.id == id).first()
+            trip = db.query(self.model).filter(self.model.id == id.bytes).first()
             if trip:
                 logger.info(f"Found trip with ID: {id}")
             else:
@@ -217,7 +217,7 @@ class CRUDTrip:
         except Exception as e:
             db.rollback()
             # Log error as appropriate
-            raise HTTPException(status_code=500, detail="An unexpected error occurred during batch creation.")
+            raise HTTPException(status_code=500, detail="An unexpected error occurred during batch creation.\n"+e)
 
 # Initialize CRUD instance for Trip
 trip_crud = CRUDTrip(Trip)

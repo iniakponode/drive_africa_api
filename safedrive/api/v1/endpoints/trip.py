@@ -122,6 +122,7 @@ def update_trip(
         raise e
     except Exception as e:
         logger.exception("Error updating trip")
+        logger.debug(f"Trip update body: {trip_in.dict()}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 @router.delete("/trips/{trip_id}", response_model=TripResponse)

@@ -36,7 +36,7 @@ class Trip(Base):
             return []
 
         return (session.query(RawSensorData)
-                       .filter(RawSensorData.trip_id == self.trip_id)
+                       .filter(RawSensorData.trip_id == self.id)
                        .limit(10)
                        .all())
 
