@@ -45,8 +45,16 @@ class Trip(Base):
 
     @property
     def id_uuid(self) -> UUID:
+        """
+        If self.id is already a uuid.UUID, just return it.
+        Otherwise, treat it as raw bytes and convert to a UUID object.
+        """
+        if isinstance(self.id, UUID):
+            return self.id
         return UUID(bytes=self.id)
 
     @property
     def driver_profile_id_uuid(self) -> UUID:
+        if isinstance(self.driverProfileId, UUID):
+            return self.driverProfileId
         return UUID(bytes=self.driverProfileId)

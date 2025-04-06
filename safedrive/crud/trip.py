@@ -5,6 +5,7 @@ from uuid import UUID
 from typing import List, Optional
 import logging
 
+from safedrive.models.driver_profile import DriverProfile
 from safedrive.models.trip import Trip
 from safedrive.schemas.trip import TripCreate, TripUpdate
 
@@ -24,38 +25,76 @@ class CRUDTrip:
         self.model = model
         
     def batch_create(self, db: Session, objs_in: List["TripCreate"]) -> List["Trip"]:
-            db_objs = []
-            skipped_count = 0
+        db_objs = []
+        skipped_count = 0
 
-            for obj_in in objs_in:
-                obj_data = obj_in.model_dump()
+        for idx, obj_in in enumerate(objs_in):
+            obj_data = obj_in.model_dump()
 
-                # Convert UUID fields if needed
-                if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
-                    obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
+            # 1) Log the incoming data
+            logger.info(f"[batch_create] Processing item {idx+1}/{len(objs_in)}: {obj_data}")
 
+            # 2) Convert driverProfileId if needed
+            if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
+                raw_str = obj_data['driverProfileId']
+                logger.debug(f"[batch_create] Converting driverProfileId from string '{raw_str}' to UUID.")
                 try:
-                    db_obj = self.model(**obj_data)
-                    db.add(db_obj)
-                    db.flush()
-                    db_objs.append(db_obj)
-                except IntegrityError as e:
-                    db.rollback()
+                    obj_data['driverProfileId'] = UUID(raw_str)
+                except ValueError as e:
+                    logger.error(f"[batch_create] Invalid UUID string for driverProfileId '{raw_str}': {e}")
                     skipped_count += 1
-                    logger.warning(f"Skipping Trip record due to IntegrityError: {str(e)}")
-                except Exception as e:
-                    db.rollback()
+                    continue
+
+            # 3) (Optional) Check that driverProfileId exists in DB
+            driver_profile_id = obj_data.get("driverProfileId")
+            if driver_profile_id:
+                profile = (
+                    db.query(DriverProfile)
+                    .filter(DriverProfile.driverProfileId == driver_profile_id.bytes)
+                    .first()
+                )
+                if not profile:
+                    logger.warning(
+                        f"[batch_create] Skipping Trip record: driverProfileId {driver_profile_id} "
+                        "not found in driver_profile table."
+                    )
                     skipped_count += 1
-                    logger.error(f"Unexpected error inserting Trip record: {str(e)}")
+                    continue
 
-            db.commit()
+            # 4) Attempt to create & flush
+            try:
+                db_obj = self.model(**obj_data)
+                db.add(db_obj)
+                db.flush()  # If this fails, we rollback & skip below
+                # Only append if flush succeeded (object is now persistent)
+                db_objs.append(db_obj)
+                logger.debug(
+                    f"[batch_create] Inserted Trip with ID = {db_obj.id_uuid} "
+                    f"and driverProfileId = {db_obj.driver_profile_id_uuid}"
+                )
+            except IntegrityError as e:
+                db.rollback()
+                skipped_count += 1
+                logger.warning(f"[batch_create] Skipping Trip record due to IntegrityError: {str(e)}")
+                # continue to next trip
+            except Exception as e:
+                db.rollback()
+                skipped_count += 1
+                logger.error(f"[batch_create] Unexpected error inserting Trip record: {str(e)}")
+                # continue to next trip
 
-            for db_obj in db_objs:
-                db.refresh(db_obj)
-                # Optionally log: logger.info(f"Created Trip with ID: {db_obj.id}")
+        # 5) Commit all successful inserts (i.e., those that didn't rollback)
+        db.commit()
 
-            logger.info(f"Batch inserted {len(db_objs)} Trip records. Skipped {skipped_count}.")
-            return db_objs
+        # 6) Refresh each successfully inserted object
+        for db_obj in db_objs:
+            db.refresh(db_obj)
+            logger.debug(f"[batch_create] Refreshed Trip after commit: ID = {db_obj.id_uuid}")
+
+        # 7) Final summary
+        logger.info(f"[batch_create] Successfully inserted {len(db_objs)} Trip records. Skipped {skipped_count}.")
+        return db_objs
+
 
     def batch_delete(self, db: Session, ids: List[int]) -> None:
         """
@@ -138,31 +177,78 @@ class CRUDTrip:
         Update an existing trip record.
 
         :param db: The database session.
-        :param db_obj: The existing database object to update.
+        :param db_obj: The existing database object to update (must not be None).
         :param obj_in: The schema with updated data.
-        :return: The updated trip.
+        :return: The updated Trip object.
+        :raises HTTPException(404): if trip not found.
+        :raises HTTPException(400): for foreign key or data integrity errors.
         """
+        # 1) If the trip does not exist in DB, raise a 404
+        if not db_obj:
+            logger.warning("Attempted to update a trip that does not exist in DB.")
+            raise HTTPException(status_code=404, detail="Trip not found")
+
         try:
-            obj_data = obj_in.dict(exclude_unset=True)
+            # 2) Only allow partial updates (exclude unset fields)
+            obj_data = obj_in.model_dump(exclude_unset=True)
 
-            # Convert UUID fields to strings
-            for uuid_field in ['id', 'driverProfileId']:
-                if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
-                    obj_data[uuid_field] = UUID(obj_data[uuid_field])
+            # 3) Convert UUID fields from string → Python UUID (if needed)
+            #    Typically we do not update 'id' if it's the primary key.
+            if 'id' in obj_data:
+                logger.warning("Attempted to update trip primary key 'id'—skipping.")
+                obj_data.pop('id')  # Usually you don't allow this, or you raise an error.
 
-            # Set updated fields
+            if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
+                raw_str = obj_data['driverProfileId']
+                try:
+                    obj_data['driverProfileId'] = UUID(raw_str)
+                except ValueError as exc:
+                    logger.exception(f"Invalid driverProfileId UUID string '{raw_str}'.")
+                    raise HTTPException(
+                        status_code=400,
+                        detail=f"Invalid UUID for driverProfileId: {raw_str}"
+                    )
+
+            # 4) (Optional) If driverProfileId is changing, check that it exists
+            new_driver_profile_id = obj_data.get('driverProfileId')
+            if new_driver_profile_id is not None:
+                driver_profile_exists = db.query(DriverProfile).filter(
+                    DriverProfile.driverProfileId == new_driver_profile_id.bytes
+                ).first()
+                if not driver_profile_exists:
+                    logger.warning(
+                        f"Update request provided driverProfileId={new_driver_profile_id}, "
+                        f"but no matching DriverProfile was found."
+                    )
+                    raise HTTPException(
+                        status_code=400,
+                        detail="No matching driver profile found for provided driverProfileId."
+                    )
+
+            # 5) Update fields on db_obj
             for field, value in obj_data.items():
                 setattr(db_obj, field, value)
 
+            # 6) Commit & refresh
             db.commit()
             db.refresh(db_obj)
-            logger.info(f"Updated trip with ID: {db_obj.id}")
+
+            logger.info(f"Updated trip with ID: {db_obj.id_uuid} (db primary key bytes={db_obj.id}).")
             return db_obj
 
+        except IntegrityError as e:
+            # Commonly foreign key violations or uniqueness constraints
+            db.rollback()
+            logger.exception(f"IntegrityError while updating trip: {e}")
+            raise HTTPException(
+                status_code=400,
+                detail="Foreign key or unique constraint failed."
+            )
         except Exception as e:
+            # Catch-all for other unexpected errors
             db.rollback()
             logger.exception("Error updating trip in database.")
-            raise
+            raise HTTPException(status_code=500, detail="Internal Server Error")
 
 
     def delete(self, db: Session, id: UUID) -> Optional[Trip]:
@@ -187,36 +273,6 @@ class CRUDTrip:
         except Exception as e:
             db.rollback()
             logger.exception("Error deleting trip from database.")
-            raise
-
-    def batch_create(self, db: Session, objs_in: List[TripCreate]) -> List[Trip]:
-        try:
-            db_objs = []
-
-            for obj_in in objs_in:
-                obj_data = obj_in.model_dump()
-
-                # Convert UUID fields if needed
-                if 'driverProfileId' in obj_data and isinstance(obj_data['driverProfileId'], str):
-                    obj_data['driverProfileId'] = UUID(obj_data['driverProfileId'])
-
-                # Create a new Trip instance
-                db_obj = self.model(**obj_data)
-                db_objs.append(db_obj)
-
-            db.add_all(db_objs)
-            db.commit()
-            db.flush()
-
-            for db_obj in db_objs:
-                db.refresh(db_obj)
-                # Optionally log creation: logger.info(f"Created Trip with ID: {db_obj.id}")
-
-            return db_objs
-
-        except Exception as e:
-            db.rollback()
-            # Log error as appropriate
             raise HTTPException(status_code=500, detail="An unexpected error occurred during batch creation.\n"+e)
 
 # Initialize CRUD instance for Trip

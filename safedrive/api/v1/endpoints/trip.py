@@ -106,23 +106,24 @@ def update_trip(
 ) -> TripResponse:
     """
     Update an existing trip.
-
-    - **trip_id**: The UUID of the trip to update.
-    - **trip_in**: The updated data.
     """
     try:
+        # 1) Retrieve trip from DB
         trip = trip_crud.get(db=db, id=trip_id)
         if not trip:
-            logger.warning(f"Trip with ID {trip_id} not found.")
             raise HTTPException(status_code=404, detail="Trip not found")
+
+        # 2) Perform the update
         updated_trip = trip_crud.update(db=db, db_obj=trip, obj_in=trip_in)
-        logger.info(f"Updated trip with ID: {trip_id}")
+        
+        # 3) Return the updated record
         return TripResponse.model_validate(updated_trip)
-    except HTTPException as e:
-        raise e
+
+    except HTTPException:
+        raise
     except Exception as e:
         logger.exception("Error updating trip")
-        logger.debug(f"Trip update body: {trip_in.dict()}")
+        logger.debug(f"Trip update body: {trip_in.model_dump(exclude_unset=True)}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 @router.delete("/trips/{trip_id}", response_model=TripResponse)
@@ -167,12 +168,14 @@ def batch_delete_trips(ids: List[UUID], db: Session = Depends(get_db)):
         logger.error(f"Error in batch delete Trip: {str(e)}")
         raise HTTPException(status_code=500, detail="Batch deletion failed.")
 
+from sqlalchemy.exc import IntegrityError
+
 @router.post("/trips/batch_create", response_model=List[TripResponse])
 def batch_create_trips(
-        *,
-        db: Session = Depends(get_db),
-        trips_in: List[TripCreate]
-    ) -> List[TripResponse]:
+    *,
+    db: Session = Depends(get_db),
+    trips_in: List[TripCreate]
+) -> List[TripResponse]:
     try:
         new_trips = trip_crud.batch_create(db=db, objs_in=trips_in)
 
@@ -182,23 +185,20 @@ def batch_create_trips(
                 detail="No trips were created due to errors or duplicates."
             )
 
-        created_trips = [
-            TripResponse(
-                id=new_trip.id,  # Or new_trip.id_uuid for UUID conversion if needed
-                driverProfileId=new_trip.driverProfileId,
-                start_date=new_trip.start_date,
-                end_date=new_trip.end_date,
-                start_time=new_trip.start_time,
-                end_time=new_trip.end_time,
-                synced=new_trip.synced,
-                influence=new_trip.influence
-                # Include other fields as needed
-            )
+        return [
+            TripResponse.from_attributes(new_trip)
             for new_trip in new_trips
         ]
 
-        return created_trips
-
+    except IntegrityError as e:
+        logger.exception("Integrity error in batch trip creation")
+        raise HTTPException(
+            status_code=400,
+            detail=f"Foreign key or duplicate constraint failed: {str(e)}"
+        )
     except Exception as e:
-        # Log error appropriately
-        raise HTTPException(status_code=500, detail="An unexpected error occurred while creating trips.")
+        logger.exception("Unexpected error creating trips")
+        raise HTTPException(
+            status_code=500,
+            detail="An unexpected error occurred while creating trips."
+        )

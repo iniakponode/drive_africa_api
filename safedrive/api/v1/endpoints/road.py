@@ -61,7 +61,7 @@ def batch_create_roads(
         roads_in: List[RoadCreate]
     ) -> List[RoadResponse]:
     try:
-        new_roads = road_crud.batch_create(db=db, objs_in=roads_in)
+        new_roads = crud_road.batch_create(db=db, objs_in=roads_in)
 
         if not new_roads:
             raise HTTPException(
@@ -77,7 +77,9 @@ def batch_create_roads(
                 roadType=new_road.roadType,
                 speedLimit=new_road.speedLimit,
                 latitude=new_road.latitude,
-                longitude=new_road.longitude
+                longitude=new_road.longitude,
+                radius=new_road.radius,
+                sync=new_road.sync
             )
             for new_road in new_roads
         ]
