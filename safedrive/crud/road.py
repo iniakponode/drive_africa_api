@@ -57,7 +57,12 @@ class CRUDRoad:
                 skipped_count += 1
                 logger.error(f"Unexpected error inserting Road record: {str(e)}")
 
-        db.commit()
+            try:
+                db.commit()
+            except Exception as e:
+                logger.error(f"Commit failed in batch_create: {e!r}")
+                db.rollback()
+                raise
 
         for db_obj in db_objs:
             db.refresh(db_obj)

@@ -25,7 +25,7 @@ class DriverProfile(Base):
     unsafe_behaviours= relationship("UnsafeBehaviour", back_populates="driver_profile", cascade="all, delete-orphan")
     nlg_reports=relationship("NLGReport", back_populates="driver_profile", cascade="all, delete-orphan")
      
-    roads = relationship("Road", back_populates="driver_profile")
+    roads = relationship("Road", back_populates="driver_profile", cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"<DriverProfile(driver_profile_id={self.driverProfileId}, email={self.email})>"
