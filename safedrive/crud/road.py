@@ -57,12 +57,17 @@ class CRUDRoad:
                 skipped_count += 1
                 logger.error(f"Unexpected error inserting Road record: {str(e)}")
 
-            try:
-                db.commit()
-            except Exception as e:
-                logger.error(f"Commit failed in batch_create: {e!r}")
-                db.rollback()
-                raise
+        # now do one commit for the *whole* batch
+        try:
+            db.commit()
+        except IntegrityError as e:
+            db.rollback()
+            logger.exception("Batch commit failed with IntegrityError")
+            raise HTTPException(400, detail="Duplicate or invalid data in batch")
+        except Exception:
+            db.rollback()
+            logger.exception("Batch commit failed unexpectedly")
+            raise HTTPException(500, detail="Server error while creating roads")
 
         for db_obj in db_objs:
             db.refresh(db_obj)
