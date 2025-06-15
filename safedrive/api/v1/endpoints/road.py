@@ -15,7 +15,7 @@ def create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadRe
     try:
         new_road = crud_road.create(db=db, obj_in=road_in)
         logger.info(f"Created Road with ID: {new_road.id}")
-        return RoadResponse.from_orm(new_road)
+        return RoadResponse.model_validate(new_road)
     except Exception as e:
         logger.error(f"Error creating Road: {str(e)}")
         raise HTTPException(status_code=500, detail="Error creating road")
@@ -26,13 +26,13 @@ def get_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:
     if not road:
         logger.warning(f"Road with ID {road_id} not found.")
         raise HTTPException(status_code=404, detail="Road not found")
-    return RoadResponse.from_orm(road)
+    return RoadResponse.model_validate(road)
 
 @router.get("/roads/", response_model=List[RoadResponse])
 def get_all_roads(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[RoadResponse]:
     roads = crud_road.get_all(db=db, skip=skip, limit=limit)
     logger.info(f"Retrieved {len(roads)} Roads.")
-    return [RoadResponse.from_orm(road) for road in roads]
+    return [RoadResponse.model_validate(road) for road in roads]
 
 @router.put("/roads/{road_id}", response_model=RoadResponse)
 def update_road(road_id: UUID, *, db: Session = Depends(get_db), road_in: RoadUpdate) -> RoadResponse:
@@ -42,7 +42,7 @@ def update_road(road_id: UUID, *, db: Session = Depends(get_db), road_in: RoadUp
         raise HTTPException(status_code=404, detail="Road not found")
     updated_road = crud_road.update(db=db, db_obj=road, obj_in=road_in)
     logger.info(f"Updated Road with ID: {road_id}")
-    return RoadResponse.from_orm(updated_road)
+    return RoadResponse.model_validate(updated_road)
 
 @router.delete("/roads/{road_id}", response_model=RoadResponse)
 def delete_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:
@@ -52,7 +52,7 @@ def delete_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:
         raise HTTPException(status_code=404, detail="Road not found")
     deleted_road = crud_road.delete(db=db, id=road_id)
     logger.info(f"Deleted Road with ID: {road_id}")
-    return RoadResponse.from_orm(deleted_road)
+    return RoadResponse.model_validate(deleted_road)
 
 @router.post("/roads/batch_create", response_model=List[RoadResponse])
 def batch_create_roads(
@@ -69,23 +69,12 @@ def batch_create_roads(
                 detail="No roads were created due to errors or duplicates."
             )
 
-        created_roads = [
-            RoadResponse(
-                id=new_road.id,  # Or new_road.id_uuid if you need UUID conversion
-                driverProfileId=new_road.driverProfileId,
-                name=new_road.name,
-                roadType=new_road.roadType,
-                speedLimit=new_road.speedLimit,
-                latitude=new_road.latitude,
-                longitude=new_road.longitude,
-                radius=new_road.radius,
-                sync=new_road.sync
-            )
-            for new_road in new_roads
-        ]
+        created_roads = [RoadResponse.model_validate(new_road) for new_road in new_roads]
 
         return created_roads
 
     except Exception as e:
         # Log error appropriately
-        raise HTTPException(status_code=500, detail="An unexpected error occurred while creating roads.")
+        logger.exception("Batch‐create roads failed")
+        raise 
+    # HTTPException(status_code=500, detail="An unexpected error occurred while creating roads.")

@@ -55,4 +55,3 @@ class RoadResponse(RoadBase):
     """
     Schema for Road response format, inherits from RoadBase.
     """
-    pass
