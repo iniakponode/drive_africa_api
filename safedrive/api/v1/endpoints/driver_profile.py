@@ -49,6 +49,7 @@ def batch_create_driver_profiles(
     db: Session = Depends(get_db),
     profiles_in: List[DriverProfileCreate]
 ) -> List[DriverProfileResponse]:
+    """Create multiple driver profiles at once."""
     try:
         # Use bulk creation for all profiles at once
         new_profiles = driver_profile_crud.batch_create(db=db, objs_in=profiles_in)
@@ -85,6 +86,7 @@ def batch_create_driver_profiles(
 
 @router.get("/driver_profiles/{profile_id}", response_model=DriverProfileResponse)
 def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:
+    """Retrieve a driver profile by ID."""
     profile = driver_profile_crud.get(db=db, id=profile_id)
     if not profile:
         logger.warning(f"DriverProfile with ID {profile_id} not found.")
@@ -98,6 +100,7 @@ def get_driver_profile_by_email(
     db: Session = Depends(get_db),
     limit_sensor_data: int = 5000
 ):
+    """Get a driver profile and related trips by email."""
     driver_profile = (
         db.query(DriverProfile)
         .filter(DriverProfile.email == email)
@@ -124,6 +127,7 @@ def get_driver_profile_by_email(
     db: Session = Depends(get_db),
     limit_sensor_data: int = 5000
 ):
+    """Retrieve driver profile with limited sensor data by email."""
     # 1) Get the driver profile + eager load trips
     driver_profile = (
         db.query(DriverProfile)
@@ -151,6 +155,7 @@ def get_driver_profile_by_email(
 
 @router.get("/driver-profile-by-email/{email}", response_model=DriverProfileResponse)
 def get_driver_profile_by_email( email: str, db: Session = Depends(get_db), limit: int = 1):
+    """Return a minimal driver profile using an email lookup."""
     # 1) Get the driver profile + eager load trips
     driver_profile = (
         db.query(DriverProfile)
@@ -163,12 +168,14 @@ def get_driver_profile_by_email( email: str, db: Session = Depends(get_db), limi
 
 @router.get("/driver_profiles/", response_model=List[DriverProfileResponse])
 def get_all_driver_profiles(skip: int = 0, limit: int = 5000, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:
+    """List all driver profiles."""
     profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)
     logger.info(f"Retrieved {len(profiles)} DriverProfiles.")
     return [DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync) for profile in profiles]
 
 @router.put("/driver_profiles/{profile_id}", response_model=DriverProfileResponse)
 def update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:
+    """Update a driver profile."""
     profile = driver_profile_crud.get(db=db, id=profile_id)
     if not profile:
         logger.warning(f"DriverProfile with ID {profile_id} not found for update.")
@@ -179,6 +186,7 @@ def update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), pr
 
 @router.delete("/driver_profiles/{profile_id}", response_model=DriverProfileResponse)
 def delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:
+    """Delete a driver profile by ID."""
     profile = driver_profile_crud.get(db=db, id=profile_id)
     if not profile:
         logger.warning(f"DriverProfile with ID {profile_id} not found for deletion.")

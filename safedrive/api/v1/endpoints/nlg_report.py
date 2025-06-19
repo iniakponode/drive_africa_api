@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 @router.post("/nlg_reports/", response_model=NLGReportResponse)
 def create_nlg_report(*, db: Session = Depends(get_db), report_in: NLGReportCreate) -> NLGReportResponse:
+    """Create a new NLG report."""
     try:
         new_report = nlg_report_crud.create(db=db, obj_in=report_in)
         logger.info(f"Created NLGReport with ID: {new_report.id}")
@@ -22,6 +23,7 @@ def create_nlg_report(*, db: Session = Depends(get_db), report_in: NLGReportCrea
 
 @router.get("/nlg_reports/{report_id}", response_model=NLGReportResponse)
 def get_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:
+    """Retrieve a specific NLG report."""
     report = nlg_report_crud.get(db=db, id=report_id)
     if not report:
         logger.warning(f"NLGReport with ID {report_id} not found.")
@@ -30,12 +32,14 @@ def get_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportR
 
 @router.get("/nlg_reports/", response_model=List[NLGReportResponse])
 def get_all_nlg_reports(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[NLGReportResponse]:
+    """List NLG reports with optional pagination."""
     reports = nlg_report_crud.get_all(db=db, skip=skip, limit=limit)
     logger.info(f"Retrieved {len(reports)} NLGReports.")
     return [NLGReportResponse(id=report.id_uuid, driverProfileId=report.driverProfileId, report_text=report.report_text, generated_at=report.generated_at, synced=report.synced) for report in reports]
 
 @router.put("/nlg_reports/{report_id}", response_model=NLGReportResponse)
 def update_nlg_report(report_id: UUID, *, db: Session = Depends(get_db), report_in: NLGReportUpdate) -> NLGReportResponse:
+    """Update an existing NLG report."""
     report = nlg_report_crud.get(db=db, id=report_id)
     if not report:
         logger.warning(f"NLGReport with ID {report_id} not found for update.")
@@ -46,6 +50,7 @@ def update_nlg_report(report_id: UUID, *, db: Session = Depends(get_db), report_
 
 @router.delete("/nlg_reports/{report_id}", response_model=NLGReportResponse)
 def delete_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:
+    """Delete an NLG report."""
     report = nlg_report_crud.get(db=db, id=report_id)
     if not report:
         logger.warning(f"NLGReport with ID {report_id} not found for deletion.")

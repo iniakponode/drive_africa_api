@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 @router.post("/roads/", response_model=RoadResponse)
 def create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadResponse:
+    """Create a new road entry."""
     try:
         new_road = crud_road.create(db=db, obj_in=road_in)
         logger.info(f"Created Road with ID: {new_road.id}")
@@ -22,6 +23,7 @@ def create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadRe
 
 @router.get("/roads/{road_id}", response_model=RoadResponse)
 def get_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:
+    """Retrieve a road by ID."""
     road = crud_road.get(db=db, id=road_id)
     if not road:
         logger.warning(f"Road with ID {road_id} not found.")
@@ -30,12 +32,14 @@ def get_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:
 
 @router.get("/roads/", response_model=List[RoadResponse])
 def get_all_roads(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[RoadResponse]:
+    """List all roads with optional pagination."""
     roads = crud_road.get_all(db=db, skip=skip, limit=limit)
     logger.info(f"Retrieved {len(roads)} Roads.")
     return [RoadResponse.model_validate(road) for road in roads]
 
 @router.put("/roads/{road_id}", response_model=RoadResponse)
 def update_road(road_id: UUID, *, db: Session = Depends(get_db), road_in: RoadUpdate) -> RoadResponse:
+    """Update an existing road."""
     road = crud_road.get(db=db, id=road_id)
     if not road:
         logger.warning(f"Road with ID {road_id} not found for update.")
@@ -46,6 +50,7 @@ def update_road(road_id: UUID, *, db: Session = Depends(get_db), road_in: RoadUp
 
 @router.delete("/roads/{road_id}", response_model=RoadResponse)
 def delete_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:
+    """Delete a road entry."""
     road = crud_road.get(db=db, id=road_id)
     if not road:
         logger.warning(f"Road with ID {road_id} not found for deletion.")
@@ -60,6 +65,7 @@ def batch_create_roads(
         db: Session = Depends(get_db),
         roads_in: List[RoadCreate]
     ) -> List[RoadResponse]:
+    """Create multiple road records in a single request."""
     try:
         new_roads = crud_road.batch_create(db=db, objs_in=roads_in)
 

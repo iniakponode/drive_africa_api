@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 @router.post("/causes/", response_model=CauseResponse)
 def create_cause(*, db: Session = Depends(get_db), cause_in: CauseCreate) -> CauseResponse:
+    """Create a new cause entry."""
     try:
         new_cause = cause_crud.create(db=db, obj_in=cause_in)
         logger.info(f"Created Cause with ID: {new_cause.id}")
@@ -22,6 +23,7 @@ def create_cause(*, db: Session = Depends(get_db), cause_in: CauseCreate) -> Cau
 
 @router.get("/causes/{cause_id}", response_model=CauseResponse)
 def get_cause(cause_id: UUID, db: Session = Depends(get_db)) -> CauseResponse:
+    """Retrieve a cause by its ID."""
     cause = cause_crud.get(db=db, id=cause_id)
     if not cause:
         logger.warning(f"Cause with ID {cause_id} not found.")
@@ -30,12 +32,14 @@ def get_cause(cause_id: UUID, db: Session = Depends(get_db)) -> CauseResponse:
 
 @router.get("/causes/", response_model=List[CauseResponse])
 def get_all_causes(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[CauseResponse]:
+    """List all causes with optional pagination."""
     causes = cause_crud.get_all(db=db, skip=skip, limit=limit)
     logger.info(f"Retrieved {len(causes)} Causes.")
     return [CauseResponse.model_validate(cause) for cause in causes]
 
 @router.put("/causes/{cause_id}", response_model=CauseResponse)
 def update_cause(cause_id: UUID, *, db: Session = Depends(get_db), cause_in: CauseUpdate) -> CauseResponse:
+    """Update an existing cause entry."""
     cause = cause_crud.get(db=db, id=cause_id)
     if not cause:
         logger.warning(f"Cause with ID {cause_id} not found for update.")
@@ -46,6 +50,7 @@ def update_cause(cause_id: UUID, *, db: Session = Depends(get_db), cause_in: Cau
 
 @router.delete("/causes/{cause_id}", response_model=CauseResponse)
 def delete_cause(cause_id: UUID, db: Session = Depends(get_db)) -> CauseResponse:
+    """Delete a cause entry."""
     cause = cause_crud.get(db=db, id=cause_id)
     if not cause:
         logger.warning(f"Cause with ID {cause_id} not found for deletion.")
