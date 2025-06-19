@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 @router.post("/embeddings/", response_model=EmbeddingResponse)
 def create_embedding(*, db: Session = Depends(get_db), embedding_in: EmbeddingCreate) -> EmbeddingResponse:
+    """Create a new embedding record."""
     try:
         new_embedding = embedding_crud.create(db=db, obj_in=embedding_in)
         logger.info(f"Created Embedding with ID: {new_embedding.chunk_id.hex()}")
@@ -22,6 +23,7 @@ def create_embedding(*, db: Session = Depends(get_db), embedding_in: EmbeddingCr
 
 @router.get("/embeddings/{embedding_id}", response_model=EmbeddingResponse)
 def get_embedding(embedding_id: UUID, db: Session = Depends(get_db)) -> EmbeddingResponse:
+    """Retrieve an embedding by its ID."""
     embedding = embedding_crud.get(db=db, id=embedding_id)
     if not embedding:
         logger.warning(f"Embedding with ID {embedding_id} not found.")
@@ -31,12 +33,14 @@ def get_embedding(embedding_id: UUID, db: Session = Depends(get_db)) -> Embeddin
 
 @router.get("/embeddings/", response_model=List[EmbeddingResponse])
 def get_all_embeddings(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[EmbeddingResponse]:
+    """List embeddings with optional pagination."""
     embeddings = embedding_crud.get_all(db=db, skip=skip, limit=limit)
     logger.info(f"Retrieved {len(embeddings)} Embeddings.")
     return [EmbeddingResponse(chunk_id=embed.id_uuid, chunk_text=embed.chunk_text, embedding=embed.embedding, source_type=embed.source_type, source_page=embed.source_page, created_at=embed.created_at) for embed in embeddings]
 
 @router.put("/embeddings/{embedding_id}", response_model=EmbeddingResponse)
 def update_embedding(embedding_id: UUID, *, db: Session = Depends(get_db), embedding_in: EmbeddingUpdate) -> EmbeddingResponse:
+    """Update an existing embedding."""
     embedding = embedding_crud.get(db=db, id=embedding_id)
     if not embedding:
         logger.warning(f"Embedding with ID {embedding_id} not found for update.")
@@ -47,6 +51,7 @@ def update_embedding(embedding_id: UUID, *, db: Session = Depends(get_db), embed
 
 @router.delete("/embeddings/{embedding_id}", response_model=EmbeddingResponse)
 def delete_embedding(embedding_id: UUID, db: Session = Depends(get_db)) -> EmbeddingResponse:
+    """Delete an embedding by ID."""
     embedding = embedding_crud.get(db=db, id=embedding_id)
     if not embedding:
         logger.warning(f"Embedding with ID {embedding_id} not found for deletion.")

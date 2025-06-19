@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 @router.post("/driving_tips/", response_model=DrivingTipResponse)
 def create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:
+    """Create a driving tip."""
     try:
         new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)
         logger.info(f"Created DrivingTip with ID: {new_tip.tip_id}")
@@ -25,6 +26,7 @@ def create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreat
 
 @router.get("/driving_tips/{tip_id}", response_model=DrivingTipResponse)
 def get_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTipResponse:
+    """Retrieve a driving tip by ID."""
     try:
         tip = driving_tip_crud.get(db=db, id=tip_id)
         if not tip:
@@ -53,6 +55,7 @@ def get_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTipRe
 
 @router.get("/driving_tips/", response_model=List[DrivingTipResponse])
 def get_all_driving_tips(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DrivingTipResponse]:
+    """List driving tips with optional pagination."""
     try:
         tips = driving_tip_crud.get_all(db=db, skip=skip, limit=limit)
         logger.info(f"Retrieved {len(tips)} DrivingTips.")
@@ -81,6 +84,7 @@ def get_all_driving_tips(skip: int = 0, limit: int = 20, db: Session = Depends(g
 
 @router.put("/driving_tips/{tip_id}", response_model=DrivingTipResponse)
 def update_driving_tip(tip_id: UUID, *, db: Session = Depends(get_db), tip_in: DrivingTipUpdate) -> DrivingTipResponse:
+    """Update a driving tip."""
     tip = driving_tip_crud.get(db=db, id=tip_id)
     if not tip:
         logger.warning(f"DrivingTip with ID {tip_id} not found for update.")
@@ -95,6 +99,7 @@ def update_driving_tip(tip_id: UUID, *, db: Session = Depends(get_db), tip_in: D
 
 @router.delete("/driving_tips/{tip_id}", response_model=DrivingTipResponse)
 def delete_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTipResponse:
+    """Delete a driving tip."""
     tip = driving_tip_crud.get(db=db, id=tip_id)
     if not tip:
         logger.warning(f"DrivingTip with ID {tip_id} not found for deletion.")

@@ -23,6 +23,7 @@ async def submit_alcohol_questionnaire(
     questionnaire_data: AlcoholQuestionnaireCreateSchema,
     db: Session = Depends(get_db),
 ):
+    """Submit a new alcohol questionnaire."""
     try:
         crud = AlcoholQuestionnaireCRUD(db)
         saved_data = crud.create(questionnaire_data)
@@ -41,6 +42,7 @@ async def get_alcohol_questionnaire(
     questionnaire_id: UUID,
     db: Session = Depends(get_db),
 ):
+    """Retrieve a questionnaire by its ID."""
     try:
         crud = AlcoholQuestionnaireCRUD(db)
         questionnaire = crud.get_by_id(questionnaire_id)
@@ -61,6 +63,7 @@ async def get_alcohol_questionnaire(
 async def list_alcohol_questionnaires(
     db: Session = Depends(get_db),
 ):
+    """List all submitted alcohol questionnaires."""
     try:
         crud = AlcoholQuestionnaireCRUD(db)
         questionnaires = crud.get_all()
@@ -80,6 +83,7 @@ async def update_alcohol_questionnaire(
     updated_data: AlcoholQuestionnaireCreateSchema,
     db: Session = Depends(get_db),
 ):
+    """Update an existing questionnaire."""
     try:
         crud = AlcoholQuestionnaireCRUD(db)
         updated_questionnaire = crud.update(questionnaire_id, updated_data)
@@ -101,6 +105,7 @@ async def delete_alcohol_questionnaire(
     questionnaire_id: UUID,
     db: Session = Depends(get_db),
 ):
+    """Delete a questionnaire by its ID."""
     try:
         crud = AlcoholQuestionnaireCRUD(db)
         crud.delete(questionnaire_id)
