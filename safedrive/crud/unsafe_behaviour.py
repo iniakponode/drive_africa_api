@@ -3,6 +3,7 @@ from pymysql import IntegrityError
 from sqlalchemy.orm import Session
 from uuid import UUID
 from typing import List, Optional
+from datetime import datetime
 import logging
 
 from safedrive.models.unsafe_behaviour import UnsafeBehaviour
@@ -31,7 +32,7 @@ class CRUDUnsafeBehaviour:
             obj_data = data.model_dump()
 
             # Convert string UUID fields
-            for uuid_field in ['id', 'trip_id', 'location_id', 'driver_profile_id']:
+            for uuid_field in ['id', 'trip_id', 'location_id', 'driverProfileId']:
                 if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
                     obj_data[uuid_field] = UUID(obj_data[uuid_field])
 
@@ -144,6 +145,39 @@ class CRUDUnsafeBehaviour:
         except Exception as e:
             logger.exception("Error retrieving unsafe behaviours from database.")
             raise e
+
+    def get_by_trip(self, db: Session, trip_id: UUID) -> List[UnsafeBehaviour]:
+        """Fetch all unsafe-behaviour events for the given trip, ordered by timestamp."""
+        return (
+            db.query(self.model)
+            .filter(self.model.trip_id == trip_id)
+            .order_by(self.model.timestamp)
+            .all()
+        )
+
+    def get_by_driver_and_time(
+        self, db: Session, driver_id: UUID, start: datetime, end: datetime
+    ) -> List[UnsafeBehaviour]:
+        """Fetch events for driver_id where timestamp \u2208 [start, end), ordered by timestamp."""
+        return (
+            db.query(self.model)
+            .filter(
+                self.model.driverProfileId == driver_id,
+                self.model.timestamp >= start,
+                self.model.timestamp < end,
+            )
+            .order_by(self.model.timestamp)
+            .all()
+        )
+
+    def get_by_time(self, db: Session, start: datetime, end: datetime) -> List[UnsafeBehaviour]:
+        """Fetch all events with timestamp \u2208 [start, end), ordered by timestamp."""
+        return (
+            db.query(self.model)
+            .filter(self.model.timestamp >= start, self.model.timestamp < end)
+            .order_by(self.model.timestamp)
+            .all()
+        )
 
     def update(self, db: Session, db_obj: UnsafeBehaviour, obj_in: UnsafeBehaviourUpdate) -> UnsafeBehaviour:
         """
