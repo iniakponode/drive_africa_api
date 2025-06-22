@@ -4,3 +4,5 @@ env.txt
 appNewUploadWorker.kt
 AppUploadOldCode.kt
 fastapi.service
+__pycache__/
+*.py[cod]

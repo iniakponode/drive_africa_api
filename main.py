@@ -4,6 +4,7 @@ import uvicorn
 from fastapi import FastAPI
 import logging
 from safedrive import safe_drive_africa_api_router as api_router
+from app.routers.ubpk_metrics import router as ubpk_router
 from safedrive.database.base import Base, engine
 from fastapi.middleware.cors import CORSMiddleware
 from alembic.config import Config
@@ -34,6 +35,7 @@ DEBUG = os.getenv("DEBUG") == "True"
 
 # Include API router
 app.include_router(api_router)
+app.include_router(ubpk_router, prefix="/metrics/behavior", tags=["UBPK"])
 
 # Define allowed CORS origins
 origins = [

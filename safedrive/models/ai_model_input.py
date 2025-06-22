@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, DateTime, Float, ForeignKey, BINARY
+from sqlalchemy import Boolean, Column, DateTime, Float, ForeignKey, BigInteger
 from sqlalchemy.orm import relationship
 from safedrive.database.base import Base
 from sqlalchemy_utils import UUIDType
@@ -26,6 +26,12 @@ class AIModelInput(Base):
     
     id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
     trip_id = Column(UUIDType(binary=True), ForeignKey('trip.id', ondelete='CASCADE'), nullable=False)
+    driverProfileId = Column(
+        UUIDType(binary=True),
+        ForeignKey('driver_profile.driverProfileId', ondelete='CASCADE'),
+        nullable=False,
+    )
+    start_time = Column(BigInteger, nullable=False)
     timestamp = Column(DateTime, nullable=False)
     date = Column(DateTime, nullable=False)
     hour_of_day_mean = Column(Float, nullable=False)
@@ -50,3 +56,8 @@ class AIModelInput(Base):
     def trip_id_uuid(self) -> UUID:
         """Return the UUID representation of the binary trip_id."""
         return UUID(bytes=self.trip_id)
+
+    @property
+    def driver_profile_id_uuid(self) -> UUID:
+        """Return the UUID of the driver profile."""
+        return UUID(bytes=self.driverProfileId)
