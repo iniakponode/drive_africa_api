@@ -18,6 +18,8 @@ class AIModelInputBase(BaseModel):
     - **acceleration_y_original_mean**: Mean of original Y-axis acceleration.
     """
     trip_id: UUID = Field(..., description="UUID of the associated trip.")
+    driverProfileId: UUID = Field(..., description="Driver profile identifier")
+    start_time: int = Field(..., description="Trip start time in epoch milliseconds")
     timestamp: datetime = Field(..., description="Timestamp of the AI model input.")
     date: datetime = Field(..., description="Date of the AI model input.")
     hour_of_day_mean: float = Field(..., description="Mean hour of the day.")
@@ -49,6 +51,8 @@ class AIModelInputUpdate(BaseModel):
     speed_std: Optional[float] = Field(None, description="Standard deviation of speed.")
     course_std: Optional[float] = Field(None, description="Standard deviation of course.")
     acceleration_y_original_mean: Optional[float] = Field(None, description="Mean of original Y-axis acceleration.")
+    driverProfileId: Optional[UUID] = Field(None, description="Driver profile identifier")
+    start_time: Optional[int] = Field(None, description="Trip start time in epoch milliseconds")
     sync: Optional[bool] = Field(None, description="Indicates whether the AI model input has been synced.")
 
     class Config:

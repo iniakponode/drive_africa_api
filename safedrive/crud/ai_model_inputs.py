@@ -45,6 +45,8 @@ class CRUDModelInputs:
                 fields['trip_id'] = UUID(fields['trip_id'])
             if isinstance(fields.get('driverProfileId'), str):
                 fields['driverProfileId'] = UUID(fields['driverProfileId'])
+            if 'start_time' in fields and isinstance(fields['start_time'], str):
+                fields['start_time'] = int(fields['start_time'])
 
             record_id = fields.get('id')
             if record_id is not None:
@@ -111,10 +113,12 @@ class CRUDModelInputs:
         try:
             obj_data = obj_in.model_dump()
             # Convert UUID fields to strings
-            for uuid_field in ['trip_id', 'id', 'driver_profile_id']:
+            for uuid_field in ['trip_id', 'id', 'driverProfileId']:
                 if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
-                    obj_data[uuid_field] = UUID(obj_data[uuid_field])  # Convert to 36-character UUID string
+                    obj_data[uuid_field] = UUID(obj_data[uuid_field])
 
+            if 'start_time' in obj_data and isinstance(obj_data['start_time'], str):
+                obj_data['start_time'] = int(obj_data['start_time'])
             db_obj = self.model(**obj_data)
             db.add(db_obj)
             db.commit()
