@@ -14,6 +14,13 @@ from safedrive.models.unsafe_behaviour import UnsafeBehaviour
 router = APIRouter()
 
 
+def parse_iso_week(week: str) -> tuple[date, date]:
+    year, week_no = week.split("-W") if "-W" in week else week.split("-")
+    year, week_no = int(year), int(week_no)
+    start = date.fromisocalendar(year, week_no, 1)
+    return start, start + timedelta(days=7)
+
+
 def _trip_distances(db: Session) -> Dict[UUID, Tuple[UUID, float, datetime, int]]:
     results = (
         db.query(
@@ -141,3 +148,107 @@ def driver_improvement(driver_id: UUID, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Not enough trips for t-test")
     mean_diff, p = _paired_ttest(this_vals, last_vals)
     return {"driverProfileId": driver_id, "p_value": p, "mean_difference": mean_diff}
+
+
+@router.get("/v2/trip/{trip_id}")
+def trip_metrics_v2(trip_id: UUID, db: Session = Depends(get_db)):
+    distances = _trip_distances(db)
+    behaviours = _trip_behaviour_counts(db)
+    if trip_id not in distances:
+        raise HTTPException(status_code=404, detail="Trip not found")
+    driver_id, dist, start_date, start_time = distances[trip_id]
+    count = behaviours.get(trip_id, 0)
+    dt = start_date or (datetime.fromtimestamp(start_time / 1000) if start_time else None)
+    if dt:
+        iy, iw, _ = dt.isocalendar()
+        week = f"{iy}-W{iw:02d}"
+        week_start, week_end = parse_iso_week(week)
+    else:
+        week = ""
+        week_start, week_end = parse_iso_week(f"{date.today().isocalendar()[0]}-W{date.today().isocalendar()[1]:02d}")
+    dist_km = dist / 1000
+    ubpk = (count / dist_km) if dist_km > 0 else 0.0
+    return {
+        "tripId": str(trip_id),
+        "driverProfileId": str(driver_id),
+        "week": week,
+        "weekStart": week_start,
+        "weekEnd": week_end,
+        "totalUnsafeCount": count,
+        "distanceKm": dist_km,
+        "ubpk": ubpk,
+    }
+
+
+@router.get("/v2/driver/{driver_id}")
+def driver_weekly_metrics_v2(
+    driver_id: UUID,
+    week: str | None = Query(None, description="ISO week YYYY-WW"),
+    db: Session = Depends(get_db),
+):
+    if week is None:
+        today = date.today()
+        week = f"{today.isocalendar()[0]}-W{today.isocalendar()[1]:02d}"
+    start, end = parse_iso_week(week)
+    distances = _trip_distances(db)
+    behaviours = _trip_behaviour_counts(db)
+    values: List[float] = []
+    for trip_id, (d_id, dist, dt, st) in distances.items():
+        if d_id != driver_id:
+            continue
+        trip_date = dt or (datetime.fromtimestamp(st / 1000) if st else None)
+        if trip_date and start <= trip_date < end:
+            ubpk = behaviours.get(trip_id, 0) / (dist / 1000) if dist > 0 else 0.0
+            values.append(ubpk)
+    mean_val = sum(values) / len(values) if values else 0.0
+    return {
+        "driverProfileId": str(driver_id),
+        "week": week,
+        "weekStart": start,
+        "weekEnd": end,
+        "numTrips": len(values),
+        "ubpkValues": values,
+        "meanUBPK": mean_val,
+    }
+
+
+@router.get("/v2/driver/{driver_id}/improvement")
+def driver_improvement_v2(
+    driver_id: UUID,
+    week: str | None = Query(None, description="ISO week YYYY-WW"),
+    db: Session = Depends(get_db),
+):
+    if week is None:
+        today = date.today()
+        week = f"{today.isocalendar()[0]}-W{today.isocalendar()[1]:02d}"
+    start2, end2 = parse_iso_week(week)
+    prev_start = start2 - timedelta(days=7)
+    prev_end = start2
+    prev_week = f"{prev_start.isocalendar()[0]}-W{prev_start.isocalendar()[1]:02d}"
+    distances = _trip_distances(db)
+    behaviours = _trip_behaviour_counts(db)
+    last_vals: List[float] = []
+    this_vals: List[float] = []
+    for trip_id, (d_id, dist, dt, st) in distances.items():
+        if d_id != driver_id:
+            continue
+        trip_date = dt or (datetime.fromtimestamp(st / 1000) if st else None)
+        if not trip_date:
+            continue
+        ubpk = behaviours.get(trip_id, 0) / (dist / 1000) if dist > 0 else 0.0
+        if prev_start <= trip_date < prev_end:
+            last_vals.append(ubpk)
+        elif start2 <= trip_date < end2:
+            this_vals.append(ubpk)
+    if len(last_vals) < 1 or len(this_vals) < 1:
+        raise HTTPException(status_code=400, detail="Not enough trips for t-test")
+    mean_diff, p = _paired_ttest(this_vals, last_vals)
+    return {
+        "driverProfileId": str(driver_id),
+        "week": week,
+        "previousWeek": prev_week,
+        "previousWeekStart": prev_start,
+        "previousWeekEnd": prev_end,
+        "pValue": p,
+        "meanDifference": mean_diff,
+    }
