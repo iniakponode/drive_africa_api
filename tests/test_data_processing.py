@@ -42,6 +42,7 @@ spec = importlib.util.spec_from_file_location("data_processing", module_path)
 data_processing = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(data_processing)
 TripModel = data_processing.TripModel
+SensorDataModel = data_processing.SensorDataModel
 process_and_aggregate_data = data_processing.process_and_aggregate_data
 
 
@@ -61,3 +62,21 @@ def test_empty_week_when_no_start():
     result = process_and_aggregate_data([trip])[0]
     assert result["week"] == ""
     assert result["start_time"] is None
+
+
+def test_week_from_sensor_timestamp_when_no_start():
+    trip_id = uuid4()
+    trip = TripModel(id=trip_id, driverProfileId=uuid4(), start_time=None)
+    sensor = SensorDataModel(trip_id=trip_id, timestamp="2024-02-05T00:00:00Z")
+    result = process_and_aggregate_data([trip], [sensor])[0]
+    assert result["week"] == "2024-W06"
+    assert result["start_time"] is None
+
+
+def test_earliest_sensor_timestamp_used():
+    trip_id = uuid4()
+    trip = TripModel(id=trip_id, driverProfileId=uuid4(), start_time=None)
+    s1 = SensorDataModel(trip_id=trip_id, timestamp="2024-02-06T00:00:00Z")
+    s2 = SensorDataModel(trip_id=trip_id, timestamp="2024-02-04T12:00:00Z")
+    result = process_and_aggregate_data([trip], [s1, s2])[0]
+    assert result["week"] == "2024-W05"
