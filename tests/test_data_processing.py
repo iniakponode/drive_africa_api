@@ -80,3 +80,14 @@ def test_earliest_sensor_timestamp_used():
     s2 = SensorDataModel(trip_id=trip_id, timestamp="2024-02-04T12:00:00Z")
     result = process_and_aggregate_data([trip], [s1, s2])[0]
     assert result["week"] == "2024-W05"
+
+def test_start_time_priority_over_sensor():
+    trip_id = uuid4()
+    trip = TripModel(
+        id=trip_id,
+        driverProfileId=uuid4(),
+        start_time="2024-02-07T00:00:00Z",
+    )
+    sensor = SensorDataModel(trip_id=trip_id, timestamp="2024-02-01T00:00:00Z")
+    result = process_and_aggregate_data([trip], [sensor])[0]
+    assert result["week"] == "2024-W06"
