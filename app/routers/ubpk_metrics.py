@@ -3,6 +3,7 @@ from typing import Dict, Tuple, List, Optional
 from uuid import UUID
 from statistics import NormalDist
 from fastapi import APIRouter, Depends, HTTPException, Query
+import logging
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 
@@ -34,7 +35,9 @@ try:
 except Exception:  # pragma: no cover - fallback for test stubs
     TripUBPKResponse = DriverWeekUBPKResponse = DriverImprovementResponse = dict
 
+
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 
 def parse_iso_week(week: str) -> tuple[date, date]:
@@ -65,29 +68,37 @@ def parse_iso_week(week: str) -> tuple[date, date]:
 
 def _trip_distances(db: Session) -> Dict[UUID, Tuple[UUID, float, datetime, int]]:
     """Return mapping of trip_id -> (driver_id, distance_m, start_date, start_time)."""
-    results = (
-        db.query(
-            Trip.id,
-            Trip.driverProfileId,
-            func.coalesce(func.sum(Location.distance), 0.0),
-            Trip.start_date,
-            Trip.start_time,
+    try:
+        results = (
+            db.query(
+                Trip.id,
+                Trip.driverProfileId,
+                func.coalesce(func.sum(Location.distance), 0.0),
+                Trip.start_date,
+                Trip.start_time,
+            )
+            .outerjoin(RawSensorData, RawSensorData.trip_id == Trip.id)
+            .outerjoin(Location, Location.id == RawSensorData.location_id)
+            .group_by(Trip.id)
+            .all()
         )
-        .outerjoin(RawSensorData, RawSensorData.trip_id == Trip.id)
-        .outerjoin(Location, Location.id == RawSensorData.location_id)
-        .group_by(Trip.id)
-        .all()
-    )
+    except Exception as exc:
+        logger.exception("Failed to query trip distances")
+        raise HTTPException(status_code=500, detail="Database error retrieving trip distances") from exc
 
     return {r[0]: (r[1], float(r[2] or 0), r[3], r[4]) for r in results}
 
 
 def _trip_behaviour_counts(db: Session) -> Dict[UUID, int]:
-    results = (
-        db.query(UnsafeBehaviour.trip_id, func.count(UnsafeBehaviour.id))
-        .group_by(UnsafeBehaviour.trip_id)
-        .all()
-    )
+    try:
+        results = (
+            db.query(UnsafeBehaviour.trip_id, func.count(UnsafeBehaviour.id))
+            .group_by(UnsafeBehaviour.trip_id)
+            .all()
+        )
+    except Exception as exc:
+        logger.exception("Failed to query trip behaviour counts")
+        raise HTTPException(status_code=500, detail="Database error retrieving behaviour counts") from exc
     return {r[0]: int(r[1]) for r in results}
 
 
