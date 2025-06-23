@@ -37,8 +37,27 @@ router = APIRouter()
 
 
 def parse_iso_week(week: str) -> tuple[date, date]:
-    year, week_no = week.split("-W")
-    year, week_no = int(year), int(week_no)
+    """Parse a week string and return the start and end dates.
+
+    The API historically accepted both ``YYYY-Www`` and ``YYYY-WW`` formats
+    (with or without the ``W`` separator).  To be resilient against either
+    input, this helper now checks for both patterns before raising an error.
+    """
+
+    week = week.strip()
+
+    if "-W" in week:
+        parts = week.split("-W")
+    elif "-" in week:
+        parts = week.split("-")
+    else:
+        raise HTTPException(status_code=400, detail="Invalid week format")
+
+    if len(parts) != 2:
+        raise HTTPException(status_code=400, detail="Invalid week format")
+
+    year, week_no = int(parts[0]), int(parts[1])
+
     start = date.fromisocalendar(year, week_no, 1)
     return start, start + timedelta(days=7)
 
