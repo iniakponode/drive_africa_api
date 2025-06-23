@@ -95,3 +95,10 @@ def test_driver_improvement(monkeypatch):
     monkeypatch.setattr(ubpk_metrics, '_trip_behaviour_counts', fake_beh)
     res = ubpk_metrics.driver_improvement(driver, None)
     assert 'p_value' in res and 'mean_difference' in res
+
+
+def test_parse_iso_week_both_formats():
+    start1, end1 = ubpk_metrics.parse_iso_week("2024-W06")
+    start2, end2 = ubpk_metrics.parse_iso_week("2024-06")
+    assert start1 == start2
+    assert end1 == end2
