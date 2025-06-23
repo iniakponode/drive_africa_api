@@ -9,6 +9,7 @@ from scipy.stats import ttest_ind
 from safedrive.database.db import get_db
 from safedrive.models.trip import Trip
 from safedrive.models.location import Location
+from safedrive.models.raw_sensor_data import RawSensorData
 from safedrive.models.unsafe_behaviour import UnsafeBehaviour
 from safedrive.schemas.behaviour_metrics import (
     DriverUBPK,
@@ -29,10 +30,12 @@ def _trip_distances(db: Session) -> Dict[UUID, Tuple[UUID, float, datetime]]:
             func.coalesce(func.sum(Location.distance), 0.0),
             Trip.start_date,
         )
-        .outerjoin(Location, Location.trip_id == Trip.id)
+        .outerjoin(RawSensorData, RawSensorData.trip_id == Trip.id)
+        .outerjoin(Location, Location.id == RawSensorData.location_id)
         .group_by(Trip.id)
         .all()
     )
+
     return {r[0]: (r[1], float(r[2] or 0), r[3]) for r in results}
 
 
