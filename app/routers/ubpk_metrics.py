@@ -9,6 +9,7 @@ from sqlalchemy import func
 from safedrive.database.db import get_db
 from safedrive.models.trip import Trip
 from safedrive.models.location import Location
+from safedrive.models.raw_sensor_data import RawSensorData
 from safedrive.models.unsafe_behaviour import UnsafeBehaviour
 try:
     from safedrive.crud.unsafe_behaviour import unsafe_behaviour_crud
@@ -63,6 +64,7 @@ def parse_iso_week(week: str) -> tuple[date, date]:
 
 
 def _trip_distances(db: Session) -> Dict[UUID, Tuple[UUID, float, datetime, int]]:
+    """Return mapping of trip_id -> (driver_id, distance_m, start_date, start_time)."""
     results = (
         db.query(
             Trip.id,
@@ -71,10 +73,12 @@ def _trip_distances(db: Session) -> Dict[UUID, Tuple[UUID, float, datetime, int]
             Trip.start_date,
             Trip.start_time,
         )
-        .outerjoin(Location, Location.trip_id == Trip.id)
+        .outerjoin(RawSensorData, RawSensorData.trip_id == Trip.id)
+        .outerjoin(Location, Location.id == RawSensorData.location_id)
         .group_by(Trip.id)
         .all()
     )
+
     return {r[0]: (r[1], float(r[2] or 0), r[3], r[4]) for r in results}
 
 
