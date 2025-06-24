@@ -240,7 +240,79 @@
         "documentation": {}
     },
     {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -321,6 +393,30 @@
     },
     {
         "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -544,70 +640,6 @@
         "documentation": {}
     },
     {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -645,6 +677,94 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
         "documentation": {}
     },
     {
@@ -817,6 +937,14 @@
         "documentation": {}
     },
     {
+        "label": "func",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -826,6 +954,14 @@
     },
     {
         "label": "pool",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "func",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -889,7 +1025,7 @@
         "documentation": {}
     },
     {
-        "label": "BINARY",
+        "label": "BigInteger",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -1602,6 +1738,14 @@
         "documentation": {}
     },
     {
+        "label": "UUIDType",
+        "importPath": "sqlalchemy_utils.types",
+        "description": "sqlalchemy_utils.types",
+        "isExtraImport": true,
+        "detail": "sqlalchemy_utils.types",
+        "documentation": {}
+    },
+    {
         "label": "fileConfig",
         "importPath": "logging.config",
         "description": "logging.config",
@@ -1818,6 +1962,38 @@
         "documentation": {}
     },
     {
+        "label": "Trip",
+        "importPath": "safedrive.models.trip",
+        "description": "safedrive.models.trip",
+        "isExtraImport": true,
+        "detail": "safedrive.models.trip",
+        "documentation": {}
+    },
+    {
+        "label": "Trip",
+        "importPath": "safedrive.models.trip",
+        "description": "safedrive.models.trip",
+        "isExtraImport": true,
+        "detail": "safedrive.models.trip",
+        "documentation": {}
+    },
+    {
+        "label": "UnsafeBehaviour",
+        "importPath": "safedrive.models.unsafe_behaviour",
+        "description": "safedrive.models.unsafe_behaviour",
+        "isExtraImport": true,
+        "detail": "safedrive.models.unsafe_behaviour",
+        "documentation": {}
+    },
+    {
+        "label": "UnsafeBehaviour",
+        "importPath": "safedrive.models.unsafe_behaviour",
+        "description": "safedrive.models.unsafe_behaviour",
+        "isExtraImport": true,
+        "detail": "safedrive.models.unsafe_behaviour",
+        "documentation": {}
+    },
+    {
         "label": "UnsafeBehaviour",
         "importPath": "safedrive.models.unsafe_behaviour",
         "description": "safedrive.models.unsafe_behaviour",
@@ -1847,6 +2023,22 @@
         "description": "safedrive.models.unsafe_behaviour",
         "isExtraImport": true,
         "detail": "safedrive.models.unsafe_behaviour",
+        "documentation": {}
+    },
+    {
+        "label": "Location",
+        "importPath": "safedrive.models.location",
+        "description": "safedrive.models.location",
+        "isExtraImport": true,
+        "detail": "safedrive.models.location",
+        "documentation": {}
+    },
+    {
+        "label": "Location",
+        "importPath": "safedrive.models.location",
+        "description": "safedrive.models.location",
+        "isExtraImport": true,
+        "detail": "safedrive.models.location",
         "documentation": {}
     },
     {
@@ -2114,12 +2306,771 @@
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
+        "label": "RawSensorData",
+        "importPath": "safedrive.models.raw_sensor_data",
+        "description": "safedrive.models.raw_sensor_data",
         "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
+        "detail": "safedrive.models.raw_sensor_data",
+        "documentation": {}
+    },
+    {
+        "label": "RawSensorData",
+        "importPath": "safedrive.models.raw_sensor_data",
+        "description": "safedrive.models.raw_sensor_data",
+        "isExtraImport": true,
+        "detail": "safedrive.models.raw_sensor_data",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "NormalDist",
+        "importPath": "statistics",
+        "description": "statistics",
+        "isExtraImport": true,
+        "detail": "statistics",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
         "documentation": {}
     },
     {
@@ -2172,6 +3123,30 @@
     },
     {
         "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -2539,6 +3514,31 @@
         "documentation": {}
     },
     {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "Session",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
@@ -2867,596 +3867,132 @@
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "safedrive.database.db",
+        "description": "safedrive.database.db",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "safedrive.database.db",
         "documentation": {}
     },
     {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "UUID",
-        "importPath": "uuid",
-        "description": "uuid",
-        "isExtraImport": true,
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "logging",
+        "label": "os",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "logging",
-        "description": "logging",
-        "detail": "logging",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
-        "documentation": {}
-    },
-    {
-        "label": "get_db",
-        "importPath": "safedrive.database.db",
-        "description": "safedrive.database.db",
-        "isExtraImport": true,
-        "detail": "safedrive.database.db",
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
         "documentation": {}
     },
     {
@@ -3545,6 +4081,46 @@
         "description": "safedrive.crud.alcohol_questionnaire",
         "isExtraImport": true,
         "detail": "safedrive.crud.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "ttest_ind",
+        "importPath": "scipy.stats",
+        "description": "scipy.stats",
+        "isExtraImport": true,
+        "detail": "scipy.stats",
+        "documentation": {}
+    },
+    {
+        "label": "DriverUBPK",
+        "importPath": "safedrive.schemas.behaviour_metrics",
+        "description": "safedrive.schemas.behaviour_metrics",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.behaviour_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "TripUBPK",
+        "importPath": "safedrive.schemas.behaviour_metrics",
+        "description": "safedrive.schemas.behaviour_metrics",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.behaviour_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "WeeklyDriverUBPK",
+        "importPath": "safedrive.schemas.behaviour_metrics",
+        "description": "safedrive.schemas.behaviour_metrics",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.behaviour_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "ImprovementSummary",
+        "importPath": "safedrive.schemas.behaviour_metrics",
+        "description": "safedrive.schemas.behaviour_metrics",
+        "isExtraImport": true,
+        "detail": "safedrive.schemas.behaviour_metrics",
         "documentation": {}
     },
     {
@@ -4269,7 +4845,47 @@
         "documentation": {}
     },
     {
+        "label": "router",
+        "importPath": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "description": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "isExtraImport": true,
+        "detail": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "documentation": {}
+    },
+    {
         "label": "BaseSettings",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
         "importPath": "pydantic",
         "description": "pydantic",
         "isExtraImport": true,
@@ -4445,6 +5061,14 @@
         "documentation": {}
     },
     {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "Field",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -4453,99 +5077,11 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
         "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "__future__",
         "documentation": {}
     },
     {
@@ -4607,6 +5143,41 @@
         "documentation": {}
     },
     {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "types",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "types",
+        "description": "types",
+        "detail": "types",
+        "documentation": {}
+    },
+    {
+        "label": "importlib.util",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib.util",
+        "description": "importlib.util",
+        "detail": "importlib.util",
+        "documentation": {}
+    },
+    {
+        "label": "ubpk_metrics",
+        "importPath": "app.routers",
+        "description": "app.routers",
+        "isExtraImport": true,
+        "detail": "app.routers",
+        "documentation": {}
+    },
+    {
         "label": "glob",
         "kind": 6,
         "isExtraImport": true,
@@ -4622,15 +5193,6 @@
         "importPath": "shutil",
         "description": "shutil",
         "detail": "shutil",
-        "documentation": {}
-    },
-    {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
         "documentation": {}
     },
     {
@@ -4684,6 +5246,14 @@
         "description": "safedrive",
         "isExtraImport": true,
         "detail": "safedrive",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "isExtraImport": true,
+        "detail": "app.routers.ubpk_metrics",
         "documentation": {}
     },
     {
@@ -4982,6 +5552,24 @@
         "documentation": {}
     },
     {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.e20b1c7cb0c0_add_driver_start_to_ai_model_inputs",
+        "description": "alembic.versions.e20b1c7cb0c0_add_driver_start_to_ai_model_inputs",
+        "peekOfCode": "def upgrade() -> None:\n    op.add_column('ai_model_inputs', sa.Column('driverProfileId', UUIDType(), nullable=False))\n    op.add_column('ai_model_inputs', sa.Column('start_time', sa.BigInteger(), nullable=False))\n    op.create_foreign_key('fk_ai_inputs_driver', 'ai_model_inputs', 'driver_profile', ['driverProfileId'], ['driverProfileId'], ondelete='CASCADE')\ndef downgrade() -> None:\n    op.drop_constraint('fk_ai_inputs_driver', 'ai_model_inputs', type_='foreignkey')\n    op.drop_column('ai_model_inputs', 'start_time')\n    op.drop_column('ai_model_inputs', 'driverProfileId')",
+        "detail": "alembic.versions.e20b1c7cb0c0_add_driver_start_to_ai_model_inputs",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "alembic.versions.e20b1c7cb0c0_add_driver_start_to_ai_model_inputs",
+        "description": "alembic.versions.e20b1c7cb0c0_add_driver_start_to_ai_model_inputs",
+        "peekOfCode": "def downgrade() -> None:\n    op.drop_constraint('fk_ai_inputs_driver', 'ai_model_inputs', type_='foreignkey')\n    op.drop_column('ai_model_inputs', 'start_time')\n    op.drop_column('ai_model_inputs', 'driverProfileId')",
+        "detail": "alembic.versions.e20b1c7cb0c0_add_driver_start_to_ai_model_inputs",
+        "documentation": {}
+    },
+    {
         "label": "run_migrations_offline",
         "kind": 2,
         "importPath": "alembic.env",
@@ -5015,6 +5603,123 @@
         "description": "alembic.env",
         "peekOfCode": "target_metadata = Base.metadata\n# other values from the config, defined by the needs of env.py,\n# can be acquired:\n# my_important_option = config.get_main_option(\"my_important_option\")\n# ... etc.\ndef run_migrations_offline() -> None:\n    \"\"\"Run migrations in 'offline' mode.\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable\n    here as well.  By skipping the Engine creation",
         "detail": "alembic.env",
+        "documentation": {}
+    },
+    {
+        "label": "parse_iso_week",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def parse_iso_week(week: str) -> tuple[date, date]:\n    \"\"\"Parse a week string and return the start and end dates.\n    The API historically accepted both ``YYYY-Www`` and ``YYYY-WW`` formats\n    (with or without the ``W`` separator).  To be resilient against either\n    input, this helper now checks for both patterns before raising an error.\n    \"\"\"\n    week = week.strip()\n    if \"-W\" in week:\n        parts = week.split(\"-W\")\n    elif \"-\" in week:",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "trip_metrics",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def trip_metrics(trip_id: UUID, db: Session = Depends(get_db)):\n    distances = _trip_distances(db)\n    behaviours = _trip_behaviour_counts(db)\n    if trip_id not in distances:\n        raise HTTPException(status_code=404, detail=\"Trip not found\")\n    driver_id, dist, _, start_time = distances[trip_id]\n    count = behaviours.get(trip_id, 0)\n    ubpk = (count / (dist / 1000)) if dist > 0 else 0.0\n    return {\n        \"trip_id\": trip_id,",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "driver_weekly_metrics",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def driver_weekly_metrics(\n    driver_id: UUID,\n    week: str | None = Query(None, description=\"ISO week YYYY-WW\"),\n    db: Session = Depends(get_db),\n):\n    if week is None:\n        today = date.today()\n        week = f\"{today.isocalendar()[0]}-{today.isocalendar()[1]:02d}\"\n    start, end = _parse_week(week)\n    distances = _trip_distances(db)",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "driver_improvement",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def driver_improvement(driver_id: UUID, db: Session = Depends(get_db)):\n    today = date.today()\n    this_week = f\"{today.isocalendar()[0]}-{today.isocalendar()[1]:02d}\"\n    last_week_dt = today - timedelta(weeks=1)\n    last_week = f\"{last_week_dt.isocalendar()[0]}-{last_week_dt.isocalendar()[1]:02d}\"\n    start1, end1 = _parse_week(last_week)\n    start2, end2 = _parse_week(this_week)\n    distances = _trip_distances(db)\n    behaviours = _trip_behaviour_counts(db)\n    last_vals: List[float] = []",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "trip_metrics_v2",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def trip_metrics_v2(trip_id: UUID, db: Session = Depends(get_db)):\n    distances = _trip_distances(db)\n    behaviours = _trip_behaviour_counts(db)\n    if trip_id not in distances:\n        raise HTTPException(status_code=404, detail=\"Trip not found\")\n    driver_id, dist, start_date, start_time = distances[trip_id]\n    count = behaviours.get(trip_id, 0)\n    dt = start_date or (datetime.fromtimestamp(start_time / 1000) if start_time else None)\n    if dt:\n        iy, iw, _ = dt.isocalendar()",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "driver_weekly_metrics_v2",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def driver_weekly_metrics_v2(\n    driver_id: UUID,\n    week: str | None = Query(None, description=\"ISO week YYYY-WW\"),\n    db: Session = Depends(get_db),\n):\n    if week is None:\n        today = date.today()\n        week = f\"{today.isocalendar()[0]}-W{today.isocalendar()[1]:02d}\"\n    start, end = parse_iso_week(week)\n    distances = _trip_distances(db)",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "driver_improvement_v2",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def driver_improvement_v2(\n    driver_id: UUID,\n    week: str | None = Query(None, description=\"ISO week YYYY-WW\"),\n    db: Session = Depends(get_db),\n):\n    if week is None:\n        today = date.today()\n        week = f\"{today.isocalendar()[0]}-W{today.isocalendar()[1]:02d}\"\n    start2, end2 = parse_iso_week(week)\n    prev_start = start2 - timedelta(days=7)",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "trip_ubpk",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def trip_ubpk(trip_id: UUID, db: Session = Depends(get_db)) -> TripUBPKResponse:\n    events = unsafe_behaviour_crud.get_by_trip(db, trip_id)\n    if not events:\n        raise HTTPException(404, \"No unsafe events for trip\")\n    distances = _trip_distances(db)\n    if trip_id not in distances:\n        raise HTTPException(404, \"Trip not found or missing distance\")\n    driver_id, dist, _, _ = distances[trip_id]\n    week_dt = datetime.fromtimestamp(events[0].timestamp / 1000)\n    week = week_dt.isocalendar()[:2]",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "driver_week_metrics",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def driver_week_metrics(\n    driver_id: UUID,\n    week: Optional[str] = Query(None, regex=r\"^\\d{4}-W\\d{2}$\"),\n    db: Session = Depends(get_db),\n) -> DriverWeekUBPKResponse:\n    if week is None:\n        today = date.today()\n        year, wk, _ = today.isocalendar()\n        week = f\"{year}-W{wk:02d}\"\n    start, end = parse_iso_week(week)",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "driver_improvement_endpoint",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def driver_improvement_endpoint(\n    driver_id: UUID,\n    week: Optional[str] = Query(None, regex=r\"^\\d{4}-W\\d{2}$\"),\n    db: Session = Depends(get_db),\n) -> DriverImprovementResponse:\n    if week is None:\n        today = date.today()\n        year, wk, _ = today.isocalendar()\n        week = f\"{year}-W{wk:02d}\"\n    curr_start, curr_end = parse_iso_week(week)",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "trips_weekly",
+        "kind": 2,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "def trips_weekly(\n    week: Optional[str] = Query(None, regex=r\"^\\d{4}-W\\d{2}$\"),\n    db: Session = Depends(get_db),\n ) -> List[TripUBPKResponse]:\n    # 1) Log input\n    logger.info(f\"[trips_weekly] called with week={week!r}\")\n    # 2) Parse ISO week to date-range\n    start, end = parse_iso_week(week)\n    logger.info(f\"[trips_weekly] parsed week {week} → start={start.isoformat()}, end={end.isoformat()}\")\n    # 3) Fetch unsafe events in that window",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\ndef parse_iso_week(week: str) -> tuple[date, date]:\n    \"\"\"Parse a week string and return the start and end dates.\n    The API historically accepted both ``YYYY-Www`` and ``YYYY-WW`` formats\n    (with or without the ``W`` separator).  To be resilient against either\n    input, this helper now checks for both patterns before raising an error.\n    \"\"\"\n    week = week.strip()\n    if \"-W\" in week:",
+        "detail": "app.routers.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "app.routers.ubpk_metrics",
+        "description": "app.routers.ubpk_metrics",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef parse_iso_week(week: str) -> tuple[date, date]:\n    \"\"\"Parse a week string and return the start and end dates.\n    The API historically accepted both ``YYYY-Www`` and ``YYYY-WW`` formats\n    (with or without the ``W`` separator).  To be resilient against either\n    input, this helper now checks for both patterns before raising an error.\n    \"\"\"\n    week = week.strip()\n    if \"-W\" in week:\n        parts = week.split(\"-W\")",
+        "detail": "app.routers.ubpk_metrics",
         "documentation": {}
     },
     {
@@ -5175,8 +5880,53 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.alcohol_questionnaire",
         "description": "safedrive.api.v1.endpoints.alcohol_questionnaire",
-        "peekOfCode": "formatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\n# Endpoint to submit a new alcohol questionnaire\n@router.post(\"/questionnaire/\", response_model=AlcoholQuestionnaireResponseSchema)\nasync def submit_alcohol_questionnaire(\n    questionnaire_data: AlcoholQuestionnaireCreateSchema,\n    db: Session = Depends(get_db),\n):\n    try:",
+        "peekOfCode": "formatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\n# Endpoint to submit a new alcohol questionnaire\n@router.post(\"/questionnaire/\", response_model=AlcoholQuestionnaireResponseSchema)\nasync def submit_alcohol_questionnaire(\n    questionnaire_data: AlcoholQuestionnaireCreateSchema,\n    db: Session = Depends(get_db),\n):\n    \"\"\"Submit a new alcohol questionnaire.\"\"\"",
         "detail": "safedrive.api.v1.endpoints.alcohol_questionnaire",
+        "documentation": {}
+    },
+    {
+        "label": "ubpk_per_driver",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "description": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "peekOfCode": "def ubpk_per_driver(db: Session = Depends(get_db)) -> List[DriverUBPK]:\n    \"\"\"Return UBPK aggregated per driver.\"\"\"\n    try:\n        distances = _trip_distances(db)\n        behaviours = _trip_behaviour_counts(db)\n        agg: Dict[UUID, Tuple[int, float]] = {}\n        for trip_id, (driver_id, dist, _) in distances.items():\n            agg.setdefault(driver_id, [0, 0.0])\n            agg[driver_id][0] += behaviours.get(trip_id, 0)\n            agg[driver_id][1] += dist",
+        "detail": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "ubpk_per_trip",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "description": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "peekOfCode": "def ubpk_per_trip(db: Session = Depends(get_db)) -> List[TripUBPK]:\n    \"\"\"Return UBPK for each trip.\"\"\"\n    try:\n        distances = _trip_distances(db)\n        behaviours = _trip_behaviour_counts(db)\n        result = []\n        for trip_id, (driver_id, dist, _) in distances.items():\n            count = behaviours.get(trip_id, 0)\n            ubpk = (count / (dist / 1000)) if dist > 0 else 0.0\n            result.append(TripUBPK(trip_id=trip_id, driverProfileId=driver_id, ubpk=ubpk))",
+        "detail": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "ubpk_per_week",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "description": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "peekOfCode": "def ubpk_per_week(db: Session = Depends(get_db)) -> List[WeeklyDriverUBPK]:\n    \"\"\"Return weekly UBPK metrics per driver.\"\"\"\n    try:\n        distances = _trip_distances(db)\n        behaviours = _trip_behaviour_counts(db)\n        weekly: Dict[Tuple[UUID, datetime], Tuple[int, float]] = {}\n        for trip_id, (driver_id, dist, start) in distances.items():\n            if start is None:\n                continue\n            week_start = start.date() - timedelta(days=start.weekday())",
+        "detail": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "drivers_improvement",
+        "kind": 2,
+        "importPath": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "description": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "peekOfCode": "def drivers_improvement(db: Session = Depends(get_db)) -> List[ImprovementSummary]:\n    \"\"\"Analyse drivers that improved their UBPK over time using a t-test.\"\"\"\n    try:\n        weekly_metrics = ubpk_per_week(db)\n    except HTTPException as exc:\n        raise exc\n    driver_map: Dict[UUID, List[Tuple[datetime, float]]] = {}\n    for m in weekly_metrics:\n        driver_map.setdefault(m.driverProfileId, []).append((m.week_start, m.ubpk))\n    results: List[ImprovementSummary] = []",
+        "detail": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "description": "safedrive.api.v1.endpoints.behaviour_metrics",
+        "peekOfCode": "router = APIRouter()\ndef _trip_distances(db: Session) -> Dict[UUID, Tuple[UUID, float, datetime]]:\n    \"\"\"Return mapping of trip_id -> (driver_id, distance_m, start_date).\"\"\"\n    results = (\n        db.query(\n            Trip.id,\n            Trip.driverProfileId,\n            func.coalesce(func.sum(Location.distance), 0.0),\n            Trip.start_date,\n        )",
+        "detail": "safedrive.api.v1.endpoints.behaviour_metrics",
         "documentation": {}
     },
     {
@@ -5184,7 +5934,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.cause",
         "description": "safedrive.api.v1.endpoints.cause",
-        "peekOfCode": "def create_cause(*, db: Session = Depends(get_db), cause_in: CauseCreate) -> CauseResponse:\n    try:\n        new_cause = cause_crud.create(db=db, obj_in=cause_in)\n        logger.info(f\"Created Cause with ID: {new_cause.id}\")\n        return CauseResponse(id=new_cause.id_uuid, **cause_in.dict())\n    except Exception as e:\n        logger.error(f\"Error creating Cause: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating cause\")\n@router.get(\"/causes/{cause_id}\", response_model=CauseResponse)\ndef get_cause(cause_id: UUID, db: Session = Depends(get_db)) -> CauseResponse:",
+        "peekOfCode": "def create_cause(*, db: Session = Depends(get_db), cause_in: CauseCreate) -> CauseResponse:\n    \"\"\"Create a new cause entry.\"\"\"\n    try:\n        new_cause = cause_crud.create(db=db, obj_in=cause_in)\n        logger.info(f\"Created Cause with ID: {new_cause.id}\")\n        return CauseResponse(id=new_cause.id_uuid, **cause_in.dict())\n    except Exception as e:\n        logger.error(f\"Error creating Cause: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating cause\")\n@router.get(\"/causes/{cause_id}\", response_model=CauseResponse)",
         "detail": "safedrive.api.v1.endpoints.cause",
         "documentation": {}
     },
@@ -5193,7 +5943,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.cause",
         "description": "safedrive.api.v1.endpoints.cause",
-        "peekOfCode": "def get_cause(cause_id: UUID, db: Session = Depends(get_db)) -> CauseResponse:\n    cause = cause_crud.get(db=db, id=cause_id)\n    if not cause:\n        logger.warning(f\"Cause with ID {cause_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Cause not found\")\n    return CauseResponse.model_validate(cause)\n@router.get(\"/causes/\", response_model=List[CauseResponse])\ndef get_all_causes(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[CauseResponse]:\n    causes = cause_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(causes)} Causes.\")",
+        "peekOfCode": "def get_cause(cause_id: UUID, db: Session = Depends(get_db)) -> CauseResponse:\n    \"\"\"Retrieve a cause by its ID.\"\"\"\n    cause = cause_crud.get(db=db, id=cause_id)\n    if not cause:\n        logger.warning(f\"Cause with ID {cause_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Cause not found\")\n    return CauseResponse.model_validate(cause)\n@router.get(\"/causes/\", response_model=List[CauseResponse])\ndef get_all_causes(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[CauseResponse]:\n    \"\"\"List all causes with optional pagination.\"\"\"",
         "detail": "safedrive.api.v1.endpoints.cause",
         "documentation": {}
     },
@@ -5202,7 +5952,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.cause",
         "description": "safedrive.api.v1.endpoints.cause",
-        "peekOfCode": "def get_all_causes(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[CauseResponse]:\n    causes = cause_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(causes)} Causes.\")\n    return [CauseResponse.model_validate(cause) for cause in causes]\n@router.put(\"/causes/{cause_id}\", response_model=CauseResponse)\ndef update_cause(cause_id: UUID, *, db: Session = Depends(get_db), cause_in: CauseUpdate) -> CauseResponse:\n    cause = cause_crud.get(db=db, id=cause_id)\n    if not cause:\n        logger.warning(f\"Cause with ID {cause_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Cause not found\")",
+        "peekOfCode": "def get_all_causes(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[CauseResponse]:\n    \"\"\"List all causes with optional pagination.\"\"\"\n    causes = cause_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(causes)} Causes.\")\n    return [CauseResponse.model_validate(cause) for cause in causes]\n@router.put(\"/causes/{cause_id}\", response_model=CauseResponse)\ndef update_cause(cause_id: UUID, *, db: Session = Depends(get_db), cause_in: CauseUpdate) -> CauseResponse:\n    \"\"\"Update an existing cause entry.\"\"\"\n    cause = cause_crud.get(db=db, id=cause_id)\n    if not cause:",
         "detail": "safedrive.api.v1.endpoints.cause",
         "documentation": {}
     },
@@ -5211,7 +5961,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.cause",
         "description": "safedrive.api.v1.endpoints.cause",
-        "peekOfCode": "def update_cause(cause_id: UUID, *, db: Session = Depends(get_db), cause_in: CauseUpdate) -> CauseResponse:\n    cause = cause_crud.get(db=db, id=cause_id)\n    if not cause:\n        logger.warning(f\"Cause with ID {cause_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Cause not found\")\n    updated_cause = cause_crud.update(db=db, db_obj=cause, obj_in=cause_in)\n    logger.info(f\"Updated Cause with ID: {cause_id}\")\n    return CauseResponse.model_validate(updated_cause)\n@router.delete(\"/causes/{cause_id}\", response_model=CauseResponse)\ndef delete_cause(cause_id: UUID, db: Session = Depends(get_db)) -> CauseResponse:",
+        "peekOfCode": "def update_cause(cause_id: UUID, *, db: Session = Depends(get_db), cause_in: CauseUpdate) -> CauseResponse:\n    \"\"\"Update an existing cause entry.\"\"\"\n    cause = cause_crud.get(db=db, id=cause_id)\n    if not cause:\n        logger.warning(f\"Cause with ID {cause_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Cause not found\")\n    updated_cause = cause_crud.update(db=db, db_obj=cause, obj_in=cause_in)\n    logger.info(f\"Updated Cause with ID: {cause_id}\")\n    return CauseResponse.model_validate(updated_cause)\n@router.delete(\"/causes/{cause_id}\", response_model=CauseResponse)",
         "detail": "safedrive.api.v1.endpoints.cause",
         "documentation": {}
     },
@@ -5220,7 +5970,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.cause",
         "description": "safedrive.api.v1.endpoints.cause",
-        "peekOfCode": "def delete_cause(cause_id: UUID, db: Session = Depends(get_db)) -> CauseResponse:\n    cause = cause_crud.get(db=db, id=cause_id)\n    if not cause:\n        logger.warning(f\"Cause with ID {cause_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Cause not found\")\n    deleted_cause = cause_crud.delete(db=db, id=cause_id)\n    logger.info(f\"Deleted Cause with ID: {cause_id}\")\n    return CauseResponse.model_validate(deleted_cause)",
+        "peekOfCode": "def delete_cause(cause_id: UUID, db: Session = Depends(get_db)) -> CauseResponse:\n    \"\"\"Delete a cause entry.\"\"\"\n    cause = cause_crud.get(db=db, id=cause_id)\n    if not cause:\n        logger.warning(f\"Cause with ID {cause_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Cause not found\")\n    deleted_cause = cause_crud.delete(db=db, id=cause_id)\n    logger.info(f\"Deleted Cause with ID: {cause_id}\")\n    return CauseResponse.model_validate(deleted_cause)",
         "detail": "safedrive.api.v1.endpoints.cause",
         "documentation": {}
     },
@@ -5229,7 +5979,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.cause",
         "description": "safedrive.api.v1.endpoints.cause",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/causes/\", response_model=CauseResponse)\ndef create_cause(*, db: Session = Depends(get_db), cause_in: CauseCreate) -> CauseResponse:\n    try:\n        new_cause = cause_crud.create(db=db, obj_in=cause_in)\n        logger.info(f\"Created Cause with ID: {new_cause.id}\")\n        return CauseResponse(id=new_cause.id_uuid, **cause_in.dict())\n    except Exception as e:\n        logger.error(f\"Error creating Cause: {str(e)}\")",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/causes/\", response_model=CauseResponse)\ndef create_cause(*, db: Session = Depends(get_db), cause_in: CauseCreate) -> CauseResponse:\n    \"\"\"Create a new cause entry.\"\"\"\n    try:\n        new_cause = cause_crud.create(db=db, obj_in=cause_in)\n        logger.info(f\"Created Cause with ID: {new_cause.id}\")\n        return CauseResponse(id=new_cause.id_uuid, **cause_in.dict())\n    except Exception as e:",
         "detail": "safedrive.api.v1.endpoints.cause",
         "documentation": {}
     },
@@ -5238,7 +5988,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.cause",
         "description": "safedrive.api.v1.endpoints.cause",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/causes/\", response_model=CauseResponse)\ndef create_cause(*, db: Session = Depends(get_db), cause_in: CauseCreate) -> CauseResponse:\n    try:\n        new_cause = cause_crud.create(db=db, obj_in=cause_in)\n        logger.info(f\"Created Cause with ID: {new_cause.id}\")\n        return CauseResponse(id=new_cause.id_uuid, **cause_in.dict())\n    except Exception as e:\n        logger.error(f\"Error creating Cause: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating cause\")",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/causes/\", response_model=CauseResponse)\ndef create_cause(*, db: Session = Depends(get_db), cause_in: CauseCreate) -> CauseResponse:\n    \"\"\"Create a new cause entry.\"\"\"\n    try:\n        new_cause = cause_crud.create(db=db, obj_in=cause_in)\n        logger.info(f\"Created Cause with ID: {new_cause.id}\")\n        return CauseResponse(id=new_cause.id_uuid, **cause_in.dict())\n    except Exception as e:\n        logger.error(f\"Error creating Cause: {str(e)}\")",
         "detail": "safedrive.api.v1.endpoints.cause",
         "documentation": {}
     },
@@ -5256,7 +6006,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def batch_create_driver_profiles(\n    *,\n    db: Session = Depends(get_db),\n    profiles_in: List[DriverProfileCreate]\n) -> List[DriverProfileResponse]:\n    try:\n        # Use bulk creation for all profiles at once\n        new_profiles = driver_profile_crud.batch_create(db=db, objs_in=profiles_in)\n        if not new_profiles:\n            raise HTTPException(",
+        "peekOfCode": "def batch_create_driver_profiles(\n    *,\n    db: Session = Depends(get_db),\n    profiles_in: List[DriverProfileCreate]\n) -> List[DriverProfileResponse]:\n    \"\"\"Create multiple driver profiles at once.\"\"\"\n    try:\n        # Use bulk creation for all profiles at once\n        new_profiles = driver_profile_crud.batch_create(db=db, objs_in=profiles_in)\n        if not new_profiles:",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5265,7 +6015,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    logger.info(f\"Retrieved DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync)\n@router.get(\"/driver-profiles/by-profile-id/{email}\", response_model=DriverProfileOut)\ndef get_driver_profile_by_email(\n    email: str,",
+        "peekOfCode": "def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    \"\"\"Retrieve a driver profile by ID.\"\"\"\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    logger.info(f\"Retrieved DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync)\n@router.get(\"/driver-profiles/by-profile-id/{email}\", response_model=DriverProfileOut)\ndef get_driver_profile_by_email(",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5274,7 +6024,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def get_driver_profile_by_email(\n    email: str,\n    db: Session = Depends(get_db),\n    limit_sensor_data: int = 5000\n):\n    driver_profile = (\n        db.query(DriverProfile)\n        .filter(DriverProfile.email == email)\n        .options(subqueryload(DriverProfile.trips))  # load trips eagerly\n        .one_or_none()",
+        "peekOfCode": "def get_driver_profile_by_email(\n    email: str,\n    db: Session = Depends(get_db),\n    limit_sensor_data: int = 5000\n):\n    \"\"\"Get a driver profile and related trips by email.\"\"\"\n    driver_profile = (\n        db.query(DriverProfile)\n        .filter(DriverProfile.email == email)\n        .options(subqueryload(DriverProfile.trips))  # load trips eagerly",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5283,7 +6033,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def get_driver_profile_by_email(\n    email: str,\n    db: Session = Depends(get_db),\n    limit_sensor_data: int = 5000\n):\n    # 1) Get the driver profile + eager load trips\n    driver_profile = (\n        db.query(DriverProfile)\n        .filter(DriverProfile.email == email)\n        .options(subqueryload(DriverProfile.trips))  # optional eager load",
+        "peekOfCode": "def get_driver_profile_by_email(\n    email: str,\n    db: Session = Depends(get_db),\n    limit_sensor_data: int = 5000\n):\n    \"\"\"Retrieve driver profile with limited sensor data by email.\"\"\"\n    # 1) Get the driver profile + eager load trips\n    driver_profile = (\n        db.query(DriverProfile)\n        .filter(DriverProfile.email == email)",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5292,7 +6042,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def get_driver_profile_by_email( email: str, db: Session = Depends(get_db), limit: int = 1):\n    # 1) Get the driver profile + eager load trips\n    driver_profile = (\n        db.query(DriverProfile)\n        .filter(DriverProfile.email == email)\n    )\n    if not driver_profile:\n        raise HTTPException(status_code=404, detail=\"DriverProfile not found.\")\n    return DriverProfileResponse.model_validate(driver_profile)\n@router.get(\"/driver_profiles/\", response_model=List[DriverProfileResponse])",
+        "peekOfCode": "def get_driver_profile_by_email( email: str, db: Session = Depends(get_db), limit: int = 1):\n    \"\"\"Return a minimal driver profile using an email lookup.\"\"\"\n    # 1) Get the driver profile + eager load trips\n    driver_profile = (\n        db.query(DriverProfile)\n        .filter(DriverProfile.email == email)\n    )\n    if not driver_profile:\n        raise HTTPException(status_code=404, detail=\"DriverProfile not found.\")\n    return DriverProfileResponse.model_validate(driver_profile)",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5301,7 +6051,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def get_all_driver_profiles(skip: int = 0, limit: int = 5000, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:\n    profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(profiles)} DriverProfiles.\")\n    return [DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync) for profile in profiles]\n@router.put(\"/driver_profiles/{profile_id}\", response_model=DriverProfileResponse)\ndef update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")",
+        "peekOfCode": "def get_all_driver_profiles(skip: int = 0, limit: int = 5000, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:\n    \"\"\"List all driver profiles.\"\"\"\n    profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(profiles)} DriverProfiles.\")\n    return [DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync) for profile in profiles]\n@router.put(\"/driver_profiles/{profile_id}\", response_model=DriverProfileResponse)\ndef update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:\n    \"\"\"Update a driver profile.\"\"\"\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5310,7 +6060,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    updated_profile = driver_profile_crud.update(db=db, db_obj=profile, obj_in=profile_in)\n    logger.info(f\"Updated DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=updated_profile.id_uuid, email=updated_profile.email, sync=updated_profile.sync)\n@router.delete(\"/driver_profiles/{profile_id}\", response_model=DriverProfileResponse)\ndef delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:",
+        "peekOfCode": "def update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:\n    \"\"\"Update a driver profile.\"\"\"\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    updated_profile = driver_profile_crud.update(db=db, db_obj=profile, obj_in=profile_in)\n    logger.info(f\"Updated DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=updated_profile.id_uuid, email=updated_profile.email, sync=updated_profile.sync)\n@router.delete(\"/driver_profiles/{profile_id}\", response_model=DriverProfileResponse)",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5319,7 +6069,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driver_profile",
         "description": "safedrive.api.v1.endpoints.driver_profile",
-        "peekOfCode": "def delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    deleted_profile = driver_profile_crud.delete(db=db, id=profile_id)\n    logger.info(f\"Deleted DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=deleted_profile.id_uuid, email=deleted_profile.email, sync=deleted_profile.sync)\n@router.delete(\"/driver_profiles/by-profile-id/{email}\", response_model=DriverProfileResponse)\ndef delete_driver_profile_by_email(",
+        "peekOfCode": "def delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:\n    \"\"\"Delete a driver profile by ID.\"\"\"\n    profile = driver_profile_crud.get(db=db, id=profile_id)\n    if not profile:\n        logger.warning(f\"DriverProfile with ID {profile_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Driver profile not found\")\n    deleted_profile = driver_profile_crud.delete(db=db, id=profile_id)\n    logger.info(f\"Deleted DriverProfile with ID: {profile_id}\")\n    return DriverProfileResponse(driverProfileId=deleted_profile.id_uuid, email=deleted_profile.email, sync=deleted_profile.sync)\n@router.delete(\"/driver_profiles/by-profile-id/{email}\", response_model=DriverProfileResponse)",
         "detail": "safedrive.api.v1.endpoints.driver_profile",
         "documentation": {}
     },
@@ -5373,7 +6123,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driving_tips",
         "description": "safedrive.api.v1.endpoints.driving_tips",
-        "peekOfCode": "def create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(**tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")\n        raise HTTPException(status_code=400, detail=str(e))\n    except Exception as e:\n        logger.error(f\"Unexpected error while creating DrivingTip: {str(e)}\")",
+        "peekOfCode": "def create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    \"\"\"Create a driving tip.\"\"\"\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(**tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")\n        raise HTTPException(status_code=400, detail=str(e))\n    except Exception as e:",
         "detail": "safedrive.api.v1.endpoints.driving_tips",
         "documentation": {}
     },
@@ -5382,7 +6132,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driving_tips",
         "description": "safedrive.api.v1.endpoints.driving_tips",
-        "peekOfCode": "def get_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTipResponse:\n    try:\n        tip = driving_tip_crud.get(db=db, id=tip_id)\n        if not tip:\n            logger.warning(f\"DrivingTip with ID {tip_id} not found.\")\n            raise HTTPException(status_code=404, detail=\"Driving tip not found\")\n         # Convert SQLAlchemy objects to Pydantic response models\n        return  DrivingTipResponse(\n                tip_id=tip.tip_id,\n                title=tip.title,",
+        "peekOfCode": "def get_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTipResponse:\n    \"\"\"Retrieve a driving tip by ID.\"\"\"\n    try:\n        tip = driving_tip_crud.get(db=db, id=tip_id)\n        if not tip:\n            logger.warning(f\"DrivingTip with ID {tip_id} not found.\")\n            raise HTTPException(status_code=404, detail=\"Driving tip not found\")\n         # Convert SQLAlchemy objects to Pydantic response models\n        return  DrivingTipResponse(\n                tip_id=tip.tip_id,",
         "detail": "safedrive.api.v1.endpoints.driving_tips",
         "documentation": {}
     },
@@ -5391,7 +6141,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driving_tips",
         "description": "safedrive.api.v1.endpoints.driving_tips",
-        "peekOfCode": "def get_all_driving_tips(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DrivingTipResponse]:\n    try:\n        tips = driving_tip_crud.get_all(db=db, skip=skip, limit=limit)\n        logger.info(f\"Retrieved {len(tips)} DrivingTips.\")\n        # Convert SQLAlchemy objects to Pydantic response models\n        return [\n            DrivingTipResponse(\n                tip_id=tip.tip_id,\n                title=tip.title,\n                meaning=tip.meaning,",
+        "peekOfCode": "def get_all_driving_tips(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DrivingTipResponse]:\n    \"\"\"List driving tips with optional pagination.\"\"\"\n    try:\n        tips = driving_tip_crud.get_all(db=db, skip=skip, limit=limit)\n        logger.info(f\"Retrieved {len(tips)} DrivingTips.\")\n        # Convert SQLAlchemy objects to Pydantic response models\n        return [\n            DrivingTipResponse(\n                tip_id=tip.tip_id,\n                title=tip.title,",
         "detail": "safedrive.api.v1.endpoints.driving_tips",
         "documentation": {}
     },
@@ -5400,7 +6150,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driving_tips",
         "description": "safedrive.api.v1.endpoints.driving_tips",
-        "peekOfCode": "def update_driving_tip(tip_id: UUID, *, db: Session = Depends(get_db), tip_in: DrivingTipUpdate) -> DrivingTipResponse:\n    tip = driving_tip_crud.get(db=db, id=tip_id)\n    if not tip:\n        logger.warning(f\"DrivingTip with ID {tip_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driving tip not found\")\n    try:\n        updated_tip = driving_tip_crud.update(db=db, db_obj=tip, obj_in=tip_in)\n        logger.info(f\"Updated DrivingTip with ID: {tip_id}\")\n        return DrivingTipResponse(tip_id=updated_tip.tip_id, **tip_in.dict())\n    except ValueError as e:",
+        "peekOfCode": "def update_driving_tip(tip_id: UUID, *, db: Session = Depends(get_db), tip_in: DrivingTipUpdate) -> DrivingTipResponse:\n    \"\"\"Update a driving tip.\"\"\"\n    tip = driving_tip_crud.get(db=db, id=tip_id)\n    if not tip:\n        logger.warning(f\"DrivingTip with ID {tip_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Driving tip not found\")\n    try:\n        updated_tip = driving_tip_crud.update(db=db, db_obj=tip, obj_in=tip_in)\n        logger.info(f\"Updated DrivingTip with ID: {tip_id}\")\n        return DrivingTipResponse(tip_id=updated_tip.tip_id, **tip_in.dict())",
         "detail": "safedrive.api.v1.endpoints.driving_tips",
         "documentation": {}
     },
@@ -5409,7 +6159,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.driving_tips",
         "description": "safedrive.api.v1.endpoints.driving_tips",
-        "peekOfCode": "def delete_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTipResponse:\n    tip = driving_tip_crud.get(db=db, id=tip_id)\n    if not tip:\n        logger.warning(f\"DrivingTip with ID {tip_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Driving tip not found\")\n    try:\n        deleted_tip = driving_tip_crud.delete(db=db, id=tip_id)\n        logger.info(f\"Deleted DrivingTip with ID: {tip_id}\")\n        return DrivingTipResponse(tip_id=deleted_tip.tip_id, \n                                  title=deleted_tip.title, ",
+        "peekOfCode": "def delete_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTipResponse:\n    \"\"\"Delete a driving tip.\"\"\"\n    tip = driving_tip_crud.get(db=db, id=tip_id)\n    if not tip:\n        logger.warning(f\"DrivingTip with ID {tip_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Driving tip not found\")\n    try:\n        deleted_tip = driving_tip_crud.delete(db=db, id=tip_id)\n        logger.info(f\"Deleted DrivingTip with ID: {tip_id}\")\n        return DrivingTipResponse(tip_id=deleted_tip.tip_id, ",
         "detail": "safedrive.api.v1.endpoints.driving_tips",
         "documentation": {}
     },
@@ -5418,7 +6168,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driving_tips",
         "description": "safedrive.api.v1.endpoints.driving_tips",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driving_tips/\", response_model=DrivingTipResponse)\ndef create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(**tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/driving_tips/\", response_model=DrivingTipResponse)\ndef create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    \"\"\"Create a driving tip.\"\"\"\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(**tip_in.model_dump())\n    except ValueError as e:",
         "detail": "safedrive.api.v1.endpoints.driving_tips",
         "documentation": {}
     },
@@ -5427,7 +6177,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.driving_tips",
         "description": "safedrive.api.v1.endpoints.driving_tips",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driving_tips/\", response_model=DrivingTipResponse)\ndef create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(**tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")\n        raise HTTPException(status_code=400, detail=str(e))",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/driving_tips/\", response_model=DrivingTipResponse)\ndef create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:\n    \"\"\"Create a driving tip.\"\"\"\n    try:\n        new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)\n        logger.info(f\"Created DrivingTip with ID: {new_tip.tip_id}\")\n        return DrivingTipResponse(**tip_in.model_dump())\n    except ValueError as e:\n        logger.error(f\"Validation error while creating DrivingTip: {str(e)}\")",
         "detail": "safedrive.api.v1.endpoints.driving_tips",
         "documentation": {}
     },
@@ -5436,7 +6186,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.embedding",
         "description": "safedrive.api.v1.endpoints.embedding",
-        "peekOfCode": "def create_embedding(*, db: Session = Depends(get_db), embedding_in: EmbeddingCreate) -> EmbeddingResponse:\n    try:\n        new_embedding = embedding_crud.create(db=db, obj_in=embedding_in)\n        logger.info(f\"Created Embedding with ID: {new_embedding.chunk_id.hex()}\")\n        return EmbeddingResponse(chunk_id=new_embedding.id_uuid, **embedding_in.dict(), created_at=new_embedding.created_at)\n    except Exception as e:\n        logger.error(f\"Error creating Embedding: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating embedding\")\n@router.get(\"/embeddings/{embedding_id}\", response_model=EmbeddingResponse)\ndef get_embedding(embedding_id: UUID, db: Session = Depends(get_db)) -> EmbeddingResponse:",
+        "peekOfCode": "def create_embedding(*, db: Session = Depends(get_db), embedding_in: EmbeddingCreate) -> EmbeddingResponse:\n    \"\"\"Create a new embedding record.\"\"\"\n    try:\n        new_embedding = embedding_crud.create(db=db, obj_in=embedding_in)\n        logger.info(f\"Created Embedding with ID: {new_embedding.chunk_id.hex()}\")\n        return EmbeddingResponse(chunk_id=new_embedding.id_uuid, **embedding_in.dict(), created_at=new_embedding.created_at)\n    except Exception as e:\n        logger.error(f\"Error creating Embedding: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating embedding\")\n@router.get(\"/embeddings/{embedding_id}\", response_model=EmbeddingResponse)",
         "detail": "safedrive.api.v1.endpoints.embedding",
         "documentation": {}
     },
@@ -5445,7 +6195,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.embedding",
         "description": "safedrive.api.v1.endpoints.embedding",
-        "peekOfCode": "def get_embedding(embedding_id: UUID, db: Session = Depends(get_db)) -> EmbeddingResponse:\n    embedding = embedding_crud.get(db=db, id=embedding_id)\n    if not embedding:\n        logger.warning(f\"Embedding with ID {embedding_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Embedding not found\")\n    logger.info(f\"Retrieved Embedding with ID: {embedding_id}\")\n    return EmbeddingResponse(chunk_id=embedding.id_uuid, chunk_text=embedding.chunk_text, embedding=embedding.embedding, source_type=embedding.source_type, source_page=embedding.source_page, created_at=embedding.created_at)\n@router.get(\"/embeddings/\", response_model=List[EmbeddingResponse])\ndef get_all_embeddings(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[EmbeddingResponse]:\n    embeddings = embedding_crud.get_all(db=db, skip=skip, limit=limit)",
+        "peekOfCode": "def get_embedding(embedding_id: UUID, db: Session = Depends(get_db)) -> EmbeddingResponse:\n    \"\"\"Retrieve an embedding by its ID.\"\"\"\n    embedding = embedding_crud.get(db=db, id=embedding_id)\n    if not embedding:\n        logger.warning(f\"Embedding with ID {embedding_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Embedding not found\")\n    logger.info(f\"Retrieved Embedding with ID: {embedding_id}\")\n    return EmbeddingResponse(chunk_id=embedding.id_uuid, chunk_text=embedding.chunk_text, embedding=embedding.embedding, source_type=embedding.source_type, source_page=embedding.source_page, created_at=embedding.created_at)\n@router.get(\"/embeddings/\", response_model=List[EmbeddingResponse])\ndef get_all_embeddings(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[EmbeddingResponse]:",
         "detail": "safedrive.api.v1.endpoints.embedding",
         "documentation": {}
     },
@@ -5454,7 +6204,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.embedding",
         "description": "safedrive.api.v1.endpoints.embedding",
-        "peekOfCode": "def get_all_embeddings(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[EmbeddingResponse]:\n    embeddings = embedding_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(embeddings)} Embeddings.\")\n    return [EmbeddingResponse(chunk_id=embed.id_uuid, chunk_text=embed.chunk_text, embedding=embed.embedding, source_type=embed.source_type, source_page=embed.source_page, created_at=embed.created_at) for embed in embeddings]\n@router.put(\"/embeddings/{embedding_id}\", response_model=EmbeddingResponse)\ndef update_embedding(embedding_id: UUID, *, db: Session = Depends(get_db), embedding_in: EmbeddingUpdate) -> EmbeddingResponse:\n    embedding = embedding_crud.get(db=db, id=embedding_id)\n    if not embedding:\n        logger.warning(f\"Embedding with ID {embedding_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Embedding not found\")",
+        "peekOfCode": "def get_all_embeddings(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[EmbeddingResponse]:\n    \"\"\"List embeddings with optional pagination.\"\"\"\n    embeddings = embedding_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(embeddings)} Embeddings.\")\n    return [EmbeddingResponse(chunk_id=embed.id_uuid, chunk_text=embed.chunk_text, embedding=embed.embedding, source_type=embed.source_type, source_page=embed.source_page, created_at=embed.created_at) for embed in embeddings]\n@router.put(\"/embeddings/{embedding_id}\", response_model=EmbeddingResponse)\ndef update_embedding(embedding_id: UUID, *, db: Session = Depends(get_db), embedding_in: EmbeddingUpdate) -> EmbeddingResponse:\n    \"\"\"Update an existing embedding.\"\"\"\n    embedding = embedding_crud.get(db=db, id=embedding_id)\n    if not embedding:",
         "detail": "safedrive.api.v1.endpoints.embedding",
         "documentation": {}
     },
@@ -5463,7 +6213,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.embedding",
         "description": "safedrive.api.v1.endpoints.embedding",
-        "peekOfCode": "def update_embedding(embedding_id: UUID, *, db: Session = Depends(get_db), embedding_in: EmbeddingUpdate) -> EmbeddingResponse:\n    embedding = embedding_crud.get(db=db, id=embedding_id)\n    if not embedding:\n        logger.warning(f\"Embedding with ID {embedding_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Embedding not found\")\n    updated_embedding = embedding_crud.update(db=db, db_obj=embedding, obj_in=embedding_in)\n    logger.info(f\"Updated Embedding with ID: {embedding_id}\")\n    return EmbeddingResponse(chunk_id=updated_embedding.id_uuid, chunk_text=updated_embedding.chunk_text, embedding=updated_embedding.embedding, source_type=updated_embedding.source_type, source_page=updated_embedding.source_page, created_at=updated_embedding.created_at)\n@router.delete(\"/embeddings/{embedding_id}\", response_model=EmbeddingResponse)\ndef delete_embedding(embedding_id: UUID, db: Session = Depends(get_db)) -> EmbeddingResponse:",
+        "peekOfCode": "def update_embedding(embedding_id: UUID, *, db: Session = Depends(get_db), embedding_in: EmbeddingUpdate) -> EmbeddingResponse:\n    \"\"\"Update an existing embedding.\"\"\"\n    embedding = embedding_crud.get(db=db, id=embedding_id)\n    if not embedding:\n        logger.warning(f\"Embedding with ID {embedding_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Embedding not found\")\n    updated_embedding = embedding_crud.update(db=db, db_obj=embedding, obj_in=embedding_in)\n    logger.info(f\"Updated Embedding with ID: {embedding_id}\")\n    return EmbeddingResponse(chunk_id=updated_embedding.id_uuid, chunk_text=updated_embedding.chunk_text, embedding=updated_embedding.embedding, source_type=updated_embedding.source_type, source_page=updated_embedding.source_page, created_at=updated_embedding.created_at)\n@router.delete(\"/embeddings/{embedding_id}\", response_model=EmbeddingResponse)",
         "detail": "safedrive.api.v1.endpoints.embedding",
         "documentation": {}
     },
@@ -5472,7 +6222,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.embedding",
         "description": "safedrive.api.v1.endpoints.embedding",
-        "peekOfCode": "def delete_embedding(embedding_id: UUID, db: Session = Depends(get_db)) -> EmbeddingResponse:\n    embedding = embedding_crud.get(db=db, id=embedding_id)\n    if not embedding:\n        logger.warning(f\"Embedding with ID {embedding_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Embedding not found\")\n    deleted_embedding = embedding_crud.delete(db=db, id=embedding_id)\n    logger.info(f\"Deleted Embedding with ID: {embedding_id}\")\n    return EmbeddingResponse(chunk_id=deleted_embedding.id_uuid, chunk_text=deleted_embedding.chunk_text, embedding=deleted_embedding.embedding, source_type=deleted_embedding.source_type, source_page=deleted_embedding.source_page, created_at=deleted_embedding.created_at)",
+        "peekOfCode": "def delete_embedding(embedding_id: UUID, db: Session = Depends(get_db)) -> EmbeddingResponse:\n    \"\"\"Delete an embedding by ID.\"\"\"\n    embedding = embedding_crud.get(db=db, id=embedding_id)\n    if not embedding:\n        logger.warning(f\"Embedding with ID {embedding_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Embedding not found\")\n    deleted_embedding = embedding_crud.delete(db=db, id=embedding_id)\n    logger.info(f\"Deleted Embedding with ID: {embedding_id}\")\n    return EmbeddingResponse(chunk_id=deleted_embedding.id_uuid, chunk_text=deleted_embedding.chunk_text, embedding=deleted_embedding.embedding, source_type=deleted_embedding.source_type, source_page=deleted_embedding.source_page, created_at=deleted_embedding.created_at)",
         "detail": "safedrive.api.v1.endpoints.embedding",
         "documentation": {}
     },
@@ -5481,7 +6231,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.embedding",
         "description": "safedrive.api.v1.endpoints.embedding",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/embeddings/\", response_model=EmbeddingResponse)\ndef create_embedding(*, db: Session = Depends(get_db), embedding_in: EmbeddingCreate) -> EmbeddingResponse:\n    try:\n        new_embedding = embedding_crud.create(db=db, obj_in=embedding_in)\n        logger.info(f\"Created Embedding with ID: {new_embedding.chunk_id.hex()}\")\n        return EmbeddingResponse(chunk_id=new_embedding.id_uuid, **embedding_in.dict(), created_at=new_embedding.created_at)\n    except Exception as e:\n        logger.error(f\"Error creating Embedding: {str(e)}\")",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/embeddings/\", response_model=EmbeddingResponse)\ndef create_embedding(*, db: Session = Depends(get_db), embedding_in: EmbeddingCreate) -> EmbeddingResponse:\n    \"\"\"Create a new embedding record.\"\"\"\n    try:\n        new_embedding = embedding_crud.create(db=db, obj_in=embedding_in)\n        logger.info(f\"Created Embedding with ID: {new_embedding.chunk_id.hex()}\")\n        return EmbeddingResponse(chunk_id=new_embedding.id_uuid, **embedding_in.dict(), created_at=new_embedding.created_at)\n    except Exception as e:",
         "detail": "safedrive.api.v1.endpoints.embedding",
         "documentation": {}
     },
@@ -5490,7 +6240,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.embedding",
         "description": "safedrive.api.v1.endpoints.embedding",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/embeddings/\", response_model=EmbeddingResponse)\ndef create_embedding(*, db: Session = Depends(get_db), embedding_in: EmbeddingCreate) -> EmbeddingResponse:\n    try:\n        new_embedding = embedding_crud.create(db=db, obj_in=embedding_in)\n        logger.info(f\"Created Embedding with ID: {new_embedding.chunk_id.hex()}\")\n        return EmbeddingResponse(chunk_id=new_embedding.id_uuid, **embedding_in.dict(), created_at=new_embedding.created_at)\n    except Exception as e:\n        logger.error(f\"Error creating Embedding: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating embedding\")",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/embeddings/\", response_model=EmbeddingResponse)\ndef create_embedding(*, db: Session = Depends(get_db), embedding_in: EmbeddingCreate) -> EmbeddingResponse:\n    \"\"\"Create a new embedding record.\"\"\"\n    try:\n        new_embedding = embedding_crud.create(db=db, obj_in=embedding_in)\n        logger.info(f\"Created Embedding with ID: {new_embedding.chunk_id.hex()}\")\n        return EmbeddingResponse(chunk_id=new_embedding.id_uuid, **embedding_in.dict(), created_at=new_embedding.created_at)\n    except Exception as e:\n        logger.error(f\"Error creating Embedding: {str(e)}\")",
         "detail": "safedrive.api.v1.endpoints.embedding",
         "documentation": {}
     },
@@ -5589,7 +6339,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "def create_nlg_report(*, db: Session = Depends(get_db), report_in: NLGReportCreate) -> NLGReportResponse:\n    try:\n        new_report = nlg_report_crud.create(db=db, obj_in=report_in)\n        logger.info(f\"Created NLGReport with ID: {new_report.id}\")\n        return NLGReportResponse.model_validate(new_report)\n    except Exception as e:\n        logger.error(f\"Error creating NLGReport: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating NLG report\")\n@router.get(\"/nlg_reports/{report_id}\", response_model=NLGReportResponse)\ndef get_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:",
+        "peekOfCode": "def create_nlg_report(*, db: Session = Depends(get_db), report_in: NLGReportCreate) -> NLGReportResponse:\n    \"\"\"Create a new NLG report.\"\"\"\n    try:\n        new_report = nlg_report_crud.create(db=db, obj_in=report_in)\n        logger.info(f\"Created NLGReport with ID: {new_report.id}\")\n        return NLGReportResponse.model_validate(new_report)\n    except Exception as e:\n        logger.error(f\"Error creating NLGReport: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating NLG report\")\n@router.get(\"/nlg_reports/{report_id}\", response_model=NLGReportResponse)",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -5598,7 +6348,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "def get_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    return NLGReportResponse(id=report.id_uuid, driverProfileId=report.driverProfileId, report_text=report.report_text, generated_at=report.generated_at, synced=report.synced)\n@router.get(\"/nlg_reports/\", response_model=List[NLGReportResponse])\ndef get_all_nlg_reports(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[NLGReportResponse]:\n    reports = nlg_report_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(reports)} NLGReports.\")",
+        "peekOfCode": "def get_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:\n    \"\"\"Retrieve a specific NLG report.\"\"\"\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    return NLGReportResponse(id=report.id_uuid, driverProfileId=report.driverProfileId, report_text=report.report_text, generated_at=report.generated_at, synced=report.synced)\n@router.get(\"/nlg_reports/\", response_model=List[NLGReportResponse])\ndef get_all_nlg_reports(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[NLGReportResponse]:\n    \"\"\"List NLG reports with optional pagination.\"\"\"",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -5607,7 +6357,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "def get_all_nlg_reports(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[NLGReportResponse]:\n    reports = nlg_report_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(reports)} NLGReports.\")\n    return [NLGReportResponse(id=report.id_uuid, driverProfileId=report.driverProfileId, report_text=report.report_text, generated_at=report.generated_at, synced=report.synced) for report in reports]\n@router.put(\"/nlg_reports/{report_id}\", response_model=NLGReportResponse)\ndef update_nlg_report(report_id: UUID, *, db: Session = Depends(get_db), report_in: NLGReportUpdate) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")",
+        "peekOfCode": "def get_all_nlg_reports(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[NLGReportResponse]:\n    \"\"\"List NLG reports with optional pagination.\"\"\"\n    reports = nlg_report_crud.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(reports)} NLGReports.\")\n    return [NLGReportResponse(id=report.id_uuid, driverProfileId=report.driverProfileId, report_text=report.report_text, generated_at=report.generated_at, synced=report.synced) for report in reports]\n@router.put(\"/nlg_reports/{report_id}\", response_model=NLGReportResponse)\ndef update_nlg_report(report_id: UUID, *, db: Session = Depends(get_db), report_in: NLGReportUpdate) -> NLGReportResponse:\n    \"\"\"Update an existing NLG report.\"\"\"\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -5616,7 +6366,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "def update_nlg_report(report_id: UUID, *, db: Session = Depends(get_db), report_in: NLGReportUpdate) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    updated_report = nlg_report_crud.update(db=db, db_obj=report, obj_in=report_in)\n    logger.info(f\"Updated NLGReport with ID: {report_id}\")\n    return NLGReportResponse(id=updated_report.id_uuid, driverProfileId=updated_report.driverProfileId, report_text=updated_report.report_text, generated_at=updated_report.generated_at, synced=updated_report.synced)\n@router.delete(\"/nlg_reports/{report_id}\", response_model=NLGReportResponse)\ndef delete_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:",
+        "peekOfCode": "def update_nlg_report(report_id: UUID, *, db: Session = Depends(get_db), report_in: NLGReportUpdate) -> NLGReportResponse:\n    \"\"\"Update an existing NLG report.\"\"\"\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    updated_report = nlg_report_crud.update(db=db, db_obj=report, obj_in=report_in)\n    logger.info(f\"Updated NLGReport with ID: {report_id}\")\n    return NLGReportResponse(id=updated_report.id_uuid, driverProfileId=updated_report.driverProfileId, report_text=updated_report.report_text, generated_at=updated_report.generated_at, synced=updated_report.synced)\n@router.delete(\"/nlg_reports/{report_id}\", response_model=NLGReportResponse)",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -5625,7 +6375,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "def delete_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    deleted_report = nlg_report_crud.delete(db=db, id=report_id)\n    logger.info(f\"Deleted NLGReport with ID: {report_id}\")\n    return NLGReportResponse(id=deleted_report.id_uuid, driverProfileId=deleted_report.driverProfileId, report_text=deleted_report.report_text, generated_at=deleted_report.generated_at, synced=deleted_report.synced)",
+        "peekOfCode": "def delete_nlg_report(report_id: UUID, db: Session = Depends(get_db)) -> NLGReportResponse:\n    \"\"\"Delete an NLG report.\"\"\"\n    report = nlg_report_crud.get(db=db, id=report_id)\n    if not report:\n        logger.warning(f\"NLGReport with ID {report_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"NLG report not found\")\n    deleted_report = nlg_report_crud.delete(db=db, id=report_id)\n    logger.info(f\"Deleted NLGReport with ID: {report_id}\")\n    return NLGReportResponse(id=deleted_report.id_uuid, driverProfileId=deleted_report.driverProfileId, report_text=deleted_report.report_text, generated_at=deleted_report.generated_at, synced=deleted_report.synced)",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -5634,7 +6384,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/nlg_reports/\", response_model=NLGReportResponse)\ndef create_nlg_report(*, db: Session = Depends(get_db), report_in: NLGReportCreate) -> NLGReportResponse:\n    try:\n        new_report = nlg_report_crud.create(db=db, obj_in=report_in)\n        logger.info(f\"Created NLGReport with ID: {new_report.id}\")\n        return NLGReportResponse.model_validate(new_report)\n    except Exception as e:\n        logger.error(f\"Error creating NLGReport: {str(e)}\")",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/nlg_reports/\", response_model=NLGReportResponse)\ndef create_nlg_report(*, db: Session = Depends(get_db), report_in: NLGReportCreate) -> NLGReportResponse:\n    \"\"\"Create a new NLG report.\"\"\"\n    try:\n        new_report = nlg_report_crud.create(db=db, obj_in=report_in)\n        logger.info(f\"Created NLGReport with ID: {new_report.id}\")\n        return NLGReportResponse.model_validate(new_report)\n    except Exception as e:",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -5643,7 +6393,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.nlg_report",
         "description": "safedrive.api.v1.endpoints.nlg_report",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/nlg_reports/\", response_model=NLGReportResponse)\ndef create_nlg_report(*, db: Session = Depends(get_db), report_in: NLGReportCreate) -> NLGReportResponse:\n    try:\n        new_report = nlg_report_crud.create(db=db, obj_in=report_in)\n        logger.info(f\"Created NLGReport with ID: {new_report.id}\")\n        return NLGReportResponse.model_validate(new_report)\n    except Exception as e:\n        logger.error(f\"Error creating NLGReport: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating NLG report\")",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/nlg_reports/\", response_model=NLGReportResponse)\ndef create_nlg_report(*, db: Session = Depends(get_db), report_in: NLGReportCreate) -> NLGReportResponse:\n    \"\"\"Create a new NLG report.\"\"\"\n    try:\n        new_report = nlg_report_crud.create(db=db, obj_in=report_in)\n        logger.info(f\"Created NLGReport with ID: {new_report.id}\")\n        return NLGReportResponse.model_validate(new_report)\n    except Exception as e:\n        logger.error(f\"Error creating NLGReport: {str(e)}\")",
         "detail": "safedrive.api.v1.endpoints.nlg_report",
         "documentation": {}
     },
@@ -5733,7 +6483,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.road",
         "description": "safedrive.api.v1.endpoints.road",
-        "peekOfCode": "def create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadResponse:\n    try:\n        new_road = crud_road.create(db=db, obj_in=road_in)\n        logger.info(f\"Created Road with ID: {new_road.id}\")\n        return RoadResponse.from_orm(new_road)\n    except Exception as e:\n        logger.error(f\"Error creating Road: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating road\")\n@router.get(\"/roads/{road_id}\", response_model=RoadResponse)\ndef get_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:",
+        "peekOfCode": "def create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadResponse:\n    \"\"\"Create a new road entry.\"\"\"\n    try:\n        new_road = crud_road.create(db=db, obj_in=road_in)\n        logger.info(f\"Created Road with ID: {new_road.id}\")\n        return RoadResponse.model_validate(new_road)\n    except Exception as e:\n        logger.error(f\"Error creating Road: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating road\")\n@router.get(\"/roads/{road_id}\", response_model=RoadResponse)",
         "detail": "safedrive.api.v1.endpoints.road",
         "documentation": {}
     },
@@ -5742,7 +6492,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.road",
         "description": "safedrive.api.v1.endpoints.road",
-        "peekOfCode": "def get_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")\n    return RoadResponse.from_orm(road)\n@router.get(\"/roads/\", response_model=List[RoadResponse])\ndef get_all_roads(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[RoadResponse]:\n    roads = crud_road.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(roads)} Roads.\")",
+        "peekOfCode": "def get_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:\n    \"\"\"Retrieve a road by ID.\"\"\"\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")\n    return RoadResponse.model_validate(road)\n@router.get(\"/roads/\", response_model=List[RoadResponse])\ndef get_all_roads(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[RoadResponse]:\n    \"\"\"List all roads with optional pagination.\"\"\"",
         "detail": "safedrive.api.v1.endpoints.road",
         "documentation": {}
     },
@@ -5751,7 +6501,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.road",
         "description": "safedrive.api.v1.endpoints.road",
-        "peekOfCode": "def get_all_roads(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[RoadResponse]:\n    roads = crud_road.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(roads)} Roads.\")\n    return [RoadResponse.from_orm(road) for road in roads]\n@router.put(\"/roads/{road_id}\", response_model=RoadResponse)\ndef update_road(road_id: UUID, *, db: Session = Depends(get_db), road_in: RoadUpdate) -> RoadResponse:\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")",
+        "peekOfCode": "def get_all_roads(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[RoadResponse]:\n    \"\"\"List all roads with optional pagination.\"\"\"\n    roads = crud_road.get_all(db=db, skip=skip, limit=limit)\n    logger.info(f\"Retrieved {len(roads)} Roads.\")\n    return [RoadResponse.model_validate(road) for road in roads]\n@router.put(\"/roads/{road_id}\", response_model=RoadResponse)\ndef update_road(road_id: UUID, *, db: Session = Depends(get_db), road_in: RoadUpdate) -> RoadResponse:\n    \"\"\"Update an existing road.\"\"\"\n    road = crud_road.get(db=db, id=road_id)\n    if not road:",
         "detail": "safedrive.api.v1.endpoints.road",
         "documentation": {}
     },
@@ -5760,7 +6510,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.road",
         "description": "safedrive.api.v1.endpoints.road",
-        "peekOfCode": "def update_road(road_id: UUID, *, db: Session = Depends(get_db), road_in: RoadUpdate) -> RoadResponse:\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")\n    updated_road = crud_road.update(db=db, db_obj=road, obj_in=road_in)\n    logger.info(f\"Updated Road with ID: {road_id}\")\n    return RoadResponse.from_orm(updated_road)\n@router.delete(\"/roads/{road_id}\", response_model=RoadResponse)\ndef delete_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:",
+        "peekOfCode": "def update_road(road_id: UUID, *, db: Session = Depends(get_db), road_in: RoadUpdate) -> RoadResponse:\n    \"\"\"Update an existing road.\"\"\"\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found for update.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")\n    updated_road = crud_road.update(db=db, db_obj=road, obj_in=road_in)\n    logger.info(f\"Updated Road with ID: {road_id}\")\n    return RoadResponse.model_validate(updated_road)\n@router.delete(\"/roads/{road_id}\", response_model=RoadResponse)",
         "detail": "safedrive.api.v1.endpoints.road",
         "documentation": {}
     },
@@ -5769,7 +6519,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.road",
         "description": "safedrive.api.v1.endpoints.road",
-        "peekOfCode": "def delete_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")\n    deleted_road = crud_road.delete(db=db, id=road_id)\n    logger.info(f\"Deleted Road with ID: {road_id}\")\n    return RoadResponse.from_orm(deleted_road)\n@router.post(\"/roads/batch_create\", response_model=List[RoadResponse])\ndef batch_create_roads(",
+        "peekOfCode": "def delete_road(road_id: UUID, db: Session = Depends(get_db)) -> RoadResponse:\n    \"\"\"Delete a road entry.\"\"\"\n    road = crud_road.get(db=db, id=road_id)\n    if not road:\n        logger.warning(f\"Road with ID {road_id} not found for deletion.\")\n        raise HTTPException(status_code=404, detail=\"Road not found\")\n    deleted_road = crud_road.delete(db=db, id=road_id)\n    logger.info(f\"Deleted Road with ID: {road_id}\")\n    return RoadResponse.model_validate(deleted_road)\n@router.post(\"/roads/batch_create\", response_model=List[RoadResponse])",
         "detail": "safedrive.api.v1.endpoints.road",
         "documentation": {}
     },
@@ -5778,7 +6528,7 @@
         "kind": 2,
         "importPath": "safedrive.api.v1.endpoints.road",
         "description": "safedrive.api.v1.endpoints.road",
-        "peekOfCode": "def batch_create_roads(\n        *,\n        db: Session = Depends(get_db),\n        roads_in: List[RoadCreate]\n    ) -> List[RoadResponse]:\n    try:\n        new_roads = crud_road.batch_create(db=db, objs_in=roads_in)\n        if not new_roads:\n            raise HTTPException(\n                status_code=400,",
+        "peekOfCode": "def batch_create_roads(\n        *,\n        db: Session = Depends(get_db),\n        roads_in: List[RoadCreate]\n    ) -> List[RoadResponse]:\n    \"\"\"Create multiple road records in a single request.\"\"\"\n    try:\n        new_roads = crud_road.batch_create(db=db, objs_in=roads_in)\n        if not new_roads:\n            raise HTTPException(",
         "detail": "safedrive.api.v1.endpoints.road",
         "documentation": {}
     },
@@ -5787,7 +6537,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.road",
         "description": "safedrive.api.v1.endpoints.road",
-        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/roads/\", response_model=RoadResponse)\ndef create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadResponse:\n    try:\n        new_road = crud_road.create(db=db, obj_in=road_in)\n        logger.info(f\"Created Road with ID: {new_road.id}\")\n        return RoadResponse.from_orm(new_road)\n    except Exception as e:\n        logger.error(f\"Error creating Road: {str(e)}\")",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\n@router.post(\"/roads/\", response_model=RoadResponse)\ndef create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadResponse:\n    \"\"\"Create a new road entry.\"\"\"\n    try:\n        new_road = crud_road.create(db=db, obj_in=road_in)\n        logger.info(f\"Created Road with ID: {new_road.id}\")\n        return RoadResponse.model_validate(new_road)\n    except Exception as e:",
         "detail": "safedrive.api.v1.endpoints.road",
         "documentation": {}
     },
@@ -5796,7 +6546,7 @@
         "kind": 5,
         "importPath": "safedrive.api.v1.endpoints.road",
         "description": "safedrive.api.v1.endpoints.road",
-        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/roads/\", response_model=RoadResponse)\ndef create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadResponse:\n    try:\n        new_road = crud_road.create(db=db, obj_in=road_in)\n        logger.info(f\"Created Road with ID: {new_road.id}\")\n        return RoadResponse.from_orm(new_road)\n    except Exception as e:\n        logger.error(f\"Error creating Road: {str(e)}\")\n        raise HTTPException(status_code=500, detail=\"Error creating road\")",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n@router.post(\"/roads/\", response_model=RoadResponse)\ndef create_road(*, db: Session = Depends(get_db), road_in: RoadCreate) -> RoadResponse:\n    \"\"\"Create a new road entry.\"\"\"\n    try:\n        new_road = crud_road.create(db=db, obj_in=road_in)\n        logger.info(f\"Created Road with ID: {new_road.id}\")\n        return RoadResponse.model_validate(new_road)\n    except Exception as e:\n        logger.error(f\"Error creating Road: {str(e)}\")",
         "detail": "safedrive.api.v1.endpoints.road",
         "documentation": {}
     },
@@ -5987,6 +6737,33 @@
         "description": "safedrive.core.config",
         "peekOfCode": "settings = Settings()\nif not settings.database_url:\n    raise ValueError(\"No DATABASE_URL found in environment variables\")\nprint(f\"Database URL: {settings.database_url}\")",
         "detail": "safedrive.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "TripModel",
+        "kind": 6,
+        "importPath": "safedrive.core.data_processing",
+        "description": "safedrive.core.data_processing",
+        "peekOfCode": "class TripModel(BaseModel):\n    \"\"\"Simplified trip model used for dashboard aggregation.\"\"\"\n    id: UUID\n    driver_id: UUID = Field(..., alias=\"driverProfileId\")\n    start_time: Optional[datetime] = Field(None, alias=\"startTime\")\n    class Config:\n        from_attributes = True\n        populate_by_name = True\nclass SensorDataModel(BaseModel):\n    \"\"\"Simplified sensor data used for aggregation.\"\"\"",
+        "detail": "safedrive.core.data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "SensorDataModel",
+        "kind": 6,
+        "importPath": "safedrive.core.data_processing",
+        "description": "safedrive.core.data_processing",
+        "peekOfCode": "class SensorDataModel(BaseModel):\n    \"\"\"Simplified sensor data used for aggregation.\"\"\"\n    trip_id: UUID = Field(..., alias=\"tripId\")\n    timestamp: Optional[datetime] = Field(None, alias=\"timestamp\")\n    class Config:\n        from_attributes = True\n        populate_by_name = True\ndef process_and_aggregate_data(\n    trips: List[TripModel], sensor_data: Optional[List[SensorDataModel]] = None\n) -> List[dict]:",
+        "detail": "safedrive.core.data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "process_and_aggregate_data",
+        "kind": 2,
+        "importPath": "safedrive.core.data_processing",
+        "description": "safedrive.core.data_processing",
+        "peekOfCode": "def process_and_aggregate_data(\n    trips: List[TripModel], sensor_data: Optional[List[SensorDataModel]] = None\n) -> List[dict]:\n    \"\"\"Process trips and compute week strings for the dashboard.\"\"\"\n    sensor_data = sensor_data or []\n    valid_sensor_data = [s for s in sensor_data if s.trip_id and s.timestamp]\n    earliest_sensor_ts: Dict[str, datetime] = {}\n    for sensor in valid_sensor_data:\n        tid = str(sensor.trip_id)\n        ts = sensor.timestamp",
+        "detail": "safedrive.core.data_processing",
         "documentation": {}
     },
     {
@@ -6683,6 +7460,42 @@
         "documentation": {}
     },
     {
+        "label": "DriverUBPK",
+        "kind": 6,
+        "importPath": "safedrive.schemas.behaviour_metrics",
+        "description": "safedrive.schemas.behaviour_metrics",
+        "peekOfCode": "class DriverUBPK(BaseModel):\n    \"\"\"UBPK metric for a driver.\"\"\"\n    driverProfileId: UUID = Field(..., description=\"Driver profile identifier\")\n    ubpk: float = Field(..., description=\"Unsafe behaviours per kilometre\")\n    class Config:\n        from_attributes = True\nclass TripUBPK(BaseModel):\n    \"\"\"UBPK metric for a single trip.\"\"\"\n    trip_id: UUID\n    driverProfileId: UUID",
+        "detail": "safedrive.schemas.behaviour_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "TripUBPK",
+        "kind": 6,
+        "importPath": "safedrive.schemas.behaviour_metrics",
+        "description": "safedrive.schemas.behaviour_metrics",
+        "peekOfCode": "class TripUBPK(BaseModel):\n    \"\"\"UBPK metric for a single trip.\"\"\"\n    trip_id: UUID\n    driverProfileId: UUID\n    ubpk: float\n    class Config:\n        from_attributes = True\nclass WeeklyDriverUBPK(BaseModel):\n    \"\"\"Weekly UBPK metric for a driver.\"\"\"\n    driverProfileId: UUID",
+        "detail": "safedrive.schemas.behaviour_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "WeeklyDriverUBPK",
+        "kind": 6,
+        "importPath": "safedrive.schemas.behaviour_metrics",
+        "description": "safedrive.schemas.behaviour_metrics",
+        "peekOfCode": "class WeeklyDriverUBPK(BaseModel):\n    \"\"\"Weekly UBPK metric for a driver.\"\"\"\n    driverProfileId: UUID\n    week_start: date\n    ubpk: float\n    class Config:\n        from_attributes = True\nclass ImprovementSummary(BaseModel):\n    \"\"\"Result of improvement analysis for a driver.\"\"\"\n    driverProfileId: UUID",
+        "detail": "safedrive.schemas.behaviour_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "ImprovementSummary",
+        "kind": 6,
+        "importPath": "safedrive.schemas.behaviour_metrics",
+        "description": "safedrive.schemas.behaviour_metrics",
+        "peekOfCode": "class ImprovementSummary(BaseModel):\n    \"\"\"Result of improvement analysis for a driver.\"\"\"\n    driverProfileId: UUID\n    improved: bool\n    p_value: float\n    class Config:\n        from_attributes = True",
+        "detail": "safedrive.schemas.behaviour_metrics",
+        "documentation": {}
+    },
+    {
         "label": "CauseBase",
         "kind": 6,
         "importPath": "safedrive.schemas.cause",
@@ -6984,7 +7797,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.road",
         "description": "safedrive.schemas.road",
-        "peekOfCode": "class RoadResponse(RoadBase):\n    \"\"\"\n    Schema for Road response format, inherits from RoadBase.\n    \"\"\"\n    pass",
+        "peekOfCode": "class RoadResponse(RoadBase):\n    \"\"\"\n    Schema for Road response format, inherits from RoadBase.\n    \"\"\"",
         "detail": "safedrive.schemas.road",
         "documentation": {}
     },
@@ -7011,7 +7824,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.trip",
         "description": "safedrive.schemas.trip",
-        "peekOfCode": "class TripCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Trip record.\n    \"\"\"\n    id: UUID=Field(..., description=\"The UUID of the trip's profile.\")\n    driverProfileId: UUID = Field(..., description=\"The UUID of the driver's profile.\")\n    start_date: Optional[datetime] = Field(None, description=\"The start date of the trip.\")\n    end_date: Optional[datetime] = Field(None, description=\"The end date of the trip.\")\n    start_time: int = Field(..., description=\"The start time of the trip in epoch milliseconds.\")\n    end_time: Optional[int] = Field(None, description=\"The end time of the trip in epoch milliseconds.\")",
+        "peekOfCode": "class TripCreate(BaseModel):\n    \"\"\"\n    Schema for creating a new Trip record.\n    \"\"\"\n    id: UUID=Field(..., description=\"The UUID of the trip's profile.\")\n    driverProfileId: UUID = Field(..., description=\"The UUID of the driver's profile.\")\n    start_date: Optional[datetime] = Field(None, description=\"The start date of the trip.\")\n    end_date: Optional[datetime] = Field(None, description=\"The end date of the trip.\")\n    start_time: datetime = Field(\n        ..., alias=\"startTime\", description=\"ISO timestamp of the trip start.\"",
         "detail": "safedrive.schemas.trip",
         "documentation": {}
     },
@@ -7020,7 +7833,7 @@
         "kind": 6,
         "importPath": "safedrive.schemas.trip",
         "description": "safedrive.schemas.trip",
-        "peekOfCode": "class TripUpdate(BaseModel):\n    \"\"\"\n    Schema for updating an existing Trip record.\n    All fields are optional.\n    \"\"\"\n    driverProfileId: Optional[UUID] = Field(None, description=\"Optionally update the driver's profile reference.\")\n    start_date: Optional[datetime] = Field(None, description=\"Optionally update the start date of the trip.\")\n    end_date: Optional[datetime] = Field(None, description=\"Optionally update the end date of the trip.\")\n    start_time: Optional[int] = Field(None, description=\"Optionally update the start time of the trip in epoch milliseconds.\")\n    end_time: Optional[int] = Field(None, description=\"Optionally update the end time of the trip in epoch milliseconds.\")",
+        "peekOfCode": "class TripUpdate(BaseModel):\n    \"\"\"\n    Schema for updating an existing Trip record.\n    All fields are optional.\n    \"\"\"\n    driverProfileId: Optional[UUID] = Field(None, description=\"Optionally update the driver's profile reference.\")\n    start_date: Optional[datetime] = Field(None, description=\"Optionally update the start date of the trip.\")\n    end_date: Optional[datetime] = Field(None, description=\"Optionally update the end date of the trip.\")\n    start_time: Optional[datetime] = Field(\n        None,",
         "detail": "safedrive.schemas.trip",
         "documentation": {}
     },
@@ -7029,8 +7842,35 @@
         "kind": 6,
         "importPath": "safedrive.schemas.trip",
         "description": "safedrive.schemas.trip",
-        "peekOfCode": "class TripResponse(TripBase):\n    \"\"\"\n    Schema for the response format of a Trip record.\n    \"\"\"\n    pass",
+        "peekOfCode": "class TripResponse(TripBase):\n    \"\"\"Schema for the response format of a Trip record.\"\"\"\n    pass",
         "detail": "safedrive.schemas.trip",
+        "documentation": {}
+    },
+    {
+        "label": "TripUBPKResponse",
+        "kind": 6,
+        "importPath": "safedrive.schemas.ubpk_metrics",
+        "description": "safedrive.schemas.ubpk_metrics",
+        "peekOfCode": "class TripUBPKResponse(BaseModel):\n    tripId: str\n    driverProfileId: str\n    week: str             # e.g. \"2025-W25\"\n    weekStart: date       # Monday\n    weekEnd: date         # Next Monday\n    totalUnsafeCount: int\n    distanceKm: float\n    ubpk: float\nclass DriverWeekUBPKResponse(BaseModel):",
+        "detail": "safedrive.schemas.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "DriverWeekUBPKResponse",
+        "kind": 6,
+        "importPath": "safedrive.schemas.ubpk_metrics",
+        "description": "safedrive.schemas.ubpk_metrics",
+        "peekOfCode": "class DriverWeekUBPKResponse(BaseModel):\n    driverProfileId: str\n    week: str\n    weekStart: date\n    weekEnd: date\n    numTrips: int\n    ubpkValues: List[float]\n    meanUBPK: float\nclass DriverImprovementResponse(BaseModel):\n    driverProfileId: str",
+        "detail": "safedrive.schemas.ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "DriverImprovementResponse",
+        "kind": 6,
+        "importPath": "safedrive.schemas.ubpk_metrics",
+        "description": "safedrive.schemas.ubpk_metrics",
+        "peekOfCode": "class DriverImprovementResponse(BaseModel):\n    driverProfileId: str\n    week: str\n    previousWeek: str\n    previousWeekStart: date\n    previousWeekEnd: date\n    pValue: float\n    meanDifference: float",
+        "detail": "safedrive.schemas.ubpk_metrics",
         "documentation": {}
     },
     {
@@ -7067,6 +7907,510 @@
         "description": "safedrive.schemas.unsafe_behaviour",
         "peekOfCode": "class UnsafeBehaviourResponse(UnsafeBehaviourBase):\n    \"\"\"\n    Schema for the response format of Unsafe Behaviour data.\n    \"\"\"\n    pass",
         "detail": "safedrive.schemas.unsafe_behaviour",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "kind": 6,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "class HTTPException(Exception):\n    pass\nfastapi_stub.HTTPException = HTTPException\nfastapi_stub.Query = lambda *a, **k: None\nsys.modules[\"fastapi\"] = fastapi_stub\n# Minimal pydantic stub for tests\npydantic_stub = types.ModuleType(\"pydantic\")\nclass BaseModel:\n    def __init__(self, **data):\n        for k, v in data.items():",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "kind": 6,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "class BaseModel:\n    def __init__(self, **data):\n        for k, v in data.items():\n            if isinstance(v, str) and \"time\" in k.lower():\n                if v.endswith(\"Z\"):\n                    v = datetime.fromisoformat(v.replace(\"Z\", \"+00:00\"))\n                else:\n                    v = datetime.fromisoformat(v)\n            setattr(self, k, v)\n    def model_dump(self, *a, **k):",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "kind": 2,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "def Field(default=None, **kwargs):\n    return default\npydantic_stub.BaseModel = BaseModel\npydantic_stub.Field = Field\nsys.modules[\"pydantic\"] = pydantic_stub\nsys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))\nimport importlib.util\nmodule_path = os.path.join(os.path.dirname(__file__), \"..\", \"safedrive\", \"core\", \"data_processing.py\")\nspec = importlib.util.spec_from_file_location(\"data_processing\", module_path)\ndata_processing = importlib.util.module_from_spec(spec)",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "test_week_string_never_none",
+        "kind": 2,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "def test_week_string_never_none():\n    trip = TripModel(\n        id=uuid4(),\n        driverProfileId=uuid4(),\n        start_time=\"2024-01-03T10:15:30Z\",\n    )\n    result = process_and_aggregate_data([trip])[0]\n    assert result[\"week\"] == \"2024-W01\"\n    assert result[\"start_time\"] == \"2024-01-03T10:15:30+00:00\"\ndef test_empty_week_when_no_start():",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "test_empty_week_when_no_start",
+        "kind": 2,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "def test_empty_week_when_no_start():\n    trip = TripModel(id=uuid4(), driverProfileId=uuid4(), start_time=None)\n    result = process_and_aggregate_data([trip])[0]\n    assert result[\"week\"] == \"\"\n    assert result[\"start_time\"] is None\ndef test_week_from_sensor_timestamp_when_no_start():\n    trip_id = uuid4()\n    trip = TripModel(id=trip_id, driverProfileId=uuid4(), start_time=None)\n    sensor = SensorDataModel(trip_id=trip_id, timestamp=\"2024-02-05T00:00:00Z\")\n    result = process_and_aggregate_data([trip], [sensor])[0]",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "test_week_from_sensor_timestamp_when_no_start",
+        "kind": 2,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "def test_week_from_sensor_timestamp_when_no_start():\n    trip_id = uuid4()\n    trip = TripModel(id=trip_id, driverProfileId=uuid4(), start_time=None)\n    sensor = SensorDataModel(trip_id=trip_id, timestamp=\"2024-02-05T00:00:00Z\")\n    result = process_and_aggregate_data([trip], [sensor])[0]\n    assert result[\"week\"] == \"2024-W06\"\n    assert result[\"start_time\"] is None\ndef test_earliest_sensor_timestamp_used():\n    trip_id = uuid4()\n    trip = TripModel(id=trip_id, driverProfileId=uuid4(), start_time=None)",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "test_earliest_sensor_timestamp_used",
+        "kind": 2,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "def test_earliest_sensor_timestamp_used():\n    trip_id = uuid4()\n    trip = TripModel(id=trip_id, driverProfileId=uuid4(), start_time=None)\n    s1 = SensorDataModel(trip_id=trip_id, timestamp=\"2024-02-06T00:00:00Z\")\n    s2 = SensorDataModel(trip_id=trip_id, timestamp=\"2024-02-04T12:00:00Z\")\n    result = process_and_aggregate_data([trip], [s1, s2])[0]\n    assert result[\"week\"] == \"2024-W05\"\ndef test_start_time_priority_over_sensor():\n    trip_id = uuid4()\n    trip = TripModel(",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "test_start_time_priority_over_sensor",
+        "kind": 2,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "def test_start_time_priority_over_sensor():\n    trip_id = uuid4()\n    trip = TripModel(\n        id=trip_id,\n        driverProfileId=uuid4(),\n        start_time=\"2024-02-07T00:00:00Z\",\n    )\n    sensor = SensorDataModel(trip_id=trip_id, timestamp=\"2024-02-01T00:00:00Z\")\n    result = process_and_aggregate_data([trip], [sensor])[0]\n    assert result[\"week\"] == \"2024-W06\"",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi_stub",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "fastapi_stub = types.ModuleType(\"fastapi\")\nfastapi_stub.APIRouter = lambda *a, **k: types.SimpleNamespace()\nfastapi_stub.Depends = lambda x=None: x\nclass HTTPException(Exception):\n    pass\nfastapi_stub.HTTPException = HTTPException\nfastapi_stub.Query = lambda *a, **k: None\nsys.modules[\"fastapi\"] = fastapi_stub\n# Minimal pydantic stub for tests\npydantic_stub = types.ModuleType(\"pydantic\")",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi_stub.APIRouter",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "fastapi_stub.APIRouter = lambda *a, **k: types.SimpleNamespace()\nfastapi_stub.Depends = lambda x=None: x\nclass HTTPException(Exception):\n    pass\nfastapi_stub.HTTPException = HTTPException\nfastapi_stub.Query = lambda *a, **k: None\nsys.modules[\"fastapi\"] = fastapi_stub\n# Minimal pydantic stub for tests\npydantic_stub = types.ModuleType(\"pydantic\")\nclass BaseModel:",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi_stub.Depends",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "fastapi_stub.Depends = lambda x=None: x\nclass HTTPException(Exception):\n    pass\nfastapi_stub.HTTPException = HTTPException\nfastapi_stub.Query = lambda *a, **k: None\nsys.modules[\"fastapi\"] = fastapi_stub\n# Minimal pydantic stub for tests\npydantic_stub = types.ModuleType(\"pydantic\")\nclass BaseModel:\n    def __init__(self, **data):",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi_stub.HTTPException",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "fastapi_stub.HTTPException = HTTPException\nfastapi_stub.Query = lambda *a, **k: None\nsys.modules[\"fastapi\"] = fastapi_stub\n# Minimal pydantic stub for tests\npydantic_stub = types.ModuleType(\"pydantic\")\nclass BaseModel:\n    def __init__(self, **data):\n        for k, v in data.items():\n            if isinstance(v, str) and \"time\" in k.lower():\n                if v.endswith(\"Z\"):",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi_stub.Query",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "fastapi_stub.Query = lambda *a, **k: None\nsys.modules[\"fastapi\"] = fastapi_stub\n# Minimal pydantic stub for tests\npydantic_stub = types.ModuleType(\"pydantic\")\nclass BaseModel:\n    def __init__(self, **data):\n        for k, v in data.items():\n            if isinstance(v, str) and \"time\" in k.lower():\n                if v.endswith(\"Z\"):\n                    v = datetime.fromisoformat(v.replace(\"Z\", \"+00:00\"))",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules[\"fastapi\"]",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "sys.modules[\"fastapi\"] = fastapi_stub\n# Minimal pydantic stub for tests\npydantic_stub = types.ModuleType(\"pydantic\")\nclass BaseModel:\n    def __init__(self, **data):\n        for k, v in data.items():\n            if isinstance(v, str) and \"time\" in k.lower():\n                if v.endswith(\"Z\"):\n                    v = datetime.fromisoformat(v.replace(\"Z\", \"+00:00\"))\n                else:",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "pydantic_stub",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "pydantic_stub = types.ModuleType(\"pydantic\")\nclass BaseModel:\n    def __init__(self, **data):\n        for k, v in data.items():\n            if isinstance(v, str) and \"time\" in k.lower():\n                if v.endswith(\"Z\"):\n                    v = datetime.fromisoformat(v.replace(\"Z\", \"+00:00\"))\n                else:\n                    v = datetime.fromisoformat(v)\n            setattr(self, k, v)",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "pydantic_stub.BaseModel",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "pydantic_stub.BaseModel = BaseModel\npydantic_stub.Field = Field\nsys.modules[\"pydantic\"] = pydantic_stub\nsys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))\nimport importlib.util\nmodule_path = os.path.join(os.path.dirname(__file__), \"..\", \"safedrive\", \"core\", \"data_processing.py\")\nspec = importlib.util.spec_from_file_location(\"data_processing\", module_path)\ndata_processing = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(data_processing)\nTripModel = data_processing.TripModel",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "pydantic_stub.Field",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "pydantic_stub.Field = Field\nsys.modules[\"pydantic\"] = pydantic_stub\nsys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))\nimport importlib.util\nmodule_path = os.path.join(os.path.dirname(__file__), \"..\", \"safedrive\", \"core\", \"data_processing.py\")\nspec = importlib.util.spec_from_file_location(\"data_processing\", module_path)\ndata_processing = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(data_processing)\nTripModel = data_processing.TripModel\nSensorDataModel = data_processing.SensorDataModel",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules[\"pydantic\"]",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "sys.modules[\"pydantic\"] = pydantic_stub\nsys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))\nimport importlib.util\nmodule_path = os.path.join(os.path.dirname(__file__), \"..\", \"safedrive\", \"core\", \"data_processing.py\")\nspec = importlib.util.spec_from_file_location(\"data_processing\", module_path)\ndata_processing = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(data_processing)\nTripModel = data_processing.TripModel\nSensorDataModel = data_processing.SensorDataModel\nprocess_and_aggregate_data = data_processing.process_and_aggregate_data",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "module_path",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "module_path = os.path.join(os.path.dirname(__file__), \"..\", \"safedrive\", \"core\", \"data_processing.py\")\nspec = importlib.util.spec_from_file_location(\"data_processing\", module_path)\ndata_processing = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(data_processing)\nTripModel = data_processing.TripModel\nSensorDataModel = data_processing.SensorDataModel\nprocess_and_aggregate_data = data_processing.process_and_aggregate_data\ndef test_week_string_never_none():\n    trip = TripModel(\n        id=uuid4(),",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "spec",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "spec = importlib.util.spec_from_file_location(\"data_processing\", module_path)\ndata_processing = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(data_processing)\nTripModel = data_processing.TripModel\nSensorDataModel = data_processing.SensorDataModel\nprocess_and_aggregate_data = data_processing.process_and_aggregate_data\ndef test_week_string_never_none():\n    trip = TripModel(\n        id=uuid4(),\n        driverProfileId=uuid4(),",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "data_processing",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "data_processing = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(data_processing)\nTripModel = data_processing.TripModel\nSensorDataModel = data_processing.SensorDataModel\nprocess_and_aggregate_data = data_processing.process_and_aggregate_data\ndef test_week_string_never_none():\n    trip = TripModel(\n        id=uuid4(),\n        driverProfileId=uuid4(),\n        start_time=\"2024-01-03T10:15:30Z\",",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "TripModel",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "TripModel = data_processing.TripModel\nSensorDataModel = data_processing.SensorDataModel\nprocess_and_aggregate_data = data_processing.process_and_aggregate_data\ndef test_week_string_never_none():\n    trip = TripModel(\n        id=uuid4(),\n        driverProfileId=uuid4(),\n        start_time=\"2024-01-03T10:15:30Z\",\n    )\n    result = process_and_aggregate_data([trip])[0]",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "SensorDataModel",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "SensorDataModel = data_processing.SensorDataModel\nprocess_and_aggregate_data = data_processing.process_and_aggregate_data\ndef test_week_string_never_none():\n    trip = TripModel(\n        id=uuid4(),\n        driverProfileId=uuid4(),\n        start_time=\"2024-01-03T10:15:30Z\",\n    )\n    result = process_and_aggregate_data([trip])[0]\n    assert result[\"week\"] == \"2024-W01\"",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "process_and_aggregate_data",
+        "kind": 5,
+        "importPath": "tests.test_data_processing",
+        "description": "tests.test_data_processing",
+        "peekOfCode": "process_and_aggregate_data = data_processing.process_and_aggregate_data\ndef test_week_string_never_none():\n    trip = TripModel(\n        id=uuid4(),\n        driverProfileId=uuid4(),\n        start_time=\"2024-01-03T10:15:30Z\",\n    )\n    result = process_and_aggregate_data([trip])[0]\n    assert result[\"week\"] == \"2024-W01\"\n    assert result[\"start_time\"] == \"2024-01-03T10:15:30+00:00\"",
+        "detail": "tests.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "kind": 6,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "class HTTPException(Exception):\n    def __init__(self, status_code: int, detail: str = ''):\n        self.status_code = status_code\n        self.detail = detail\nfastapi_stub.HTTPException = HTTPException\nfastapi_stub.Query = lambda *a, **k: None\nsys.modules['fastapi'] = fastapi_stub\n# Stub sqlalchemy\nsqlalchemy_stub = types.ModuleType('sqlalchemy')\nsqlalchemy_stub.func = types.SimpleNamespace(coalesce=lambda *a, **k: 0)",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "test_trip_metrics",
+        "kind": 2,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "def test_trip_metrics(monkeypatch):\n    trip_id = uuid4()\n    driver_id = uuid4()\n    def fake_dist(db):\n        return {trip_id: (driver_id, 2000.0, datetime(2024,1,1), 111)}\n    def fake_beh(db):\n        return {trip_id: 4}\n    monkeypatch.setattr(ubpk_metrics, '_trip_distances', fake_dist)\n    monkeypatch.setattr(ubpk_metrics, '_trip_behaviour_counts', fake_beh)\n    res = ubpk_metrics.trip_metrics(trip_id, None)",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "test_driver_weekly",
+        "kind": 2,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "def test_driver_weekly(monkeypatch):\n    driver = uuid4()\n    t = uuid4()\n    week = '2024-01'\n    def fake_dist(db):\n        return {t: (driver, 1000.0, datetime.fromisocalendar(2024,1,1), 1)}\n    def fake_beh(db):\n        return {t: 3}\n    monkeypatch.setattr(ubpk_metrics, '_trip_distances', fake_dist)\n    monkeypatch.setattr(ubpk_metrics, '_trip_behaviour_counts', fake_beh)",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "test_driver_improvement",
+        "kind": 2,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "def test_driver_improvement(monkeypatch):\n    driver = uuid4()\n    t1 = uuid4()\n    t2 = uuid4()\n    t3 = uuid4()\n    t4 = uuid4()\n    today = datetime.now()\n    this_week = datetime.fromisocalendar(today.year, today.isocalendar().week,1)\n    last_week = this_week - ubpk_metrics.timedelta(weeks=1)\n    def fake_dist(db):",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "test_parse_iso_week_both_formats",
+        "kind": 2,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "def test_parse_iso_week_both_formats():\n    start1, end1 = ubpk_metrics.parse_iso_week(\"2024-W06\")\n    start2, end2 = ubpk_metrics.parse_iso_week(\"2024-06\")\n    assert start1 == start2\n    assert end1 == end2",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi_stub",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "fastapi_stub = types.ModuleType('fastapi')\nfastapi_stub.APIRouter = lambda *a, **k: types.SimpleNamespace(get=lambda *a, **k: (lambda f: f))\nfastapi_stub.Depends = lambda x: x\nclass HTTPException(Exception):\n    def __init__(self, status_code: int, detail: str = ''):\n        self.status_code = status_code\n        self.detail = detail\nfastapi_stub.HTTPException = HTTPException\nfastapi_stub.Query = lambda *a, **k: None\nsys.modules['fastapi'] = fastapi_stub",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi_stub.APIRouter",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "fastapi_stub.APIRouter = lambda *a, **k: types.SimpleNamespace(get=lambda *a, **k: (lambda f: f))\nfastapi_stub.Depends = lambda x: x\nclass HTTPException(Exception):\n    def __init__(self, status_code: int, detail: str = ''):\n        self.status_code = status_code\n        self.detail = detail\nfastapi_stub.HTTPException = HTTPException\nfastapi_stub.Query = lambda *a, **k: None\nsys.modules['fastapi'] = fastapi_stub\n# Stub sqlalchemy",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi_stub.Depends",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "fastapi_stub.Depends = lambda x: x\nclass HTTPException(Exception):\n    def __init__(self, status_code: int, detail: str = ''):\n        self.status_code = status_code\n        self.detail = detail\nfastapi_stub.HTTPException = HTTPException\nfastapi_stub.Query = lambda *a, **k: None\nsys.modules['fastapi'] = fastapi_stub\n# Stub sqlalchemy\nsqlalchemy_stub = types.ModuleType('sqlalchemy')",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi_stub.HTTPException",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "fastapi_stub.HTTPException = HTTPException\nfastapi_stub.Query = lambda *a, **k: None\nsys.modules['fastapi'] = fastapi_stub\n# Stub sqlalchemy\nsqlalchemy_stub = types.ModuleType('sqlalchemy')\nsqlalchemy_stub.func = types.SimpleNamespace(coalesce=lambda *a, **k: 0)\nsqlalchemy_stub.orm = types.SimpleNamespace(Session=object)\nsys.modules['sqlalchemy'] = sqlalchemy_stub\nsys.modules['sqlalchemy.orm'] = sqlalchemy_stub.orm\n# stub safedrive dependencies to avoid heavy imports",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "fastapi_stub.Query",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "fastapi_stub.Query = lambda *a, **k: None\nsys.modules['fastapi'] = fastapi_stub\n# Stub sqlalchemy\nsqlalchemy_stub = types.ModuleType('sqlalchemy')\nsqlalchemy_stub.func = types.SimpleNamespace(coalesce=lambda *a, **k: 0)\nsqlalchemy_stub.orm = types.SimpleNamespace(Session=object)\nsys.modules['sqlalchemy'] = sqlalchemy_stub\nsys.modules['sqlalchemy.orm'] = sqlalchemy_stub.orm\n# stub safedrive dependencies to avoid heavy imports\ndb_stub = types.ModuleType('safedrive.database.db')",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules['fastapi']",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sys.modules['fastapi'] = fastapi_stub\n# Stub sqlalchemy\nsqlalchemy_stub = types.ModuleType('sqlalchemy')\nsqlalchemy_stub.func = types.SimpleNamespace(coalesce=lambda *a, **k: 0)\nsqlalchemy_stub.orm = types.SimpleNamespace(Session=object)\nsys.modules['sqlalchemy'] = sqlalchemy_stub\nsys.modules['sqlalchemy.orm'] = sqlalchemy_stub.orm\n# stub safedrive dependencies to avoid heavy imports\ndb_stub = types.ModuleType('safedrive.database.db')\ndb_stub.get_db = lambda: None",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sqlalchemy_stub",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sqlalchemy_stub = types.ModuleType('sqlalchemy')\nsqlalchemy_stub.func = types.SimpleNamespace(coalesce=lambda *a, **k: 0)\nsqlalchemy_stub.orm = types.SimpleNamespace(Session=object)\nsys.modules['sqlalchemy'] = sqlalchemy_stub\nsys.modules['sqlalchemy.orm'] = sqlalchemy_stub.orm\n# stub safedrive dependencies to avoid heavy imports\ndb_stub = types.ModuleType('safedrive.database.db')\ndb_stub.get_db = lambda: None\nsys.modules['safedrive.database.db'] = db_stub\nmodels_stub = types.ModuleType('safedrive.models.trip')",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sqlalchemy_stub.func",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sqlalchemy_stub.func = types.SimpleNamespace(coalesce=lambda *a, **k: 0)\nsqlalchemy_stub.orm = types.SimpleNamespace(Session=object)\nsys.modules['sqlalchemy'] = sqlalchemy_stub\nsys.modules['sqlalchemy.orm'] = sqlalchemy_stub.orm\n# stub safedrive dependencies to avoid heavy imports\ndb_stub = types.ModuleType('safedrive.database.db')\ndb_stub.get_db = lambda: None\nsys.modules['safedrive.database.db'] = db_stub\nmodels_stub = types.ModuleType('safedrive.models.trip')\nmodels_stub.Trip = type('Trip', (), {'id': None, 'driverProfileId': None, 'start_date': None, 'start_time': None})",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sqlalchemy_stub.orm",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sqlalchemy_stub.orm = types.SimpleNamespace(Session=object)\nsys.modules['sqlalchemy'] = sqlalchemy_stub\nsys.modules['sqlalchemy.orm'] = sqlalchemy_stub.orm\n# stub safedrive dependencies to avoid heavy imports\ndb_stub = types.ModuleType('safedrive.database.db')\ndb_stub.get_db = lambda: None\nsys.modules['safedrive.database.db'] = db_stub\nmodels_stub = types.ModuleType('safedrive.models.trip')\nmodels_stub.Trip = type('Trip', (), {'id': None, 'driverProfileId': None, 'start_date': None, 'start_time': None})\nsys.modules['safedrive.models.trip'] = models_stub",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules['sqlalchemy']",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sys.modules['sqlalchemy'] = sqlalchemy_stub\nsys.modules['sqlalchemy.orm'] = sqlalchemy_stub.orm\n# stub safedrive dependencies to avoid heavy imports\ndb_stub = types.ModuleType('safedrive.database.db')\ndb_stub.get_db = lambda: None\nsys.modules['safedrive.database.db'] = db_stub\nmodels_stub = types.ModuleType('safedrive.models.trip')\nmodels_stub.Trip = type('Trip', (), {'id': None, 'driverProfileId': None, 'start_date': None, 'start_time': None})\nsys.modules['safedrive.models.trip'] = models_stub\nloc_stub = types.ModuleType('safedrive.models.location')",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules['sqlalchemy.orm']",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sys.modules['sqlalchemy.orm'] = sqlalchemy_stub.orm\n# stub safedrive dependencies to avoid heavy imports\ndb_stub = types.ModuleType('safedrive.database.db')\ndb_stub.get_db = lambda: None\nsys.modules['safedrive.database.db'] = db_stub\nmodels_stub = types.ModuleType('safedrive.models.trip')\nmodels_stub.Trip = type('Trip', (), {'id': None, 'driverProfileId': None, 'start_date': None, 'start_time': None})\nsys.modules['safedrive.models.trip'] = models_stub\nloc_stub = types.ModuleType('safedrive.models.location')\nloc_stub.Location = type('Location', (), {'id': None, 'distance': None})",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "db_stub",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "db_stub = types.ModuleType('safedrive.database.db')\ndb_stub.get_db = lambda: None\nsys.modules['safedrive.database.db'] = db_stub\nmodels_stub = types.ModuleType('safedrive.models.trip')\nmodels_stub.Trip = type('Trip', (), {'id': None, 'driverProfileId': None, 'start_date': None, 'start_time': None})\nsys.modules['safedrive.models.trip'] = models_stub\nloc_stub = types.ModuleType('safedrive.models.location')\nloc_stub.Location = type('Location', (), {'id': None, 'distance': None})\nsys.modules['safedrive.models.location'] = loc_stub\nrsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "db_stub.get_db",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "db_stub.get_db = lambda: None\nsys.modules['safedrive.database.db'] = db_stub\nmodels_stub = types.ModuleType('safedrive.models.trip')\nmodels_stub.Trip = type('Trip', (), {'id': None, 'driverProfileId': None, 'start_date': None, 'start_time': None})\nsys.modules['safedrive.models.trip'] = models_stub\nloc_stub = types.ModuleType('safedrive.models.location')\nloc_stub.Location = type('Location', (), {'id': None, 'distance': None})\nsys.modules['safedrive.models.location'] = loc_stub\nrsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')\nrsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules['safedrive.database.db']",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sys.modules['safedrive.database.db'] = db_stub\nmodels_stub = types.ModuleType('safedrive.models.trip')\nmodels_stub.Trip = type('Trip', (), {'id': None, 'driverProfileId': None, 'start_date': None, 'start_time': None})\nsys.modules['safedrive.models.trip'] = models_stub\nloc_stub = types.ModuleType('safedrive.models.location')\nloc_stub.Location = type('Location', (), {'id': None, 'distance': None})\nsys.modules['safedrive.models.location'] = loc_stub\nrsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')\nrsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})\nsys.modules['safedrive.models.raw_sensor_data'] = rsd_stub",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "models_stub",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "models_stub = types.ModuleType('safedrive.models.trip')\nmodels_stub.Trip = type('Trip', (), {'id': None, 'driverProfileId': None, 'start_date': None, 'start_time': None})\nsys.modules['safedrive.models.trip'] = models_stub\nloc_stub = types.ModuleType('safedrive.models.location')\nloc_stub.Location = type('Location', (), {'id': None, 'distance': None})\nsys.modules['safedrive.models.location'] = loc_stub\nrsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')\nrsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})\nsys.modules['safedrive.models.raw_sensor_data'] = rsd_stub\nbeh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "models_stub.Trip",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "models_stub.Trip = type('Trip', (), {'id': None, 'driverProfileId': None, 'start_date': None, 'start_time': None})\nsys.modules['safedrive.models.trip'] = models_stub\nloc_stub = types.ModuleType('safedrive.models.location')\nloc_stub.Location = type('Location', (), {'id': None, 'distance': None})\nsys.modules['safedrive.models.location'] = loc_stub\nrsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')\nrsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})\nsys.modules['safedrive.models.raw_sensor_data'] = rsd_stub\nbeh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')\nbeh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules['safedrive.models.trip']",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sys.modules['safedrive.models.trip'] = models_stub\nloc_stub = types.ModuleType('safedrive.models.location')\nloc_stub.Location = type('Location', (), {'id': None, 'distance': None})\nsys.modules['safedrive.models.location'] = loc_stub\nrsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')\nrsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})\nsys.modules['safedrive.models.raw_sensor_data'] = rsd_stub\nbeh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')\nbeh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})\nsys.modules['safedrive.models.unsafe_behaviour'] = beh_stub",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "loc_stub",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "loc_stub = types.ModuleType('safedrive.models.location')\nloc_stub.Location = type('Location', (), {'id': None, 'distance': None})\nsys.modules['safedrive.models.location'] = loc_stub\nrsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')\nrsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})\nsys.modules['safedrive.models.raw_sensor_data'] = rsd_stub\nbeh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')\nbeh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})\nsys.modules['safedrive.models.unsafe_behaviour'] = beh_stub\nfrom app.routers import ubpk_metrics",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "loc_stub.Location",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "loc_stub.Location = type('Location', (), {'id': None, 'distance': None})\nsys.modules['safedrive.models.location'] = loc_stub\nrsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')\nrsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})\nsys.modules['safedrive.models.raw_sensor_data'] = rsd_stub\nbeh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')\nbeh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})\nsys.modules['safedrive.models.unsafe_behaviour'] = beh_stub\nfrom app.routers import ubpk_metrics\n# Override dependency",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules['safedrive.models.location']",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sys.modules['safedrive.models.location'] = loc_stub\nrsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')\nrsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})\nsys.modules['safedrive.models.raw_sensor_data'] = rsd_stub\nbeh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')\nbeh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})\nsys.modules['safedrive.models.unsafe_behaviour'] = beh_stub\nfrom app.routers import ubpk_metrics\n# Override dependency\nubpk_metrics.get_db = lambda: None",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "rsd_stub",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "rsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')\nrsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})\nsys.modules['safedrive.models.raw_sensor_data'] = rsd_stub\nbeh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')\nbeh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})\nsys.modules['safedrive.models.unsafe_behaviour'] = beh_stub\nfrom app.routers import ubpk_metrics\n# Override dependency\nubpk_metrics.get_db = lambda: None\ndef test_trip_metrics(monkeypatch):",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "rsd_stub.RawSensorData",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "rsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})\nsys.modules['safedrive.models.raw_sensor_data'] = rsd_stub\nbeh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')\nbeh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})\nsys.modules['safedrive.models.unsafe_behaviour'] = beh_stub\nfrom app.routers import ubpk_metrics\n# Override dependency\nubpk_metrics.get_db = lambda: None\ndef test_trip_metrics(monkeypatch):\n    trip_id = uuid4()",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules['safedrive.models.raw_sensor_data']",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sys.modules['safedrive.models.raw_sensor_data'] = rsd_stub\nbeh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')\nbeh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})\nsys.modules['safedrive.models.unsafe_behaviour'] = beh_stub\nfrom app.routers import ubpk_metrics\n# Override dependency\nubpk_metrics.get_db = lambda: None\ndef test_trip_metrics(monkeypatch):\n    trip_id = uuid4()\n    driver_id = uuid4()",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "beh_stub",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "beh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')\nbeh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})\nsys.modules['safedrive.models.unsafe_behaviour'] = beh_stub\nfrom app.routers import ubpk_metrics\n# Override dependency\nubpk_metrics.get_db = lambda: None\ndef test_trip_metrics(monkeypatch):\n    trip_id = uuid4()\n    driver_id = uuid4()\n    def fake_dist(db):",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "beh_stub.UnsafeBehaviour",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "beh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})\nsys.modules['safedrive.models.unsafe_behaviour'] = beh_stub\nfrom app.routers import ubpk_metrics\n# Override dependency\nubpk_metrics.get_db = lambda: None\ndef test_trip_metrics(monkeypatch):\n    trip_id = uuid4()\n    driver_id = uuid4()\n    def fake_dist(db):\n        return {trip_id: (driver_id, 2000.0, datetime(2024,1,1), 111)}",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules['safedrive.models.unsafe_behaviour']",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "sys.modules['safedrive.models.unsafe_behaviour'] = beh_stub\nfrom app.routers import ubpk_metrics\n# Override dependency\nubpk_metrics.get_db = lambda: None\ndef test_trip_metrics(monkeypatch):\n    trip_id = uuid4()\n    driver_id = uuid4()\n    def fake_dist(db):\n        return {trip_id: (driver_id, 2000.0, datetime(2024,1,1), 111)}\n    def fake_beh(db):",
+        "detail": "tests.test_ubpk_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "ubpk_metrics.get_db",
+        "kind": 5,
+        "importPath": "tests.test_ubpk_metrics",
+        "description": "tests.test_ubpk_metrics",
+        "peekOfCode": "ubpk_metrics.get_db = lambda: None\ndef test_trip_metrics(monkeypatch):\n    trip_id = uuid4()\n    driver_id = uuid4()\n    def fake_dist(db):\n        return {trip_id: (driver_id, 2000.0, datetime(2024,1,1), 111)}\n    def fake_beh(db):\n        return {trip_id: 4}\n    monkeypatch.setattr(ubpk_metrics, '_trip_distances', fake_dist)\n    monkeypatch.setattr(ubpk_metrics, '_trip_behaviour_counts', fake_beh)",
+        "detail": "tests.test_ubpk_metrics",
         "documentation": {}
     },
     {
@@ -7389,7 +8733,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "DATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    \"https://datahub.safedriveafrica.com\",",
+        "peekOfCode": "DATABASE_URL = os.getenv(\"DATABASE_URL\")\nSECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\napp.include_router(ubpk_router, prefix=\"/metrics/behavior\", tags=[\"UBPK\"])\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",",
         "detail": "main",
         "documentation": {}
     },
@@ -7398,7 +8742,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "SECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    \"https://datahub.safedriveafrica.com\",\n    \"http://datahub.safedriveafrica.com\"",
+        "peekOfCode": "SECRET_KEY = os.getenv(\"SECRET_KEY\")\nDEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\napp.include_router(ubpk_router, prefix=\"/metrics/behavior\", tags=[\"UBPK\"])\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    \"https://datahub.safedriveafrica.com\",",
         "detail": "main",
         "documentation": {}
     },
@@ -7407,7 +8751,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "DEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    \"https://datahub.safedriveafrica.com\",\n    \"http://datahub.safedriveafrica.com\"\n    # Add other origins if necessary",
+        "peekOfCode": "DEBUG = os.getenv(\"DEBUG\") == \"True\"\n# Include API router\napp.include_router(api_router)\napp.include_router(ubpk_router, prefix=\"/metrics/behavior\", tags=[\"UBPK\"])\n# Define allowed CORS origins\norigins = [\n    \"https://api.safedriveafrica.com\",\n    \"http://api.safedriveafrica.com\",\n    \"https://datahub.safedriveafrica.com\",\n    \"http://datahub.safedriveafrica.com\"",
         "detail": "main",
         "documentation": {}
     },

@@ -1,3 +1,4 @@
+from __future__ import annotations
 from datetime import datetime, timedelta, date
 from typing import Dict, Tuple, List, Optional
 from uuid import UUID
@@ -307,7 +308,7 @@ def driver_improvement_v2(
     }
 
 
-@router.get("/trip/{trip_id}/ubpk", response_model=TripUBPKResponse)
+@router.get("/trip/{trip_id}/ubpk", response_model=TripUBPKResponse)  # type: ignore
 def trip_ubpk(trip_id: UUID, db: Session = Depends(get_db)) -> TripUBPKResponse:
     events = unsafe_behaviour_crud.get_by_trip(db, trip_id)
     if not events:
@@ -316,7 +317,7 @@ def trip_ubpk(trip_id: UUID, db: Session = Depends(get_db)) -> TripUBPKResponse:
     if trip_id not in distances:
         raise HTTPException(404, "Trip not found or missing distance")
     driver_id, dist, _, _ = distances[trip_id]
-    week_dt = datetime.fromtimestamp(events[0].timestamp / 1000)
+    week_dt = datetime.fromtimestamp(events[0].timestamp / 1000)  # type: ignore
     week = week_dt.isocalendar()[:2]
     week_str = f"{week[0]}-W{week[1]:02d}"
     start, end = parse_iso_week(week_str)
@@ -337,9 +338,9 @@ def trip_ubpk(trip_id: UUID, db: Session = Depends(get_db)) -> TripUBPKResponse:
 @router.get("/driver/{driver_id}", response_model=DriverWeekUBPKResponse)
 def driver_week_metrics(
     driver_id: UUID,
-    week: Optional[str] = Query(None, regex=r"^\\d{4}-W\\d{2}$"),
+    week: Optional[str] = Query(None, regex=r"^\d{4}-W\d{2}$"),
     db: Session = Depends(get_db),
-) -> DriverWeekUBPKResponse:
+)->DriverWeekUBPKResponse:
     if week is None:
         today = date.today()
         year, wk, _ = today.isocalendar()
@@ -355,7 +356,7 @@ def driver_week_metrics(
         raise HTTPException(404, "No unsafe events for driver/week")
     trips: Dict[UUID, List[UnsafeBehaviour]] = {}
     for ev in events:
-        trips.setdefault(ev.trip_id, []).append(ev)
+        trips.setdefault(ev.trip_id_uuid, []).append(ev)
     distances = _trip_distances(db)
     ubpk_vals: List[float] = []
     for t_id, evs in trips.items():
@@ -378,7 +379,7 @@ def driver_week_metrics(
 @router.get("/driver/{driver_id}/improvement", response_model=DriverImprovementResponse)
 def driver_improvement_endpoint(
     driver_id: UUID,
-    week: Optional[str] = Query(None, regex=r"^\\d{4}-W\\d{2}$"),
+    week: Optional[str] = Query(None, regex=r"^\d{4}-W\d{2}$"),
     db: Session = Depends(get_db),
 ) -> DriverImprovementResponse:
     if week is None:
@@ -392,7 +393,8 @@ def driver_improvement_endpoint(
     prev = driver_week_metrics(driver_id, prev_week, db)
     from scipy.stats import ttest_rel
 
-    _, p_value = ttest_rel(curr.ubpkValues, prev.ubpkValues)
+    result = ttest_rel(curr.ubpkValues, prev.ubpkValues)
+    p_value: float=float(result.index(1))
     mean_diff = curr.meanUBPK - prev.meanUBPK
     return DriverImprovementResponse(
         driverProfileId=str(driver_id),
@@ -405,41 +407,67 @@ def driver_improvement_endpoint(
     )
 
 
-@router.get("/trips", response_model=List[TripUBPKResponse])
+@router.get("/trips", response_model=List[TripUBPKResponse])  # type: ignore
 def trips_weekly(
-    week: Optional[str] = Query(None, regex=r"^\\d{4}-W\\d{2}$"),
+    week: Optional[str] = Query(None, regex=r"^\d{4}-W\d{2}$"),
     db: Session = Depends(get_db),
-) -> List[TripUBPKResponse]:
+ ) -> List[TripUBPKResponse]:
+    # 1) Log input
+    logger.info(f"[trips_weekly] called with week={week!r}")
+
+    # 2) Parse ISO week to date-range
     if week is None:
         today = date.today()
         year, wk, _ = today.isocalendar()
         week = f"{year}-W{wk:02d}"
     start, end = parse_iso_week(week)
+    logger.info(f"[trips_weekly] parsed week {week} → start={start.isoformat()}, end={end.isoformat()}")
+
+
+    # 3) Fetch unsafe events in that window
     events = unsafe_behaviour_crud.get_by_time(
-        db,
-        datetime.combine(start, datetime.min.time()),
-        datetime.combine(end, datetime.min.time()),
-    )
+         db,
+         datetime.combine(start, datetime.min.time()),
+         datetime.combine(end,   datetime.min.time()),
+     )
+    logger.info(f"[trips_weekly] unsafe events count for week {week}: {len(events)}")
+
     if not events:
-        raise HTTPException(404, "No unsafe events that week")
+       logger.warning(f"[trips_weekly] no events found for week {week} → raising 404")
+       raise HTTPException(404, "No unsafe events that week")
+
+    # 4) Compute counts & distances
     trip_counts: Dict[UUID, int] = {}
     for ev in events:
-        trip_counts.setdefault(ev.trip_id, 0)
-        trip_counts[ev.trip_id] += 1
+        trip_id = ev.trip_id_uuid
+        trip_counts.setdefault(trip_id, 0)
+        trip_counts[trip_id] += 1
+
     distances = _trip_distances(db)
+    logger.info(f"[trips_weekly] distance records fetched: {len(distances)}")
+
     responses: List[TripUBPKResponse] = []
     for t_id, count in trip_counts.items():
+        logger.debug(f"[trips_weekly] processing trip {t_id!r} with {count} unsafe events")
         info = distances.get(t_id)
         if not info:
+            logger.warning(f"[trips_weekly] skipping trip {t_id!r}: no distance record")
             continue
         driver_id, dist, _, _ = info
         dist_km = dist / 1000
         ubpk = count / dist_km if dist_km > 0 else 0.0
+        week_dt = datetime.fromtimestamp(events[0].timestamp / 1000 if events else 0)  # type: ignore
+        if events:
+            week_str = f"{week_dt.isocalendar()[0]}-W{week_dt.isocalendar()[1]:02d}"
+            start, end = parse_iso_week(week_str)
+        else:
+            week_str = f"{date.today().isocalendar()[0]}-W{date.today().isocalendar()[1]:02d}"
+            start, end = parse_iso_week(week_str)
         responses.append(
             TripUBPKResponse(
                 tripId=str(t_id),
                 driverProfileId=str(driver_id),
-                week=week,
+                week=week_str,
                 weekStart=start,
                 weekEnd=end,
                 totalUnsafeCount=count,
@@ -447,4 +475,5 @@ def trips_weekly(
                 ubpk=ubpk,
             )
         )
+    logger.info(f"[trips_weekly] returning {len(responses)} TripUBPKResponse items for week {week}")
     return responses
