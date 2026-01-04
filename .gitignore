@@ -1,8 +1,67 @@
+# Virtual Environments
 venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables
 .env
+.env.*
 env.txt
-appNewUploadWorker.kt
-AppUploadOldCode.kt
-fastapi.service
+!.env.example
+
+# Python
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Android/Kotlin (if applicable)
+appNewUploadWorker.kt
+AppUploadOldCode.kt
+
+# Service files
+fastapi.service
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Alembic
+# Uncomment if you want to ignore migration versions
+# alembic/versions/*.py

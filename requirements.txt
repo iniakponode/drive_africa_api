@@ -63,7 +63,7 @@ numpy==1.26.4
 packaging==24.0
 pandas==2.2.1
 parso==0.8.3
-pillow==10.3.0
+pillow>=10.0.0
 platformdirs==4.2.0
 proglog==0.1.10
 prompt-toolkit==3.0.43
@@ -74,7 +74,7 @@ pure-eval==0.2.2
 pyasn1==0.6.1
 pyasn1_modules==0.4.1
 pydantic==2.9.2
-pydantic_core==2.23.4
+pydantic_core>=2.23.0
 pydotplus==2.0.2
 Pygments==2.17.2
 PyMySQL==1.1.1
