@@ -32,6 +32,16 @@ class TripBase(BaseModel):
     end_time: Optional[int] = Field(None, description="The end time of the trip in epoch milliseconds.")
     sync: bool = Field(False, description="Indicates whether the trip data has been synced.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
+    alcohol_probability: Optional[float] = Field(
+        None,
+        alias="alcoholProbability",
+        description="Probability score (0.0-1.0) that alcohol influenced the trip."
+    )
+    user_alcohol_response: Optional[str] = Field(
+        None,
+        alias="userAlcoholResponse",
+        description="User-provided alcohol questionnaire response for the trip day."
+    )
 
     class Config:
         from_attributes = True  # For Pydantic v2
@@ -62,6 +72,16 @@ class TripCreate(BaseModel):
     )
     sync: Optional[bool] = Field(False, description="Indicates whether the trip data has been synced.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
+    alcohol_probability: Optional[float] = Field(
+        None,
+        alias="alcoholProbability",
+        description="Probability score that alcohol influenced the trip."
+    )
+    user_alcohol_response: Optional[str] = Field(
+        None,
+        alias="userAlcoholResponse",
+        description="Calendar day alcohol questionnaire response."
+    )
 
     class Config:
         from_attributes = True
@@ -85,6 +105,12 @@ class TripUpdate(BaseModel):
     )
     sync: Optional[bool] = Field(None, description="Optionally update the sync status.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
+    alcohol_probability: Optional[float] = Field(
+        None, alias="alcoholProbability", description="Updated alcohol probability score."
+    )
+    user_alcohol_response: Optional[str] = Field(
+        None, alias="userAlcoholResponse", description="Updated alcohol response."
+    )
 
     class Config:
         from_attributes = True

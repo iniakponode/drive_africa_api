@@ -44,6 +44,10 @@ No authentication or authorization guards are enforced in the current codebase�
 | `POST /api/trips/batch_create` | Bulk create trips (array of `TripCreate`). |
 | `DELETE /api/trips/batch_delete` | Bulk delete by array of UUIDs (returns message). |
 
+> **Trip alcohol metadata**: `alcoholProbability` (float 0-1) and `userAlcoholResponse` (string) persist questionnaire context on each trip.
+
+
+
 **Schema highlights**: `TripResponse` includes `id`, `driverProfileId`, `start_date`, `end_date`, `start_time`, `end_time`, `sync`, `influence`. `TripCreate`/`TripUpdate` mirror these fields; `startTime` uses camelCase alias when serialized.【F:safedrive/api/v1/endpoints/trip.py†L1-L200】【F:safedrive/schemas/trip.py†L1-L76】
 
 ### Raw Sensor Data
