@@ -13,6 +13,7 @@ class HTTPException(Exception):
     pass
 fastapi_stub.HTTPException = HTTPException
 fastapi_stub.Query = lambda *a, **k: None
+_original_fastapi = sys.modules.get("fastapi")
 sys.modules["fastapi"] = fastapi_stub
 
 # Minimal pydantic stub for tests
@@ -30,6 +31,7 @@ class BaseModel:
         return self.__dict__
 def Field(default=None, **kwargs):
     return default
+_original_pydantic = sys.modules.get("pydantic")
 pydantic_stub.BaseModel = BaseModel
 pydantic_stub.Field = Field
 sys.modules["pydantic"] = pydantic_stub
@@ -44,6 +46,14 @@ spec.loader.exec_module(data_processing)
 TripModel = data_processing.TripModel
 SensorDataModel = data_processing.SensorDataModel
 process_and_aggregate_data = data_processing.process_and_aggregate_data
+if _original_fastapi is not None:
+    sys.modules["fastapi"] = _original_fastapi
+else:
+    sys.modules.pop("fastapi", None)
+if _original_pydantic is not None:
+    sys.modules["pydantic"] = _original_pydantic
+else:
+    sys.modules.pop("pydantic", None)
 
 
 def test_week_string_never_none():

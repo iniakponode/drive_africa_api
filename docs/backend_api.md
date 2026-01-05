@@ -165,7 +165,29 @@ Response schema mirrors `AlcoholQuestionnaireBaseSchema`, including the submitte
 | `GET /api/behaviour_metrics/weekly` | Weekly UBPK per driver with `week_start` dates. |
 | `GET /api/behaviour_metrics/improvement` | Identifies drivers with statistically significant UBPK improvement using Welch’s t-test (`{ driverProfileId, improved, p_value }`). |
 
-All endpoints are read-only and do not accept parameters beyond implicit database state.【F:safedrive/api/v1/endpoints/behaviour_metrics.py†L1-L101】【F:safedrive/schemas/behaviour_metrics.py†L1-L32】
+All endpoints are read-only and do not accept parameters beyond implicit database state.
+
+### Fleet Monitoring
+| Method & Path | Description |
+| --- | --- |
+| `GET /api/fleet/driver_monitor/{driver_profile_id}` | Driver-specific monitoring snapshot with active trip status, unsafe behaviour counts (total + last 24h), recent violations, and speed compliance ratios (speed vs. speedLimit). Matches the Fleet Manager requirement in backend_requirements_dev/user-role-usecases.md and AGENT.md. |
+
+> Notes: Status mirrors the mobile `DrivingStateManager` (ACTIVE/IDLE) and aggregates location data through the Location ? RawSensorData ? Trip join so dashboards stay in sync with sensor telemetry.
+【F:safedrive/api/v1/endpoints/behaviour_metrics.py†L1-L101】【F:safedrive/schemas/behaviour_metrics.py†L1-L32】
+
+### Fleet Management & Notifications
+| Method & Path | Description |
+| --- | --- |
+| `POST /api/fleet/assignments/` | Assign a driver to a fleet/vehicle group, capture onboarding status, and store compliance notes so assignment history matches the Android `DriverProfileViewModel` flows. The response returns the persisted assignment along with nested `Fleet`/`VehicleGroup` metadata. |
+| `GET /api/fleet/assignments/{driver_id}` | Retrieve the latest assignment for a driver plus the most recent alcohol questionnaire (if any) so managers can verify onboarding/compliance data before trips start. |
+| `POST /api/fleet/events/` | Emit a driver trip event (VERIFYING, RECORDING, NOT DRIVING, GPS stale warning, trip start/stop) so notification listeners mirror the sensor transition log. |
+| `GET /api/fleet/events/{driver_id}` | Stream the most recent driver events (`limit` query param) for dashboards to display GPS health notes and trip lifecycle changes even if the app goes backgrounded. |
+| `GET /api/fleet/trips/{trip_id}/context` | Return a per-trip context bundle containing the latest tip threads, severity-ranked unsafe behaviours, and recent NLG reports for that driver so managers can coach with the same narrative the driver sees. |
+| `GET /api/fleet/reports/{driver_id}` | Generate an actionable fleet report summarizing trips, unsafe behaviour logs, alcohol questionnaire responses, and overall speed compliance for leadership/insurer reviews. |
+| `GET /api/fleet/reports/{driver_id}/download` | Download the same fleet report as a JSON attachment (`Content-Disposition` header) so partners can store or re-process the file offline. |
+
+> Notes: Events capture the `sensor` module transitions (VERIFYING ? RECORDING ? NOT DRIVING) plus GPS health annotations; clients can replay them to deliver notifications if the app was backgrounded.
+
 
 ## UBPK Metric Endpoints (`/metrics/behavior`)
 These endpoints expose both legacy and enhanced UBPK analytics.

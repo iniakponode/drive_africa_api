@@ -14,6 +14,8 @@ from safedrive.api.v1.endpoints.location import router as location_router
 from safedrive.api.v1.endpoints.alcohol_questionnaire import router as alcohol_questionnaire_router
 from safedrive.api.v1.endpoints.road import router as road_router
 from safedrive.api.v1.endpoints.behaviour_metrics import router as behaviour_metrics_router
+from safedrive.api.v1.endpoints.fleet_management import router as fleet_management_router
+from safedrive.api.v1.endpoints.fleet_monitoring import router as fleet_monitoring_router
 
 # from safedrive import safe_drive_africa_api_router as safe_drive_africa_api_router
 
@@ -33,3 +35,9 @@ safe_drive_africa_api_router.include_router(location_router, prefix="/api", tags
 safe_drive_africa_api_router.include_router(alcohol_questionnaire_router, prefix="/api", tags=["Alcohol Questionnaire"])
 safe_drive_africa_api_router.include_router(road_router, prefix="/api", tags=["Road"])
 safe_drive_africa_api_router.include_router(behaviour_metrics_router, prefix="/api", tags=["Behaviour Metrics"])
+safe_drive_africa_api_router.include_router(
+    fleet_management_router, prefix="/api", tags=["Fleet Management"]
+)
+safe_drive_africa_api_router.include_router(
+    fleet_monitoring_router, prefix="/api", tags=["Fleet Monitoring"]
+)

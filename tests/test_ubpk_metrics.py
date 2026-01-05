@@ -16,33 +16,76 @@ class HTTPException(Exception):
         self.detail = detail
 fastapi_stub.HTTPException = HTTPException
 fastapi_stub.Query = lambda *a, **k: None
+_original_fastapi = sys.modules.get('fastapi')
 sys.modules['fastapi'] = fastapi_stub
 
 # Stub sqlalchemy
 sqlalchemy_stub = types.ModuleType('sqlalchemy')
 sqlalchemy_stub.func = types.SimpleNamespace(coalesce=lambda *a, **k: 0)
 sqlalchemy_stub.orm = types.SimpleNamespace(Session=object)
+_original_sqlalchemy = sys.modules.get('sqlalchemy')
+_original_sqlalchemy_orm = sys.modules.get('sqlalchemy.orm')
 sys.modules['sqlalchemy'] = sqlalchemy_stub
 sys.modules['sqlalchemy.orm'] = sqlalchemy_stub.orm
 
 # stub safedrive dependencies to avoid heavy imports
 db_stub = types.ModuleType('safedrive.database.db')
 db_stub.get_db = lambda: None
+_original_safedrive_db = sys.modules.get('safedrive.database.db')
 sys.modules['safedrive.database.db'] = db_stub
 models_stub = types.ModuleType('safedrive.models.trip')
 models_stub.Trip = type('Trip', (), {'id': None, 'driverProfileId': None, 'start_date': None, 'start_time': None})
+_original_safedrive_trip = sys.modules.get('safedrive.models.trip')
 sys.modules['safedrive.models.trip'] = models_stub
 loc_stub = types.ModuleType('safedrive.models.location')
 loc_stub.Location = type('Location', (), {'id': None, 'distance': None})
+_original_safedrive_location = sys.modules.get('safedrive.models.location')
 sys.modules['safedrive.models.location'] = loc_stub
 rsd_stub = types.ModuleType('safedrive.models.raw_sensor_data')
 rsd_stub.RawSensorData = type('RawSensorData', (), {'trip_id': None, 'location_id': None})
+_original_safedrive_raw = sys.modules.get('safedrive.models.raw_sensor_data')
 sys.modules['safedrive.models.raw_sensor_data'] = rsd_stub
 beh_stub = types.ModuleType('safedrive.models.unsafe_behaviour')
 beh_stub.UnsafeBehaviour = type('UnsafeBehaviour', (), {'id': None, 'trip_id': None})
+_original_safedrive_beh = sys.modules.get('safedrive.models.unsafe_behaviour')
 sys.modules['safedrive.models.unsafe_behaviour'] = beh_stub
 
 from app.routers import ubpk_metrics
+
+# Restore modules so other tests see the real dependencies
+if _original_fastapi is not None:
+    sys.modules['fastapi'] = _original_fastapi
+else:
+    sys.modules.pop('fastapi', None)
+if _original_sqlalchemy is not None:
+    sys.modules['sqlalchemy'] = _original_sqlalchemy
+else:
+    sys.modules.pop('sqlalchemy', None)
+if _original_sqlalchemy_orm is not None:
+    sys.modules['sqlalchemy.orm'] = _original_sqlalchemy_orm
+else:
+    sys.modules.pop('sqlalchemy.orm', None)
+if _original_safedrive_db is not None:
+    sys.modules['safedrive.database.db'] = _original_safedrive_db
+else:
+    sys.modules.pop('safedrive.database.db', None)
+if _original_safedrive_trip is not None:
+    sys.modules['safedrive.models.trip'] = _original_safedrive_trip
+else:
+    sys.modules.pop('safedrive.models.trip', None)
+if _original_safedrive_location is not None:
+    sys.modules['safedrive.models.location'] = _original_safedrive_location
+else:
+    sys.modules.pop('safedrive.models.location', None)
+if _original_safedrive_raw is not None:
+    sys.modules['safedrive.models.raw_sensor_data'] = _original_safedrive_raw
+else:
+    sys.modules.pop('safedrive.models.raw_sensor_data', None)
+if _original_safedrive_beh is not None:
+    sys.modules['safedrive.models.unsafe_behaviour'] = _original_safedrive_beh
+else:
+    sys.modules.pop('safedrive.models.unsafe_behaviour', None)
+
 
 # Override dependency
 ubpk_metrics.get_db = lambda: None
@@ -105,3 +148,4 @@ def test_parse_iso_week_both_formats():
     start2, end2 = ubpk_metrics.parse_iso_week("2024-06")
     assert start1 == start2
     assert end1 == end2
+
