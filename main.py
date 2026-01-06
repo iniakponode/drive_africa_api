@@ -1,7 +1,7 @@
 import os
 import dotenv
 import uvicorn
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 import logging
 from safedrive import safe_drive_africa_api_router as api_router
 from app.routers.ubpk_metrics import router as ubpk_router
@@ -9,6 +9,7 @@ from safedrive.database.base import Base, engine
 from fastapi.middleware.cors import CORSMiddleware
 from alembic.config import Config
 from alembic import command
+from safedrive.core.security import Role, require_roles
 
 
 
@@ -35,7 +36,19 @@ DEBUG = os.getenv("DEBUG") == "True"
 
 # Include API router
 app.include_router(api_router)
-app.include_router(ubpk_router, prefix="/metrics/behavior", tags=["UBPK"])
+app.include_router(
+    ubpk_router,
+    prefix="/metrics/behavior",
+    tags=["UBPK"],
+    dependencies=[
+        Depends(
+            require_roles(
+                Role.ADMIN,
+                Role.RESEARCHER,
+            )
+        )
+    ],
+)
 
 # Define allowed CORS origins
 origins = [

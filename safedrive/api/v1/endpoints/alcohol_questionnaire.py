@@ -8,6 +8,7 @@ from safedrive.schemas.alcohol_questionnaire import (
 )
 from safedrive.crud.alcohol_questionnaire import AlcoholQuestionnaireCRUD
 from safedrive.database.db import get_db
+from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles
 import logging
 
 router = APIRouter()
@@ -24,9 +25,13 @@ logger.addHandler(handler)
 async def submit_alcohol_questionnaire(
     questionnaire_data: AlcoholQuestionnaireCreateSchema,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ):
     """Submit a new alcohol questionnaire."""
     try:
+        ensure_driver_access(current_client, questionnaire_data.driverProfileId)
         crud = AlcoholQuestionnaireCRUD(db)
         saved_data = crud.create(questionnaire_data)
         logger.info(f"Successfully created alcohol questionnaire: {saved_data.id}")
@@ -43,9 +48,13 @@ async def submit_alcohol_questionnaire(
 async def submit_alcohol_questionnaire_mobile(
     questionnaire_data: AlcoholQuestionnaireCreateSchema,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ):
     """Submit a new alcohol questionnaire (mobile compatibility)."""
     try:
+        ensure_driver_access(current_client, questionnaire_data.driverProfileId)
         crud = AlcoholQuestionnaireCRUD(db)
         saved_data = crud.create(questionnaire_data)
         logger.info(f"Successfully created alcohol questionnaire (mobile): {saved_data.id}")
@@ -62,11 +71,15 @@ async def submit_alcohol_questionnaire_mobile(
 async def get_alcohol_questionnaire(
     questionnaire_id: UUID,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ):
     """Retrieve a questionnaire by its ID."""
     try:
         crud = AlcoholQuestionnaireCRUD(db)
         questionnaire = crud.get_by_id(questionnaire_id)
+        ensure_driver_access(current_client, questionnaire.driverProfileId)
         logger.info(f"Successfully retrieved alcohol questionnaire: {questionnaire_id}")
         return questionnaire
     except HTTPException as http_exc:
@@ -84,9 +97,13 @@ async def get_alcohol_questionnaire(
 async def get_alcohol_questionnaire_history(
     user_id: UUID,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ):
     """Retrieve questionnaire history for a driver (mobile compatibility)."""
     try:
+        ensure_driver_access(current_client, user_id)
         crud = AlcoholQuestionnaireCRUD(db)
         questionnaires = crud.get_by_driver_id(user_id)
         logger.info(f"Successfully retrieved alcohol questionnaire history: {user_id}")
@@ -102,11 +119,17 @@ async def get_alcohol_questionnaire_history(
 @router.get("/questionnaire/", response_model=list[AlcoholQuestionnaireResponseSchema])
 async def list_alcohol_questionnaires(
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ):
     """List all submitted alcohol questionnaires."""
     try:
         crud = AlcoholQuestionnaireCRUD(db)
-        questionnaires = crud.get_all()
+        if current_client.role == Role.ADMIN:
+            questionnaires = crud.get_all()
+        else:
+            questionnaires = crud.get_by_driver_id(current_client.driver_profile_id)
         logger.info("Successfully retrieved all alcohol questionnaires")
         return questionnaires
     except Exception as e:
@@ -122,10 +145,14 @@ async def update_alcohol_questionnaire(
     questionnaire_id: UUID,
     updated_data: AlcoholQuestionnaireCreateSchema,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ):
     """Update an existing questionnaire."""
     try:
         crud = AlcoholQuestionnaireCRUD(db)
+        ensure_driver_access(current_client, updated_data.driverProfileId)
         updated_questionnaire = crud.update(questionnaire_id, updated_data)
         logger.info(f"Successfully updated alcohol questionnaire: {questionnaire_id}")
         return updated_questionnaire
@@ -144,10 +171,15 @@ async def update_alcohol_questionnaire(
 async def delete_alcohol_questionnaire(
     questionnaire_id: UUID,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ):
     """Delete a questionnaire by its ID."""
     try:
         crud = AlcoholQuestionnaireCRUD(db)
+        questionnaire = crud.get_by_id(questionnaire_id)
+        ensure_driver_access(current_client, questionnaire.driverProfileId)
         crud.delete(questionnaire_id)
         logger.info(f"Successfully deleted alcohol questionnaire: {questionnaire_id}")
     except HTTPException as http_exc:

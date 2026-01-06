@@ -3,10 +3,11 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 from datetime import datetime, timedelta
 from uuid import UUID
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
 from scipy.stats import ttest_ind
 
 from safedrive.database.db import get_db
+from safedrive.core.security import ApiClientContext, Role, require_roles
 from safedrive.models.trip import Trip
 from safedrive.models.location import Location
 from safedrive.models.raw_sensor_data import RawSensorData
@@ -48,12 +49,41 @@ def _trip_behaviour_counts(db: Session) -> Dict[UUID, int]:
     return {r[0]: int(r[1]) for r in results}
 
 
+def _filter_trip_distances(
+    distances: Dict[UUID, Tuple[UUID, float, datetime]],
+    allowed_driver_ids: Optional[set[UUID]],
+) -> Dict[UUID, Tuple[UUID, float, datetime]]:
+    if allowed_driver_ids is None:
+        return distances
+    return {
+        trip_id: payload
+        for trip_id, payload in distances.items()
+        if payload[0] in allowed_driver_ids
+    }
+
+
 @router.get("/behaviour_metrics/ubpk", response_model=List[DriverUBPK])
-def ubpk_per_driver(db: Session = Depends(get_db)) -> List[DriverUBPK]:
+def ubpk_per_driver(
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(
+            Role.ADMIN,
+            Role.RESEARCHER,
+            Role.FLEET_MANAGER,
+            Role.INSURANCE_PARTNER,
+        )
+    ),
+) -> List[DriverUBPK]:
     """Return UBPK aggregated per driver."""
     try:
         distances = _trip_distances(db)
         behaviours = _trip_behaviour_counts(db)
+        allowed = (
+            None
+            if current_client.role in {Role.ADMIN, Role.RESEARCHER}
+            else current_client.allowed_driver_ids
+        )
+        distances = _filter_trip_distances(distances, allowed)
         agg: Dict[UUID, Tuple[int, float]] = {}
         for trip_id, (driver_id, dist, _) in distances.items():
             agg.setdefault(driver_id, [0, 0.0])
@@ -69,11 +99,27 @@ def ubpk_per_driver(db: Session = Depends(get_db)) -> List[DriverUBPK]:
 
 
 @router.get("/behaviour_metrics/trip", response_model=List[TripUBPK])
-def ubpk_per_trip(db: Session = Depends(get_db)) -> List[TripUBPK]:
+def ubpk_per_trip(
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(
+            Role.ADMIN,
+            Role.RESEARCHER,
+            Role.FLEET_MANAGER,
+            Role.INSURANCE_PARTNER,
+        )
+    ),
+) -> List[TripUBPK]:
     """Return UBPK for each trip."""
     try:
         distances = _trip_distances(db)
         behaviours = _trip_behaviour_counts(db)
+        allowed = (
+            None
+            if current_client.role in {Role.ADMIN, Role.RESEARCHER}
+            else current_client.allowed_driver_ids
+        )
+        distances = _filter_trip_distances(distances, allowed)
         result = []
         for trip_id, (driver_id, dist, _) in distances.items():
             count = behaviours.get(trip_id, 0)
@@ -85,11 +131,27 @@ def ubpk_per_trip(db: Session = Depends(get_db)) -> List[TripUBPK]:
 
 
 @router.get("/behaviour_metrics/weekly", response_model=List[WeeklyDriverUBPK])
-def ubpk_per_week(db: Session = Depends(get_db)) -> List[WeeklyDriverUBPK]:
+def ubpk_per_week(
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(
+            Role.ADMIN,
+            Role.RESEARCHER,
+            Role.FLEET_MANAGER,
+            Role.INSURANCE_PARTNER,
+        )
+    ),
+) -> List[WeeklyDriverUBPK]:
     """Return weekly UBPK metrics per driver."""
     try:
         distances = _trip_distances(db)
         behaviours = _trip_behaviour_counts(db)
+        allowed = (
+            None
+            if current_client.role in {Role.ADMIN, Role.RESEARCHER}
+            else current_client.allowed_driver_ids
+        )
+        distances = _filter_trip_distances(distances, allowed)
         weekly: Dict[Tuple[UUID, datetime], Tuple[int, float]] = {}
         for trip_id, (driver_id, dist, start) in distances.items():
             if start is None:
@@ -113,10 +175,20 @@ def ubpk_per_week(db: Session = Depends(get_db)) -> List[WeeklyDriverUBPK]:
 
 
 @router.get("/behaviour_metrics/improvement", response_model=List[ImprovementSummary])
-def drivers_improvement(db: Session = Depends(get_db)) -> List[ImprovementSummary]:
+def drivers_improvement(
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(
+            Role.ADMIN,
+            Role.RESEARCHER,
+            Role.FLEET_MANAGER,
+            Role.INSURANCE_PARTNER,
+        )
+    ),
+) -> List[ImprovementSummary]:
     """Analyse drivers that improved their UBPK over time using a t-test."""
     try:
-        weekly_metrics = ubpk_per_week(db)
+        weekly_metrics = ubpk_per_week(db=db, current_client=current_client)
     except HTTPException as exc:
         raise exc
     driver_map: Dict[UUID, List[Tuple[datetime, float]]] = {}

@@ -5,12 +5,14 @@ from uuid import UUID
 import logging
 
 from safedrive.database.db import get_db
+from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, filter_query_by_driver_ids, require_roles
 from safedrive.schemas.unsafe_behaviour import (
     UnsafeBehaviourCreate,
     UnsafeBehaviourUpdate,
     UnsafeBehaviourResponse,
 )
 from safedrive.crud.unsafe_behaviour import unsafe_behaviour_crud
+from safedrive.models.unsafe_behaviour import UnsafeBehaviour
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -23,6 +25,9 @@ def create_unsafe_behaviour(
     *,
     db: Session = Depends(get_db),
     unsafe_behaviour_in: UnsafeBehaviourCreate,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> UnsafeBehaviourResponse:
     """
     Create a new unsafe behaviour.
@@ -38,6 +43,7 @@ def create_unsafe_behaviour(
         if not unsafe_behaviour_in.trip_id or not unsafe_behaviour_in.behaviour_type:
             logger.error("Trip ID and behaviour type are required to create an unsafe behaviour.")
             raise HTTPException(status_code=400, detail="Trip ID and behaviour type are required")
+        ensure_driver_access(current_client, unsafe_behaviour_in.driverProfileId)
         new_behaviour = unsafe_behaviour_crud.create(db=db, obj_in=unsafe_behaviour_in)
         logger.info(f"Unsafe behaviour created with ID: {new_behaviour.id.hex()}")
         return UnsafeBehaviourResponse.model_validate(new_behaviour)
@@ -49,6 +55,9 @@ def create_unsafe_behaviour(
 def get_unsafe_behaviour(
     unsafe_behaviour_id: UUID,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> UnsafeBehaviourResponse:
     """
     Retrieve an unsafe behaviour by ID.
@@ -60,6 +69,7 @@ def get_unsafe_behaviour(
         if not unsafe_behaviour:
             logger.warning(f"Unsafe behaviour with ID {unsafe_behaviour_id} not found.")
             raise HTTPException(status_code=404, detail="Unsafe behaviour not found")
+        ensure_driver_access(current_client, unsafe_behaviour.driverProfileId)
         logger.info(f"Retrieved unsafe behaviour with ID: {unsafe_behaviour_id}")
         return UnsafeBehaviourResponse.model_validate(unsafe_behaviour)
     except HTTPException as e:
@@ -73,6 +83,9 @@ def get_all_unsafe_behaviours(
     skip: int = 0,
     limit: int = 20,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> List[UnsafeBehaviourResponse]:
     """
     Retrieve all unsafe behaviours with optional pagination.
@@ -84,7 +97,12 @@ def get_all_unsafe_behaviours(
         if limit > 100:
             logger.error("Limit cannot exceed 100 items.")
             raise HTTPException(status_code=400, detail="Limit cannot exceed 100 items")
-        behaviours = unsafe_behaviour_crud.get_all(db=db, skip=skip, limit=limit)
+        if current_client.role == Role.ADMIN:
+            behaviours = unsafe_behaviour_crud.get_all(db=db, skip=skip, limit=limit)
+        else:
+            query = db.query(UnsafeBehaviour)
+            query = filter_query_by_driver_ids(query, UnsafeBehaviour.driverProfileId, current_client)
+            behaviours = query.offset(skip).limit(limit).all()
         logger.info(f"Retrieved {len(behaviours)} unsafe behaviours.")
         return [UnsafeBehaviourResponse.model_validate(behaviour) for behaviour in behaviours]
     except Exception as e:
@@ -97,6 +115,9 @@ def update_unsafe_behaviour(
     *,
     db: Session = Depends(get_db),
     unsafe_behaviour_in: UnsafeBehaviourUpdate,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> UnsafeBehaviourResponse:
     """
     Update an existing unsafe behaviour.
@@ -109,6 +130,13 @@ def update_unsafe_behaviour(
         if not unsafe_behaviour:
             logger.warning(f"Unsafe behaviour with ID {unsafe_behaviour_id} not found.")
             raise HTTPException(status_code=404, detail="Unsafe behaviour not found")
+        ensure_driver_access(current_client, unsafe_behaviour.driverProfileId)
+        if (
+            current_client.role == Role.DRIVER
+            and unsafe_behaviour_in.driverProfileId
+            and unsafe_behaviour_in.driverProfileId != current_client.driver_profile_id
+        ):
+            raise HTTPException(status_code=403, detail="Driver scope access denied.")
         updated_behaviour = unsafe_behaviour_crud.update(db=db, db_obj=unsafe_behaviour, obj_in=unsafe_behaviour_in)
         logger.info(f"Updated unsafe behaviour with ID: {unsafe_behaviour_id}")
         return UnsafeBehaviourResponse.model_validate(updated_behaviour)
@@ -122,6 +150,9 @@ def update_unsafe_behaviour(
 def delete_unsafe_behaviour(
     unsafe_behaviour_id: UUID,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> UnsafeBehaviourResponse:
     """
     Delete an unsafe behaviour by ID.
@@ -133,6 +164,7 @@ def delete_unsafe_behaviour(
         if not unsafe_behaviour:
             logger.warning(f"Unsafe behaviour with ID {unsafe_behaviour_id} not found.")
             raise HTTPException(status_code=404, detail="Unsafe behaviour not found")
+        ensure_driver_access(current_client, unsafe_behaviour.driverProfileId)
         deleted_behaviour = unsafe_behaviour_crud.delete(db=db, id=unsafe_behaviour_id)
         logger.info(f"Deleted unsafe behaviour with ID: {unsafe_behaviour_id}")
         return UnsafeBehaviourResponse.model_validate(deleted_behaviour)
@@ -143,8 +175,17 @@ def delete_unsafe_behaviour(
         raise HTTPException(status_code=500, detail="Internal Server Error")
     
 @router.post("/unsafe_behaviours/batch_create", status_code=201)
-def batch_create_unsafe_behaviours(data: List[UnsafeBehaviourCreate], db: Session = Depends(get_db)):
+def batch_create_unsafe_behaviours(
+    data: List[UnsafeBehaviourCreate],
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+):
     try:
+        if current_client.role == Role.DRIVER:
+            for item in data:
+                ensure_driver_access(current_client, item.driverProfileId)
         created_behaviours = unsafe_behaviour_crud.batch_create(db=db, data_in=data)
         return {"message": f"{len(created_behaviours)} UnsafeBehaviour records created."}
     except Exception as e:
@@ -152,8 +193,18 @@ def batch_create_unsafe_behaviours(data: List[UnsafeBehaviourCreate], db: Sessio
         raise HTTPException(status_code=500, detail="Batch creation failed.")
 
 @router.delete("/unsafe_behaviours/batch_delete", status_code=204)
-def batch_delete_unsafe_behaviours(ids: List[UUID], db: Session = Depends(get_db)):
+def batch_delete_unsafe_behaviours(
+    ids: List[UUID],
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+):
     try:
+        if current_client.role == Role.DRIVER:
+            records = db.query(UnsafeBehaviour).filter(UnsafeBehaviour.id.in_(ids)).all()
+            for record in records:
+                ensure_driver_access(current_client, record.driverProfileId)
         unsafe_behaviour_crud.batch_delete(db=db, ids=ids)
         return {"message": f"{len(ids)} UnsafeBehaviour records deleted."}
     except Exception as e:

@@ -13,6 +13,7 @@ from safedrive.models.unsafe_behaviour import UnsafeBehaviour
 from tests.db_fixtures import (
     TestingSessionLocal,
     client,
+    create_api_client,
     create_tables,
     drop_tables,
 )
@@ -73,7 +74,9 @@ def test_driver_assignment_and_compliance():
             driver_id = driver.driverProfileId
             fleet_id = fleet.id
             vehicle_group_id = vehicle_group.id
+            api_key = create_api_client(db, role="admin")
 
+        headers = {"X-API-Key": api_key}
         response = client.post(
             "/api/fleet/assignments/",
             json={
@@ -83,6 +86,7 @@ def test_driver_assignment_and_compliance():
                 "onboarding_completed": True,
                 "compliance_note": "Checked onboarding forms",
             },
+            headers=headers,
         )
         assert response.status_code == 201
         payload = response.json()
@@ -90,7 +94,10 @@ def test_driver_assignment_and_compliance():
         assert payload["fleet"]["name"] == "North Fleet"
         assert payload["vehicle_group"]["name"] == "Route A"
 
-        assignment_response = client.get(f"/api/fleet/assignments/{driver_id}")
+        assignment_response = client.get(
+            f"/api/fleet/assignments/{driver_id}",
+            headers=headers,
+        )
         assert assignment_response.status_code == 200
         data = assignment_response.json()
         assert data["assignment"]["onboarding_completed"] is True
@@ -112,7 +119,9 @@ def test_driver_event_lifecycle():
             db.add(driver)
             db.commit()
             driver_id = driver.driverProfileId
+            api_key = create_api_client(db, role="admin")
 
+        headers = {"X-API-Key": api_key}
         event_resp = client.post(
             "/api/fleet/events/",
             json={
@@ -121,13 +130,17 @@ def test_driver_event_lifecycle():
                 "gps_health": "GPS_OK",
                 "message": "Trip recording started",
             },
+            headers=headers,
         )
         assert event_resp.status_code == 201
         event_payload = event_resp.json()
         assert event_payload["event_type"] == "TRIP_STARTED"
         assert event_payload["gps_health"] == "GPS_OK"
 
-        list_resp = client.get(f"/api/fleet/events/{driver.driverProfileId}?limit=5")
+        list_resp = client.get(
+            f"/api/fleet/events/{driver.driverProfileId}?limit=5",
+            headers=headers,
+        )
         assert list_resp.status_code == 200
         events = list_resp.json()["events"]
         assert len(events) == 1
@@ -250,8 +263,13 @@ def test_trip_context_and_report_endpoints():
 
             db.commit()
             trip_id = trip.id
+            api_key = create_api_client(db, role="admin")
 
-        context_response = client.get(f"/api/fleet/trips/{trip_id}/context")
+        headers = {"X-API-Key": api_key}
+        context_response = client.get(
+            f"/api/fleet/trips/{trip_id}/context",
+            headers=headers,
+        )
         assert context_response.status_code == 200
         context_payload = context_response.json()
         assert context_payload["driverProfileId"] == str(driver_id)
@@ -259,14 +277,20 @@ def test_trip_context_and_report_endpoints():
         assert len(context_payload["severity_findings"]) == 1
         assert len(context_payload["nlg_reports"]) == 1
 
-        fleet_report = client.get(f"/api/fleet/reports/{driver_id}")
+        fleet_report = client.get(
+            f"/api/fleet/reports/{driver_id}",
+            headers=headers,
+        )
         assert fleet_report.status_code == 200
         report_payload = fleet_report.json()
         assert report_payload["speed_compliance"]["speeding_events"] >= 0
         assert len(report_payload["trips"]) >= 1
         assert len(report_payload["unsafe_behaviour_logs"]) >= 1
 
-        download_response = client.get(f"/api/fleet/reports/{driver_id}/download")
+        download_response = client.get(
+            f"/api/fleet/reports/{driver_id}/download",
+            headers=headers,
+        )
         assert download_response.status_code == 200
         assert download_response.headers["content-type"] == "application/json"
     finally:

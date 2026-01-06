@@ -8,6 +8,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 
+from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles
 from safedrive.database.db import get_db
 from safedrive.models.alcohol_questionnaire import AlcoholQuestionnaire
 from safedrive.models.driver_profile import DriverProfile
@@ -47,7 +48,19 @@ def _ensure_driver_exists(db: Session, driver_id: UUID) -> DriverProfile:
 def create_driver_assignment(
     payload: fleet_schemas.DriverFleetAssignmentCreate,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
 ):
+    if (
+        current_client.role == Role.FLEET_MANAGER
+        and current_client.fleet_id
+        and payload.fleet_id != current_client.fleet_id
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Fleet access denied for this assignment.",
+        )
     _ensure_driver_exists(db, payload.driverProfileId)
 
     fleet = db.query(Fleet).filter(Fleet.id == payload.fleet_id).first()
@@ -93,7 +106,11 @@ def create_driver_assignment(
 def get_driver_assignment(
     driver_id: UUID,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
 ):
+    ensure_driver_access(current_client, driver_id)
     _ensure_driver_exists(db, driver_id)
 
     assignment = (
@@ -126,7 +143,11 @@ def get_driver_assignment(
 def emit_driver_event(
     payload: fleet_schemas.DriverTripEventCreate,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
 ):
+    ensure_driver_access(current_client, payload.driverProfileId)
     _ensure_driver_exists(db, payload.driverProfileId)
 
     event = DriverTripEvent(
@@ -153,7 +174,11 @@ def list_driver_events(
     driver_id: UUID,
     limit: int = Query(20, ge=1, le=100),
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
 ):
+    ensure_driver_access(current_client, driver_id)
     _ensure_driver_exists(db, driver_id)
 
     events = (
@@ -172,12 +197,19 @@ def list_driver_events(
     response_model=fleet_schemas.TripContextResponse,
     status_code=status.HTTP_200_OK,
 )
-def get_trip_context(trip_id: UUID, db: Session = Depends(get_db)):
+def get_trip_context(
+    trip_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
+):
     trip = db.query(Trip).filter(Trip.id == trip_id).first()
     if not trip:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Trip not found")
 
     driver_id = trip.driverProfileId
+    ensure_driver_access(current_client, driver_id)
     _ensure_driver_exists(db, driver_id)
 
     tips = (
@@ -241,7 +273,14 @@ def get_trip_context(trip_id: UUID, db: Session = Depends(get_db)):
     response_model=fleet_schemas.FleetReportResponse,
     status_code=status.HTTP_200_OK,
 )
-def get_driver_report(driver_id: UUID, db: Session = Depends(get_db)):
+def get_driver_report(
+    driver_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
+):
+    ensure_driver_access(current_client, driver_id)
     _ensure_driver_exists(db, driver_id)
     return _build_driver_report(db, driver_id)
 
@@ -250,7 +289,14 @@ def get_driver_report(driver_id: UUID, db: Session = Depends(get_db)):
     "/fleet/reports/{driver_id}/download",
     status_code=status.HTTP_200_OK,
 )
-def download_driver_report(driver_id: UUID, db: Session = Depends(get_db)):
+def download_driver_report(
+    driver_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
+):
+    ensure_driver_access(current_client, driver_id)
     _ensure_driver_exists(db, driver_id)
     report_data = _build_driver_report(db, driver_id)
     payload = json.dumps(report_data, default=str).encode("utf-8")

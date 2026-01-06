@@ -7,7 +7,15 @@ The Safe Drive Africa backend is a FastAPI application that exposes RESTful and 
 All resources below assume the service root (e.g., `https://api.safedriveafrica.com`). Core resources are mounted under the `/api` prefix, while UBPK metric endpoints are served beneath `/metrics/behavior`. FastAPI's interactive documentation is available at `/docs` and `/redoc`.
 
 ## Authentication
-No authentication or authorization guards are enforced in the current codebase—requests do not require tokens or API keys. All endpoints are publicly accessible once the service is reachable.【F:main.py†L21-L48】【F:safedrive/api/v1/api_router.py†L1-L38】
+All API endpoints require an `X-API-Key` header. Keys map to a role and optional scope (driver profile, fleet, or insurance partner) and are enforced via role-based access controls.
+
+**Roles**: `admin`, `driver`, `researcher`, `fleet_manager`, `insurance_partner`.
+
+**Notes**:
+- `admin` has full access and can manage API keys and insurance partners.
+- `driver` access is scoped to the assigned `driverProfileId`.
+- `fleet_manager` access is scoped to drivers assigned to their fleet.
+- `insurance_partner` access is scoped to drivers explicitly mapped to the partner.
 
 ## Common Conventions
 * **Content type** – JSON request/response bodies encoded in UTF‑8.
@@ -207,6 +215,36 @@ All endpoints are read-only and do not accept parameters beyond implicit databas
 | `GET /api/researcher/snapshots/aggregate/download` | Download the aggregated snapshot as a JSON attachment (`Content-Disposition` header). |
 | `POST /api/researcher/trips/backfill_alcohol` | Backfill `Trip.alcoholProbability` and `Trip.userAlcoholResponse` from matched questionnaires using UTC day matching. Optional filters: `driverProfileId`, `startDate`, `endDate`, `week` (ISO `YYYY-Www`), `overwrite` (default `false`). Response includes `matchingRule`/`matchingTimezone` notes. |
 | `GET /api/researcher/ingestion/status` | Dataset ingestion status counts (total, synced, unsynced) with latest record timestamps for upload monitoring. |
+
+### Insurance Partner Data Access
+| Method & Path | Description |
+| --- | --- |
+| `GET /api/insurance/telematics/trips` | List trip-level telematics summaries (distance, unsafe counts, speed compliance). Optional filters: `driverProfileId`, `startDate`, `endDate`, `skip`, `limit`. Scoped to partner drivers. |
+| `GET /api/insurance/reports/{driver_id}` | Consolidated driver report (trips, unsafe behaviours, alcohol responses, speed compliance). Scoped to partner drivers. |
+| `GET /api/insurance/reports/{driver_id}/download` | Download the consolidated report as JSON. |
+| `GET /api/insurance/raw_sensor_data/export` | Stream raw sensor data as `jsonl` (default) or `csv`. Optional filters: `driverProfileId`, `tripId`, `startTimestamp`, `endTimestamp`, `format`. |
+| `GET /api/insurance/alerts` | List severe violations and speed-limit breaches. Optional filters: `minSeverity`, `sinceHours`, `limit`. |
+
+### Admin & Access Control
+| Method & Path | Description |
+| --- | --- |
+| `POST /api/admin/api-clients/` | Create an API client and return the generated API key. |
+| `GET /api/admin/api-clients/` | List API clients (excluding raw keys). |
+| `PATCH /api/admin/api-clients/{client_id}` | Update API client fields (`role`, `active`, scopes). |
+| `POST /api/admin/insurance-partners/` | Create an insurance partner (`name`, `label`). |
+| `GET /api/admin/insurance-partners/` | List insurance partners. |
+| `POST /api/admin/insurance-partners/{partner_id}/drivers` | Assign a driver to a partner. |
+| `DELETE /api/admin/insurance-partners/{partner_id}/drivers/{driver_id}` | Remove a driver assignment. |
+
+### Roads
+| Method & Path | Description |
+| --- | --- |
+| `POST /api/roads/` | Create a road entry. |
+| `GET /api/roads/{road_id}` | Retrieve a road by ID. |
+| `GET /api/roads/` | List roads (`skip`, `limit`). |
+| `PUT /api/roads/{road_id}` | Update a road entry. |
+| `DELETE /api/roads/{road_id}` | Delete a road entry. |
+| `POST /api/roads/batch_create` | Bulk create roads. |
 
 
 ## UBPK Metric Endpoints (`/metrics/behavior`)

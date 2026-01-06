@@ -6,6 +6,7 @@ from uuid import UUID
 from safedrive.database.db import get_db
 from safedrive.models.driver_profile import DriverProfile
 from safedrive.models.raw_sensor_data import RawSensorData
+from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles
 from safedrive.schemas.driver_profile import (
     DriverProfileCreate,
     DriverProfileOut,
@@ -27,11 +28,15 @@ logger.addHandler(handler)
 def create_driver_profile(
     *,
     db: Session = Depends(get_db),
-    profile_in: DriverProfileCreate
+    profile_in: DriverProfileCreate,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> DriverProfileResponse:
     """
     Creates a new driver profile, or returns the existing one if there's a duplicate email.
     """
+    ensure_driver_access(current_client, profile_in.driverProfileId)
     # No `try/except IntegrityError` block here, because CRUD function handles it.
     new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)
     logger.info(f"DriverProfile created or retrieved with ID: {new_profile.driverProfileId}")
@@ -47,7 +52,8 @@ def create_driver_profile(
 def batch_create_driver_profiles(
     *,
     db: Session = Depends(get_db),
-    profiles_in: List[DriverProfileCreate]
+    profiles_in: List[DriverProfileCreate],
+    current_client: ApiClientContext = Depends(require_roles(Role.ADMIN)),
 ) -> List[DriverProfileResponse]:
     """Create multiple driver profiles at once."""
     try:
@@ -85,8 +91,15 @@ def batch_create_driver_profiles(
         )
 
 @router.get("/driver_profiles/{profile_id}", response_model=DriverProfileResponse)
-def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:
+def get_driver_profile(
+    profile_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+) -> DriverProfileResponse:
     """Retrieve a driver profile by ID."""
+    ensure_driver_access(current_client, profile_id)
     profile = driver_profile_crud.get(db=db, id=profile_id)
     if not profile:
         logger.warning(f"DriverProfile with ID {profile_id} not found.")
@@ -98,7 +111,10 @@ def get_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> Drive
 def get_driver_profile_by_email(
     email: str,
     db: Session = Depends(get_db),
-    limit_sensor_data: int = 5000
+    limit_sensor_data: int = 5000,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ):
     """Get a driver profile and related trips by email."""
     driver_profile = (
@@ -109,6 +125,7 @@ def get_driver_profile_by_email(
     )
     if not driver_profile:
         raise HTTPException(status_code=404, detail="DriverProfile not found.")
+    ensure_driver_access(current_client, driver_profile.driverProfileId)
 
     # Now for each trip in driver_profile.trips, we can do:
     for trip in driver_profile.trips:
@@ -125,7 +142,10 @@ def get_driver_profile_by_email(
 def get_driver_profile_by_email(
     email: str,
     db: Session = Depends(get_db),
-    limit_sensor_data: int = 5000
+    limit_sensor_data: int = 5000,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ):
     """Retrieve driver profile with limited sensor data by email."""
     # 1) Get the driver profile + eager load trips
@@ -137,6 +157,7 @@ def get_driver_profile_by_email(
     )
     if not driver_profile:
         raise HTTPException(status_code=404, detail="DriverProfile not found.")
+    ensure_driver_access(current_client, driver_profile.driverProfileId)
 
     # 2) For each trip, limit raw sensor data
     for trip in driver_profile.trips:
@@ -154,28 +175,62 @@ def get_driver_profile_by_email(
     return DriverProfileOut.model_validate(driver_profile)
 
 @router.get("/driver-profile-by-email/{email}", response_model=DriverProfileResponse)
-def get_driver_profile_by_email( email: str, db: Session = Depends(get_db), limit: int = 1):
+def get_driver_profile_by_email(
+    email: str,
+    db: Session = Depends(get_db),
+    limit: int = 1,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+):
     """Return a minimal driver profile using an email lookup."""
     # 1) Get the driver profile + eager load trips
     driver_profile = (
         db.query(DriverProfile)
         .filter(DriverProfile.email == email)
+        .first()
     )
     if not driver_profile:
         raise HTTPException(status_code=404, detail="DriverProfile not found.")
+    ensure_driver_access(current_client, driver_profile.driverProfileId)
 
     return DriverProfileResponse.model_validate(driver_profile)
 
 @router.get("/driver_profiles/", response_model=List[DriverProfileResponse])
-def get_all_driver_profiles(skip: int = 0, limit: int = 5000, db: Session = Depends(get_db)) -> List[DriverProfileResponse]:
+def get_all_driver_profiles(
+    skip: int = 0,
+    limit: int = 5000,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+) -> List[DriverProfileResponse]:
     """List all driver profiles."""
-    profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)
+    if current_client.role == Role.ADMIN:
+        profiles = driver_profile_crud.get_all(db=db, skip=skip, limit=limit)
+    else:
+        profiles = (
+            db.query(DriverProfile)
+            .filter(DriverProfile.driverProfileId == current_client.driver_profile_id)
+            .offset(skip)
+            .limit(limit)
+            .all()
+        )
     logger.info(f"Retrieved {len(profiles)} DriverProfiles.")
     return [DriverProfileResponse(driverProfileId=profile.id_uuid, email=profile.email, sync=profile.sync) for profile in profiles]
 
 @router.put("/driver_profiles/{profile_id}", response_model=DriverProfileResponse)
-def update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), profile_in: DriverProfileUpdate) -> DriverProfileResponse:
+def update_driver_profile(
+    profile_id: UUID,
+    *,
+    db: Session = Depends(get_db),
+    profile_in: DriverProfileUpdate,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+) -> DriverProfileResponse:
     """Update a driver profile."""
+    ensure_driver_access(current_client, profile_id)
     profile = driver_profile_crud.get(db=db, id=profile_id)
     if not profile:
         logger.warning(f"DriverProfile with ID {profile_id} not found for update.")
@@ -185,8 +240,15 @@ def update_driver_profile(profile_id: UUID, *, db: Session = Depends(get_db), pr
     return DriverProfileResponse(driverProfileId=updated_profile.id_uuid, email=updated_profile.email, sync=updated_profile.sync)
 
 @router.delete("/driver_profiles/{profile_id}", response_model=DriverProfileResponse)
-def delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> DriverProfileResponse:
+def delete_driver_profile(
+    profile_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+) -> DriverProfileResponse:
     """Delete a driver profile by ID."""
+    ensure_driver_access(current_client, profile_id)
     profile = driver_profile_crud.get(db=db, id=profile_id)
     if not profile:
         logger.warning(f"DriverProfile with ID {profile_id} not found for deletion.")
@@ -199,11 +261,19 @@ def delete_driver_profile(profile_id: UUID, db: Session = Depends(get_db)) -> Dr
 def delete_driver_profile_by_email(
     email: str,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> DriverProfileResponse:
     """
     Deletes a driver profile (by email) and all related child records.
     Returns the deleted driver profile data.
     """
+    profile = driver_profile_crud.get_by_email(db, email)
+    if not profile:
+        raise HTTPException(status_code=404, detail="Driver profile not found")
+    ensure_driver_access(current_client, profile.driverProfileId)
+
     deleted_profile = driver_profile_crud.delete_by_email_cascade(db, email)
     if not deleted_profile:
         raise HTTPException(status_code=404, detail="Driver profile not found")

@@ -11,6 +11,7 @@ from safedrive.models.unsafe_behaviour import UnsafeBehaviour
 from tests.db_fixtures import (
     client,
     TestingSessionLocal,
+    create_api_client,
     create_tables,
     drop_tables,
 )
@@ -144,8 +145,12 @@ def test_driver_monitor_endpoint():
     with TestingSessionLocal() as db:
         driver = _seed_driver_data(db)
         driver_id = driver.driverProfileId
+        api_key = create_api_client(db, role="admin")
 
-    response = client.get(f"/api/fleet/driver_monitor/{driver_id}")
+    response = client.get(
+        f"/api/fleet/driver_monitor/{driver_id}",
+        headers={"X-API-Key": api_key},
+    )
     assert response.status_code == 200
     payload = response.json()
     assert payload["driverProfileId"] == str(driver.driverProfileId)

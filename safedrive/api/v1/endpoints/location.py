@@ -5,12 +5,15 @@ from uuid import UUID
 import logging
 
 from safedrive.database.db import get_db
+from safedrive.core.security import ApiClientContext, Role, filter_query_by_driver_ids, require_roles
 from safedrive.schemas.location import (
     LocationCreate,
     LocationUpdate,
     LocationResponse,
 )
 from safedrive.crud.location import location_crud
+from safedrive.models.raw_sensor_data import RawSensorData
+from safedrive.models.trip import Trip
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -23,6 +26,9 @@ def create_location(
     *,
     db: Session = Depends(get_db),
     location_in: LocationCreate,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> LocationResponse:
     """
     Create a new location.
@@ -48,6 +54,9 @@ def create_location(
 def get_location(
     location_id: UUID,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> LocationResponse:
     """
     Retrieve a location by ID.
@@ -59,6 +68,15 @@ def get_location(
         if not location:
             logger.warning(f"Location with ID {location_id} not found.")
             raise HTTPException(status_code=404, detail="Location not found")
+        if current_client.role == Role.DRIVER:
+            link = (
+                db.query(RawSensorData)
+                .join(Trip, RawSensorData.trip_id == Trip.id)
+                .filter(RawSensorData.location_id == location.id)
+            )
+            link = filter_query_by_driver_ids(link, Trip.driverProfileId, current_client)
+            if not link.first():
+                raise HTTPException(status_code=403, detail="Location access denied.")
         logger.info(f"Retrieved location with ID: {location_id}")
         return LocationResponse.model_validate(location)
     except HTTPException as e:
@@ -72,6 +90,9 @@ def get_all_locations(
     skip: int = 0,
     limit: int = 20,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> List[LocationResponse]:
     """
     Retrieve all locations with optional pagination.
@@ -83,7 +104,16 @@ def get_all_locations(
         if limit > 100:
             logger.error("Limit cannot exceed 100 items.")
             raise HTTPException(status_code=400, detail="Limit cannot exceed 100 items")
-        locations = location_crud.get_all(db=db, skip=skip, limit=limit)
+        if current_client.role == Role.ADMIN:
+            locations = location_crud.get_all(db=db, skip=skip, limit=limit)
+        else:
+            query = (
+                db.query(location_crud.model)
+                .join(RawSensorData, RawSensorData.location_id == location_crud.model.id)
+                .join(Trip, RawSensorData.trip_id == Trip.id)
+            )
+            query = filter_query_by_driver_ids(query, Trip.driverProfileId, current_client)
+            locations = query.offset(skip).limit(limit).all()
         logger.info(f"Retrieved {len(locations)} locations.")
         return [LocationResponse.model_validate(loc) for loc in locations]
     except Exception as e:
@@ -96,6 +126,9 @@ def update_location(
     *,
     db: Session = Depends(get_db),
     location_in: LocationUpdate,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> LocationResponse:
     """
     Update an existing location.
@@ -108,6 +141,15 @@ def update_location(
         if not location:
             logger.warning(f"Location with ID {location_id} not found.")
             raise HTTPException(status_code=404, detail="Location not found")
+        if current_client.role == Role.DRIVER:
+            link = (
+                db.query(RawSensorData)
+                .join(Trip, RawSensorData.trip_id == Trip.id)
+                .filter(RawSensorData.location_id == location.id)
+            )
+            link = filter_query_by_driver_ids(link, Trip.driverProfileId, current_client)
+            if not link.first():
+                raise HTTPException(status_code=403, detail="Location access denied.")
         updated_location = location_crud.update(db=db, db_obj=location, obj_in=location_in)
         logger.info(f"Updated location with ID: {location_id}")
         return LocationResponse.model_validate(updated_location)
@@ -121,6 +163,9 @@ def update_location(
 def delete_location(
     location_id: UUID,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> LocationResponse:
     """
     Delete a location by ID.
@@ -132,6 +177,15 @@ def delete_location(
         if not location:
             logger.warning(f"Location with ID {location_id} not found.")
             raise HTTPException(status_code=404, detail="Location not found")
+        if current_client.role == Role.DRIVER:
+            link = (
+                db.query(RawSensorData)
+                .join(Trip, RawSensorData.trip_id == Trip.id)
+                .filter(RawSensorData.location_id == location.id)
+            )
+            link = filter_query_by_driver_ids(link, Trip.driverProfileId, current_client)
+            if not link.first():
+                raise HTTPException(status_code=403, detail="Location access denied.")
         deleted_location = location_crud.delete(db=db, id=location_id)
         logger.info(f"Deleted location with ID: {location_id}")
         return LocationResponse.model_validate(deleted_location)
@@ -142,7 +196,13 @@ def delete_location(
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 @router.post("/locations/batch_create", status_code=201)
-def batch_create_locations(data: List[LocationCreate], db: Session = Depends(get_db)):
+def batch_create_locations(
+    data: List[LocationCreate],
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+):
     try:
         created_locations = location_crud.batch_create(db=db, data_in=data)
         return {"message": f"{len(created_locations)} Location records created."}
@@ -151,8 +211,25 @@ def batch_create_locations(data: List[LocationCreate], db: Session = Depends(get
         raise HTTPException(status_code=500, detail="Batch creation failed.")
 
 @router.delete("/locations/batch_delete", status_code=204)
-def batch_delete_locations(ids: List[UUID], db: Session = Depends(get_db)):
+def batch_delete_locations(
+    ids: List[UUID],
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+):
     try:
+        if current_client.role == Role.DRIVER:
+            locations = db.query(location_crud.model).filter(location_crud.model.id.in_(ids)).all()
+            for location in locations:
+                link = (
+                    db.query(RawSensorData)
+                    .join(Trip, RawSensorData.trip_id == Trip.id)
+                    .filter(RawSensorData.location_id == location.id)
+                )
+                link = filter_query_by_driver_ids(link, Trip.driverProfileId, current_client)
+                if not link.first():
+                    raise HTTPException(status_code=403, detail="Location access denied.")
         location_crud.batch_delete(db=db, ids=ids)
         return {"message": f"{len(ids)} Location records deleted."}
     except Exception as e:

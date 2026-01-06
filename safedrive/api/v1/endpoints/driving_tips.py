@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from uuid import UUID
 from safedrive.database.db import get_db
+from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles
 from safedrive.schemas.driving_tip_sch import DrivingTipCreate, DrivingTipUpdate, DrivingTipResponse
 from safedrive.crud.driving_tip import driving_tip_crud
 import logging
@@ -12,9 +13,17 @@ router = APIRouter()
 logger = logging.getLogger(__name__)
 
 @router.post("/driving_tips/", response_model=DrivingTipResponse)
-def create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreate) -> DrivingTipResponse:
+def create_driving_tip(
+    *,
+    db: Session = Depends(get_db),
+    tip_in: DrivingTipCreate,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+) -> DrivingTipResponse:
     """Create a driving tip."""
     try:
+        ensure_driver_access(current_client, tip_in.profile_id)
         new_tip = driving_tip_crud.create(db=db, obj_in=tip_in)
         logger.info(f"Created DrivingTip with ID: {new_tip.tip_id}")
         return DrivingTipResponse(**tip_in.model_dump())
@@ -26,13 +35,20 @@ def create_driving_tip(*, db: Session = Depends(get_db), tip_in: DrivingTipCreat
         raise HTTPException(status_code=500, detail="Error creating driving tip")
 
 @router.get("/driving_tips/{tip_id}", response_model=DrivingTipResponse)
-def get_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTipResponse:
+def get_driving_tip(
+    tip_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+) -> DrivingTipResponse:
     """Retrieve a driving tip by ID."""
     try:
         tip = driving_tip_crud.get(db=db, id=tip_id)
         if not tip:
             logger.warning(f"DrivingTip with ID {tip_id} not found.")
             raise HTTPException(status_code=404, detail="Driving tip not found")
+        ensure_driver_access(current_client, tip.profile_id)
          # Convert SQLAlchemy objects to Pydantic response models
         return  DrivingTipResponse(
                 tip_id=tip.tip_id,
@@ -64,9 +80,16 @@ def get_all_driving_tips(
     end_date: datetime | None = Query(None),
     sync: bool | None = Query(None),
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
 ) -> List[DrivingTipResponse]:
     """List driving tips with optional pagination."""
     try:
+        if current_client.role == Role.DRIVER:
+            if profile_id and profile_id != current_client.driver_profile_id:
+                raise HTTPException(status_code=403, detail="Driver scope access denied.")
+            profile_id = current_client.driver_profile_id
         tips = driving_tip_crud.get_all(
             db=db,
             skip=skip,
@@ -102,12 +125,21 @@ def get_all_driving_tips(
         raise HTTPException(status_code=500, detail="Error retrieving driving tips")
 
 @router.put("/driving_tips/{tip_id}", response_model=DrivingTipResponse)
-def update_driving_tip(tip_id: UUID, *, db: Session = Depends(get_db), tip_in: DrivingTipUpdate) -> DrivingTipResponse:
+def update_driving_tip(
+    tip_id: UUID,
+    *,
+    db: Session = Depends(get_db),
+    tip_in: DrivingTipUpdate,
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+) -> DrivingTipResponse:
     """Update a driving tip."""
     tip = driving_tip_crud.get(db=db, id=tip_id)
     if not tip:
         logger.warning(f"DrivingTip with ID {tip_id} not found for update.")
         raise HTTPException(status_code=404, detail="Driving tip not found")
+    ensure_driver_access(current_client, tip.profile_id)
     try:
         updated_tip = driving_tip_crud.update(db=db, db_obj=tip, obj_in=tip_in)
         logger.info(f"Updated DrivingTip with ID: {tip_id}")
@@ -117,12 +149,19 @@ def update_driving_tip(tip_id: UUID, *, db: Session = Depends(get_db), tip_in: D
         raise HTTPException(status_code=400, detail=str(e))
 
 @router.delete("/driving_tips/{tip_id}", response_model=DrivingTipResponse)
-def delete_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTipResponse:
+def delete_driving_tip(
+    tip_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+) -> DrivingTipResponse:
     """Delete a driving tip."""
     tip = driving_tip_crud.get(db=db, id=tip_id)
     if not tip:
         logger.warning(f"DrivingTip with ID {tip_id} not found for deletion.")
         raise HTTPException(status_code=404, detail="Driving tip not found")
+    ensure_driver_access(current_client, tip.profile_id)
     try:
         deleted_tip = driving_tip_crud.delete(db=db, id=tip_id)
         logger.info(f"Deleted DrivingTip with ID: {tip_id}")
@@ -143,8 +182,17 @@ def delete_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTi
         raise HTTPException(status_code=400, detail=str(e))
 
 @router.post("/driving_tips/batch_create", status_code=201)
-def batch_create_driving_tips(data: List[DrivingTipCreate], db: Session = Depends(get_db)):
+def batch_create_driving_tips(
+    data: List[DrivingTipCreate],
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+):
     try:
+        if current_client.role == Role.DRIVER:
+            for item in data:
+                ensure_driver_access(current_client, item.profile_id)
         created = driving_tip_crud.batch_create(db=db, data_in=data)
         return {"message": f"{len(created)} DrivingTip records created."}
     except Exception as e:
@@ -152,8 +200,22 @@ def batch_create_driving_tips(data: List[DrivingTipCreate], db: Session = Depend
         raise HTTPException(status_code=500, detail="Batch creation failed.")
 
 @router.delete("/driving_tips/batch_delete", status_code=204)
-def batch_delete_driving_tips(ids: List[UUID], db: Session = Depends(get_db)):
+def batch_delete_driving_tips(
+    ids: List[UUID],
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+):
     try:
+        if current_client.role == Role.DRIVER:
+            tips = (
+                db.query(driving_tip_crud.model)
+                .filter(driving_tip_crud.model.tip_id.in_(ids))
+                .all()
+            )
+            for tip in tips:
+                ensure_driver_access(current_client, tip.profile_id)
         driving_tip_crud.batch_delete(db=db, ids=ids)
         return {"message": f"{len(ids)} DrivingTip records deleted."}
     except Exception as e:
