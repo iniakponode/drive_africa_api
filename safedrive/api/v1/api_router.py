@@ -1,5 +1,6 @@
 # safedrive/api/v1/api_router.py
-from fastapi import APIRouter, Depends, logger
+import logging
+from fastapi import APIRouter, Depends
 
 from safedrive.api.v1.endpoints.trip import router as trips_router
 from safedrive.api.v1.endpoints.index import router as index_router
@@ -26,6 +27,7 @@ from safedrive.api.v1.endpoints.admin import router as admin_router
 from safedrive.core.security import Role, get_current_client, require_roles
 
 safe_drive_africa_api_router = APIRouter()
+logger = logging.getLogger(__name__)
 
 safe_drive_africa_api_router.include_router(
     index_router,

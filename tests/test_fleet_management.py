@@ -90,7 +90,7 @@ def test_driver_assignment_and_compliance():
         )
         assert response.status_code == 201
         payload = response.json()
-        assert payload["driverProfileId"] == str(driver.driverProfileId)
+        assert payload["driverProfileId"] == str(driver_id)
         assert payload["fleet"]["name"] == "North Fleet"
         assert payload["vehicle_group"]["name"] == "Route A"
 
@@ -138,7 +138,7 @@ def test_driver_event_lifecycle():
         assert event_payload["gps_health"] == "GPS_OK"
 
         list_resp = client.get(
-            f"/api/fleet/events/{driver.driverProfileId}?limit=5",
+            f"/api/fleet/events/{driver_id}?limit=5",
             headers=headers,
         )
         assert list_resp.status_code == 200

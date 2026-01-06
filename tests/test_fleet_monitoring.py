@@ -153,7 +153,7 @@ def test_driver_monitor_endpoint():
     )
     assert response.status_code == 200
     payload = response.json()
-    assert payload["driverProfileId"] == str(driver.driverProfileId)
+    assert payload["driverProfileId"] == str(driver_id)
     assert payload["activeTripStatus"] == "ACTIVE"
     assert payload["unsafeBehaviourCount"] == 2
     assert payload["unsafeBehaviourLast24h"] == 1
