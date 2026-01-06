@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from datetime import datetime
 from uuid import UUID
 from typing import List, Optional
 from safedrive.models.nlg_report import NLGReport, generate_uuid_binary
@@ -57,8 +58,26 @@ class CRUDNLGReport:
             logger.warning(f"NLGReport with ID {id} not found.")
         return report
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[NLGReport]:
-        reports = db.query(self.model).offset(skip).limit(limit).all()
+    def get_all(
+        self,
+        db: Session,
+        skip: int = 0,
+        limit: int = 100,
+        driver_profile_id: Optional[UUID] = None,
+        start_date: Optional[datetime] = None,
+        end_date: Optional[datetime] = None,
+        sync: Optional[bool] = None,
+    ) -> List[NLGReport]:
+        query = db.query(self.model)
+        if driver_profile_id is not None:
+            query = query.filter(self.model.driverProfileId == driver_profile_id)
+        if start_date is not None:
+            query = query.filter(self.model.start_date >= start_date)
+        if end_date is not None:
+            query = query.filter(self.model.end_date <= end_date)
+        if sync is not None:
+            query = query.filter(self.model.sync == sync)
+        reports = query.offset(skip).limit(limit).all()
         logger.info(f"Retrieved {len(reports)} NLGReports.")
         return reports
 
@@ -92,6 +111,51 @@ class CRUDNLGReport:
         else:
             logger.warning(f"NLGReport with ID {id} not found for deletion.")
         return obj
+
+    def batch_create(self, db: Session, data_in: List[NLGReportCreate]) -> List[NLGReport]:
+        db_objs = []
+        skipped_count = 0
+
+        for report in data_in:
+            obj_data = report.model_dump()
+            for uuid_field in ["id", "driverProfileId"]:
+                if uuid_field in obj_data and isinstance(obj_data[uuid_field], str):
+                    obj_data[uuid_field] = UUID(obj_data[uuid_field])
+
+            report_id = obj_data.get("id")
+            if report_id:
+                existing = db.query(self.model).filter_by(id=report_id).first()
+                if existing:
+                    logger.info(f"Skipping duplicate NLGReport with ID {report_id}")
+                    skipped_count += 1
+                    continue
+
+            try:
+                db_obj = self.model(**obj_data)
+                db.add(db_obj)
+                db.flush()
+                db_objs.append(db_obj)
+            except Exception as e:
+                db.rollback()
+                skipped_count += 1
+                logger.warning(f"Skipping NLGReport due to error: {str(e)}")
+
+        db.commit()
+        for obj in db_objs:
+            db.refresh(obj)
+
+        logger.info(f"Batch inserted {len(db_objs)} NLGReports. Skipped {skipped_count}.")
+        return db_objs
+
+    def batch_delete(self, db: Session, ids: List[UUID]) -> None:
+        try:
+            db.query(self.model).filter(self.model.id.in_(ids)).delete(synchronize_session=False)
+            db.commit()
+            logger.info(f"Batch deleted {len(ids)} NLGReports.")
+        except Exception as e:
+            db.rollback()
+            logger.error(f"Error during batch deletion of NLGReports: {str(e)}")
+            raise e
 
 # Initialize CRUD instance for NLGReport
 nlg_report_crud = CRUDNLGReport(NLGReport)

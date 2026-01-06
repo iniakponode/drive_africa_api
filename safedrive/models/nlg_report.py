@@ -25,6 +25,8 @@ class NLGReport(Base):
 
     id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
     driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId'), nullable=False)
+    start_date = Column(DateTime, nullable=True)
+    end_date = Column(DateTime, nullable=True)
     report_text = Column(String(500), nullable=False)
     generated_at = Column(DateTime, nullable=False)
     sync = Column(Boolean, nullable=False, default=False)
@@ -32,7 +34,7 @@ class NLGReport(Base):
     driver_profile=relationship("DriverProfile", back_populates="nlg_reports")
 
     def __repr__(self):
-        return f"<NLGReport(id={self.id.hex()}, driver_profile_id={self.driverProfileId.hex()}, synced={self.synced})>"
+        return f"<NLGReport(id={self.id.hex()}, driver_profile_id={self.driverProfileId.hex()}, sync={self.sync})>"
 
     @property
     def id_uuid(self):

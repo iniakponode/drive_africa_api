@@ -67,6 +67,20 @@ class AlcoholQuestionnaireCRUD:
                 detail=f"Database error: {str(e)}",
             )
 
+    def get_by_driver_id(self, driver_profile_id: UUID) -> List[AlcoholQuestionnaire]:
+        try:
+            return (
+                self.db.query(AlcoholQuestionnaire)
+                .filter(AlcoholQuestionnaire.driverProfileId == driver_profile_id)
+                .order_by(AlcoholQuestionnaire.date.desc())
+                .all()
+            )
+        except SQLAlchemyError as e:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Database error: {str(e)}",
+            )
+
     def update(self, questionnaire_id: UUID, updated_data: AlcoholQuestionnaireCreateSchema) -> AlcoholQuestionnaire:
         questionnaire = self.get_by_id(questionnaire_id)
         try:

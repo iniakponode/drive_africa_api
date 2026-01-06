@@ -36,7 +36,7 @@ No authentication or authorization guards are enforced in the current codebase�
 ### Trips
 | Method & Path | Description |
 | --- | --- |
-| `POST /api/trips/` | Create a trip. Required fields include `id`, `driverProfileId`, `startTime` (ISO datetime), optional `start_date`, `end_date`, `end_time`, `sync`, `influence`. |
+| `POST /api/trips/` | Create a trip. Required fields include `id`, `driverProfileId`, `startTime` (ISO datetime), optional `start_date`, `end_date`, `end_time`, `sync`, `influence`, `tripNotes`. |
 | `GET /api/trips/{trip_id}` | Retrieve a trip by UUID. |
 | `GET /api/trips/` | List trips (`skip`, `limit`). |
 | `PUT /api/trips/{trip_id}` | Partial update using `TripUpdate`. |
@@ -48,7 +48,7 @@ No authentication or authorization guards are enforced in the current codebase�
 
 
 
-**Schema highlights**: `TripResponse` includes `id`, `driverProfileId`, `start_date`, `end_date`, `start_time`, `end_time`, `sync`, `influence`. `TripCreate`/`TripUpdate` mirror these fields; `startTime` uses camelCase alias when serialized.【F:safedrive/api/v1/endpoints/trip.py†L1-L200】【F:safedrive/schemas/trip.py†L1-L76】
+**Schema highlights**: `TripResponse` includes `id`, `driverProfileId`, `start_date`, `end_date`, `start_time`, `end_time`, `sync`, `influence`, `tripNotes`. `TripCreate`/`TripUpdate` mirror these fields; `startTime` uses camelCase alias when serialized.【F:safedrive/api/v1/endpoints/trip.py†L1-L200】【F:safedrive/schemas/trip.py†L1-L76】
 
 ### Raw Sensor Data
 | Method & Path | Description |
@@ -94,9 +94,11 @@ Responses expose all base attributes, including `latitude`, `longitude`, `speed`
 | --- | --- |
 | `POST /api/driving_tips/` | Create a driving tip (fields include `tip_id`, `title`, optional narrative fields, `sync`, `date`, `profile_id`, optional `llm`). |
 | `GET /api/driving_tips/{tip_id}` | Retrieve by UUID. |
-| `GET /api/driving_tips/` | List with `skip`/`limit`. |
+| `GET /api/driving_tips/` | List with `skip`/`limit`. Optional filters: `profile_id`, `llm`, `start_date`, `end_date`, `sync`. |
 | `PUT /api/driving_tips/{tip_id}` | Update tip content. |
 | `DELETE /api/driving_tips/{tip_id}` | Delete tip. |
+| `POST /api/driving_tips/batch_create` | Bulk insert tips (array of `DrivingTipCreate`). |
+| `DELETE /api/driving_tips/batch_delete` | Bulk delete tips by UUID list. |
 
 Responses serialize the same attributes defined in `DrivingTipBase`.【F:safedrive/api/v1/endpoints/driving_tips.py†L1-L104】【F:safedrive/schemas/driving_tip_sch.py†L1-L58】
 
@@ -125,13 +127,15 @@ Responses return `chunk_id`, `chunk_text`, serialized `embedding`, `source_type`
 ### NLG Reports
 | Method & Path | Description |
 | --- | --- |
-| `POST /api/nlg_reports/` | Create a narrative report (`id`, `driverProfileId`, `report_text`, `generated_at`, optional `sync`). |
+| `POST /api/nlg_reports/` | Create a narrative report (`id`, `driverProfileId`, `startDate`, `endDate`, `report_text`, `generated_at`, optional `sync`). |
 | `GET /api/nlg_reports/{report_id}` | Retrieve by UUID. |
-| `GET /api/nlg_reports/` | Paginated list. |
+| `GET /api/nlg_reports/` | Paginated list. Optional filters: `driverProfileId`, `startDate`, `endDate`, `sync`. |
 | `PUT /api/nlg_reports/{report_id}` | Update report text or sync flag. |
 | `DELETE /api/nlg_reports/{report_id}` | Delete report. |
+| `POST /api/nlg_reports/batch_create` | Bulk insert reports (array of `NLGReportCreate`). |
+| `DELETE /api/nlg_reports/batch_delete` | Bulk delete reports by UUID list. |
 
-Responses align with `NLGReportResponse`: `id`, `driverProfileId`, `report_text`, `generated_at`, `sync`.【F:safedrive/api/v1/endpoints/nlg_report.py†L1-L64】【F:safedrive/schemas/nlg_report.py†L1-L44】
+Responses align with `NLGReportResponse`: `id`, `driverProfileId`, `startDate`, `endDate`, `report_text`, `generated_at`, `sync`.【F:safedrive/api/v1/endpoints/nlg_report.py†L1-L64】【F:safedrive/schemas/nlg_report.py†L1-L44】
 
 ### AI Model Inputs
 | Method & Path | Description |
@@ -154,6 +158,8 @@ Responses return the same fields as `AIModelInputBase` plus server-generated `id
 | `GET /api/alcohol-questionnaire/questionnaire/` | List all questionnaires. |
 | `PUT /api/alcohol-questionnaire/questionnaire/{questionnaire_id}/` | Update questionnaire answers. |
 | `DELETE /api/alcohol-questionnaire/questionnaire/{questionnaire_id}/` | Delete (returns 204). |
+| `POST /api/questionnaire/` | Mobile compatibility alias for submitting questionnaires. |
+| `GET /api/questionnaire/{user_id}` | Mobile compatibility history lookup by driver profile ID. |
 
 Response schema mirrors `AlcoholQuestionnaireBaseSchema`, including the submitted answers and metadata timestamps.【F:safedrive/api/v1/endpoints/alcohol_questionnaire.py†L1-L93】【F:safedrive/schemas/alcohol_questionnaire.py†L1-L43】
 
@@ -187,6 +193,20 @@ All endpoints are read-only and do not accept parameters beyond implicit databas
 | `GET /api/fleet/reports/{driver_id}/download` | Download the same fleet report as a JSON attachment (`Content-Disposition` header) so partners can store or re-process the file offline. |
 
 > Notes: Events capture the `sensor` module transitions (VERIFYING ? RECORDING ? NOT DRIVING) plus GPS health annotations; clients can replay them to deliver notifications if the app was backgrounded.
+
+### Researcher Data Access
+| Method & Path | Description |
+| --- | --- |
+| `GET /api/researcher/unsafe_behaviours/summary` | Aggregated unsafe behaviour counts and severity statistics grouped by `behaviour_type`. Optional filters: `driverProfileId`, `tripId`, `startDate`, `endDate`, `week` (ISO `YYYY-Www`), `minSeverity`, `maxSeverity`. |
+| `GET /api/researcher/raw_sensor_data/summary` | Summarize raw sensor counts per sensor type with min/max timestamps and average accuracy. Optional filters: `driverProfileId`, `tripId`, `sensorType`, `sensorTypeName`, `startTimestamp`, `endTimestamp`, `startDate`, `endDate`, `week` (ISO `YYYY-Www`). |
+| `GET /api/researcher/alcohol_trip_bundle` | Return trip metadata alongside alcohol questionnaire responses for correlation. Each trip includes `matchedQuestionnaire` computed using same UTC calendar day. Optional filters: `driverProfileId`, `startDate`, `endDate`, `week` (ISO `YYYY-Www`), `skip`, `limit`. Response includes `matchingRule` and `matchingTimezone` notes. |
+| `GET /api/researcher/nlg_reports/export` | Stream NLG reports as `jsonl` (default) or `csv` using report period filters (`startDate`/`endDate`) or ISO week (`YYYY-Www`). Optional filters: `driverProfileId`, `startDate`, `endDate`, `week`, `sync`, `format`. |
+| `GET /api/researcher/raw_sensor_data/export` | Stream raw sensor datasets as `jsonl` (default) or `csv`. Optional filters: `driverProfileId`, `tripId`, `sensorType`, `sensorTypeName`, `startTimestamp`, `endTimestamp`, `startDate`, `endDate`, `week` (ISO `YYYY-Www`), `format`. |
+| `GET /api/researcher/trips/export` | Stream trips as `jsonl` (default) or `csv`, including `matchedQuestionnaire` plus `matchingRule`/`matchingTimezone` metadata (UTC day matching). Optional filters: `driverProfileId`, `startDate`, `endDate`, `week` (ISO `YYYY-Www`), `format`. |
+| `GET /api/researcher/snapshots/aggregate` | Aggregated snapshot containing UBPK per driver/trip plus unsafe behaviour and raw sensor summaries. Optional filters: `driverProfileId`, `startDate`, `endDate`, `week` (ISO `YYYY-Www`). |
+| `GET /api/researcher/snapshots/aggregate/download` | Download the aggregated snapshot as a JSON attachment (`Content-Disposition` header). |
+| `POST /api/researcher/trips/backfill_alcohol` | Backfill `Trip.alcoholProbability` and `Trip.userAlcoholResponse` from matched questionnaires using UTC day matching. Optional filters: `driverProfileId`, `startDate`, `endDate`, `week` (ISO `YYYY-Www`), `overwrite` (default `false`). Response includes `matchingRule`/`matchingTimezone` notes. |
+| `GET /api/researcher/ingestion/status` | Dataset ingestion status counts (total, synced, unsynced) with latest record timestamps for upload monitoring. |
 
 
 ## UBPK Metric Endpoints (`/metrics/behavior`)

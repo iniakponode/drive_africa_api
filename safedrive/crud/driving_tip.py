@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from uuid import UUID
+from datetime import datetime
 from typing import List, Optional
 from safedrive.models.driving_tip import DrivingTip, generate_uuid_binary
 from safedrive.schemas.driving_tip_sch import DrivingTipCreate, DrivingTipUpdate
@@ -71,9 +72,30 @@ class CRUDDrivingTip:
             logger.error(f"Database error while retrieving DrivingTip: {str(e)}")
             raise ValueError("Error retrieving data from the database.")
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[DrivingTip]:
+    def get_all(
+        self,
+        db: Session,
+        skip: int = 0,
+        limit: int = 100,
+        profile_id: Optional[UUID] = None,
+        llm: Optional[str] = None,
+        start_date: Optional[datetime] = None,
+        end_date: Optional[datetime] = None,
+        sync: Optional[bool] = None,
+    ) -> List[DrivingTip]:
         try:
-            tips = db.query(self.model).offset(skip).limit(limit).all()
+            query = db.query(self.model)
+            if profile_id is not None:
+                query = query.filter(self.model.profile_id == profile_id)
+            if llm is not None:
+                query = query.filter(self.model.llm == llm)
+            if start_date is not None:
+                query = query.filter(self.model.date >= start_date)
+            if end_date is not None:
+                query = query.filter(self.model.date <= end_date)
+            if sync is not None:
+                query = query.filter(self.model.sync == sync)
+            tips = query.offset(skip).limit(limit).all()
             logger.info(f"Retrieved {len(tips)} DrivingTips.")
             return tips
         except SQLAlchemyError as e:
@@ -128,6 +150,57 @@ class CRUDDrivingTip:
         except SQLAlchemyError as e:
             db.rollback()
             logger.error(f"Database error while deleting DrivingTip: {str(e)}")
+            raise ValueError("Error deleting data from the database.")
+
+    def batch_create(self, db: Session, data_in: List[DrivingTipCreate]) -> List[DrivingTip]:
+        db_objs = []
+        skipped_count = 0
+
+        for tip in data_in:
+            data = tip.model_dump()
+            for uuid_field in ['tip_id', 'profile_id']:
+                value = data.get(uuid_field)
+                if value and isinstance(value, str):
+                    try:
+                        data[uuid_field] = UUID(value)
+                    except Exception as e:
+                        logger.error(f"Error converting {uuid_field} '{value}' to UUID: {e}")
+                        skipped_count += 1
+                        continue
+
+            tip_id = data.get("tip_id")
+            if tip_id:
+                existing = db.query(self.model).filter_by(tip_id=tip_id).first()
+                if existing:
+                    logger.info(f"Skipping duplicate DrivingTip with ID {tip_id}")
+                    skipped_count += 1
+                    continue
+
+            try:
+                db_obj = self.model(**data)
+                db.add(db_obj)
+                db.flush()
+                db_objs.append(db_obj)
+            except Exception as e:
+                db.rollback()
+                skipped_count += 1
+                logger.error(f"Error inserting DrivingTip: {str(e)}")
+
+        db.commit()
+        for obj in db_objs:
+            db.refresh(obj)
+
+        logger.info(f"Batch inserted {len(db_objs)} DrivingTips. Skipped {skipped_count}.")
+        return db_objs
+
+    def batch_delete(self, db: Session, ids: List[UUID]) -> None:
+        try:
+            db.query(self.model).filter(self.model.tip_id.in_(ids)).delete(synchronize_session=False)
+            db.commit()
+            logger.info(f"Batch deleted {len(ids)} DrivingTips.")
+        except SQLAlchemyError as e:
+            db.rollback()
+            logger.error(f"Database error while deleting DrivingTips: {str(e)}")
             raise ValueError("Error deleting data from the database.")
             
 driving_tip_crud = CRUDDrivingTip(DrivingTip)

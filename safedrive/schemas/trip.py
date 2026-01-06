@@ -32,6 +32,11 @@ class TripBase(BaseModel):
     end_time: Optional[int] = Field(None, description="The end time of the trip in epoch milliseconds.")
     sync: bool = Field(False, description="Indicates whether the trip data has been synced.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
+    trip_notes: Optional[str] = Field(
+        None,
+        alias="tripNotes",
+        description="Optional driver notes or annotations for the trip."
+    )
     alcohol_probability: Optional[float] = Field(
         None,
         alias="alcoholProbability",
@@ -72,6 +77,11 @@ class TripCreate(BaseModel):
     )
     sync: Optional[bool] = Field(False, description="Indicates whether the trip data has been synced.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
+    trip_notes: Optional[str] = Field(
+        None,
+        alias="tripNotes",
+        description="Optional driver notes or annotations for the trip."
+    )
     alcohol_probability: Optional[float] = Field(
         None,
         alias="alcoholProbability",
@@ -105,6 +115,11 @@ class TripUpdate(BaseModel):
     )
     sync: Optional[bool] = Field(None, description="Optionally update the sync status.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
+    trip_notes: Optional[str] = Field(
+        None,
+        alias="tripNotes",
+        description="Optional driver notes or annotations for the trip."
+    )
     alcohol_probability: Optional[float] = Field(
         None, alias="alcoholProbability", description="Updated alcohol probability score."
     )

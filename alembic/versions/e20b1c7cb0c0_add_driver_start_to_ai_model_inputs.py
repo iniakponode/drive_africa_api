@@ -15,11 +15,31 @@ branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
-    op.add_column('ai_model_inputs', sa.Column('driverProfileId', UUIDType(), nullable=False))
-    op.add_column('ai_model_inputs', sa.Column('start_time', sa.BigInteger(), nullable=False))
-    op.create_foreign_key('fk_ai_inputs_driver', 'ai_model_inputs', 'driver_profile', ['driverProfileId'], ['driverProfileId'], ondelete='CASCADE')
+    bind = op.get_bind()
+    if bind.dialect.name == "sqlite":
+        with op.batch_alter_table("ai_model_inputs") as batch_op:
+            batch_op.add_column(sa.Column('driverProfileId', UUIDType(), nullable=False))
+            batch_op.add_column(sa.Column('start_time', sa.BigInteger(), nullable=False))
+            batch_op.create_foreign_key(
+                'fk_ai_inputs_driver',
+                'driver_profile',
+                ['driverProfileId'],
+                ['driverProfileId'],
+                ondelete='CASCADE',
+            )
+    else:
+        op.add_column('ai_model_inputs', sa.Column('driverProfileId', UUIDType(), nullable=False))
+        op.add_column('ai_model_inputs', sa.Column('start_time', sa.BigInteger(), nullable=False))
+        op.create_foreign_key('fk_ai_inputs_driver', 'ai_model_inputs', 'driver_profile', ['driverProfileId'], ['driverProfileId'], ondelete='CASCADE')
 
 def downgrade() -> None:
-    op.drop_constraint('fk_ai_inputs_driver', 'ai_model_inputs', type_='foreignkey')
-    op.drop_column('ai_model_inputs', 'start_time')
-    op.drop_column('ai_model_inputs', 'driverProfileId')
+    bind = op.get_bind()
+    if bind.dialect.name == "sqlite":
+        with op.batch_alter_table("ai_model_inputs") as batch_op:
+            batch_op.drop_constraint('fk_ai_inputs_driver', type_='foreignkey')
+            batch_op.drop_column('start_time')
+            batch_op.drop_column('driverProfileId')
+    else:
+        op.drop_constraint('fk_ai_inputs_driver', 'ai_model_inputs', type_='foreignkey')
+        op.drop_column('ai_model_inputs', 'start_time')
+        op.drop_column('ai_model_inputs', 'driverProfileId')

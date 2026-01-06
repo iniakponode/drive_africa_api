@@ -43,7 +43,10 @@ def create_trip(*, db: Session = Depends(get_db), trip_in: TripCreate) -> TripRe
             start_time=new_trip.start_time,
             end_time=new_trip.end_time,
             sync=new_trip.sync,
-            influence=new_trip.influence
+            influence=new_trip.influence,
+            trip_notes=new_trip.trip_notes,
+            alcohol_probability=new_trip.alcohol_probability,
+            user_alcohol_response=new_trip.user_alcohol_response,
         )
     except HTTPException as http_exc:
         raise http_exc

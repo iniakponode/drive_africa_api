@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+from typing import List
 from sqlalchemy.orm import Session
 from uuid import UUID
 from safedrive.schemas.alcohol_questionnaire import (
@@ -10,6 +11,7 @@ from safedrive.database.db import get_db
 import logging
 
 router = APIRouter()
+mobile_router = APIRouter()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
@@ -36,6 +38,25 @@ async def submit_alcohol_questionnaire(
             detail="An error occurred while creating the alcohol questionnaire."
         )
 
+# Mobile compatibility endpoint (matches /api/questionnaire/)
+@mobile_router.post("/questionnaire/", response_model=AlcoholQuestionnaireResponseSchema)
+async def submit_alcohol_questionnaire_mobile(
+    questionnaire_data: AlcoholQuestionnaireCreateSchema,
+    db: Session = Depends(get_db),
+):
+    """Submit a new alcohol questionnaire (mobile compatibility)."""
+    try:
+        crud = AlcoholQuestionnaireCRUD(db)
+        saved_data = crud.create(questionnaire_data)
+        logger.info(f"Successfully created alcohol questionnaire (mobile): {saved_data.id}")
+        return saved_data
+    except Exception as e:
+        logger.error(f"Error creating alcohol questionnaire (mobile): {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred while creating the alcohol questionnaire."
+        )
+
 # Endpoint to get an alcohol questionnaire by ID
 @router.get("/questionnaire/{questionnaire_id}/", response_model=AlcoholQuestionnaireResponseSchema)
 async def get_alcohol_questionnaire(
@@ -56,6 +77,25 @@ async def get_alcohol_questionnaire(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An error occurred while retrieving the alcohol questionnaire."
+        )
+
+# Mobile compatibility endpoint (matches /api/questionnaire/{userId})
+@mobile_router.get("/questionnaire/{user_id}", response_model=List[AlcoholQuestionnaireResponseSchema])
+async def get_alcohol_questionnaire_history(
+    user_id: UUID,
+    db: Session = Depends(get_db),
+):
+    """Retrieve questionnaire history for a driver (mobile compatibility)."""
+    try:
+        crud = AlcoholQuestionnaireCRUD(db)
+        questionnaires = crud.get_by_driver_id(user_id)
+        logger.info(f"Successfully retrieved alcohol questionnaire history: {user_id}")
+        return questionnaires
+    except Exception as e:
+        logger.error(f"Error retrieving alcohol questionnaire history: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred while retrieving the alcohol questionnaires."
         )
 
 # Endpoint to list all alcohol questionnaires

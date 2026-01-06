@@ -16,6 +16,7 @@ from safedrive.api.v1.endpoints.road import router as road_router
 from safedrive.api.v1.endpoints.behaviour_metrics import router as behaviour_metrics_router
 from safedrive.api.v1.endpoints.fleet_management import router as fleet_management_router
 from safedrive.api.v1.endpoints.fleet_monitoring import router as fleet_monitoring_router
+from safedrive.api.v1.endpoints.researcher import router as researcher_router
 
 # from safedrive import safe_drive_africa_api_router as safe_drive_africa_api_router
 
@@ -40,4 +41,7 @@ safe_drive_africa_api_router.include_router(
 )
 safe_drive_africa_api_router.include_router(
     fleet_monitoring_router, prefix="/api", tags=["Fleet Monitoring"]
+)
+safe_drive_africa_api_router.include_router(
+    researcher_router, prefix="/api", tags=["Researcher"]
 )

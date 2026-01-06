@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 from datetime import datetime
 from uuid import UUID
@@ -16,12 +16,15 @@ class NLGReportBase(BaseModel):
     """
     id: UUID
     driverProfileId: UUID
+    start_date: Optional[datetime] = Field(None, alias="startDate")
+    end_date: Optional[datetime] = Field(None, alias="endDate")
     report_text: str
     generated_at: datetime
     sync: bool
 
     class Config:
         from_attributes = True
+        populate_by_name = True
 
 class NLGReportCreate(BaseModel):
     """
@@ -36,12 +39,15 @@ class NLGReportCreate(BaseModel):
     """
     id: UUID
     driverProfileId: UUID
+    start_date: datetime = Field(..., alias="startDate")
+    end_date: datetime = Field(..., alias="endDate")
     report_text: str
     generated_at: datetime
     sync: Optional[bool] = False
 
     class Config:
-        from_attributes = True
+       from_attributes = True
+       populate_by_name = True
 
 class NLGReportUpdate(BaseModel):
     """
@@ -51,11 +57,14 @@ class NLGReportUpdate(BaseModel):
     - **report_text**: Optional update to the report content.
     - **synced**: Optional update to sync status.
     """
+    start_date: Optional[datetime] = Field(None, alias="startDate")
+    end_date: Optional[datetime] = Field(None, alias="endDate")
     report_text: Optional[str] = None
     sync: Optional[bool] = None
 
     class Config:
         from_attributes = True
+        populate_by_name = True
 
 class NLGReportResponse(NLGReportBase):
     """

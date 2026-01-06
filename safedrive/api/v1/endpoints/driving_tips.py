@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException
+from datetime import datetime
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from typing import List
 from uuid import UUID
@@ -54,10 +55,28 @@ def get_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTipRe
         raise HTTPException(status_code=400, detail=str(e))
 
 @router.get("/driving_tips/", response_model=List[DrivingTipResponse])
-def get_all_driving_tips(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> List[DrivingTipResponse]:
+def get_all_driving_tips(
+    skip: int = 0,
+    limit: int = 20,
+    profile_id: UUID | None = Query(None),
+    llm: str | None = Query(None),
+    start_date: datetime | None = Query(None),
+    end_date: datetime | None = Query(None),
+    sync: bool | None = Query(None),
+    db: Session = Depends(get_db),
+) -> List[DrivingTipResponse]:
     """List driving tips with optional pagination."""
     try:
-        tips = driving_tip_crud.get_all(db=db, skip=skip, limit=limit)
+        tips = driving_tip_crud.get_all(
+            db=db,
+            skip=skip,
+            limit=limit,
+            profile_id=profile_id,
+            llm=llm,
+            start_date=start_date,
+            end_date=end_date,
+            sync=sync,
+        )
         logger.info(f"Retrieved {len(tips)} DrivingTips.")
         
         # Convert SQLAlchemy objects to Pydantic response models
@@ -122,3 +141,21 @@ def delete_driving_tip(tip_id: UUID, db: Session = Depends(get_db)) -> DrivingTi
     except ValueError as e:
         logger.error(f"Error deleting DrivingTip: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))
+
+@router.post("/driving_tips/batch_create", status_code=201)
+def batch_create_driving_tips(data: List[DrivingTipCreate], db: Session = Depends(get_db)):
+    try:
+        created = driving_tip_crud.batch_create(db=db, data_in=data)
+        return {"message": f"{len(created)} DrivingTip records created."}
+    except Exception as e:
+        logger.error(f"Error in batch create DrivingTip: {str(e)}")
+        raise HTTPException(status_code=500, detail="Batch creation failed.")
+
+@router.delete("/driving_tips/batch_delete", status_code=204)
+def batch_delete_driving_tips(ids: List[UUID], db: Session = Depends(get_db)):
+    try:
+        driving_tip_crud.batch_delete(db=db, ids=ids)
+        return {"message": f"{len(ids)} DrivingTip records deleted."}
+    except Exception as e:
+        logger.error(f"Error in batch delete DrivingTip: {str(e)}")
+        raise HTTPException(status_code=500, detail="Batch deletion failed.")

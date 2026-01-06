@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, Boolean, BINARY, BigInteger, String, Float
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, Boolean, BINARY, BigInteger, String, Float, Text
 from sqlalchemy.orm import relationship, object_session
 from uuid import uuid4, UUID
 from sqlalchemy_utils import UUIDType
@@ -19,6 +19,7 @@ class Trip(Base):
     start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger
     end_time = Column(BigInteger, nullable=True)
     influence = Column(String(50), nullable=True)
+    trip_notes = Column(Text, nullable=True)
     sync = Column(Boolean, nullable=False)
     alcohol_probability = Column(Float, nullable=True)
     user_alcohol_response = Column(String(50), nullable=True)
