@@ -8,6 +8,7 @@ from safedrive.database.base import Base
 from safedrive.database.db import get_db
 from safedrive.main import app
 from safedrive.core.security import hash_api_key
+from safedrive.models.admin_setting import AdminSetting
 from safedrive.models.auth import ApiClient
 from safedrive.models.insurance_partner import InsurancePartner, InsurancePartnerDriver
 from uuid import uuid4

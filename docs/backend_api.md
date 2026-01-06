@@ -16,6 +16,7 @@ All API endpoints require an `X-API-Key` header. Keys map to a role and optional
 - `driver` access is scoped to the assigned `driverProfileId`.
 - `fleet_manager` access is scoped to drivers assigned to their fleet.
 - `insurance_partner` access is scoped to drivers explicitly mapped to the partner.
+- Dataset access can be centrally controlled by admin via `/api/admin/dataset-access`.
 
 ## Common Conventions
 * **Content type** – JSON request/response bodies encoded in UTF‑8.
@@ -192,6 +193,16 @@ All endpoints are read-only and do not accept parameters beyond implicit databas
 ### Fleet Management & Notifications
 | Method & Path | Description |
 | --- | --- |
+| `POST /api/fleet/` | Create a fleet (admin only). |
+| `GET /api/fleet/` | List fleets (admin sees all; fleet managers see their scoped fleet). |
+| `GET /api/fleet/{fleet_id}` | Retrieve a fleet by ID (scoped for fleet managers). |
+| `PATCH /api/fleet/{fleet_id}` | Update a fleet (admin only). |
+| `DELETE /api/fleet/{fleet_id}` | Delete a fleet (admin only). |
+| `POST /api/fleet/{fleet_id}/vehicle-groups` | Create a vehicle group within a fleet. |
+| `GET /api/fleet/{fleet_id}/vehicle-groups` | List vehicle groups for a fleet. |
+| `GET /api/fleet/vehicle-groups/{group_id}` | Retrieve a vehicle group by ID. |
+| `PATCH /api/fleet/vehicle-groups/{group_id}` | Update a vehicle group. |
+| `DELETE /api/fleet/vehicle-groups/{group_id}` | Delete a vehicle group. |
 | `POST /api/fleet/assignments/` | Assign a driver to a fleet/vehicle group, capture onboarding status, and store compliance notes so assignment history matches the Android `DriverProfileViewModel` flows. The response returns the persisted assignment along with nested `Fleet`/`VehicleGroup` metadata. |
 | `GET /api/fleet/assignments/{driver_id}` | Retrieve the latest assignment for a driver plus the most recent alcohol questionnaire (if any) so managers can verify onboarding/compliance data before trips start. |
 | `POST /api/fleet/events/` | Emit a driver trip event (VERIFYING, RECORDING, NOT DRIVING, GPS stale warning, trip start/stop) so notification listeners mirror the sensor transition log. |
@@ -222,6 +233,8 @@ All endpoints are read-only and do not accept parameters beyond implicit databas
 | `GET /api/insurance/telematics/trips` | List trip-level telematics summaries (distance, unsafe counts, speed compliance). Optional filters: `driverProfileId`, `startDate`, `endDate`, `skip`, `limit`. Scoped to partner drivers. |
 | `GET /api/insurance/reports/{driver_id}` | Consolidated driver report (trips, unsafe behaviours, alcohol responses, speed compliance). Scoped to partner drivers. |
 | `GET /api/insurance/reports/{driver_id}/download` | Download the consolidated report as JSON. |
+| `GET /api/insurance/reports/aggregate` | Aggregated report across scoped drivers. Optional filters: `startDate`, `endDate`. Admins can filter by `partnerId` or `partnerLabel`. |
+| `GET /api/insurance/reports/aggregate/download` | Download the aggregated report as JSON. |
 | `GET /api/insurance/raw_sensor_data/export` | Stream raw sensor data as `jsonl` (default) or `csv`. Optional filters: `driverProfileId`, `tripId`, `startTimestamp`, `endTimestamp`, `format`. |
 | `GET /api/insurance/alerts` | List severe violations and speed-limit breaches. Optional filters: `minSeverity`, `sinceHours`, `limit`. |
 
@@ -235,6 +248,28 @@ All endpoints are read-only and do not accept parameters beyond implicit databas
 | `GET /api/admin/insurance-partners/` | List insurance partners. |
 | `POST /api/admin/insurance-partners/{partner_id}/drivers` | Assign a driver to a partner. |
 | `DELETE /api/admin/insurance-partners/{partner_id}/drivers/{driver_id}` | Remove a driver assignment. |
+| `GET /api/admin/cloud-endpoints` | Retrieve cloud endpoint configuration (road limits, tips, model responses). |
+| `PUT /api/admin/cloud-endpoints` | Update cloud endpoint configuration. |
+| `GET /api/admin/dataset-access` | Retrieve dataset access map for role-based exposure control. |
+| `PUT /api/admin/dataset-access` | Replace dataset access map for role-based exposure control. |
+
+### Auth
+| Method & Path | Description |
+| --- | --- |
+| `GET /api/auth/me` | Return current API client profile (role and scope) using the `X-API-Key` header. |
+
+### Analytics
+| Method & Path | Description |
+| --- | --- |
+| `GET /api/analytics/leaderboard` | Per-fleet (or per-partner) leaderboard of best/worst UBPK performers. Query: `period` (day/week/month), `startDate`, `endDate`, `limit`. Admin/researcher must include `fleetId` or `insurancePartnerId`. |
+| `GET /api/analytics/driver-ubpk` | UBPK time series for a driver. Query: `period` (day/week/month), `startDate`, `endDate`, `driverProfileId` (required for non-driver roles). |
+| `GET /api/analytics/bad-days` | Driver bad-days summary using 75th percentile delta thresholds across day/week/month. Admin/researcher must include `fleetId` or `insurancePartnerId`. |
+| `GET /api/analytics/driver-kpis` | Per-driver KPIs (UBPK + bad-days counts) for a scoped fleet or partner. Query: `period`, `startDate`, `endDate`, `fleetId`, `insurancePartnerId`. |
+
+### Client Config
+| Method & Path | Description |
+| --- | --- |
+| `GET /api/config/cloud-endpoints` | Retrieve cloud endpoint configuration for offline-capable clients. |
 
 ### Roads
 | Method & Path | Description |

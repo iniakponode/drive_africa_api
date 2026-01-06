@@ -295,3 +295,121 @@ def test_trip_context_and_report_endpoints():
         assert download_response.headers["content-type"] == "application/json"
     finally:
         teardown_database()
+
+
+def test_fleet_and_vehicle_group_admin_flow():
+    setup_database()
+    try:
+        with TestingSessionLocal() as db:
+            admin_key = create_api_client(db, role="admin")
+
+        admin_headers = {"X-API-Key": admin_key}
+        create_fleet = client.post(
+            "/api/fleet/",
+            json={
+                "name": "Lagos Fleet",
+                "description": "Main fleet",
+                "region": "Lagos",
+            },
+            headers=admin_headers,
+        )
+        assert create_fleet.status_code == 201
+        fleet_payload = create_fleet.json()
+        fleet_id = fleet_payload["id"]
+        assert fleet_payload["name"] == "Lagos Fleet"
+
+        list_fleets = client.get("/api/fleet/", headers=admin_headers)
+        assert list_fleets.status_code == 200
+        assert any(item["id"] == fleet_id for item in list_fleets.json())
+
+        update_fleet = client.patch(
+            f"/api/fleet/{fleet_id}",
+            json={"region": "Abuja"},
+            headers=admin_headers,
+        )
+        assert update_fleet.status_code == 200
+        assert update_fleet.json()["region"] == "Abuja"
+
+        create_group = client.post(
+            f"/api/fleet/{fleet_id}/vehicle-groups",
+            json={"name": "Group A", "description": "VIP"},
+            headers=admin_headers,
+        )
+        assert create_group.status_code == 201
+        group_payload = create_group.json()
+        group_id = group_payload["id"]
+        assert group_payload["fleet_id"] == fleet_id
+
+        get_group = client.get(
+            f"/api/fleet/vehicle-groups/{group_id}",
+            headers=admin_headers,
+        )
+        assert get_group.status_code == 200
+
+        delete_group = client.delete(
+            f"/api/fleet/vehicle-groups/{group_id}",
+            headers=admin_headers,
+        )
+        assert delete_group.status_code == 204
+
+        delete_fleet = client.delete(
+            f"/api/fleet/{fleet_id}",
+            headers=admin_headers,
+        )
+        assert delete_fleet.status_code == 204
+    finally:
+        teardown_database()
+
+
+def test_fleet_manager_scope_on_fleets():
+    setup_database()
+    try:
+        with TestingSessionLocal() as db:
+            admin_key = create_api_client(db, role="admin")
+
+        admin_headers = {"X-API-Key": admin_key}
+        create_fleet = client.post(
+            "/api/fleet/",
+            json={
+                "name": "Primary Fleet",
+                "description": "Main fleet",
+                "region": "Lagos",
+            },
+            headers=admin_headers,
+        )
+        assert create_fleet.status_code == 201
+        fleet_id = create_fleet.json()["id"]
+
+        create_other_fleet = client.post(
+            "/api/fleet/",
+            json={
+                "name": "Secondary Fleet",
+                "description": "Other fleet",
+                "region": "Kano",
+            },
+            headers=admin_headers,
+        )
+        assert create_other_fleet.status_code == 201
+        other_fleet_id = create_other_fleet.json()["id"]
+
+        with TestingSessionLocal() as db:
+            fleet_manager_key = create_api_client(
+                db,
+                role="fleet_manager",
+                fleet_id=fleet_id,
+            )
+
+        manager_headers = {"X-API-Key": fleet_manager_key}
+        list_fleets = client.get("/api/fleet/", headers=manager_headers)
+        assert list_fleets.status_code == 200
+        fleets = list_fleets.json()
+        assert len(fleets) == 1
+        assert fleets[0]["id"] == fleet_id
+
+        denied = client.get(
+            f"/api/fleet/{other_fleet_id}",
+            headers=manager_headers,
+        )
+        assert denied.status_code == 403
+    finally:
+        teardown_database()

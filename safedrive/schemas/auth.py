@@ -39,3 +39,12 @@ class ApiClientUpdate(BaseModel):
     driverProfileId: Optional[UUID] = None
     fleet_id: Optional[UUID] = None
     insurance_partner_id: Optional[UUID] = None
+
+
+class AuthMeResponse(BaseModel):
+    id: UUID
+    name: str
+    role: str
+    driverProfileId: Optional[UUID] = None
+    fleet_id: Optional[UUID] = None
+    insurance_partner_id: Optional[UUID] = None

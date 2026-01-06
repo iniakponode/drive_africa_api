@@ -12,6 +12,7 @@ from sqlalchemy.orm import Session
 
 from safedrive.database.db import get_db
 from safedrive.models.auth import ApiClient
+from safedrive.models.admin_setting import AdminSetting
 from safedrive.models.fleet import DriverFleetAssignment
 from safedrive.models.insurance_partner import InsurancePartnerDriver
 
@@ -33,6 +34,30 @@ class ApiClientContext:
     fleet_id: Optional[UUID]
     insurance_partner_id: Optional[UUID]
     allowed_driver_ids: Optional[Set[UUID]]
+
+
+DATASET_ACCESS_SETTING_KEY = "dataset_access"
+DEFAULT_DATASET_ACCESS = {
+    "researcher_unsafe_behaviours": ["admin", "researcher"],
+    "researcher_raw_sensor_data": ["admin", "researcher"],
+    "researcher_alcohol_trip_bundle": ["admin", "researcher"],
+    "researcher_nlg_reports": ["admin", "researcher"],
+    "researcher_raw_sensor_export": ["admin", "researcher"],
+    "researcher_trips_export": ["admin", "researcher"],
+    "researcher_aggregate_snapshot": ["admin", "researcher"],
+    "researcher_ingestion_status": ["admin", "researcher"],
+    "behaviour_metrics": ["admin", "researcher", "fleet_manager", "insurance_partner"],
+    "fleet_monitoring": ["admin", "fleet_manager"],
+    "fleet_assignments": ["admin", "fleet_manager"],
+    "fleet_events": ["admin", "fleet_manager"],
+    "fleet_trip_context": ["admin", "fleet_manager"],
+    "fleet_reports": ["admin", "fleet_manager"],
+    "insurance_telematics": ["admin", "insurance_partner"],
+    "insurance_reports": ["admin", "insurance_partner"],
+    "insurance_raw_sensor_export": ["admin", "insurance_partner"],
+    "insurance_alerts": ["admin", "insurance_partner"],
+    "insurance_aggregate_reports": ["admin", "insurance_partner"],
+}
 
 
 def hash_api_key(value: str) -> str:
@@ -124,6 +149,38 @@ def require_roles(*roles: Role):
         return client
 
     return _dependency
+
+
+def _dataset_access_config(db: Session) -> dict:
+    setting = (
+        db.query(AdminSetting)
+        .filter(AdminSetting.key == DATASET_ACCESS_SETTING_KEY)
+        .first()
+    )
+    if not setting or not isinstance(setting.value, dict):
+        return DEFAULT_DATASET_ACCESS
+    datasets = setting.value.get("datasets")
+    if isinstance(datasets, dict):
+        return datasets
+    return setting.value
+
+
+def ensure_dataset_access(
+    db: Session,
+    client: ApiClientContext,
+    dataset_key: str,
+) -> None:
+    if client.role == Role.ADMIN:
+        return
+    access_map = _dataset_access_config(db)
+    allowed_roles = access_map.get(dataset_key)
+    if not allowed_roles:
+        return
+    if client.role.value not in allowed_roles:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Dataset access denied.",
+        )
 
 
 def ensure_driver_access(client: ApiClientContext, driver_id: UUID) -> None:

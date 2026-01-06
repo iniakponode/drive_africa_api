@@ -22,6 +22,10 @@ __pycache__/
 dist/
 build/
 *.whl
+.Python
+
+# Byte-compiled / optimized / DLL files
+*.pyo
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -31,6 +35,8 @@ build/
 *.db
 *.sqlite
 *.sqlite3
+*.db-shm
+*.db-wal
 
 # IDE
 .vscode/
@@ -39,6 +45,7 @@ build/
 *.swo
 *~
 .DS_Store
+Thumbs.db
 
 # Logs
 *.log
@@ -65,3 +72,20 @@ dmypy.json
 # Alembic
 # Uncomment if you want to ignore migration versions
 # alembic/versions/*.py
+
+# Node (if any Node.js is used at root)
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-error.log*
+
+# OS specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~

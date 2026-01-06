@@ -126,6 +126,13 @@ def test_insurance_endpoints():
         assert report.status_code == 200
         assert report.json()["driverProfileId"] == str(driver_id)
 
+        aggregate = client.get("/api/insurance/reports/aggregate", headers=headers)
+        assert aggregate.status_code == 200
+        aggregate_payload = aggregate.json()
+        assert aggregate_payload["total_trips"] == 1
+        assert aggregate_payload["total_drivers"] == 1
+        assert aggregate_payload["total_unsafe_events"] == 1
+
         alerts = client.get("/api/insurance/alerts?minSeverity=0.5", headers=headers)
         assert alerts.status_code == 200
         assert len(alerts.json()) >= 1

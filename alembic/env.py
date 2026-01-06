@@ -21,6 +21,7 @@ from safedrive.models.embedding import Embedding
 from safedrive.models.nlg_report import NLGReport
 from safedrive.models.raw_sensor_data import RawSensorData
 from safedrive.models.auth import ApiClient
+from safedrive.models.admin_setting import AdminSetting
 from safedrive.models.insurance_partner import InsurancePartner, InsurancePartnerDriver
 from safedrive.database.base import Base
 from safedrive.database.base import engine

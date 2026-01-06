@@ -15,6 +15,7 @@ from safedrive.models.cause import Cause
 from safedrive.models.embedding import Embedding
 from safedrive.models.nlg_report import NLGReport
 from safedrive.models.raw_sensor_data import RawSensorData
+from safedrive.models.admin_setting import AdminSetting
 
 # Alembic Config object for access to .ini file values
 config = context.config

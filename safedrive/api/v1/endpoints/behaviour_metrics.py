@@ -7,7 +7,12 @@ from typing import List, Dict, Tuple, Optional
 from scipy.stats import ttest_ind
 
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, require_roles
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_dataset_access,
+    require_roles,
+)
 from safedrive.models.trip import Trip
 from safedrive.models.location import Location
 from safedrive.models.raw_sensor_data import RawSensorData
@@ -76,6 +81,7 @@ def ubpk_per_driver(
 ) -> List[DriverUBPK]:
     """Return UBPK aggregated per driver."""
     try:
+        ensure_dataset_access(db, current_client, "behaviour_metrics")
         distances = _trip_distances(db)
         behaviours = _trip_behaviour_counts(db)
         allowed = (
@@ -112,6 +118,7 @@ def ubpk_per_trip(
 ) -> List[TripUBPK]:
     """Return UBPK for each trip."""
     try:
+        ensure_dataset_access(db, current_client, "behaviour_metrics")
         distances = _trip_distances(db)
         behaviours = _trip_behaviour_counts(db)
         allowed = (
@@ -144,6 +151,7 @@ def ubpk_per_week(
 ) -> List[WeeklyDriverUBPK]:
     """Return weekly UBPK metrics per driver."""
     try:
+        ensure_dataset_access(db, current_client, "behaviour_metrics")
         distances = _trip_distances(db)
         behaviours = _trip_behaviour_counts(db)
         allowed = (
@@ -188,6 +196,7 @@ def drivers_improvement(
 ) -> List[ImprovementSummary]:
     """Analyse drivers that improved their UBPK over time using a t-test."""
     try:
+        ensure_dataset_access(db, current_client, "behaviour_metrics")
         weekly_metrics = ubpk_per_week(db=db, current_client=current_client)
     except HTTPException as exc:
         raise exc

@@ -24,6 +24,9 @@ from safedrive.api.v1.endpoints.researcher import router as researcher_router
 from safedrive.api.v1.endpoints.road import router as road_router
 from safedrive.api.v1.endpoints.insurance_partner import router as insurance_partner_router
 from safedrive.api.v1.endpoints.admin import router as admin_router
+from safedrive.api.v1.endpoints.config import router as config_router
+from safedrive.api.v1.endpoints.auth import router as auth_router
+from safedrive.api.v1.endpoints.analytics import router as analytics_router
 from safedrive.core.security import Role, get_current_client, require_roles
 
 safe_drive_africa_api_router = APIRouter()
@@ -167,4 +170,32 @@ safe_drive_africa_api_router.include_router(
     prefix="/api",
     tags=["Admin"],
     dependencies=[Depends(require_roles(Role.ADMIN))],
+)
+safe_drive_africa_api_router.include_router(
+    config_router,
+    prefix="/api",
+    tags=["Config"],
+    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+)
+safe_drive_africa_api_router.include_router(
+    auth_router,
+    prefix="/api",
+    tags=["Auth"],
+    dependencies=[Depends(get_current_client)],
+)
+safe_drive_africa_api_router.include_router(
+    analytics_router,
+    prefix="/api",
+    tags=["Analytics"],
+    dependencies=[
+        Depends(
+            require_roles(
+                Role.ADMIN,
+                Role.RESEARCHER,
+                Role.FLEET_MANAGER,
+                Role.INSURANCE_PARTNER,
+                Role.DRIVER,
+            )
+        )
+    ],
 )

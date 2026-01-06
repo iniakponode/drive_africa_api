@@ -10,6 +10,12 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy import case, func
 from sqlalchemy.orm import Session
 
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_dataset_access,
+    require_roles,
+)
 from safedrive.database.db import get_db
 from safedrive.models.alcohol_questionnaire import AlcoholQuestionnaire
 from safedrive.models.driver_profile import DriverProfile
@@ -361,7 +367,11 @@ def get_unsafe_behaviour_summary(
     min_severity: Optional[float] = Query(None, alias="minSeverity"),
     max_severity: Optional[float] = Query(None, alias="maxSeverity"),
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.RESEARCHER)
+    ),
 ) -> List[UnsafeBehaviourSummary]:
+    ensure_dataset_access(db, current_client, "researcher_unsafe_behaviours")
     return _unsafe_behaviour_summary(
         db,
         driver_profile_id=driver_profile_id,
@@ -389,7 +399,11 @@ def get_raw_sensor_summary(
     end_date: Optional[datetime] = Query(None, alias="endDate"),
     week: Optional[str] = Query(None),
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.RESEARCHER)
+    ),
 ) -> List[RawSensorSummary]:
+    ensure_dataset_access(db, current_client, "researcher_raw_sensor_data")
     return _raw_sensor_summary(
         db,
         driver_profile_id=driver_profile_id,
@@ -416,7 +430,11 @@ def get_alcohol_trip_bundle(
     skip: int = 0,
     limit: int = 5000,
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.RESEARCHER)
+    ),
 ) -> ResearcherTripAlcoholBundle:
+    ensure_dataset_access(db, current_client, "researcher_alcohol_trip_bundle")
     trips_query = db.query(Trip)
     if driver_profile_id:
         trips_query = trips_query.filter(Trip.driverProfileId == driver_profile_id)
@@ -485,7 +503,11 @@ def export_nlg_reports(
     sync: Optional[bool] = Query(None),
     export_format: str = Query("jsonl", alias="format"),
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.RESEARCHER)
+    ),
 ):
+    ensure_dataset_access(db, current_client, "researcher_nlg_reports")
     export_format = _parse_export_format(export_format)
 
     query = db.query(NLGReport)
@@ -580,7 +602,11 @@ def export_raw_sensor_data(
     week: Optional[str] = Query(None),
     export_format: str = Query("jsonl", alias="format"),
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.RESEARCHER)
+    ),
 ):
+    ensure_dataset_access(db, current_client, "researcher_raw_sensor_export")
     export_format = _parse_export_format(export_format)
 
     query = db.query(RawSensorData, Trip.driverProfileId).outerjoin(
@@ -688,7 +714,11 @@ def export_trips(
     week: Optional[str] = Query(None),
     export_format: str = Query("jsonl", alias="format"),
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.RESEARCHER)
+    ),
 ):
+    ensure_dataset_access(db, current_client, "researcher_trips_export")
     export_format = _parse_export_format(export_format)
 
     trips_query = db.query(Trip)
@@ -816,7 +846,11 @@ def get_aggregate_snapshot(
     end_date: Optional[datetime] = Query(None, alias="endDate"),
     week: Optional[str] = Query(None),
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.RESEARCHER)
+    ),
 ) -> AggregatedSnapshotResponse:
+    ensure_dataset_access(db, current_client, "researcher_aggregate_snapshot")
     ubpk_per_driver, ubpk_per_trip = _ubpk_snapshot(
         db,
         driver_profile_id=driver_profile_id,
@@ -852,13 +886,18 @@ def download_aggregate_snapshot(
     end_date: Optional[datetime] = Query(None, alias="endDate"),
     week: Optional[str] = Query(None),
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.RESEARCHER)
+    ),
 ):
+    ensure_dataset_access(db, current_client, "researcher_aggregate_snapshot")
     payload = get_aggregate_snapshot(
         driver_profile_id=driver_profile_id,
         start_date=start_date,
         end_date=end_date,
         week=week,
         db=db,
+        current_client=current_client,
     )
     buffer = io.BytesIO(json.dumps(payload.model_dump(), default=str).encode("utf-8"))
     headers = {
@@ -879,7 +918,11 @@ def backfill_trip_alcohol(
     week: Optional[str] = Query(None),
     overwrite: bool = Query(False),
     db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.RESEARCHER)
+    ),
 ):
+    ensure_dataset_access(db, current_client, "researcher_trips_export")
     trips_query = db.query(Trip)
     if driver_profile_id:
         trips_query = trips_query.filter(Trip.driverProfileId == driver_profile_id)
@@ -944,7 +987,13 @@ def backfill_trip_alcohol(
     "/researcher/ingestion/status",
     response_model=IngestionStatusResponse,
 )
-def get_ingestion_status(db: Session = Depends(get_db)) -> IngestionStatusResponse:
+def get_ingestion_status(
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.RESEARCHER)
+    ),
+) -> IngestionStatusResponse:
+    ensure_dataset_access(db, current_client, "researcher_ingestion_status")
     datasets: List[IngestionStatusItem] = []
 
     total, synced, unsynced = _sync_counts(

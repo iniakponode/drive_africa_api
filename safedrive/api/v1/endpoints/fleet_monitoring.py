@@ -4,7 +4,13 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_dataset_access,
+    ensure_driver_access,
+    require_roles,
+)
 from safedrive.database.db import get_db
 from safedrive.models.driver_profile import DriverProfile
 from safedrive.models.location import Location
@@ -23,6 +29,7 @@ def driver_monitor(
         require_roles(Role.ADMIN, Role.FLEET_MANAGER)
     ),
 ):
+    ensure_dataset_access(db, current_client, "fleet_monitoring")
     ensure_driver_access(current_client, driver_id)
     driver = (
         db.query(DriverProfile)

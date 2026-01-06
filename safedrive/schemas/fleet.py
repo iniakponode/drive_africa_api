@@ -11,6 +11,16 @@ class FleetBase(BaseModel):
     region: Optional[str] = None
 
 
+class FleetCreate(FleetBase):
+    pass
+
+
+class FleetUpdate(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
+    region: Optional[str] = None
+
+
 class FleetResponse(FleetBase):
     id: UUID
     created_at: datetime
@@ -23,6 +33,17 @@ class VehicleGroupBase(BaseModel):
     name: str
     description: Optional[str] = None
     fleet_id: UUID
+
+
+class VehicleGroupCreate(BaseModel):
+    name: str
+    description: Optional[str] = None
+    fleet_id: Optional[UUID] = None
+
+
+class VehicleGroupUpdate(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
 
 
 class VehicleGroupResponse(VehicleGroupBase):

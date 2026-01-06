@@ -58,3 +58,30 @@ class InsuranceAlert(BaseModel):
     severity: Optional[float]
     timestamp: Optional[int]
     message: str
+
+
+class InsuranceAggregateDriverSummary(BaseModel):
+    driverProfileId: UUID
+    trip_count: int
+    distance_km: float
+    unsafe_count: int
+    avg_severity: float
+    speeding_events: int
+    alcohol_positive: int
+    latest_trip_start: Optional[datetime]
+
+
+class InsuranceAggregateReport(BaseModel):
+    generated_at: datetime
+    partner_id: Optional[UUID]
+    partner_label: Optional[str]
+    start_date: Optional[datetime]
+    end_date: Optional[datetime]
+    total_drivers: int
+    total_trips: int
+    total_distance_km: float
+    total_unsafe_events: int
+    avg_unsafe_severity: float
+    total_speeding_events: int
+    alcohol_positive_responses: int
+    drivers: List[InsuranceAggregateDriverSummary]

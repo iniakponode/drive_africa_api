@@ -1,15 +1,21 @@
 import secrets
-from typing import List
+from typing import List, Optional
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from safedrive.core.security import hash_api_key
+from safedrive.core.security import (
+    DATASET_ACCESS_SETTING_KEY,
+    DEFAULT_DATASET_ACCESS,
+    hash_api_key,
+)
 from safedrive.database.db import get_db
+from safedrive.models.admin_setting import AdminSetting
 from safedrive.models.auth import ApiClient
 from safedrive.models.driver_profile import DriverProfile
 from safedrive.models.insurance_partner import InsurancePartner, InsurancePartnerDriver
+from safedrive.schemas.admin import CloudEndpointConfig, DatasetAccessConfig
 from safedrive.schemas.auth import (
     ApiClientCreate,
     ApiClientCreated,
@@ -24,6 +30,28 @@ from safedrive.schemas.insurance_partner import (
 )
 
 router = APIRouter()
+
+CLOUD_ENDPOINTS_SETTING_KEY = "cloud_endpoints"
+
+
+def _get_setting(db: Session, key: str) -> Optional[AdminSetting]:
+    return db.query(AdminSetting).filter(AdminSetting.key == key).first()
+
+
+def _upsert_setting(db: Session, key: str, value: dict) -> AdminSetting:
+    setting = _get_setting(db, key)
+    if not setting:
+        setting = AdminSetting(key=key, value=value)
+        db.add(setting)
+    else:
+        setting.value = value
+    db.commit()
+    db.refresh(setting)
+    return setting
+
+
+def _coerce_dict(value) -> dict:
+    return value if isinstance(value, dict) else {}
 
 
 @router.post(
@@ -167,3 +195,42 @@ def remove_driver_from_partner(
     db.delete(link)
     db.commit()
 
+
+@router.get("/admin/cloud-endpoints", response_model=CloudEndpointConfig)
+def get_cloud_endpoints(db: Session = Depends(get_db)) -> CloudEndpointConfig:
+    setting = _get_setting(db, CLOUD_ENDPOINTS_SETTING_KEY)
+    payload = _coerce_dict(setting.value) if setting else {}
+    return CloudEndpointConfig(**payload)
+
+
+@router.put("/admin/cloud-endpoints", response_model=CloudEndpointConfig)
+def update_cloud_endpoints(
+    payload: CloudEndpointConfig,
+    db: Session = Depends(get_db),
+) -> CloudEndpointConfig:
+    setting = _get_setting(db, CLOUD_ENDPOINTS_SETTING_KEY)
+    current = _coerce_dict(setting.value) if setting else {}
+    updates = payload.model_dump(exclude_unset=True)
+    current.update(updates)
+    _upsert_setting(db, CLOUD_ENDPOINTS_SETTING_KEY, current)
+    return CloudEndpointConfig(**current)
+
+
+@router.get("/admin/dataset-access", response_model=DatasetAccessConfig)
+def get_dataset_access(db: Session = Depends(get_db)) -> DatasetAccessConfig:
+    setting = _get_setting(db, DATASET_ACCESS_SETTING_KEY)
+    payload = _coerce_dict(setting.value) if setting else {}
+    datasets = payload.get("datasets") if payload else None
+    if not isinstance(datasets, dict):
+        datasets = DEFAULT_DATASET_ACCESS
+    return DatasetAccessConfig(datasets=datasets)
+
+
+@router.put("/admin/dataset-access", response_model=DatasetAccessConfig)
+def update_dataset_access(
+    payload: DatasetAccessConfig,
+    db: Session = Depends(get_db),
+) -> DatasetAccessConfig:
+    value = payload.model_dump()
+    _upsert_setting(db, DATASET_ACCESS_SETTING_KEY, value)
+    return payload

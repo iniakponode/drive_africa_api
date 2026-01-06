@@ -8,7 +8,13 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_dataset_access,
+    ensure_driver_access,
+    require_roles,
+)
 from safedrive.database.db import get_db
 from safedrive.models.alcohol_questionnaire import AlcoholQuestionnaire
 from safedrive.models.driver_profile import DriverProfile
@@ -40,6 +46,241 @@ def _ensure_driver_exists(db: Session, driver_id: UUID) -> DriverProfile:
     return driver
 
 
+def _ensure_fleet_access(client: ApiClientContext, fleet_id: UUID) -> None:
+    if client.role == Role.ADMIN:
+        return
+    if client.role == Role.FLEET_MANAGER and client.fleet_id == fleet_id:
+        return
+    raise HTTPException(
+        status_code=status.HTTP_403_FORBIDDEN,
+        detail="Fleet access denied.",
+    )
+
+
+def _ensure_vehicle_group_access(
+    db: Session,
+    client: ApiClientContext,
+    group_id: UUID,
+) -> VehicleGroup:
+    group = db.query(VehicleGroup).filter(VehicleGroup.id == group_id).first()
+    if not group:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Vehicle group not found",
+        )
+    _ensure_fleet_access(client, group.fleet_id)
+    return group
+
+
+@router.post(
+    "/fleet/",
+    response_model=fleet_schemas.FleetResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_fleet(
+    payload: fleet_schemas.FleetCreate,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(require_roles(Role.ADMIN)),
+):
+    fleet = Fleet(
+        name=payload.name,
+        description=payload.description,
+        region=payload.region,
+    )
+    db.add(fleet)
+    db.commit()
+    db.refresh(fleet)
+    return fleet
+
+
+@router.get(
+    "/fleet/",
+    response_model=List[fleet_schemas.FleetResponse],
+    status_code=status.HTTP_200_OK,
+)
+def list_fleets(
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
+):
+    query = db.query(Fleet)
+    if current_client.role == Role.FLEET_MANAGER:
+        if not current_client.fleet_id:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Fleet scope missing for this API key.",
+            )
+        query = query.filter(Fleet.id == current_client.fleet_id)
+    fleets = query.order_by(Fleet.created_at.desc()).all()
+    return fleets
+
+
+@router.get(
+    "/fleet/{fleet_id}",
+    response_model=fleet_schemas.FleetResponse,
+    status_code=status.HTTP_200_OK,
+)
+def get_fleet(
+    fleet_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
+):
+    _ensure_fleet_access(current_client, fleet_id)
+    fleet = db.query(Fleet).filter(Fleet.id == fleet_id).first()
+    if not fleet:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Fleet not found")
+    return fleet
+
+
+@router.patch(
+    "/fleet/{fleet_id}",
+    response_model=fleet_schemas.FleetResponse,
+    status_code=status.HTTP_200_OK,
+)
+def update_fleet(
+    fleet_id: UUID,
+    payload: fleet_schemas.FleetUpdate,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(require_roles(Role.ADMIN)),
+):
+    fleet = db.query(Fleet).filter(Fleet.id == fleet_id).first()
+    if not fleet:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Fleet not found")
+    updates = payload.model_dump(exclude_unset=True)
+    for key, value in updates.items():
+        setattr(fleet, key, value)
+    db.commit()
+    db.refresh(fleet)
+    return fleet
+
+
+@router.delete(
+    "/fleet/{fleet_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+)
+def delete_fleet(
+    fleet_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(require_roles(Role.ADMIN)),
+) -> None:
+    fleet = db.query(Fleet).filter(Fleet.id == fleet_id).first()
+    if not fleet:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Fleet not found")
+    db.delete(fleet)
+    db.commit()
+
+
+@router.post(
+    "/fleet/{fleet_id}/vehicle-groups",
+    response_model=fleet_schemas.VehicleGroupResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_vehicle_group(
+    fleet_id: UUID,
+    payload: fleet_schemas.VehicleGroupCreate,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
+):
+    _ensure_fleet_access(current_client, fleet_id)
+    fleet = db.query(Fleet).filter(Fleet.id == fleet_id).first()
+    if not fleet:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Fleet not found")
+    if payload.fleet_id and payload.fleet_id != fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Payload fleet_id does not match path fleet_id.",
+        )
+    group = VehicleGroup(
+        name=payload.name,
+        description=payload.description,
+        fleet_id=fleet_id,
+    )
+    db.add(group)
+    db.commit()
+    db.refresh(group)
+    return group
+
+
+@router.get(
+    "/fleet/{fleet_id}/vehicle-groups",
+    response_model=List[fleet_schemas.VehicleGroupResponse],
+    status_code=status.HTTP_200_OK,
+)
+def list_vehicle_groups(
+    fleet_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
+):
+    _ensure_fleet_access(current_client, fleet_id)
+    groups = (
+        db.query(VehicleGroup)
+        .filter(VehicleGroup.fleet_id == fleet_id)
+        .order_by(VehicleGroup.created_at.desc())
+        .all()
+    )
+    return groups
+
+
+@router.get(
+    "/fleet/vehicle-groups/{group_id}",
+    response_model=fleet_schemas.VehicleGroupResponse,
+    status_code=status.HTTP_200_OK,
+)
+def get_vehicle_group(
+    group_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
+):
+    return _ensure_vehicle_group_access(db, current_client, group_id)
+
+
+@router.patch(
+    "/fleet/vehicle-groups/{group_id}",
+    response_model=fleet_schemas.VehicleGroupResponse,
+    status_code=status.HTTP_200_OK,
+)
+def update_vehicle_group(
+    group_id: UUID,
+    payload: fleet_schemas.VehicleGroupUpdate,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
+):
+    group = _ensure_vehicle_group_access(db, current_client, group_id)
+    updates = payload.model_dump(exclude_unset=True)
+    for key, value in updates.items():
+        setattr(group, key, value)
+    db.commit()
+    db.refresh(group)
+    return group
+
+
+@router.delete(
+    "/fleet/vehicle-groups/{group_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+)
+def delete_vehicle_group(
+    group_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.FLEET_MANAGER)
+    ),
+) -> None:
+    group = _ensure_vehicle_group_access(db, current_client, group_id)
+    db.delete(group)
+    db.commit()
+
+
 @router.post(
     "/fleet/assignments/",
     response_model=fleet_schemas.DriverFleetAssignmentResponse,
@@ -52,6 +293,7 @@ def create_driver_assignment(
         require_roles(Role.ADMIN, Role.FLEET_MANAGER)
     ),
 ):
+    ensure_dataset_access(db, current_client, "fleet_assignments")
     if (
         current_client.role == Role.FLEET_MANAGER
         and current_client.fleet_id
@@ -110,6 +352,7 @@ def get_driver_assignment(
         require_roles(Role.ADMIN, Role.FLEET_MANAGER)
     ),
 ):
+    ensure_dataset_access(db, current_client, "fleet_assignments")
     ensure_driver_access(current_client, driver_id)
     _ensure_driver_exists(db, driver_id)
 
@@ -147,6 +390,7 @@ def emit_driver_event(
         require_roles(Role.ADMIN, Role.FLEET_MANAGER)
     ),
 ):
+    ensure_dataset_access(db, current_client, "fleet_events")
     ensure_driver_access(current_client, payload.driverProfileId)
     _ensure_driver_exists(db, payload.driverProfileId)
 
@@ -178,6 +422,7 @@ def list_driver_events(
         require_roles(Role.ADMIN, Role.FLEET_MANAGER)
     ),
 ):
+    ensure_dataset_access(db, current_client, "fleet_events")
     ensure_driver_access(current_client, driver_id)
     _ensure_driver_exists(db, driver_id)
 
@@ -204,6 +449,7 @@ def get_trip_context(
         require_roles(Role.ADMIN, Role.FLEET_MANAGER)
     ),
 ):
+    ensure_dataset_access(db, current_client, "fleet_trip_context")
     trip = db.query(Trip).filter(Trip.id == trip_id).first()
     if not trip:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Trip not found")
@@ -280,6 +526,7 @@ def get_driver_report(
         require_roles(Role.ADMIN, Role.FLEET_MANAGER)
     ),
 ):
+    ensure_dataset_access(db, current_client, "fleet_reports")
     ensure_driver_access(current_client, driver_id)
     _ensure_driver_exists(db, driver_id)
     return _build_driver_report(db, driver_id)
@@ -296,6 +543,7 @@ def download_driver_report(
         require_roles(Role.ADMIN, Role.FLEET_MANAGER)
     ),
 ):
+    ensure_dataset_access(db, current_client, "fleet_reports")
     ensure_driver_access(current_client, driver_id)
     _ensure_driver_exists(db, driver_id)
     report_data = _build_driver_report(db, driver_id)
