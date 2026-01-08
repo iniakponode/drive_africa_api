@@ -7,10 +7,12 @@ from safedrive.api.v1.endpoints.index import router as index_router
 from safedrive.api.v1.endpoints.unsafe_behaviour import router as unsafe_behaviour_router
 from safedrive.api.v1.endpoints.raw_sensor_data import router as raw_sensor_data_router
 from safedrive.api.v1.endpoints.driver_profile import router as driver_profile_router
+from safedrive.api.v1.endpoints.driver_sync import router as driver_sync_router
 from safedrive.api.v1.endpoints.driving_tips import router as driving_tips_router
 from safedrive.api.v1.endpoints.cause import router as cause_router
 from safedrive.api.v1.endpoints.embedding import router as embedding_router
 from safedrive.api.v1.endpoints.nlg_report import router as nlg_report_router
+from safedrive.api.v1.endpoints.report_statistics import router as report_statistics_router
 from safedrive.api.v1.endpoints.ai_model_inputs_router import router as ai_model_inputs_router
 from safedrive.api.v1.endpoints.location import router as location_router
 from safedrive.api.v1.endpoints.alcohol_questionnaire import (
@@ -85,6 +87,12 @@ safe_drive_africa_api_router.include_router(
     dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
+    driver_sync_router,
+    prefix="/api",
+    tags=["Driver Sync"],
+    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+)
+safe_drive_africa_api_router.include_router(
     driving_tips_router,
     prefix="/api",
     tags=["Driving Tips"],
@@ -106,6 +114,12 @@ safe_drive_africa_api_router.include_router(
     nlg_report_router,
     prefix="/api",
     tags=["NLG Report"],
+    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+)
+safe_drive_africa_api_router.include_router(
+    report_statistics_router,
+    prefix="/api",
+    tags=["Report Statistics"],
     dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(

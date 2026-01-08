@@ -119,5 +119,20 @@ class CRUDRoad:
             logger.warning(f"Road with ID {id} not found for deletion.")
         return obj
 
+    def batch_delete(self, db: Session, ids: List[UUID]) -> int:
+        try:
+            deleted = (
+                db.query(self.model)
+                .filter(self.model.id.in_(ids))
+                .delete(synchronize_session=False)
+            )
+            db.commit()
+            logger.info(f"Batch deleted {deleted} Road records.")
+            return deleted
+        except Exception as e:
+            db.rollback()
+            logger.error(f"Error deleting Roads in batch: {str(e)}")
+            raise e
+
 # Initialize CRUD instance for Road
 crud_road = CRUDRoad(Road)

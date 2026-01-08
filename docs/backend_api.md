@@ -31,6 +31,7 @@ All API endpoints require an `X-API-Key` header. Keys map to a role and optional
 | --- | --- |
 | `POST /api/driver_profiles/` | Create a driver profile (returns existing profile if the email already exists). Required body fields: `driverProfileId` (UUID), `email` (string); optional `sync` (bool). Response: `driverProfileId`, `email`, `sync`.| 
 | `POST /api/driver_profiles/batch_create` | Bulk create profiles from an array of `DriverProfileCreate` objects. Returns an array of responses mirroring the single create schema. |
+| `DELETE /api/driver_profiles/batch_delete` | Bulk delete profiles by UUID list. |
 | `GET /api/driver_profiles/{profile_id}` | Fetch a profile by UUID. |
 | `GET /api/driver_profiles/` | List profiles with optional `skip` and `limit` (default limit 5000). |
 | `PUT /api/driver_profiles/{profile_id}` | Update email and/or sync status using `DriverProfileUpdate`. |
@@ -42,6 +43,11 @@ All API endpoints require an `X-API-Key` header. Keys map to a role and optional
 
 **Schema highlights**: `DriverProfileCreate` requires `driverProfileId` (UUID) and `email`; responses expose `driverProfileId`, `email`, `sync`. Nested `DriverProfileOut` includes a `trips` array, each embedding limited raw sensor data.【F:safedrive/api/v1/endpoints/driver_profile.py†L1-L195】【F:safedrive/schemas/driver_profile.py†L1-L56】
 
+### Driver Sync
+| Method & Path | Description |
+| --- | --- |
+| `POST /api/driver/sync` | Bulk sync payload used by the mobile upload worker (trips, raw sensor data, unsafe behaviours). Use `/api/questionnaire/batch_create` for questionnaire uploads. Returns counts per dataset. |
+
 ### Trips
 | Method & Path | Description |
 | --- | --- |
@@ -50,8 +56,8 @@ All API endpoints require an `X-API-Key` header. Keys map to a role and optional
 | `GET /api/trips/` | List trips (`skip`, `limit`). |
 | `PUT /api/trips/{trip_id}` | Partial update using `TripUpdate`. |
 | `DELETE /api/trips/{trip_id}` | Delete and return the deleted record. |
-| `POST /api/trips/batch_create` | Bulk create trips (array of `TripCreate`). |
-| `DELETE /api/trips/batch_delete` | Bulk delete by array of UUIDs (returns message). |
+| `POST /api/trips/batch_create` | Bulk create trips (array of `TripCreate`), returns created trips. |
+| `DELETE /api/trips/batch_delete` | Bulk delete by array of UUIDs (204, no body). |
 
 > **Trip alcohol metadata**: `alcoholProbability` (float 0-1) and `userAlcoholResponse` (string) persist questionnaire context on each trip.
 
@@ -130,6 +136,8 @@ Responses serialize the same attributes defined in `DrivingTipBase`.【F:safedri
 | `GET /api/embeddings/` | Paginated list. |
 | `PUT /api/embeddings/{embedding_id}` | Update embedding content. |
 | `DELETE /api/embeddings/{embedding_id}` | Delete embedding. |
+| `POST /api/embeddings/batch_create` | Bulk insert embeddings. |
+| `DELETE /api/embeddings/batch_delete` | Bulk delete embeddings by UUID list. |
 
 Responses return `chunk_id`, `chunk_text`, serialized `embedding`, `source_type`, `source_page`, `created_at`, `synced`.【F:safedrive/api/v1/endpoints/embedding.py†L1-L74】【F:safedrive/schemas/embedding.py†L1-L28】
 
@@ -145,6 +153,17 @@ Responses return `chunk_id`, `chunk_text`, serialized `embedding`, `source_type`
 | `DELETE /api/nlg_reports/batch_delete` | Bulk delete reports by UUID list. |
 
 Responses align with `NLGReportResponse`: `id`, `driverProfileId`, `startDate`, `endDate`, `report_text`, `generated_at`, `sync`.【F:safedrive/api/v1/endpoints/nlg_report.py†L1-L64】【F:safedrive/schemas/nlg_report.py†L1-L44】
+
+### Report Statistics
+| Method & Path | Description |
+| --- | --- |
+| `POST /api/report_statistics/` | Create a report statistics record for a driver. |
+| `GET /api/report_statistics/{report_id}` | Retrieve by UUID. |
+| `GET /api/report_statistics/` | List report statistics (`skip`, `limit`). |
+| `PUT /api/report_statistics/{report_id}` | Update report statistics. |
+| `DELETE /api/report_statistics/{report_id}` | Delete report statistics. |
+| `POST /api/report_statistics/batch_create` | Bulk insert report statistics and return created count. |
+| `DELETE /api/report_statistics/batch_delete` | Bulk delete report statistics by UUID list. |
 
 ### AI Model Inputs
 | Method & Path | Description |
@@ -168,6 +187,7 @@ Responses return the same fields as `AIModelInputBase` plus server-generated `id
 | `PUT /api/alcohol-questionnaire/questionnaire/{questionnaire_id}/` | Update questionnaire answers. |
 | `DELETE /api/alcohol-questionnaire/questionnaire/{questionnaire_id}/` | Delete (returns 204). |
 | `POST /api/questionnaire/` | Mobile compatibility alias for submitting questionnaires. |
+| `POST /api/questionnaire/batch_create` | Mobile compatibility batch submit (returns created/skipped counts). |
 | `GET /api/questionnaire/{user_id}` | Mobile compatibility history lookup by driver profile ID. |
 
 Response schema mirrors `AlcoholQuestionnaireBaseSchema`, including the submitted answers and metadata timestamps.【F:safedrive/api/v1/endpoints/alcohol_questionnaire.py†L1-L93】【F:safedrive/schemas/alcohol_questionnaire.py†L1-L43】
@@ -280,6 +300,7 @@ All endpoints are read-only and do not accept parameters beyond implicit databas
 | `PUT /api/roads/{road_id}` | Update a road entry. |
 | `DELETE /api/roads/{road_id}` | Delete a road entry. |
 | `POST /api/roads/batch_create` | Bulk create roads. |
+| `DELETE /api/roads/batch_delete` | Bulk delete roads by UUID list. |
 
 
 ## UBPK Metric Endpoints (`/metrics/behavior`)

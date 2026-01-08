@@ -84,3 +84,13 @@ def batch_create_roads(
         logger.exception("Batch‐create roads failed")
         raise 
     # HTTPException(status_code=500, detail="An unexpected error occurred while creating roads.")
+
+@router.delete("/roads/batch_delete", status_code=204)
+def batch_delete_roads(
+        *,
+        db: Session = Depends(get_db),
+        ids: List[UUID]
+    ) -> None:
+    """Delete multiple road records in a single request."""
+    deleted = crud_road.batch_delete(db=db, ids=ids)
+    logger.info("Batch deleted %s Road records.", deleted)

@@ -59,3 +59,29 @@ def delete_embedding(embedding_id: UUID, db: Session = Depends(get_db)) -> Embed
     deleted_embedding = embedding_crud.delete(db=db, id=embedding_id)
     logger.info(f"Deleted Embedding with ID: {embedding_id}")
     return EmbeddingResponse(chunk_id=deleted_embedding.id_uuid, chunk_text=deleted_embedding.chunk_text, embedding=deleted_embedding.embedding, source_type=deleted_embedding.source_type, source_page=deleted_embedding.source_page, created_at=deleted_embedding.created_at)
+
+@router.post("/embeddings/batch_create", status_code=201)
+def batch_create_embeddings(
+    data: List[EmbeddingCreate],
+    db: Session = Depends(get_db),
+):
+    """Create multiple embeddings in a single request."""
+    try:
+        created = embedding_crud.batch_create(db=db, objs_in=data)
+        return {"message": f"{len(created)} Embedding records created."}
+    except Exception as e:
+        logger.error(f"Error in batch create Embedding: {str(e)}")
+        raise HTTPException(status_code=500, detail="Batch creation failed.")
+
+@router.delete("/embeddings/batch_delete", status_code=204)
+def batch_delete_embeddings(
+    ids: List[UUID],
+    db: Session = Depends(get_db),
+):
+    """Delete multiple embeddings in a single request."""
+    try:
+        deleted = embedding_crud.batch_delete(db=db, ids=ids)
+        logger.info("Batch deleted %s Embedding records.", deleted)
+    except Exception as e:
+        logger.error(f"Error in batch delete Embedding: {str(e)}")
+        raise HTTPException(status_code=500, detail="Batch deletion failed.")

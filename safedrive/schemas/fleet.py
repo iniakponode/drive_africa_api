@@ -26,7 +26,7 @@ class FleetResponse(FleetBase):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class VehicleGroupBase(BaseModel):
@@ -46,12 +46,24 @@ class VehicleGroupUpdate(BaseModel):
     description: Optional[str] = None
 
 
+class VehicleGroupBulkCreateItem(BaseModel):
+    fleet_id: UUID
+    name: str
+    description: Optional[str] = None
+
+
+class VehicleGroupBulkUpdateItem(BaseModel):
+    group_id: UUID
+    name: Optional[str] = None
+    description: Optional[str] = None
+
+
 class VehicleGroupResponse(VehicleGroupBase):
     id: UUID
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class DriverFleetAssignmentCreate(BaseModel):
@@ -69,7 +81,7 @@ class DriverFleetAssignmentResponse(DriverFleetAssignmentCreate):
     vehicle_group: Optional[VehicleGroupResponse] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class AlcoholQuestionnaireSummary(BaseModel):
@@ -81,7 +93,7 @@ class AlcoholQuestionnaireSummary(BaseModel):
     date: Optional[datetime]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class DriverAssignmentWithCompliance(BaseModel):
@@ -102,7 +114,7 @@ class DriverTripEventResponse(DriverTripEventCreate):
     timestamp: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class DriverTripEventListResponse(BaseModel):

@@ -34,6 +34,7 @@ class AlcoholQuestionnaireCRUD:
                 impairmentLevel=questionnaire_data.impairmentLevel,
                 date=questionnaire_data.date,
                 plansToDrive=questionnaire_data.plansToDrive,
+                sync=questionnaire_data.sync,
             )
 
             self.db.add(db_questionnaire)
@@ -108,3 +109,46 @@ class AlcoholQuestionnaireCRUD:
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail=f"Database error: {str(e)}",
             )
+
+    def batch_create(self, questionnaires: List[AlcoholQuestionnaireCreateSchema]) -> tuple[int, int]:
+        created = 0
+        skipped = 0
+
+        for questionnaire_data in questionnaires:
+            exists = self.db.query(AlcoholQuestionnaire).filter(
+                AlcoholQuestionnaire.id == questionnaire_data.id
+            ).first()
+            if exists:
+                skipped += 1
+                continue
+
+            db_questionnaire = AlcoholQuestionnaire(
+                id=questionnaire_data.id,
+                driverProfileId=questionnaire_data.driverProfileId,
+                drankAlcohol=questionnaire_data.drankAlcohol,
+                selectedAlcoholTypes=questionnaire_data.selectedAlcoholTypes,
+                beerQuantity=questionnaire_data.beerQuantity,
+                wineQuantity=questionnaire_data.wineQuantity,
+                spiritsQuantity=questionnaire_data.spiritsQuantity,
+                firstDrinkTime=questionnaire_data.firstDrinkTime,
+                lastDrinkTime=questionnaire_data.lastDrinkTime,
+                emptyStomach=questionnaire_data.emptyStomach,
+                caffeinatedDrink=questionnaire_data.caffeinatedDrink,
+                impairmentLevel=questionnaire_data.impairmentLevel,
+                date=questionnaire_data.date,
+                plansToDrive=questionnaire_data.plansToDrive,
+                sync=questionnaire_data.sync,
+            )
+            self.db.add(db_questionnaire)
+            created += 1
+
+        try:
+            self.db.commit()
+        except SQLAlchemyError as e:
+            self.db.rollback()
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Database error: {str(e)}",
+            )
+
+        return created, skipped

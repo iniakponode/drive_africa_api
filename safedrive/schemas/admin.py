@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Dict, List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class AdminSettingResponse(BaseModel):
@@ -20,3 +20,11 @@ class CloudEndpointConfig(BaseModel):
 
 class DatasetAccessConfig(BaseModel):
     datasets: Dict[str, List[str]]
+
+
+class BulkActionResponse(BaseModel):
+    created: int = 0
+    updated: int = 0
+    removed: int = 0
+    skipped: int = 0
+    errors: List[str] = Field(default_factory=list)

@@ -144,6 +144,21 @@ class CRUDDriverProfile:
         db.commit()
         return profile
 
+    def batch_delete(self, db: Session, ids: List[UUID]) -> int:
+        try:
+            deleted = (
+                db.query(self.model)
+                .filter(self.model.driverProfileId.in_(ids))
+                .delete(synchronize_session=False)
+            )
+            db.commit()
+            logger.info(f"Batch deleted {deleted} DriverProfile records.")
+            return deleted
+        except Exception as e:
+            db.rollback()
+            logger.error(f"Error deleting DriverProfiles in batch: {str(e)}")
+            raise e
+
 
 # Initialize CRUD instance
 driver_profile_crud = CRUDDriverProfile(DriverProfile)

@@ -90,6 +90,17 @@ def batch_create_driver_profiles(
             detail="An unexpected error occurred while creating driver profiles."
         )
 
+@router.delete("/driver_profiles/batch_delete", status_code=204)
+def batch_delete_driver_profiles(
+    *,
+    db: Session = Depends(get_db),
+    ids: List[UUID],
+    current_client: ApiClientContext = Depends(require_roles(Role.ADMIN)),
+):
+    """Delete multiple driver profiles at once."""
+    deleted = driver_profile_crud.batch_delete(db=db, ids=ids)
+    logger.info("Batch deleted %s DriverProfile records.", deleted)
+
 @router.get("/driver_profiles/{profile_id}", response_model=DriverProfileResponse)
 def get_driver_profile(
     profile_id: UUID,

@@ -66,6 +66,34 @@ async def submit_alcohol_questionnaire_mobile(
             detail="An error occurred while creating the alcohol questionnaire."
         )
 
+# Mobile batch-create endpoint (matches /api/questionnaire/batch_create)
+@mobile_router.post("/questionnaire/batch_create", status_code=status.HTTP_201_CREATED)
+async def submit_alcohol_questionnaire_batch_mobile(
+    questionnaires: List[AlcoholQuestionnaireCreateSchema],
+    db: Session = Depends(get_db),
+    current_client: ApiClientContext = Depends(
+        require_roles(Role.ADMIN, Role.DRIVER)
+    ),
+):
+    """Submit multiple alcohol questionnaires (mobile compatibility)."""
+    try:
+        if current_client.role == Role.DRIVER:
+            for questionnaire in questionnaires:
+                ensure_driver_access(current_client, questionnaire.driverProfileId)
+        crud = AlcoholQuestionnaireCRUD(db)
+        created, skipped = crud.batch_create(questionnaires)
+        logger.info(
+            "Successfully created alcohol questionnaires (mobile batch): %s created, %s skipped",
+            created,
+            skipped,
+        )
+        return {"created": created, "skipped": skipped}
+    except Exception as e:
+        logger.error(f"Error creating alcohol questionnaires (mobile batch): {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred while creating the alcohol questionnaires."
+        )
 # Endpoint to get an alcohol questionnaire by ID
 @router.get("/questionnaire/{questionnaire_id}/", response_model=AlcoholQuestionnaireResponseSchema)
 async def get_alcohol_questionnaire(
