@@ -1,7 +1,7 @@
 """add_alcohol_columns_to_trip
 
 Revision ID: f762e9d9b0c9
-Revises: e9a1b2c3d4e5
+Revises: af4b0ecbaa2a
 Create Date: 2026-01-09 18:38:50.468141
 
 """
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = 'f762e9d9b0c9'
-down_revision: Union[str, None] = 'e9a1b2c3d4e5'
+down_revision: Union[str, None] = 'af4b0ecbaa2a'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
