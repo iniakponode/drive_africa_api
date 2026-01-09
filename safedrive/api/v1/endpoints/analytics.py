@@ -336,7 +336,7 @@ def leaderboard(
         raise HTTPException(status_code=400, detail="Invalid period value.")
 
     cohort_ids, _ = _resolve_cohort(
-        db, current_client, fleet_id, insurance_partner_id, require_scope=True
+        db, current_client, fleet_id, insurance_partner_id, require_scope=False
     )
     cohort_ids = cohort_ids or set()
 
@@ -448,7 +448,7 @@ def bad_days(
     ),
 ) -> BadDaysResponse:
     cohort_ids, _ = _resolve_cohort(
-        db, current_client, fleet_id, insurance_partner_id, require_scope=True
+        db, current_client, fleet_id, insurance_partner_id, require_scope=False
     )
     cohort_ids = cohort_ids or set()
 
@@ -519,7 +519,7 @@ def driver_kpis(
         raise HTTPException(status_code=400, detail="Invalid period value.")
 
     cohort_ids, _ = _resolve_cohort(
-        db, current_client, fleet_id, insurance_partner_id, require_scope=True
+        db, current_client, fleet_id, insurance_partner_id, require_scope=False
     )
     cohort_ids = cohort_ids or set()
 
