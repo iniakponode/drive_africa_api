@@ -34,6 +34,31 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG") == "True"
 
+# CORS Configuration from environment
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "")
+if ALLOWED_ORIGINS:
+    origins = [origin.strip() for origin in ALLOWED_ORIGINS.split(",")]
+else:
+    # Default origins for production
+    origins = [
+        "https://api.safedriveafrica.com",
+        "https://datahub.safedriveafrica.com",
+        "https://www.safedriveafrica.com"
+    ]
+
+# Allow all origins in development
+if ENVIRONMENT == "development":
+    origins = ["*"]
+
+# Add CORS Middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Include API router
 app.include_router(api_router)
 app.include_router(
@@ -48,24 +73,6 @@ app.include_router(
             )
         )
     ],
-)
-
-# Define allowed CORS origins
-origins = [
-    "https://api.safedriveafrica.com",
-    "http://api.safedriveafrica.com",
-    "https://datahub.safedriveafrica.com",
-    "http://datahub.safedriveafrica.com"
-    # Add other origins if necessary
-]
-
-# Add CORS Middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins if ENVIRONMENT == "production" else ["*"],  # Allow all in local dev
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
 )
 
 # Alembic configuration file path
