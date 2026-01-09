@@ -137,31 +137,57 @@ def main():
         
         # 5. Get a few driver profiles for testing
         print("\n5️⃣  Checking for existing driver profiles...")
-        drivers = db.execute(text("""
-            SELECT driverProfileId, firstName, lastName 
-            FROM driver_profile 
-            LIMIT 3
-        """)).fetchall()
-        
-        if drivers:
-            print(f"   Found {len(drivers)} driver(s)")
-            for driver in drivers:
-                driver_id = driver[0] if isinstance(driver[0], str) else str(UUID(bytes=driver[0]))
-                first_name = driver[1] or "Driver"
-                last_name = driver[2] or ""
-                driver_name = f"{first_name} {last_name}".strip()
-                
-                client = create_client_if_not_exists(
-                    db,
-                    f"Driver - {driver_name}",
-                    "driver",
-                    driverProfileId=UUID(driver_id)
-                )
-                if client:
-                    created_clients.append(client)
-                    print(f"   ✅ Created driver client for: {driver_name}")
-        else:
-            print("   ℹ️  No driver profiles found")
+        try:
+            # Try different column name variations
+            try:
+                drivers = db.execute(text("""
+                    SELECT driverProfileId, firstName, lastName 
+                    FROM driver_profile 
+                    LIMIT 3
+                """)).fetchall()
+            except Exception:
+                # Try with different column names if camelCase doesn't work
+                try:
+                    drivers = db.execute(text("""
+                        SELECT driverProfileId, first_name, last_name 
+                        FROM driver_profile 
+                        LIMIT 3
+                    """)).fetchall()
+                except Exception:
+                    # If both fail, just get driverProfileId
+                    drivers = db.execute(text("""
+                        SELECT driverProfileId 
+                        FROM driver_profile 
+                        LIMIT 3
+                    """)).fetchall()
+            
+            if drivers:
+                print(f"   Found {len(drivers)} driver(s)")
+                for idx, driver in enumerate(drivers):
+                    driver_id = driver[0] if isinstance(driver[0], str) else str(UUID(bytes=driver[0]))
+                    
+                    # Try to get name if columns exist
+                    if len(driver) >= 3:
+                        first_name = driver[1] or "Driver"
+                        last_name = driver[2] or ""
+                        driver_name = f"{first_name} {last_name}".strip()
+                    else:
+                        driver_name = f"Driver {idx + 1}"
+                    
+                    client = create_client_if_not_exists(
+                        db,
+                        f"Driver - {driver_name}",
+                        "driver",
+                        driverProfileId=UUID(driver_id)
+                    )
+                    if client:
+                        created_clients.append(client)
+                        print(f"   ✅ Created driver client for: {driver_name}")
+            else:
+                print("   ℹ️  No driver profiles found")
+        except Exception as e:
+            print(f"   ⚠️  Could not retrieve driver profiles: {str(e)}")
+            print("   Skipping driver client creation...")
         
         print("\n" + "=" * 70)
         print("✅ Seeding complete!")
