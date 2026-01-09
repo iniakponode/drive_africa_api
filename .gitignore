@@ -57,6 +57,8 @@ AppUploadOldCode.kt
 
 # Service files
 fastapi.service
+safedriveapi-prod.service
+safedriveapi-staging.service
 
 # Testing
 .coverage
@@ -89,3 +91,11 @@ desktop.ini
 *.bak
 *.swp
 *~
+
+# Database backups
+backups/
+*.sql
+*.sql.gz
+
+# Scripts output
+scripts/*.pid

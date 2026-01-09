@@ -2,6 +2,7 @@
 import logging
 from fastapi import APIRouter, Depends
 
+from safedrive.api.v1.endpoints.health import router as health_router
 from safedrive.api.v1.endpoints.trip import router as trips_router
 from safedrive.api.v1.endpoints.index import router as index_router
 from safedrive.api.v1.endpoints.unsafe_behaviour import router as unsafe_behaviour_router
@@ -34,6 +35,11 @@ from safedrive.core.security import Role, get_current_client, require_roles
 safe_drive_africa_api_router = APIRouter()
 logger = logging.getLogger(__name__)
 
+# Health check endpoint (no authentication required)
+safe_drive_africa_api_router.include_router(
+    health_router,
+    tags=["Health"],
+)
 safe_drive_africa_api_router.include_router(
     index_router,
     prefix="/api",
