@@ -12,7 +12,7 @@ DB_NAME="drive_safe_db"
 
 # Load environment variables
 if [ -f "$APP_DIR/.env" ]; then
-    source "$APP_DIR/.env"
+    export $(grep -v '^#' "$APP_DIR/.env" | xargs)
 fi
 
 cd $APP_DIR

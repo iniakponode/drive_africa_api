@@ -1,5 +1,26 @@
 # Seeded Data (MySQL drive_safe_db)
 
+Last Updated: 2026-01-09
+
+## Seeding Scripts
+
+### Basic Seeding (Admin & Researcher only)
+```bash
+cd /var/www/vhosts/safedriveafrica.com/api.safedriveafrica.com
+source venv/bin/activate
+python scripts/seed_api_keys.py
+```
+
+### Advanced Seeding (Uses existing data)
+Creates API keys for existing fleets, drivers, and insurance partners:
+```bash
+python scripts/seed_with_existing_data.py
+```
+
+---
+
+## Previous Seed Data
+
 Date: 2026-01-06
 
 ## Dataset Access
