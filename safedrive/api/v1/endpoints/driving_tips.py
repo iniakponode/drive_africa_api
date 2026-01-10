@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from uuid import UUID
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles
+from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles, require_roles_or_jwt
 from safedrive.schemas.driving_tip_sch import DrivingTipCreate, DrivingTipUpdate, DrivingTipResponse
 from safedrive.crud.driving_tip import driving_tip_crud
 import logging
@@ -18,7 +18,7 @@ def create_driving_tip(
     db: Session = Depends(get_db),
     tip_in: DrivingTipCreate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> DrivingTipResponse:
     """Create a driving tip."""

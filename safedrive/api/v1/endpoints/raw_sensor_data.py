@@ -5,7 +5,7 @@ from uuid import UUID
 import logging
 
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, filter_query_by_driver_ids, require_roles
+from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, filter_query_by_driver_ids, require_roles, require_roles_or_jwt
 from safedrive.schemas.raw_sensor_data import (
     RawSensorDataCreate,
     RawSensorDataUpdate,
@@ -26,7 +26,7 @@ def create_raw_sensor_data(
     db: Session = Depends(get_db),
     raw_data_in: RawSensorDataCreate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> RawSensorDataResponse:
     """

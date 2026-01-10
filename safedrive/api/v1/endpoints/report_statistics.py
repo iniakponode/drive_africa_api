@@ -7,7 +7,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, filter_query_by_driver_ids, require_roles
+from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, filter_query_by_driver_ids, require_roles, require_roles_or_jwt
 from safedrive.crud.report_statistics import report_statistics_crud
 from safedrive.database.db import get_db
 from safedrive.models.report_statistics import ReportStatistics
@@ -27,7 +27,7 @@ def create_report_statistics(
     db: Session = Depends(get_db),
     report_in: ReportStatisticsCreate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> ReportStatisticsResponse:
     ensure_driver_access(current_client, report_in.driverProfileId)

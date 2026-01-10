@@ -4,18 +4,40 @@
 
 The Safe Drive Africa API now implements JWT (JSON Web Token) authentication for mobile app drivers. This replaces the previous system where API keys were required.
 
-## Major Changes
+## ⚡ BREAKING CHANGE - Immediate Action Required
+
+**All mobile app data upload endpoints now accept JWT tokens!**
+
+### What Changed
 
 | Old Behavior | New Behavior |
 |--------------|--------------|
+| ❌ Required `X-API-Key` header (422 error) | ✅ Accepts `Authorization: Bearer <JWT_TOKEN>` |
 | ❌ No driver authentication | ✅ Email + password login |
-| ❌ Driver profile creation failed (422) | ✅ Public registration endpoint |
-| ❌ Required API key header | ✅ JWT token in Authorization header |
 | ❌ Individual API keys per driver | ✅ Single token valid for 30 days |
+
+### Affected Endpoints (ALL DATA UPLOADS)
+- ✅ `/api/trips/` - Trip creation
+- ✅ `/api/raw_sensor_data/` - Sensor data upload
+- ✅ `/api/unsafe_behaviours/` - Unsafe behavior reporting
+- ✅ `/api/driving_tips/` - Driving tips
+- ✅ `/api/nlg_reports/` - NLG reports
+- ✅ `/api/report_statistics/` - Report statistics
+- ✅ `/api/questionnaire/` - Alcohol questionnaire
+- ✅ All batch upload endpoints
 
 ---
 
-## 1. Driver Registration
+## Quick Start - Fix the 422 Error
+
+The error you're seeing:
+```
+{"detail":[{"type":"missing","loc":["header","X-API-Key"],"msg":"Field required","input":null}]}
+```
+
+**Solution:** Add JWT token to ALL requests
+
+### Step 1: Implement Login
 
 ### Endpoint
 ```

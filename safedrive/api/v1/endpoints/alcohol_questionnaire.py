@@ -8,7 +8,7 @@ from safedrive.schemas.alcohol_questionnaire import (
 )
 from safedrive.crud.alcohol_questionnaire import AlcoholQuestionnaireCRUD
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles
+from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles, require_roles_or_jwt
 import logging
 
 router = APIRouter()
@@ -26,7 +26,7 @@ async def submit_alcohol_questionnaire(
     questionnaire_data: AlcoholQuestionnaireCreateSchema,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """Submit a new alcohol questionnaire."""

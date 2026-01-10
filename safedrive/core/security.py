@@ -7,6 +7,7 @@ from typing import Optional, Set
 from uuid import UUID
 
 from fastapi import Depends, Header, HTTPException, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy import false
 from sqlalchemy.orm import Session
 
@@ -15,6 +16,7 @@ from safedrive.models.auth import ApiClient
 from safedrive.models.admin_setting import AdminSetting
 from safedrive.models.fleet import DriverFleetAssignment
 from safedrive.models.insurance_partner import InsurancePartnerDriver
+from safedrive.models.driver_profile import DriverProfile
 
 
 class Role(str, Enum):
@@ -199,3 +201,105 @@ def filter_query_by_driver_ids(query, driver_column, client: ApiClientContext):
     if not client.allowed_driver_ids:
         return query.filter(false())
     return query.filter(driver_column.in_(client.allowed_driver_ids))
+
+
+# JWT + API Key combined authentication
+security_bearer = HTTPBearer(auto_error=False)
+
+
+def get_current_client_or_driver(
+    api_key: Optional[str] = Header(None, alias="X-API-Key"),
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(security_bearer),
+    db: Session = Depends(get_db),
+) -> ApiClientContext:
+    """
+    Accepts either API Key (X-API-Key header) OR JWT token (Authorization: Bearer header).
+    Used for endpoints that support both authentication methods.
+    """
+    # Try API Key first
+    if api_key:
+        key_hash = hash_api_key(api_key)
+        client = (
+            db.query(ApiClient)
+            .filter(ApiClient.api_key_hash == key_hash, ApiClient.active.is_(True))
+            .first()
+        )
+        if client:
+            try:
+                role = Role(client.role)
+            except ValueError as exc:
+                raise HTTPException(
+                    status_code=status.HTTP_403_FORBIDDEN,
+                    detail="Unsupported role for this API key.",
+                ) from exc
+            allowed_driver_ids = _load_allowed_driver_ids(db, role, client)
+            return ApiClientContext(
+                id=client.id,
+                name=client.name,
+                role=role,
+                driver_profile_id=client.driverProfileId,
+                fleet_id=client.fleet_id,
+                insurance_partner_id=client.insurance_partner_id,
+                allowed_driver_ids=allowed_driver_ids,
+            )
+    
+    # Try JWT token
+    if credentials and credentials.credentials:
+        from safedrive.core.jwt_auth import decode_token
+        
+        try:
+            payload = decode_token(credentials.credentials)
+            driver_id = UUID(payload.get("sub"))
+            
+            # Get driver profile from database
+            driver = db.query(DriverProfile).filter(
+                DriverProfile.driverProfileId == driver_id
+            ).first()
+            
+            if not driver:
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail="Driver not found.",
+                )
+            
+            # Return ApiClientContext for driver
+            return ApiClientContext(
+                id=driver_id,  # Use driver ID as client ID
+                name=driver.email,
+                role=Role.DRIVER,
+                driver_profile_id=driver_id,
+                fleet_id=None,
+                insurance_partner_id=None,
+                allowed_driver_ids={driver_id},
+            )
+        except HTTPException:
+            raise
+        except Exception:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid JWT token.",
+            )
+    
+    # No authentication provided
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Authentication required. Provide either X-API-Key or Authorization: Bearer token.",
+    )
+
+
+def require_roles_or_jwt(*roles: Role):
+    """
+    Dependency that accepts both API Key and JWT authentication.
+    Use this for endpoints that should work for both API key users and JWT driver users.
+    """
+    def _dependency(
+        client: ApiClientContext = Depends(get_current_client_or_driver),
+    ) -> ApiClientContext:
+        if roles and client.role not in roles:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="You do not have access to this resource.",
+            )
+        return client
+
+    return _dependency
