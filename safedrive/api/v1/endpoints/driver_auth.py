@@ -8,7 +8,7 @@ from safedrive.database.db import get_db
 from safedrive.models.driver_profile import DriverProfile
 from safedrive.schemas.auth import DriverRegister, DriverLogin, TokenResponse
 from safedrive.schemas.driver_profile import DriverProfileResponse
-from safedrive.core.jwt_auth import hash_password, verify_password, create_access_token
+from safedrive.core.jwt_auth import hash_password, verify_password, create_access_token, get_current_driver
 
 logger = logging.getLogger(__name__)
 
@@ -109,7 +109,3 @@ def get_current_driver_profile(
         email=driver.email,
         sync=driver.sync
     )
-
-
-# Import at the end to avoid circular imports
-from safedrive.core.jwt_auth import get_current_driver
