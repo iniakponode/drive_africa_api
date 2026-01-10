@@ -29,15 +29,12 @@ def create_driver_profile(
     *,
     db: Session = Depends(get_db),
     profile_in: DriverProfileCreate,
-    current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
-    ),
 ) -> DriverProfileResponse:
     """
     Creates a new driver profile, or returns the existing one if there's a duplicate email.
+    Public endpoint - no authentication required for driver registration from mobile app.
     """
-    ensure_driver_access(current_client, profile_in.driverProfileId)
-    # No `try/except IntegrityError` block here, because CRUD function handles it.
+    # No authentication check - allow open registration from mobile app
     new_profile = driver_profile_crud.create(db=db, obj_in=profile_in)
     logger.info(f"DriverProfile created or retrieved with ID: {new_profile.driverProfileId}")
 
