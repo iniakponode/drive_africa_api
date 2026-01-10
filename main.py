@@ -1,7 +1,9 @@
 import os
 import dotenv
 import uvicorn
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, Request, status
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 import logging
 from safedrive import safe_drive_africa_api_router as api_router
 from app.routers.ubpk_metrics import router as ubpk_router
@@ -10,6 +12,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from alembic.config import Config
 from alembic import command
 from safedrive.core.security import Role, require_roles
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 
@@ -27,6 +33,26 @@ app = FastAPI(
     docs_url="/docs",      # Ensure this is not set to None
     redoc_url="/redoc"
 )
+
+# Add validation error handler
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    """Log validation errors with full details"""
+    body = await request.body()
+    logger.error(
+        f"Validation error for {request.method} {request.url.path}\n"
+        f"Client: {request.client.host if request.client else 'unknown'}\n"
+        f"Headers: {dict(request.headers)}\n"
+        f"Body: {body.decode('utf-8') if body else 'empty'}\n"
+        f"Errors: {exc.errors()}"
+    )
+    return JSONResponse(
+        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        content={
+            "detail": exc.errors(),
+            "body": body.decode('utf-8') if body else None
+        }
+    )
 
 
 # Example usage of environment variables
