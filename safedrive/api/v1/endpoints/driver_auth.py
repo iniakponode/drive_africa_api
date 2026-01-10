@@ -4,7 +4,7 @@ import logging
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from safedrive.database.base import get_db
+from safedrive.database.db import get_db
 from safedrive.models.driver_profile import DriverProfile
 from safedrive.schemas.auth import DriverRegister, DriverLogin, TokenResponse
 from safedrive.schemas.driver_profile import DriverProfileResponse

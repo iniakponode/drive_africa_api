@@ -10,7 +10,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 from uuid import UUID
 
-from safedrive.database.base import get_db
+from safedrive.database.db import get_db
 from safedrive.models.driver_profile import DriverProfile
 
 # JWT Configuration
