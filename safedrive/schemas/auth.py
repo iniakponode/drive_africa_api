@@ -2,9 +2,10 @@ from datetime import datetime
 from typing import Optional
 from uuid import UUID
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 
 
+# API Client schemas (existing)
 class ApiClientBase(BaseModel):
     name: str
     role: str
@@ -48,3 +49,27 @@ class AuthMeResponse(BaseModel):
     driverProfileId: Optional[UUID] = None
     fleet_id: Optional[UUID] = None
     insurance_partner_id: Optional[UUID] = None
+
+
+# JWT Authentication schemas (new for mobile app)
+class DriverRegister(BaseModel):
+    """Schema for driver registration from mobile app."""
+    driverProfileId: UUID
+    email: EmailStr
+    password: str = Field(..., min_length=6, description="Password must be at least 6 characters")
+    sync: bool = False
+
+
+class DriverLogin(BaseModel):
+    """Schema for driver login."""
+    email: EmailStr
+    password: str
+
+
+class TokenResponse(BaseModel):
+    """Schema for authentication token response."""
+    access_token: str
+    token_type: str = "bearer"
+    driver_profile_id: UUID
+    email: str
+

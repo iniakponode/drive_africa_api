@@ -16,6 +16,7 @@ class DriverProfile(Base):
 
     driverProfileId = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
     email = Column(String(50), unique=True, nullable=False)
+    password_hash = Column(String(255), nullable=True)  # Nullable for backward compatibility
     sync = Column(Boolean, nullable=False)
 
     # Relationships

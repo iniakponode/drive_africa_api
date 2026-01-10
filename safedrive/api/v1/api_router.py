@@ -30,6 +30,7 @@ from safedrive.api.v1.endpoints.admin import router as admin_router
 from safedrive.api.v1.endpoints.config import router as config_router
 from safedrive.api.v1.endpoints.auth import router as auth_router
 from safedrive.api.v1.endpoints.analytics import router as analytics_router
+from safedrive.api.v1.endpoints.driver_auth import router as driver_auth_router
 from safedrive.core.security import Role, get_current_client, require_roles
 
 safe_drive_africa_api_router = APIRouter()
@@ -40,6 +41,14 @@ safe_drive_africa_api_router.include_router(
     health_router,
     tags=["Health"],
 )
+
+# Driver authentication endpoints (no API key required - uses JWT)
+safe_drive_africa_api_router.include_router(
+    driver_auth_router,
+    prefix="/api/auth",
+    tags=["Driver Authentication"],
+)
+
 safe_drive_africa_api_router.include_router(
     index_router,
     prefix="/api",

@@ -1,0 +1,50 @@
+Creating NEW Admin and Researcher Keys
+======================================================================
+
+🔑 NEW API KEYS - SAVE THESE NOW!
+======================================================================
+
+📋 Admin
+   ID: 0b5aeea1-0c46-4da6-8f3c-b5631fe05d3f
+   Role: admin
+   🔑 API Key: 02QDlql_JlwQXjdcj-Awsw8gBPs06-6JEP-aasDKf38
+
+📋 Researcher
+   ID: 6eb67057-f48b-489d-b5fc-320018a6e736
+   Role: researcher
+   🔑 API Key: 2LZpB-vfnwf0SJT8iH9I2IF_gIV0ZXJe_uSx4StZIs4
+
+======================================================================
+⚠️  COPY THESE KEYS NOW - They won't be shown again!
+======================================================================
+
+💾 Keys saved to: ADMIN_KEYS.txt
+   DELETE this file after copying!
+
+
+======================================================================
+✅ Seeding complete!
+======================================================================
+
+🔑 API KEYS - SAVE THESE SECURELY!
+======================================================================
+
+📋 Driver - Driver 1
+   Role: driver
+   ID: 07a3a0a7-08b5-4ae1-853a-2082bbf81743
+   🔑 API Key: D5xU99XT1WPC9in2JJwRsFrAB93kjja8Yqbkcoek2fU
+   👤 Driver Profile: 0268c6d0-4be5-43a6-8e8a-ff26f800607f
+
+📋 Driver - Driver 2
+   Role: driver
+   ID: 66a7b1dd-0f36-4c25-951c-a7a3ca318b9e
+   🔑 API Key: v5o6vA5f_KbcKuqcvvIxroJlV4OZaI758nqIOyxaZv8
+   👤 Driver Profile: 0359c8e4-71f2-47a7-885d-47d20f36ce04
+
+📋 Driver - Driver 3
+   Role: driver
+   ID: 80e7b9d1-d7dd-4980-97dc-cae0178cf956
+   🔑 API Key: ibOMCLN269tOdM2YC0Eccc-dTR7p8PRfuPNUP3XA3J8
+   👤 Driver Profile: 0451d396-a5d2-4bc4-80b3-fc49eef75b39
+
+
