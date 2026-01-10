@@ -119,3 +119,4 @@ wcwidth==0.2.13
 # JWT Authentication
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
+email-validator==2.1.0
