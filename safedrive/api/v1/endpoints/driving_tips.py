@@ -4,7 +4,12 @@ from sqlalchemy.orm import Session
 from typing import List
 from uuid import UUID
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles, require_roles_or_jwt
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_driver_access,
+    require_roles_or_jwt,
+)
 from safedrive.schemas.driving_tip_sch import DrivingTipCreate, DrivingTipUpdate, DrivingTipResponse
 from safedrive.crud.driving_tip import driving_tip_crud
 import logging
@@ -39,7 +44,7 @@ def get_driving_tip(
     tip_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> DrivingTipResponse:
     """Retrieve a driving tip by ID."""
@@ -81,7 +86,7 @@ def get_all_driving_tips(
     sync: bool | None = Query(None),
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> List[DrivingTipResponse]:
     """List driving tips with optional pagination."""
@@ -131,7 +136,7 @@ def update_driving_tip(
     db: Session = Depends(get_db),
     tip_in: DrivingTipUpdate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> DrivingTipResponse:
     """Update a driving tip."""
@@ -153,7 +158,7 @@ def delete_driving_tip(
     tip_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> DrivingTipResponse:
     """Delete a driving tip."""
@@ -186,7 +191,7 @@ def batch_create_driving_tips(
     data: List[DrivingTipCreate],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:
@@ -204,7 +209,7 @@ def batch_delete_driving_tips(
     ids: List[UUID],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:

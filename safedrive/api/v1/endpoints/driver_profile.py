@@ -6,7 +6,13 @@ from uuid import UUID
 from safedrive.database.db import get_db
 from safedrive.models.driver_profile import DriverProfile
 from safedrive.models.raw_sensor_data import RawSensorData
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_driver_access,
+    require_roles,
+    require_roles_or_jwt,
+)
 from safedrive.schemas.driver_profile import (
     DriverProfileCreate,
     DriverProfileOut,
@@ -103,7 +109,7 @@ def get_driver_profile(
     profile_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> DriverProfileResponse:
     """Retrieve a driver profile by ID."""
@@ -121,7 +127,7 @@ def get_driver_profile_by_email(
     db: Session = Depends(get_db),
     limit_sensor_data: int = 5000,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """Get a driver profile and related trips by email."""
@@ -152,7 +158,7 @@ def get_driver_profile_by_email(
     db: Session = Depends(get_db),
     limit_sensor_data: int = 5000,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """Retrieve driver profile with limited sensor data by email."""
@@ -188,7 +194,7 @@ def get_driver_profile_by_email(
     db: Session = Depends(get_db),
     limit: int = 1,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """Return a minimal driver profile using an email lookup."""
@@ -210,7 +216,7 @@ def get_all_driver_profiles(
     limit: int = 5000,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> List[DriverProfileResponse]:
     """List all driver profiles."""
@@ -234,7 +240,7 @@ def update_driver_profile(
     db: Session = Depends(get_db),
     profile_in: DriverProfileUpdate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> DriverProfileResponse:
     """Update a driver profile."""
@@ -252,7 +258,7 @@ def delete_driver_profile(
     profile_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> DriverProfileResponse:
     """Delete a driver profile by ID."""
@@ -270,7 +276,7 @@ def delete_driver_profile_by_email(
     email: str,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> DriverProfileResponse:
     """

@@ -7,7 +7,14 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, filter_query_by_driver_ids, require_roles, require_roles_or_jwt
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_driver_access,
+    filter_query_by_driver_ids,
+    require_roles,
+    require_roles_or_jwt,
+)
 from safedrive.crud.report_statistics import report_statistics_crud
 from safedrive.database.db import get_db
 from safedrive.models.report_statistics import ReportStatistics
@@ -40,7 +47,7 @@ def get_report_statistics(
     report_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> ReportStatisticsResponse:
     report = report_statistics_crud.get(db=db, id=report_id)
@@ -56,7 +63,7 @@ def list_report_statistics(
     limit: int = 100,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> List[ReportStatisticsResponse]:
     query = db.query(ReportStatistics)
@@ -72,7 +79,7 @@ def update_report_statistics(
     db: Session = Depends(get_db),
     report_in: ReportStatisticsUpdate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> ReportStatisticsResponse:
     report = report_statistics_crud.get(db=db, id=report_id)
@@ -88,7 +95,7 @@ def delete_report_statistics(
     report_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> ReportStatisticsResponse:
     report = report_statistics_crud.get(db=db, id=report_id)
@@ -105,7 +112,7 @@ def batch_create_report_statistics(
     db: Session = Depends(get_db),
     reports_in: List[ReportStatisticsCreate],
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     if current_client.role == Role.DRIVER:

@@ -8,7 +8,12 @@ import logging
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_driver_access,
+    require_roles_or_jwt,
+)
 from safedrive.crud.driver_profile import driver_profile_crud
 from safedrive.crud.raw_sensor_data import raw_sensor_data_crud
 from safedrive.crud.trip import trip_crud
@@ -45,7 +50,7 @@ def sync_driver_data(
     payload: DriverSyncPayload,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> DriverSyncResponse:
     driver_profile_id = payload.profile.driverProfileId

@@ -5,7 +5,13 @@ from uuid import UUID
 import logging
 
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, filter_query_by_driver_ids, require_roles
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_driver_access,
+    filter_query_by_driver_ids,
+    require_roles_or_jwt,
+)
 from safedrive.schemas.ai_model_input import (
     AIModelInputCreate,
     AIModelInputUpdate,
@@ -27,7 +33,7 @@ def create_ai_model_input(
     db: Session = Depends(get_db),
     input_in: AIModelInputCreate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> AIModelInputResponse:
     """
@@ -57,7 +63,7 @@ def get_ai_model_input(
     input_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> AIModelInputResponse:
     """
@@ -86,7 +92,7 @@ def get_all_ai_model_inputs(
     limit: int = 20,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> List[AIModelInputResponse]:
     """
@@ -119,7 +125,7 @@ def update_ai_model_input(
     db: Session = Depends(get_db),
     input_in: AIModelInputUpdate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> AIModelInputResponse:
     """
@@ -155,7 +161,7 @@ def delete_ai_model_input(
     input_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> AIModelInputResponse:
     """
@@ -183,7 +189,7 @@ def batch_create_ai_model_inputs(
     data: List[AIModelInputCreate],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:
@@ -201,7 +207,7 @@ def batch_delete_ai_model_inputs(
     ids: List[UUID],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:

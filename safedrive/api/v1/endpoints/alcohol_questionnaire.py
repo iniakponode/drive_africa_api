@@ -8,7 +8,12 @@ from safedrive.schemas.alcohol_questionnaire import (
 )
 from safedrive.crud.alcohol_questionnaire import AlcoholQuestionnaireCRUD
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles, require_roles_or_jwt
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_driver_access,
+    require_roles_or_jwt,
+)
 import logging
 
 router = APIRouter()
@@ -49,7 +54,7 @@ async def submit_alcohol_questionnaire_mobile(
     questionnaire_data: AlcoholQuestionnaireCreateSchema,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """Submit a new alcohol questionnaire (mobile compatibility)."""
@@ -72,7 +77,7 @@ async def submit_alcohol_questionnaire_batch_mobile(
     questionnaires: List[AlcoholQuestionnaireCreateSchema],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """Submit multiple alcohol questionnaires (mobile compatibility)."""
@@ -100,7 +105,7 @@ async def get_alcohol_questionnaire(
     questionnaire_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """Retrieve a questionnaire by its ID."""
@@ -126,7 +131,7 @@ async def get_alcohol_questionnaire_history(
     user_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """Retrieve questionnaire history for a driver (mobile compatibility)."""
@@ -148,7 +153,7 @@ async def get_alcohol_questionnaire_history(
 async def list_alcohol_questionnaires(
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """List all submitted alcohol questionnaires."""
@@ -174,7 +179,7 @@ async def update_alcohol_questionnaire(
     updated_data: AlcoholQuestionnaireCreateSchema,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """Update an existing questionnaire."""
@@ -200,7 +205,7 @@ async def delete_alcohol_questionnaire(
     questionnaire_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     """Delete a questionnaire by its ID."""

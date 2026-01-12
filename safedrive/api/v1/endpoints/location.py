@@ -5,7 +5,12 @@ from uuid import UUID
 import logging
 
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, filter_query_by_driver_ids, require_roles
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    filter_query_by_driver_ids,
+    require_roles_or_jwt,
+)
 from safedrive.schemas.location import (
     LocationCreate,
     LocationUpdate,
@@ -27,7 +32,7 @@ def create_location(
     db: Session = Depends(get_db),
     location_in: LocationCreate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> LocationResponse:
     """
@@ -55,7 +60,7 @@ def get_location(
     location_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> LocationResponse:
     """
@@ -91,7 +96,7 @@ def get_all_locations(
     limit: int = 20,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> List[LocationResponse]:
     """
@@ -127,7 +132,7 @@ def update_location(
     db: Session = Depends(get_db),
     location_in: LocationUpdate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> LocationResponse:
     """
@@ -164,7 +169,7 @@ def delete_location(
     location_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> LocationResponse:
     """
@@ -200,7 +205,7 @@ def batch_create_locations(
     data: List[LocationCreate],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:
@@ -215,7 +220,7 @@ def batch_delete_locations(
     ids: List[UUID],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:

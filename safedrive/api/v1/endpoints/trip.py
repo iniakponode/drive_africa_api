@@ -6,7 +6,13 @@ import logging
 from safedrive.crud.trip import trip_crud
 from safedrive.crud.driver_profile import driver_profile_crud
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, filter_query_by_driver_ids, require_roles, require_roles_or_jwt
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_driver_access,
+    filter_query_by_driver_ids,
+    require_roles_or_jwt,
+)
 from safedrive.models.trip import Trip
 from safedrive.schemas.trip import (
     TripCreate,
@@ -69,7 +75,7 @@ def get_trip(
     trip_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> TripResponse:
     """
@@ -97,7 +103,7 @@ def get_all_trips(
     limit: int = 5000,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> List[TripResponse]:
     """
@@ -129,7 +135,7 @@ def update_trip(
     db: Session = Depends(get_db),
     trip_in: TripUpdate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> TripResponse:
     """
@@ -166,7 +172,7 @@ def delete_trip(
     trip_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> TripResponse:
     """
@@ -203,7 +209,7 @@ def batch_delete_trips(
     ids: List[UUID],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:
@@ -225,7 +231,7 @@ def batch_create_trips(
     db: Session = Depends(get_db),
     trips_in: List[TripCreate],
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> List[TripResponse]:
     try:

@@ -5,7 +5,13 @@ from uuid import UUID
 import logging
 
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, filter_query_by_driver_ids, require_roles, require_roles_or_jwt
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_driver_access,
+    filter_query_by_driver_ids,
+    require_roles_or_jwt,
+)
 from safedrive.schemas.unsafe_behaviour import (
     UnsafeBehaviourCreate,
     UnsafeBehaviourUpdate,
@@ -56,7 +62,7 @@ def get_unsafe_behaviour(
     unsafe_behaviour_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> UnsafeBehaviourResponse:
     """
@@ -84,7 +90,7 @@ def get_all_unsafe_behaviours(
     limit: int = 20,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> List[UnsafeBehaviourResponse]:
     """
@@ -116,7 +122,7 @@ def update_unsafe_behaviour(
     db: Session = Depends(get_db),
     unsafe_behaviour_in: UnsafeBehaviourUpdate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> UnsafeBehaviourResponse:
     """
@@ -151,7 +157,7 @@ def delete_unsafe_behaviour(
     unsafe_behaviour_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> UnsafeBehaviourResponse:
     """
@@ -179,7 +185,7 @@ def batch_create_unsafe_behaviours(
     data: List[UnsafeBehaviourCreate],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:
@@ -197,7 +203,7 @@ def batch_delete_unsafe_behaviours(
     ids: List[UUID],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:

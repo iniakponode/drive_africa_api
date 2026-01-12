@@ -4,7 +4,12 @@ from sqlalchemy.orm import Session
 from typing import List
 from uuid import UUID
 from safedrive.database.db import get_db
-from safedrive.core.security import ApiClientContext, Role, ensure_driver_access, require_roles, require_roles_or_jwt
+from safedrive.core.security import (
+    ApiClientContext,
+    Role,
+    ensure_driver_access,
+    require_roles_or_jwt,
+)
 from safedrive.schemas.nlg_report import NLGReportCreate, NLGReportUpdate, NLGReportResponse
 from safedrive.crud.nlg_report import nlg_report_crud
 import logging
@@ -36,7 +41,7 @@ def get_nlg_report(
     report_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> NLGReportResponse:
     """Retrieve a specific NLG report."""
@@ -57,7 +62,7 @@ def get_all_nlg_reports(
     sync: bool | None = Query(None),
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> List[NLGReportResponse]:
     """List NLG reports with optional pagination."""
@@ -84,7 +89,7 @@ def update_nlg_report(
     db: Session = Depends(get_db),
     report_in: NLGReportUpdate,
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> NLGReportResponse:
     """Update an existing NLG report."""
@@ -102,7 +107,7 @@ def delete_nlg_report(
     report_id: UUID,
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ) -> NLGReportResponse:
     """Delete an NLG report."""
@@ -120,7 +125,7 @@ def batch_create_nlg_reports(
     reports_in: List[NLGReportCreate],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:
@@ -138,7 +143,7 @@ def batch_delete_nlg_reports(
     ids: List[UUID],
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(Role.ADMIN, Role.DRIVER)
+        require_roles_or_jwt(Role.ADMIN, Role.DRIVER)
     ),
 ):
     try:
