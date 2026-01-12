@@ -31,7 +31,12 @@ from safedrive.api.v1.endpoints.config import router as config_router
 from safedrive.api.v1.endpoints.auth import router as auth_router
 from safedrive.api.v1.endpoints.analytics import router as analytics_router
 from safedrive.api.v1.endpoints.driver_auth import router as driver_auth_router
-from safedrive.core.security import Role, get_current_client, require_roles
+from safedrive.core.security import (
+    Role,
+    get_current_client,
+    require_roles,
+    require_roles_or_jwt,
+)
 
 safe_drive_africa_api_router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -59,14 +64,14 @@ safe_drive_africa_api_router.include_router(
     trips_router,
     prefix="/api",
     tags=["Trips"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 # safe_drive_africa_api_router.include_router(alcohol_questionnaire_router, prefix="/api", tags=["Alcohol Questionnaire"])
 safe_drive_africa_api_router.include_router(
     alcohol_questionnaire_router,
     prefix="/api/alcohol-questionnaire",
     tags=["Alcohol Questionnaire"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 
 logger.info("Including alcohol_questionnaire_router in API router")
@@ -74,44 +79,44 @@ safe_drive_africa_api_router.include_router(
     alcohol_questionnaire_router,
     prefix="/api/alcohol_questionnaire",
     tags=["Alcohol Questionnaire"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     alcohol_questionnaire_mobile_router,
     prefix="/api",
     tags=["Alcohol Questionnaire"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 
 safe_drive_africa_api_router.include_router(
     unsafe_behaviour_router,
     prefix="/api",
     tags=["Unsafe Behaviour"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     raw_sensor_data_router,
     prefix="/api",
     tags=["Raw Sensor Data"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     driver_profile_router,
     prefix="/api",
     tags=["Driver Profile"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     driver_sync_router,
     prefix="/api",
     tags=["Driver Sync"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     driving_tips_router,
     prefix="/api",
     tags=["Driving Tips"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     cause_router,
@@ -129,25 +134,25 @@ safe_drive_africa_api_router.include_router(
     nlg_report_router,
     prefix="/api",
     tags=["NLG Report"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     report_statistics_router,
     prefix="/api",
     tags=["Report Statistics"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     ai_model_inputs_router,
     prefix="/api",
     tags=["AI Model Inputs"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     location_router,
     prefix="/api",
     tags=["Location"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     behaviour_metrics_router,
