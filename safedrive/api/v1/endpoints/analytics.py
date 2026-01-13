@@ -12,6 +12,7 @@ from safedrive.core.security import (
     Role,
     ensure_driver_access,
     require_roles,
+    require_roles_or_jwt,
 )
 from safedrive.database.db import get_db
 from safedrive.models.fleet import DriverFleetAssignment
@@ -322,7 +323,7 @@ def leaderboard(
     insurance_partner_id: Optional[UUID] = Query(None, alias="insurancePartnerId"),
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(
+        require_roles_or_jwt(
             Role.ADMIN,
             Role.RESEARCHER,
             Role.FLEET_MANAGER,
@@ -370,7 +371,7 @@ def driver_ubpk_series(
     driver_profile_id: Optional[UUID] = Query(None, alias="driverProfileId"),
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(
+        require_roles_or_jwt(
             Role.ADMIN,
             Role.RESEARCHER,
             Role.FLEET_MANAGER,
@@ -438,7 +439,7 @@ def bad_days(
     insurance_partner_id: Optional[UUID] = Query(None, alias="insurancePartnerId"),
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(
+        require_roles_or_jwt(
             Role.ADMIN,
             Role.RESEARCHER,
             Role.FLEET_MANAGER,
@@ -505,7 +506,7 @@ def driver_kpis(
     insurance_partner_id: Optional[UUID] = Query(None, alias="insurancePartnerId"),
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
-        require_roles(
+        require_roles_or_jwt(
             Role.ADMIN,
             Role.RESEARCHER,
             Role.FLEET_MANAGER,
