@@ -58,7 +58,6 @@ safe_drive_africa_api_router.include_router(
     index_router,
     prefix="/api",
     tags=["Index"],
-    dependencies=[Depends(get_current_client)],
 )
 safe_drive_africa_api_router.include_router(
     trips_router,
@@ -209,13 +208,12 @@ safe_drive_africa_api_router.include_router(
     config_router,
     prefix="/api",
     tags=["Config"],
-    dependencies=[Depends(require_roles(Role.ADMIN, Role.DRIVER))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     auth_router,
     prefix="/api",
     tags=["Auth"],
-    dependencies=[Depends(get_current_client)],
 )
 safe_drive_africa_api_router.include_router(
     analytics_router,
@@ -223,7 +221,7 @@ safe_drive_africa_api_router.include_router(
     tags=["Analytics"],
     dependencies=[
         Depends(
-            require_roles(
+            require_roles_or_jwt(
                 Role.ADMIN,
                 Role.RESEARCHER,
                 Role.FLEET_MANAGER,
