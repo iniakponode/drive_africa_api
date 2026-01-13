@@ -190,7 +190,7 @@ safe_drive_africa_api_router.include_router(
     road_router,
     prefix="/api",
     tags=["Roads"],
-    dependencies=[Depends(require_roles(Role.ADMIN))],
+    dependencies=[Depends(require_roles_or_jwt(Role.ADMIN, Role.DRIVER))],
 )
 safe_drive_africa_api_router.include_router(
     insurance_partner_router,

@@ -217,9 +217,11 @@ def batch_create_raw_sensor_data(
                 ensure_driver_access(current_client, trip.driverProfileId)
         created_data = raw_sensor_data_crud.batch_create(db=db, data_in=data)
         return {"message": f"{len(created_data)} RawSensorData records created."}
+    except HTTPException:
+        raise
     except Exception as e:
-        logger.error(f"Error in batch create RawSensorData: {str(e)}")
-        raise HTTPException(status_code=500, detail="Batch creation failed.")
+        logger.exception(f"Error in batch create RawSensorData: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Batch creation failed: {str(e)}")
 
 @router.delete("/raw_sensor_data/batch_delete", status_code=204)
 def batch_delete_raw_sensor_data(
