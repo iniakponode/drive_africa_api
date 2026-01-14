@@ -51,19 +51,7 @@ def create_trip(
         # Create the new trip
         new_trip = trip_crud.create(db=db, obj_in=trip_in)
         logger.info(f"Created Trip with ID: {new_trip.id}")
-        return TripResponse(
-            id=new_trip.id,
-            driverProfileId=new_trip.driverProfileId,
-            start_date=new_trip.start_date,
-            end_date=new_trip.end_date,
-            start_time=new_trip.start_time,
-            end_time=new_trip.end_time,
-            sync=new_trip.sync,
-            influence=new_trip.influence,
-            trip_notes=new_trip.trip_notes,
-            alcohol_probability=new_trip.alcohol_probability,
-            user_alcohol_response=new_trip.user_alcohol_response,
-        )
+        return TripResponse.model_validate(new_trip)
     except HTTPException as http_exc:
         raise http_exc
     except Exception as e:
