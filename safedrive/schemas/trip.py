@@ -32,12 +32,12 @@ class TripBase(BaseModel):
     )
     start_time: Optional[int] = Field(
         None,
-        alias="startTime",
+        validation_alias="startTime",
         description="Trip start time in epoch milliseconds."
     )
     end_time: Optional[int] = Field(
         None,
-        alias="endTime",
+        validation_alias="endTime",
         description="Trip end time in epoch milliseconds."
     )
     sync: bool = Field(False, description="Indicates whether the trip data has been synced.")
@@ -49,12 +49,12 @@ class TripBase(BaseModel):
     )
     alcohol_probability: Optional[float] = Field(
         None,
-        alias="alcoholProbability",
+        validation_alias="alcoholProbability",
         description="Probability score (0.0-1.0) that alcohol influenced the trip."
     )
     user_alcohol_response: Optional[str] = Field(
         None,
-        alias="userAlcoholResponse",
+        validation_alias="userAlcoholResponse",
         description="User-provided alcohol questionnaire response for the trip day."
     )
 
@@ -82,35 +82,35 @@ class TripCreate(BaseModel):
     driverProfileId: UUID = Field(..., description="The UUID of the driver's profile.")
     start_date: Optional[datetime] = Field(
         None,
-        alias="startDate",
+        validation_alias="startDate",
         description="The start date of the trip."
     )
     end_date: Optional[datetime] = Field(
         None,
-        alias="endDate",
+        validation_alias="endDate",
         description="The end date of the trip."
     )
     start_time: int = Field(
-        ..., alias="startTime", description="Trip start time in epoch milliseconds."
+        ..., validation_alias="startTime", description="Trip start time in epoch milliseconds."
     )
     end_time: Optional[int] = Field(
-        None, alias="endTime", description="Trip end time in epoch milliseconds."
+        None, validation_alias="endTime", description="Trip end time in epoch milliseconds."
     )
     sync: Optional[bool] = Field(False, description="Indicates whether the trip data has been synced.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
     trip_notes: Optional[str] = Field(
         None,
-        alias="tripNotes",
+        validation_alias="tripNotes",
         description="Optional driver notes or annotations for the trip."
     )
     alcohol_probability: Optional[float] = Field(
         None,
-        alias="alcoholProbability",
+        validation_alias="alcoholProbability",
         description="Probability score that alcohol influenced the trip."
     )
     user_alcohol_response: Optional[str] = Field(
         None,
-        alias="userAlcoholResponse",
+        validation_alias="userAlcoholResponse",
         description="Calendar day alcohol questionnaire response."
     )
 
@@ -128,36 +128,36 @@ class TripUpdate(BaseModel):
     driverProfileId: Optional[UUID] = Field(None, description="Optionally update the driver's profile reference.")
     start_date: Optional[datetime] = Field(
         None,
-        alias="startDate",
+        validation_alias="startDate",
         description="Optionally update the start date of the trip."
     )
     end_date: Optional[datetime] = Field(
         None,
-        alias="endDate",
+        validation_alias="endDate",
         description="Optionally update the end date of the trip."
     )
     start_time: Optional[int] = Field(
         None,
-        alias="startTime",
+        validation_alias="startTime",
         description="Optionally update the trip start time in epoch milliseconds."
     )
     end_time: Optional[int] = Field(
         None,
-        alias="endTime",
+        validation_alias="endTime",
         description="Optionally update the end time in epoch milliseconds."
     )
     sync: Optional[bool] = Field(None, description="Optionally update the sync status.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
     trip_notes: Optional[str] = Field(
         None,
-        alias="tripNotes",
+        validation_alias="tripNotes",
         description="Optional driver notes or annotations for the trip."
     )
     alcohol_probability: Optional[float] = Field(
-        None, alias="alcoholProbability", description="Updated alcohol probability score."
+        None, validation_alias="alcoholProbability", description="Updated alcohol probability score."
     )
     user_alcohol_response: Optional[str] = Field(
-        None, alias="userAlcoholResponse", description="Updated alcohol response."
+        None, validation_alias="userAlcoholResponse", description="Updated alcohol response."
     )
 
     class Config:
