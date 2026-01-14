@@ -69,7 +69,7 @@ class TripCreatePayload(BaseModel):
     def parse_time_fields(cls, value: Any) -> Optional[int]:
         return _parse_time_value(value)
 
-    @root_validator
+    @root_validator(skip_on_failure=True)
     def normalize_time_fields(cls, values: dict) -> dict:
         start_time = values.get("startTime")
         end_time = values.get("endTime")
