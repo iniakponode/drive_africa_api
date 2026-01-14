@@ -1,10 +1,8 @@
 from pydantic import BaseModel, Field
-import sqlalchemy
 from typing import List, Optional
 from uuid import UUID
 from datetime import datetime
 
-from safedrive.models.raw_sensor_data import RawSensorData
 from safedrive.schemas.raw_sensor_data import RawSensorDataOut
 
 class TripBase(BaseModel):
@@ -18,18 +16,30 @@ class TripBase(BaseModel):
     - **end_date**: The end date of the trip.
     - **start_time**: The start time of the trip in epoch milliseconds.
     - **end_time**: The end time of the trip in epoch milliseconds.
-    - **synced**: Indicator whether the trip data has been synced.
+    - **sync**: Indicator whether the trip data has been synced.
     """
     id: UUID = Field(..., description="The unique identifier for the trip.")
     driverProfileId: UUID = Field(..., description="The UUID of the driver's profile.")
-    start_date: Optional[datetime] = Field(None, description="The start date of the trip.")
-    end_date: Optional[datetime] = Field(None, description="The end date of the trip.")
-    start_time: Optional[datetime] = Field(
+    start_date: Optional[datetime] = Field(
+        None,
+        alias="startDate",
+        description="The start date of the trip."
+    )
+    end_date: Optional[datetime] = Field(
+        None,
+        alias="endDate",
+        description="The end date of the trip."
+    )
+    start_time: Optional[int] = Field(
         None,
         alias="startTime",
-        description="ISO timestamp of the trip start."
+        description="Trip start time in epoch milliseconds."
     )
-    end_time: Optional[int] = Field(None, description="The end time of the trip in epoch milliseconds.")
+    end_time: Optional[int] = Field(
+        None,
+        alias="endTime",
+        description="Trip end time in epoch milliseconds."
+    )
     sync: bool = Field(False, description="Indicates whether the trip data has been synced.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
     trip_notes: Optional[str] = Field(
@@ -49,8 +59,9 @@ class TripBase(BaseModel):
     )
 
     class Config:
-        from_attributes = True  # For Pydantic v2
-        
+        from_attributes = True
+        populate_by_name = True
+
 
 class TripOut(BaseModel):
     id: UUID
@@ -60,20 +71,30 @@ class TripOut(BaseModel):
 
     class Config:
         from_attributes = True
+        populate_by_name = True
+
 
 class TripCreate(BaseModel):
     """
     Schema for creating a new Trip record.
     """
-    id: UUID=Field(..., description="The UUID of the trip's profile.")
+    id: UUID = Field(..., description="The UUID of the trip's profile.")
     driverProfileId: UUID = Field(..., description="The UUID of the driver's profile.")
-    start_date: Optional[datetime] = Field(None, description="The start date of the trip.")
-    end_date: Optional[datetime] = Field(None, description="The end date of the trip.")
-    start_time: datetime = Field(
-        ..., alias="startTime", description="ISO timestamp of the trip start."
+    start_date: Optional[datetime] = Field(
+        None,
+        alias="startDate",
+        description="The start date of the trip."
+    )
+    end_date: Optional[datetime] = Field(
+        None,
+        alias="endDate",
+        description="The end date of the trip."
+    )
+    start_time: int = Field(
+        ..., alias="startTime", description="Trip start time in epoch milliseconds."
     )
     end_time: Optional[int] = Field(
-        None, description="The end time of the trip in epoch milliseconds."
+        None, alias="endTime", description="Trip end time in epoch milliseconds."
     )
     sync: Optional[bool] = Field(False, description="Indicates whether the trip data has been synced.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
@@ -95,6 +116,8 @@ class TripCreate(BaseModel):
 
     class Config:
         from_attributes = True
+        populate_by_name = True
+
 
 class TripUpdate(BaseModel):
     """
@@ -103,15 +126,25 @@ class TripUpdate(BaseModel):
     All fields are optional.
     """
     driverProfileId: Optional[UUID] = Field(None, description="Optionally update the driver's profile reference.")
-    start_date: Optional[datetime] = Field(None, description="Optionally update the start date of the trip.")
-    end_date: Optional[datetime] = Field(None, description="Optionally update the end date of the trip.")
-    start_time: Optional[datetime] = Field(
+    start_date: Optional[datetime] = Field(
+        None,
+        alias="startDate",
+        description="Optionally update the start date of the trip."
+    )
+    end_date: Optional[datetime] = Field(
+        None,
+        alias="endDate",
+        description="Optionally update the end date of the trip."
+    )
+    start_time: Optional[int] = Field(
         None,
         alias="startTime",
-        description="Optionally update the trip start timestamp."
+        description="Optionally update the trip start time in epoch milliseconds."
     )
     end_time: Optional[int] = Field(
-        None, description="Optionally update the end time of the trip in epoch milliseconds."
+        None,
+        alias="endTime",
+        description="Optionally update the end time in epoch milliseconds."
     )
     sync: Optional[bool] = Field(None, description="Optionally update the sync status.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
@@ -129,6 +162,8 @@ class TripUpdate(BaseModel):
 
     class Config:
         from_attributes = True
+        populate_by_name = True
+
 
 class TripResponse(TripBase):
     """Schema for the response format of a Trip record."""
