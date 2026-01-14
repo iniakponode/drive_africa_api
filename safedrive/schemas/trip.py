@@ -22,12 +22,12 @@ class TripBase(BaseModel):
     driverProfileId: UUID = Field(..., description="The UUID of the driver's profile.")
     start_date: Optional[datetime] = Field(
         None,
-        alias="startDate",
+        validation_alias="startDate",
         description="The start date of the trip."
     )
     end_date: Optional[datetime] = Field(
         None,
-        alias="endDate",
+        validation_alias="endDate",
         description="The end date of the trip."
     )
     start_time: Optional[int] = Field(
