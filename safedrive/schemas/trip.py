@@ -21,15 +21,15 @@ class TripBase(BaseModel):
     - **synced**: Indicator whether the trip data has been synced.
     """
     id: UUID = Field(..., description="The unique identifier for the trip.")
-    driverProfileId: UUID = Field(..., description="The UUID of the driver's profile.")
-    start_date: Optional[datetime] = Field(None, description="The start date of the trip.")
-    end_date: Optional[datetime] = Field(None, description="The end date of the trip.")
+    driverProfileId: UUID = Field(..., alias="driver_profile_id", description="The UUID of the driver's profile.")
+    start_date: Optional[datetime] = Field(None, alias="startDate", description="The start date of the trip.")
+    end_date: Optional[datetime] = Field(None, alias="endDate", description="The end date of the trip.")
     start_time: Optional[datetime] = Field(
         None,
         alias="startTime",
         description="ISO timestamp of the trip start."
     )
-    end_time: Optional[int] = Field(None, description="The end time of the trip in epoch milliseconds.")
+    end_time: Optional[int] = Field(None, alias="endTime", description="The end time of the trip in epoch milliseconds.")
     sync: bool = Field(False, description="Indicates whether the trip data has been synced.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
     trip_notes: Optional[str] = Field(
@@ -49,7 +49,8 @@ class TripBase(BaseModel):
     )
 
     class Config:
-        from_attributes = True  # For Pydantic v2
+        from_attributes = True
+        populate_by_name = True  # Allow both snake_case and camelCase  # For Pydantic v2
         
 
 class TripOut(BaseModel):
@@ -66,14 +67,14 @@ class TripCreate(BaseModel):
     Schema for creating a new Trip record.
     """
     id: UUID=Field(..., description="The UUID of the trip's profile.")
-    driverProfileId: UUID = Field(..., description="The UUID of the driver's profile.")
-    start_date: Optional[datetime] = Field(None, description="The start date of the trip.")
-    end_date: Optional[datetime] = Field(None, description="The end date of the trip.")
+    driverProfileId: UUID = Field(..., alias="driver_profile_id", description="The UUID of the driver's profile.")
+    start_date: Optional[datetime] = Field(None, alias="startDate", description="The start date of the trip.")
+    end_date: Optional[datetime] = Field(None, alias="endDate", description="The end date of the trip.")
     start_time: datetime = Field(
         ..., alias="startTime", description="ISO timestamp of the trip start."
     )
     end_time: Optional[int] = Field(
-        None, description="The end time of the trip in epoch milliseconds."
+        None, alias="endTime", description="The end time of the trip in epoch milliseconds."
     )
     sync: Optional[bool] = Field(False, description="Indicates whether the trip data has been synced.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
@@ -95,6 +96,7 @@ class TripCreate(BaseModel):
 
     class Config:
         from_attributes = True
+        populate_by_name = True  # Allow both snake_case and camelCase
 
 class TripUpdate(BaseModel):
     """
@@ -102,16 +104,16 @@ class TripUpdate(BaseModel):
 
     All fields are optional.
     """
-    driverProfileId: Optional[UUID] = Field(None, description="Optionally update the driver's profile reference.")
-    start_date: Optional[datetime] = Field(None, description="Optionally update the start date of the trip.")
-    end_date: Optional[datetime] = Field(None, description="Optionally update the end date of the trip.")
+    driverProfileId: Optional[UUID] = Field(None, alias="driver_profile_id", description="Optionally update the driver's profile reference.")
+    start_date: Optional[datetime] = Field(None, alias="startDate", description="Optionally update the start date of the trip.")
+    end_date: Optional[datetime] = Field(None, alias="endDate", description="Optionally update the end date of the trip.")
     start_time: Optional[datetime] = Field(
         None,
         alias="startTime",
         description="Optionally update the trip start timestamp."
     )
     end_time: Optional[int] = Field(
-        None, description="Optionally update the end time of the trip in epoch milliseconds."
+        None, alias="endTime", description="Optionally update the end time of the trip in epoch milliseconds."
     )
     sync: Optional[bool] = Field(None, description="Optionally update the sync status.")
     influence: Optional[str] = Field(None, description="records the type of driving influence for the trip.")
@@ -129,6 +131,7 @@ class TripUpdate(BaseModel):
 
     class Config:
         from_attributes = True
+        populate_by_name = True  # Allow both snake_case and camelCase
 
 class TripResponse(TripBase):
     """Schema for the response format of a Trip record."""
