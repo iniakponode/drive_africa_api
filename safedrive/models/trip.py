@@ -1,34 +1,63 @@
-from datetime import datetime
-from typing import Optional
-from uuid import uuid4
-
-from sqlalchemy import BigInteger, Boolean, Column, DateTime, Float, Integer, String
-from sqlalchemy.sql import func
-
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, Boolean, BINARY, BigInteger, String, Float, Text
+from sqlalchemy.orm import relationship, object_session
+from uuid import uuid4, UUID
+from sqlalchemy_utils import UUIDType
 from safedrive.database.base import Base
+from safedrive.models.raw_sensor_data import RawSensorData
 
+
+def generate_uuid_binary():
+    return uuid4().bytes
 
 class Trip(Base):
     __tablename__ = "trip"
 
-    id = Column(String(36), primary_key=True, default=lambda: str(uuid4()))
-    driverProfileId = Column(String(36), nullable=False, index=True)
-    start_date = Column(DateTime, nullable=True)
+    id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
+    driverProfileId = Column(UUIDType(binary=True), ForeignKey('driver_profile.driverProfileId', ondelete="CASCADE"), nullable=False)
+    start_date = Column(DateTime)
     end_date = Column(DateTime, nullable=True)
-    start_time = Column(BigInteger, nullable=False)
+    start_time = Column(BigInteger, nullable=True)  # Changed to BigInteger
     end_time = Column(BigInteger, nullable=True)
-    influence = Column(String(64), nullable=True)
-    state = Column(String(32), nullable=True)
-    distance = Column(Float, nullable=True)
-    averageSpeed = Column(Float, nullable=True)
-    alcoholProbability = Column(Float, nullable=True)
-    userAlcoholResponse = Column(String(4), nullable=True)
-    timeZoneId = Column("time_zone_id", String(64), nullable=True)
-    timeZoneOffsetMinutes = Column("time_zone_offset_minutes", Integer, nullable=True)
-    sync = Column(Boolean, default=False)
-    notes = Column(String, nullable=True)
-    createdAt = Column(DateTime, default=func.now())
-    updatedAt = Column(DateTime, default=func.now(), onupdate=func.now())
+    influence = Column(String(50), nullable=True)
+    trip_notes = Column(Text, nullable=True)
+    sync = Column(Boolean, nullable=False)
+    alcohol_probability = Column(Float, nullable=True)
+    user_alcohol_response = Column(String(50), nullable=True)
 
-    def __repr__(self) -> str:
-        return f"<Trip {self.id} for {self.driverProfileId}>"
+    # Relationships
+    ai_model_inputs = relationship("AIModelInput", back_populates="trip", cascade="all, delete-orphan")
+    driver_profile = relationship("DriverProfile", back_populates="trips")
+    raw_sensor_data = relationship("RawSensorData", back_populates="trip", cascade="all, delete-orphan")
+    unsafe_behaviours = relationship("UnsafeBehaviour", back_populates="trip")
+    
+    # "Limited" relationship: you'd need a separate technique,
+    # e.g. a property that queries the top N sensor data.
+    @property
+    def limited_raw_sensor_data(self):
+        session = object_session(self)
+        if not session:
+            return []
+
+        return (session.query(RawSensorData)
+                       .filter(RawSensorData.trip_id == self.id)
+                       .limit(10)
+                       .all())
+
+    def __repr__(self):
+        return f"<Trip(id={self.id}, driver_profile_id={self.driverProfileId})>"
+
+    @property
+    def id_uuid(self) -> UUID:
+        """
+        If self.id is already a uuid.UUID, just return it.
+        Otherwise, treat it as raw bytes and convert to a UUID object.
+        """
+        if isinstance(self.id, UUID):
+            return self.id
+        return UUID(bytes=self.id)
+
+    @property
+    def driver_profile_id_uuid(self) -> UUID:
+        if isinstance(self.driverProfileId, UUID):
+            return self.driverProfileId
+        return UUID(bytes=self.driverProfileId)
