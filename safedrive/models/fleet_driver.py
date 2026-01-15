@@ -60,15 +60,12 @@ class DriverInvite(Base):
     )
     driver_profile = relationship("DriverProfile", backref="driver_invites")
 
-    # Unique constraint: only one pending invite per email per fleet
+    # Indexes for efficient querying (MySQL compatible)
     __table_args__ = (
-        UniqueConstraint(
-            "fleet_id",
-            "email",
-            "status",
-            name="uq_fleet_email_pending",
-            postgresql_where=(status == "pending"),
-        ),
+        Index("ix_driver_invites_fleet_id", "fleet_id"),
+        Index("ix_driver_invites_email", "email"),
+        Index("ix_driver_invites_status", "status"),
+        Index("ix_driver_invites_fleet_email_status", "fleet_id", "email", "status"),
     )
 
     def __repr__(self) -> str:
