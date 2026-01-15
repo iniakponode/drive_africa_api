@@ -1,5 +1,9 @@
 # Mobile App Fleet Integration Guide
 
+**Status:** ✅ **DEPLOYED TO PRODUCTION** (January 15, 2026)
+
+**Production API:** `https://api.safedriveafrica.com`
+
 This document provides implementation guidance for mobile app developers to integrate the fleet joining functionality into the Drive Africa driver app.
 
 ## Overview
@@ -122,9 +126,9 @@ func handleRegistrationResponse(_ response: RegisterResponse) {
 
 ### How It Works
 
-1. Fleet manager generates an invite code (e.g., `ABCT-X7K2M9`)
+1. Fleet manager generates an invite code (e.g., `BAYE-7EOBSF`) via web dashboard
 2. Driver registers in app (normal registration, no fleet assigned)
-3. Driver enters the invite code in the app
+3. Driver enters the invite code in the app (format: 4 letters-6 alphanumeric)
 4. A **join request** is created with status "pending"
 5. Fleet manager reviews and approves/rejects the request
 6. Upon approval, driver is assigned to the fleet
@@ -165,12 +169,12 @@ Add a screen where drivers can enter an invite code. This screen should be acces
 #### API: Submit Join Request
 
 ```
-POST /api/driver/join-fleet
+POST https://api.safedriveafrica.com/api/driver/join-fleet
 Authorization: Bearer <jwt_token>
 Content-Type: application/json
 
 {
-  "invite_code": "ABCT-X7K2M9"
+  "invite_code": "BAYE-7EOBSF"
 }
 ```
 
@@ -583,6 +587,10 @@ fun mapErrorToMessage(error: ApiError): String {
 
 ## Testing Checklist
 
+**Production Environment:** `https://api.safedriveafrica.com`
+
+**Test Invite Code:** `BAYE-7EOBSF` (Bayelsa State Transport Company, max 10 uses)
+
 ### Flow 1 (Email Invitation) Tests
 - [ ] Register with an email that has a pending invite → auto-assigned to fleet
 - [ ] Register with an email that has NO pending invite → fleet_assignment is null
@@ -609,6 +617,8 @@ fun mapErrorToMessage(error: ApiError): String {
 ---
 
 ## API Endpoints Summary
+
+**Base URL:** `https://api.safedriveafrica.com`
 
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
