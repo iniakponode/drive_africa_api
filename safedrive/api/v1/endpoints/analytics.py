@@ -608,8 +608,8 @@ def bad_days(
         drivers=drivers,
     )
     
-    # Cache the result for 5 minutes
-    cache_set(cache_key, response.dict(), CACHE_TTL_SHORT)
+    # Cache the result for 5 minutes (use model_dump with mode='json' to serialize UUIDs)
+    cache_set(cache_key, response.model_dump(mode='json'), CACHE_TTL_SHORT)
     
     return response
 
