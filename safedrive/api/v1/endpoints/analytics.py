@@ -347,7 +347,7 @@ def leaderboard(
     # Optimize: Only fetch trips within the required window (+ buffer for date ranges)
     cutoff_date = (start_dt or datetime.utcnow()) - timedelta(days=window_days + 30)
     
-    trips_query = db.query(Trip).filter(Trip.startTime >= cutoff_date)
+    trips_query = db.query(Trip).filter(Trip.start_time >= cutoff_date)
     if cohort_ids:
         trips_query = trips_query.filter(Trip.driverProfileId.in_(cohort_ids))
     trips = _filter_trips_by_window(trips_query.all(), start_dt, end_dt)
@@ -459,7 +459,7 @@ def bad_days(
     # Only fetch trips from the last year (max window needed for monthly analysis)
     cutoff_date = datetime.utcnow() - timedelta(days=BAD_DAY_WINDOWS["month"])
     
-    trips_query = db.query(Trip).filter(Trip.startTime >= cutoff_date)
+    trips_query = db.query(Trip).filter(Trip.start_time >= cutoff_date)
     if cohort_ids:
         trips_query = trips_query.filter(Trip.driverProfileId.in_(cohort_ids))
     trips = trips_query.all()
@@ -536,7 +536,7 @@ def driver_kpis(
     # Optimize: Only fetch trips within a reasonable range (max bad-days window + leaderboard window)
     cutoff_date = datetime.utcnow() - timedelta(days=max(BAD_DAY_WINDOWS["month"], window_days) + 30)
     
-    trips_query = db.query(Trip).filter(Trip.startTime >= cutoff_date)
+    trips_query = db.query(Trip).filter(Trip.start_time >= cutoff_date)
     if cohort_ids:
         trips_query = trips_query.filter(Trip.driverProfileId.in_(cohort_ids))
     trips = _filter_trips_by_window(trips_query.all(), start_dt, end_dt)
