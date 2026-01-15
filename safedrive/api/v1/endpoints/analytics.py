@@ -440,6 +440,8 @@ def driver_ubpk_series(
 def bad_days(
     fleet_id: Optional[UUID] = Query(None, alias="fleetId"),
     insurance_partner_id: Optional[UUID] = Query(None, alias="insurancePartnerId"),
+    page: int = Query(1, ge=1, description="Page number (1-indexed)"),
+    page_size: int = Query(100, ge=10, le=200, description="Items per page"),
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
         require_roles_or_jwt(
@@ -456,15 +458,16 @@ def bad_days(
     )
     cohort_ids = cohort_ids or set()
 
-    # Fetch trips from last 90 days only (more aggressive limit to improve performance)
-    # This provides sufficient data for bad-days analysis while keeping query fast
+    # Use pagination for better performance - fetch recent trips in chunks
     cutoff_date = datetime.utcnow() - timedelta(days=90)
     
     trips_query = db.query(Trip).filter(Trip.start_time >= cutoff_date).order_by(Trip.start_time.desc())
     if cohort_ids:
         trips_query = trips_query.filter(Trip.driverProfileId.in_(cohort_ids))
-    # Limit to most recent 500 trips if still too many
-    trips = trips_query.limit(500).all()
+    
+    # Apply pagination
+    offset = (page - 1) * page_size
+    trips = trips_query.offset(offset).limit(page_size).all()
     distances, unsafe_counts = _trip_stats(db, [trip.id for trip in trips])
 
     day_summary, day_threshold = _bad_days_summary(
