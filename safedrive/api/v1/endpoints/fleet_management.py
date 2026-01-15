@@ -21,7 +21,7 @@ from safedrive.models.driver_profile import DriverProfile
 from safedrive.models.fleet import (
     Fleet,
     VehicleGroup,
-    DriverFleetAssignment,
+    OldDriverFleetAssignment,
     DriverTripEvent,
 )
 from safedrive.models.driving_tip import DrivingTip
@@ -325,7 +325,7 @@ def create_driver_assignment(
                 detail="Vehicle group not found for the requested fleet",
             )
 
-    assignment = DriverFleetAssignment(
+    assignment = OldDriverFleetAssignment(
         driverProfileId=payload.driverProfileId,
         fleet_id=fleet.id,
         vehicle_group_id=vehicle_group.id if vehicle_group else None,
@@ -357,9 +357,9 @@ def get_driver_assignment(
     _ensure_driver_exists(db, driver_id)
 
     assignment = (
-        db.query(DriverFleetAssignment)
-        .filter(DriverFleetAssignment.driverProfileId == driver_id)
-        .order_by(DriverFleetAssignment.assigned_at.desc())
+        db.query(OldDriverFleetAssignment)
+        .filter(OldDriverFleetAssignment.driverProfileId == driver_id)
+        .order_by(OldDriverFleetAssignment.assigned_at.desc())
         .first()
     )
     if not assignment:
