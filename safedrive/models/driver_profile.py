@@ -26,6 +26,7 @@ class DriverProfile(Base):
     unsafe_behaviours = relationship("UnsafeBehaviour", back_populates="driver_profile", cascade="all, delete-orphan")
     nlg_reports = relationship("NLGReport", back_populates="driver_profile", cascade="all, delete-orphan")
     roads = relationship("Road", back_populates="driver_profile", cascade="all, delete-orphan")
+    old_fleet_assignments = relationship("OldDriverFleetAssignment", back_populates="driver_profile", cascade="all, delete-orphan")
     fleet_assignments = relationship("DriverFleetAssignment", back_populates="driver_profile", cascade="all, delete-orphan")
     trip_events = relationship("DriverTripEvent", back_populates="driver_profile", cascade="all, delete-orphan")
     vehicle_assignments = relationship("DriverVehicleAssignment", back_populates="driver_profile", cascade="all, delete-orphan")

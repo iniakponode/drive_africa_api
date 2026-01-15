@@ -18,6 +18,7 @@ class Fleet(Base):
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     vehicle_groups = relationship("VehicleGroup", back_populates="fleet", cascade="all, delete-orphan")
+    old_assignments = relationship("OldDriverFleetAssignment", back_populates="fleet", cascade="all, delete-orphan")
     assignments = relationship("DriverFleetAssignment", back_populates="fleet", cascade="all, delete-orphan")
     vehicles = relationship("Vehicle", back_populates="fleet", cascade="all, delete-orphan")
 
@@ -35,6 +36,7 @@ class VehicleGroup(Base):
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     fleet = relationship("Fleet", back_populates="vehicle_groups")
+    old_assignments = relationship("OldDriverFleetAssignment", back_populates="vehicle_group")
     assignments = relationship("DriverFleetAssignment", back_populates="vehicle_group")
     vehicles = relationship("Vehicle", back_populates="vehicle_group")
 
@@ -53,9 +55,9 @@ class OldDriverFleetAssignment(Base):
     compliance_note = Column(Text, nullable=True)
     assigned_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
-    driver_profile = relationship("DriverProfile", back_populates="fleet_assignments")
-    fleet = relationship("Fleet", back_populates="assignments")
-    vehicle_group = relationship("VehicleGroup", back_populates="assignments")
+    driver_profile = relationship("DriverProfile", back_populates="old_fleet_assignments")
+    fleet = relationship("Fleet", back_populates="old_assignments")
+    vehicle_group = relationship("VehicleGroup", back_populates="old_assignments")
 
     def __repr__(self):
         return f"<OldDriverFleetAssignment(driver={self.driverProfileId}, fleet={self.fleet_id})>"
