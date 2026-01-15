@@ -554,7 +554,7 @@ def bad_days(
     
     # Use paginated driver IDs to maintain order and completeness
     drivers: List[BadDaysSummary] = []
-    for driver_id in sorted(driver_ids, key=lambda item: str(item)):
+    for driver_id in paginated_driver_ids:
         day_payload = day_summary.get(driver_id, (0, None))
         week_payload = week_summary.get(driver_id, (0, None))
         month_payload = month_summary.get(driver_id, (0, None))
