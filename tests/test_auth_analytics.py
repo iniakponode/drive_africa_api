@@ -2,7 +2,7 @@ from datetime import datetime
 from uuid import uuid4
 
 from safedrive.models.driver_profile import DriverProfile
-from safedrive.models.fleet import Fleet, VehicleGroup, DriverFleetAssignment
+from safedrive.models.fleet import Fleet, VehicleGroup, OldDriverFleetAssignment
 from safedrive.models.location import Location
 from safedrive.models.raw_sensor_data import RawSensorData
 from safedrive.models.trip import Trip
@@ -73,13 +73,13 @@ def test_analytics_endpoints():
 
             db.add_all(
                 [
-                    DriverFleetAssignment(
+                    OldDriverFleetAssignment(
                         driverProfileId=driver_a.driverProfileId,
                         fleet_id=fleet.id,
                         vehicle_group_id=group_a.id,
                         onboarding_completed=True,
                     ),
-                    DriverFleetAssignment(
+                    OldDriverFleetAssignment(
                         driverProfileId=driver_b.driverProfileId,
                         fleet_id=fleet.id,
                         vehicle_group_id=group_b.id,

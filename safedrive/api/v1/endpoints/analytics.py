@@ -15,7 +15,7 @@ from safedrive.core.security import (
     require_roles_or_jwt,
 )
 from safedrive.database.db import get_db
-from safedrive.models.fleet import DriverFleetAssignment
+from safedrive.models.fleet import OldDriverFleetAssignment
 from safedrive.models.insurance_partner import InsurancePartnerDriver
 from safedrive.models.location import Location
 from safedrive.models.raw_sensor_data import RawSensorData
@@ -43,8 +43,8 @@ SUPPORTED_PERIODS = {"day", "week", "month"}
 
 def _cohort_from_fleet(db: Session, fleet_id: UUID) -> Set[UUID]:
     rows = (
-        db.query(DriverFleetAssignment.driverProfileId)
-        .filter(DriverFleetAssignment.fleet_id == fleet_id)
+        db.query(OldDriverFleetAssignment.driverProfileId)
+        .filter(OldDriverFleetAssignment.fleet_id == fleet_id)
         .all()
     )
     return {row[0] for row in rows}
@@ -85,9 +85,9 @@ def _resolve_cohort(
         if not current_client.driver_profile_id:
             raise HTTPException(status_code=403, detail="Driver scope missing.")
         assignment = (
-            db.query(DriverFleetAssignment)
-            .filter(DriverFleetAssignment.driverProfileId == current_client.driver_profile_id)
-            .order_by(DriverFleetAssignment.assigned_at.desc())
+            db.query(OldDriverFleetAssignment)
+            .filter(OldDriverFleetAssignment.driverProfileId == current_client.driver_profile_id)
+            .order_by(OldDriverFleetAssignment.assigned_at.desc())
             .first()
         )
         if assignment:
