@@ -28,6 +28,7 @@ class DriverProfile(Base):
     roads = relationship("Road", back_populates="driver_profile", cascade="all, delete-orphan")
     fleet_assignments = relationship("DriverFleetAssignment", back_populates="driver_profile", cascade="all, delete-orphan")
     trip_events = relationship("DriverTripEvent", back_populates="driver_profile", cascade="all, delete-orphan")
+    vehicle_assignments = relationship("DriverVehicleAssignment", back_populates="driver_profile", cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"<DriverProfile(driver_profile_id={self.driverProfileId}, email={self.email})>"

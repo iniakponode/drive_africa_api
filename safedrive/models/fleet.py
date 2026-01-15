@@ -19,6 +19,7 @@ class Fleet(Base):
 
     vehicle_groups = relationship("VehicleGroup", back_populates="fleet", cascade="all, delete-orphan")
     assignments = relationship("DriverFleetAssignment", back_populates="fleet", cascade="all, delete-orphan")
+    vehicles = relationship("Vehicle", back_populates="fleet", cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"<Fleet(id={self.id}, name={self.name})>"
@@ -35,6 +36,7 @@ class VehicleGroup(Base):
 
     fleet = relationship("Fleet", back_populates="vehicle_groups")
     assignments = relationship("DriverFleetAssignment", back_populates="vehicle_group")
+    vehicles = relationship("Vehicle", back_populates="vehicle_group")
 
     def __repr__(self):
         return f"<VehicleGroup(id={self.id}, name={self.name}, fleet_id={self.fleet_id})>"

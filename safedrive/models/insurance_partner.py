@@ -23,6 +23,7 @@ class InsurancePartner(Base):
         cascade="all, delete-orphan",
     )
     api_clients = relationship("ApiClient", back_populates="insurance_partner")
+    vehicles = relationship("Vehicle", back_populates="insurance_partner")
 
     def __repr__(self) -> str:
         return f"<InsurancePartner(id={self.id}, label={self.label})>"
