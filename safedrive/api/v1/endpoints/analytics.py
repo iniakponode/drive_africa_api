@@ -441,7 +441,7 @@ def bad_days(
     fleet_id: Optional[UUID] = Query(None, alias="fleetId"),
     insurance_partner_id: Optional[UUID] = Query(None, alias="insurancePartnerId"),
     page: int = Query(1, ge=1, description="Page number (1-indexed)"),
-    page_size: int = Query(50, ge=10, le=100, description="Drivers per page"),
+    page_size: int = Query(25, ge=10, le=100, description="Drivers per page"),
     db: Session = Depends(get_db),
     current_client: ApiClientContext = Depends(
         require_roles_or_jwt(
@@ -456,10 +456,25 @@ def bad_days(
     """
     Optimized bad-days endpoint using database-level aggregation.
     Returns paginated driver summaries with pre-computed bad days counts.
+    Cached for 5 minutes to improve performance.
     """
     cohort_ids, _ = _resolve_cohort(
         db, current_client, fleet_id, insurance_partner_id, require_scope=False
     )
+    
+    # Try cache first
+    from safedrive.core.cache import cache_get, cache_set, generate_cache_key, CACHE_TTL_SHORT
+    
+    cache_key = generate_cache_key(
+        "bad_days",
+        cohort=sorted(cohort_ids) if cohort_ids else None,
+        page=page,
+        page_size=page_size
+    )
+    
+    cached_result = cache_get(cache_key)
+    if cached_result is not None:
+        return BadDaysResponse(**cached_result)
     
     # Use database aggregation with optimized query structure
     # Pre-aggregate distances per trip to avoid massive join before GROUP BY
@@ -584,7 +599,7 @@ def bad_days(
             )
         )
 
-    return BadDaysResponse(
+    response = BadDaysResponse(
         thresholds=BadDaysThresholds(
             day=day_threshold,
             week=week_threshold,
@@ -592,6 +607,11 @@ def bad_days(
         ),
         drivers=drivers,
     )
+    
+    # Cache the result for 5 minutes
+    cache_set(cache_key, response.dict(), CACHE_TTL_SHORT)
+    
+    return response
 
 
 @router.get("/analytics/driver-kpis", response_model=DriverKpiResponse)
