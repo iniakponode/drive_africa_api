@@ -472,6 +472,7 @@ def bad_days(
             Trip.driverProfileId,
             Trip.id.label("trip_id"),
             Trip.start_time,
+            Trip.start_date,
             func.coalesce(func.sum(Location.distance), 0).label("distance_m"),
         )
         .outerjoin(RawSensorData, RawSensorData.trip_id == Trip.id)
@@ -483,7 +484,7 @@ def bad_days(
         base_query = base_query.filter(Trip.driverProfileId.in_(cohort_ids))
     
     # Group by trip to get distance per trip
-    trip_distances = base_query.group_by(Trip.id, Trip.driverProfileId, Trip.start_time).subquery()
+    trip_distances = base_query.group_by(Trip.id, Trip.driverProfileId, Trip.start_time, Trip.start_date).subquery()
     
     # Get unsafe counts per trip
     unsafe_subq = (
@@ -517,6 +518,7 @@ def bad_days(
             trip_distances.c.driverProfileId,
             trip_distances.c.trip_id,
             trip_distances.c.start_time,
+            trip_distances.c.start_date,
             trip_distances.c.distance_m,
             func.coalesce(unsafe_subq.c.unsafe_count, 0).label("unsafe_count")
         )
@@ -536,7 +538,8 @@ def bad_days(
         trip = Trip(
             id=row.trip_id,
             driverProfileId=row.driverProfileId,
-            start_time=row.start_time
+            start_time=row.start_time,
+            start_date=row.start_date
         )
         trips_list.append(trip)
         distances[row.trip_id] = float(row.distance_m or 0)
