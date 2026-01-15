@@ -1,6 +1,6 @@
 -- Critical indexes for analytics endpoints performance (MySQL version)
 -- Run this on the production database to optimize bad-days query from 165s to <3s
--- Note: Duplicate key errors for existing indexes are safe to ignore
+-- Note: Some indexes may already exist or be part of foreign key constraints
 
 -- Trip table indexes for time-based queries and joins
 DROP INDEX IF EXISTS idx_trip_start_time ON trip;
@@ -9,24 +9,22 @@ CREATE INDEX idx_trip_start_time ON trip(start_time);
 DROP INDEX IF EXISTS idx_trip_driver_start_time ON trip;
 CREATE INDEX idx_trip_driver_start_time ON trip(driverProfileId, start_time);
 
--- RawSensorData indexes for joining with trips and locations
-DROP INDEX IF EXISTS idx_raw_sensor_data_trip_id ON raw_sensor_data;
-CREATE INDEX idx_raw_sensor_data_trip_id ON raw_sensor_data(trip_id);
+DROP INDEX IF EXISTS idx_trip_driver_time_composite ON trip;
+CREATE INDEX idx_trip_driver_time_composite ON trip(driverProfileId, start_time, id);
 
-DROP INDEX IF EXISTS idx_raw_sensor_data_location_id ON raw_sensor_data;
+-- RawSensorData indexes for joining with trips and locations
+-- Note: These columns may already have indexes from foreign key constraints
+-- Skip DROP to avoid foreign key constraint errors, CREATE will fail safely if index exists
+CREATE INDEX idx_raw_sensor_data_trip_id ON raw_sensor_data(trip_id);
 CREATE INDEX idx_raw_sensor_data_location_id ON raw_sensor_data(location_id);
 
--- Location indexes for distance aggregation
-DROP INDEX IF EXISTS idx_location_id ON location;
+-- Location indexes for distance aggregation  
+-- Primary key already indexed, this will fail if id is PK (safe to ignore)
 CREATE INDEX idx_location_id ON location(id);
 
 -- UnsafeBehaviour indexes for counting unsafe behaviors per trip
-DROP INDEX IF EXISTS idx_unsafe_behaviour_trip_id ON unsafe_behaviour;
+-- May already exist from foreign key constraint
 CREATE INDEX idx_unsafe_behaviour_trip_id ON unsafe_behaviour(trip_id);
-
--- Composite indexes for common query patterns
-DROP INDEX IF EXISTS idx_trip_driver_time_composite ON trip;
-CREATE INDEX idx_trip_driver_time_composite ON trip(driverProfileId, start_time, id);
 
 -- Verify indexes were created (MySQL version)
 SELECT 
