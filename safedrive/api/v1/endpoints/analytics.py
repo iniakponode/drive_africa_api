@@ -525,54 +525,34 @@ def bad_days(
         .all()
     )
     
-    # Convert to efficient data structure for analysis
-    trips_by_driver = {}
+    # Convert to Trip objects and dictionaries for _bad_days_summary
+    trips_list = []
+    distances = {}
+    unsafe_counts = {}
+    
     for row in trips_data:
-        driver_id = row.driverProfileId
-        if driver_id not in trips_by_driver:
-            trips_by_driver[driver_id] = []
-        trips_by_driver[driver_id].append({
-            "trip_id": row.trip_id,
-            "start_time": row.start_time,
-            "distance_m": float(row.distance_m or 0),
-            "unsafe_count": int(row.unsafe_count or 0),
-            "ubpk": (int(row.unsafe_count or 0) / (float(row.distance_m or 0) / 1000.0)) 
-                    if row.distance_m and row.distance_m > 0 else 0.0
-        })
-    
-    # Compute bad days efficiently in-memory (small dataset after pagination)
-    drivers: List[BadDaysSummary] = []
-    for driver_id in paginated_driver_ids:
-        driver_trips = trips_by_driver.get(driver_id, [])
-        # Simple bad days heuristic: count days with UBPK > threshold (can be refined)
-        drivers.append(
-            BadDaysSummary(
-                driverProfileId=driver_id,
-                bad_days=0,  # Computed from day aggregation
-                bad_weeks=0,  # Computed from week aggregation
-                bad_months=0,  # Computed from month aggregation
-                last_day_delta=None,
-                last_week_delta=None,
-                last_month_delta=None,
-            )
+        # Create minimal Trip object for computation
+        trip = Trip(
+            id=row.trip_id,
+            driverProfileId=row.driverProfileId,
+            start_time=row.start_time
         )
+        trips_list.append(trip)
+        distances[row.trip_id] = float(row.distance_m or 0)
+        unsafe_counts[row.trip_id] = int(row.unsafe_count or 0)
     
-    return BadDaysResponse(
-        thresholds=BadDaysThresholds(day=0.0, week=0.0, month=0.0),
-        drivers=drivers,
-    )
-
+    # Compute bad days using existing logic
     day_summary, day_threshold = _bad_days_summary(
-        trips, distances, unsafe_counts, "day", BAD_DAY_WINDOWS["day"]
+        trips_list, distances, unsafe_counts, "day", BAD_DAY_WINDOWS["day"]
     )
     week_summary, week_threshold = _bad_days_summary(
-        trips, distances, unsafe_counts, "week", BAD_DAY_WINDOWS["week"]
+        trips_list, distances, unsafe_counts, "week", BAD_DAY_WINDOWS["week"]
     )
     month_summary, month_threshold = _bad_days_summary(
-        trips, distances, unsafe_counts, "month", BAD_DAY_WINDOWS["month"]
+        trips_list, distances, unsafe_counts, "month", BAD_DAY_WINDOWS["month"]
     )
-
-    driver_ids = set(day_summary.keys()) | set(week_summary.keys()) | set(month_summary.keys())
+    
+    # Use paginated driver IDs to maintain order and completeness
     drivers: List[BadDaysSummary] = []
     for driver_id in sorted(driver_ids, key=lambda item: str(item)):
         day_payload = day_summary.get(driver_id, (0, None))
