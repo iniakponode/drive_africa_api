@@ -72,4 +72,6 @@ class TokenResponse(BaseModel):
     token_type: str = "bearer"
     driver_profile_id: UUID
     email: str
+    fleet_assignment: Optional[dict] = None  # Added for registration response
+    fleet_status: Optional[dict] = None  # Added for login response
 
