@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 
 from safedrive.core.security import Role, get_current_client, require_roles
 from safedrive.crud import fleet_driver as crud
-from safedrive.database.base import get_db
+from safedrive.database.db import get_db
 from safedrive.models.auth import ApiClient
 from safedrive.models.fleet import Fleet
 from safedrive.schemas import fleet_driver as schemas
