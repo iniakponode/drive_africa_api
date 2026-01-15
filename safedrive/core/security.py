@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 from safedrive.database.db import get_db
 from safedrive.models.auth import ApiClient
 from safedrive.models.admin_setting import AdminSetting
-from safedrive.models.fleet import DriverFleetAssignment
+from safedrive.models.fleet import OldDriverFleetAssignment
 from safedrive.models.insurance_partner import InsurancePartnerDriver
 from safedrive.models.driver_profile import DriverProfile
 
@@ -85,8 +85,8 @@ def _load_allowed_driver_ids(
                 detail="Fleet scope is missing for this API key.",
             )
         rows = (
-            db.query(DriverFleetAssignment.driverProfileId)
-            .filter(DriverFleetAssignment.fleet_id == client.fleet_id)
+            db.query(OldDriverFleetAssignment.driverProfileId)
+            .filter(OldDriverFleetAssignment.fleet_id == client.fleet_id)
             .all()
         )
         return {row[0] for row in rows}
