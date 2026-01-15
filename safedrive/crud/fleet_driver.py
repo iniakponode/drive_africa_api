@@ -17,8 +17,7 @@ from safedrive.models.fleet_driver import (
     FleetInviteCode,
 )
 from safedrive.models.driver_profile import DriverProfile
-from safedrive.models.fleet import Fleet
-from safedrive.models.vehicle import VehicleGroup
+from safedrive.models.fleet import Fleet, VehicleGroup
 
 
 def generate_invite_code(fleet_name: str) -> str:
