@@ -16,6 +16,236 @@ from safedrive.schemas import fleet_driver as schemas
 router = APIRouter()
 
 
+# --- Scoped Endpoints for Fleet Managers (MUST BE FIRST) ---
+# These routes match "/fleet/my/..." and must be defined BEFORE
+# the parameterized routes like "/fleet/{fleet_id}/..." to avoid
+# FastAPI treating "my" as a UUID parameter
+
+
+@router.get(
+    "/fleet/my/invite-codes",
+    response_model=schemas.FleetInviteCodeListResponse,
+    summary="List my fleet's invite codes",
+)
+def list_my_fleet_invite_codes(
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    List all invite codes for the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager only
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Fleet manager must be assigned to a fleet",
+        )
+    
+    invite_codes = crud.crud_fleet_invite_code.get_by_fleet(db, fleet_id=current_client.fleet_id)
+    return {"invite_codes": invite_codes}
+
+
+@router.post(
+    "/fleet/my/invite-codes",
+    response_model=schemas.FleetInviteCodeResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Create invite code for my fleet",
+)
+def create_my_fleet_invite_code(
+    payload: schemas.FleetInviteCodeCreate,
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    Create an invite code for the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager only
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Fleet manager must be assigned to a fleet",
+        )
+    
+    # Check if fleet exists
+    fleet = db.query(Fleet).filter(Fleet.id == current_client.fleet_id).first()
+    if not fleet:
+        raise HTTPException(status_code=404, detail="Fleet not found")
+    
+    # Create invite code using fleet manager's fleet_id
+    invite_code = crud.crud_fleet_invite_code.create(
+        db,
+        fleet_id=current_client.fleet_id,
+        created_by=current_client.id,
+        expires_at=payload.expires_at,
+        max_uses=payload.max_uses,
+    )
+    
+    return invite_code
+
+
+@router.get(
+    "/fleet/my/driver-invites",
+    response_model=schemas.DriverInviteListResponse,
+    summary="List my fleet's driver invitations",
+)
+def list_my_fleet_driver_invites(
+    status_filter: Optional[str] = Query(
+        None, alias="status", description="Filter by status"
+    ),
+    page: int = Query(1, ge=1),
+    page_size: int = Query(25, ge=1, le=100),
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    List driver invitations for the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager (fleet_id derived from auth token)
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Fleet manager is not associated with a fleet",
+        )
+    
+    skip = (page - 1) * page_size
+    invites, total = crud.crud_driver_invite.get_by_fleet(
+        db,
+        fleet_id=current_client.fleet_id,
+        status=status_filter,
+        skip=skip,
+        limit=page_size,
+    )
+    
+    return {
+        "invites": invites,
+        "total": total,
+        "page": page,
+        "page_size": page_size,
+    }
+
+
+@router.post(
+    "/fleet/my/driver-invites",
+    response_model=schemas.DriverInviteResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Invite driver to my fleet",
+)
+def create_my_fleet_driver_invite(
+    data: schemas.DriverInviteCreate,
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    Invite a driver to the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager (fleet_id derived from auth token)
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Fleet manager is not associated with a fleet",
+        )
+    
+    # TODO: Send email if data.send_email is True
+    
+    invite = crud.crud_driver_invite.create(
+        db,
+        fleet_id=current_client.fleet_id,
+        email=data.email,
+        created_by=current_client.id,
+        vehicle_group_id=data.vehicle_group_id,
+        expires_at=data.expires_at,
+    )
+    
+    return invite
+
+
+@router.get(
+    "/fleet/my/drivers",
+    response_model=schemas.FleetDriverListResponse,
+    summary="List my fleet's drivers",
+)
+def list_my_fleet_drivers(
+    search: Optional[str] = Query(None, description="Search by name or email"),
+    vehicle_group_id: Optional[UUID] = Query(
+        None, description="Filter by vehicle group"
+    ),
+    has_vehicle: Optional[bool] = Query(
+        None, description="Filter by vehicle assignment status"
+    ),
+    page: int = Query(1, ge=1),
+    page_size: int = Query(25, ge=1, le=100),
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    List drivers for the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager (fleet_id derived from auth token)
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Fleet manager is not associated with a fleet",
+        )
+    
+    skip = (page - 1) * page_size
+    assignments, total = crud.crud_driver_fleet_assignment.get_by_fleet(
+        db,
+        fleet_id=current_client.fleet_id,
+        search=search,
+        vehicle_group_id=vehicle_group_id,
+        has_vehicle=has_vehicle,
+        skip=skip,
+        limit=page_size,
+    )
+    
+    # Build driver list with details
+    drivers = []
+    for assignment in assignments:
+        driver_profile = assignment.driver_profile
+        if not driver_profile:
+            continue
+        
+        vehicle_info = None
+        
+        assignment_info = {
+            "id": assignment.id,
+            "vehicle_group_id": assignment.vehicle_group_id,
+            "vehicle_group_name": (
+                assignment.vehicle_group.name if assignment.vehicle_group else None
+            ),
+            "onboarding_completed": assignment.onboarding_completed,
+            "assigned_at": assignment.assigned_at,
+        }
+        
+        driver_info = {
+            "driverProfileId": driver_profile.driverProfileId,
+            "email": driver_profile.email,
+            "name": getattr(driver_profile, "name", None),
+            "phone": getattr(driver_profile, "phoneNumber", None),
+            "assignment": assignment_info,
+            "vehicle": vehicle_info,
+            "safety_score": None,
+            "total_trips": 0,
+            "last_active": None,
+        }
+        drivers.append(driver_info)
+    
+    return {
+        "drivers": drivers,
+        "total": total,
+        "page": page,
+        "page_size": page_size,
+    }
+
+
+# --- Parameterized Fleet Endpoints (After "my" routes) ---
+
+
 # --- Fleet Invite Codes ---
 
 
@@ -159,48 +389,6 @@ def list_driver_invites(
     }
 
 
-@router.get(
-    "/fleet/my/driver-invites",
-    response_model=schemas.DriverInviteListResponse,
-    summary="List my fleet's driver invitations",
-)
-def list_my_fleet_driver_invites(
-    status_filter: Optional[str] = Query(
-        None, alias="status", description="Filter by status"
-    ),
-    page: int = Query(1, ge=1),
-    page_size: int = Query(25, ge=1, le=100),
-    db: Session = Depends(get_db),
-    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
-):
-    """
-    List driver invitations for the authenticated fleet manager's fleet.
-    
-    **Authorization:** Fleet manager (fleet_id derived from auth token)
-    """
-    if not current_client.fleet_id:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Fleet manager is not associated with a fleet",
-        )
-    
-    skip = (page - 1) * page_size
-    invites, total = crud.crud_driver_invite.get_by_fleet(
-        db,
-        fleet_id=current_client.fleet_id,
-        status=status_filter,
-        skip=skip,
-        limit=page_size,
-    )
-    
-    return {
-        "invites": invites,
-        "total": total,
-        "page": page,
-        "page_size": page_size,
-    }
-
-
 @router.post(
     "/fleet/{fleet_id}/driver-invites",
     response_model=schemas.DriverInviteResponse,
@@ -231,42 +419,6 @@ def create_driver_invite(
     invite = crud.crud_driver_invite.create(
         db,
         fleet_id=fleet_id,
-        email=data.email,
-        created_by=current_client.id,
-        vehicle_group_id=data.vehicle_group_id,
-        expires_at=data.expires_at,
-    )
-    
-    return invite
-
-
-@router.post(
-    "/fleet/my/driver-invites",
-    response_model=schemas.DriverInviteResponse,
-    status_code=status.HTTP_201_CREATED,
-    summary="Invite driver to my fleet",
-)
-def create_my_fleet_driver_invite(
-    data: schemas.DriverInviteCreate,
-    db: Session = Depends(get_db),
-    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
-):
-    """
-    Invite a driver to the authenticated fleet manager's fleet.
-    
-    **Authorization:** Fleet manager (fleet_id derived from auth token)
-    """
-    if not current_client.fleet_id:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Fleet manager is not associated with a fleet",
-        )
-    
-    # TODO: Send email if data.send_email is True
-    
-    invite = crud.crud_driver_invite.create(
-        db,
-        fleet_id=current_client.fleet_id,
         email=data.email,
         created_by=current_client.id,
         vehicle_group_id=data.vehicle_group_id,
@@ -562,86 +714,6 @@ def list_fleet_drivers(
             "safety_score": None,  # TODO: Calculate from trips
             "total_trips": 0,  # TODO: Count from trips
             "last_active": None,  # TODO: Get from last trip
-        }
-        drivers.append(driver_info)
-    
-    return {
-        "drivers": drivers,
-        "total": total,
-        "page": page,
-        "page_size": page_size,
-    }
-
-
-@router.get(
-    "/fleet/my/drivers",
-    response_model=schemas.FleetDriverListResponse,
-    summary="List my fleet's drivers",
-)
-def list_my_fleet_drivers(
-    search: Optional[str] = Query(None, description="Search by name or email"),
-    vehicle_group_id: Optional[UUID] = Query(
-        None, description="Filter by vehicle group"
-    ),
-    has_vehicle: Optional[bool] = Query(
-        None, description="Filter by vehicle assignment status"
-    ),
-    page: int = Query(1, ge=1),
-    page_size: int = Query(25, ge=1, le=100),
-    db: Session = Depends(get_db),
-    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
-):
-    """
-    List drivers for the authenticated fleet manager's fleet.
-    
-    **Authorization:** Fleet manager (fleet_id derived from auth token)
-    """
-    if not current_client.fleet_id:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Fleet manager is not associated with a fleet",
-        )
-    
-    skip = (page - 1) * page_size
-    assignments, total = crud.crud_driver_fleet_assignment.get_by_fleet(
-        db,
-        fleet_id=current_client.fleet_id,
-        search=search,
-        vehicle_group_id=vehicle_group_id,
-        has_vehicle=has_vehicle,
-        skip=skip,
-        limit=page_size,
-    )
-    
-    # Build driver list with details
-    drivers = []
-    for assignment in assignments:
-        driver_profile = assignment.driver_profile
-        if not driver_profile:
-            continue
-        
-        vehicle_info = None
-        
-        assignment_info = {
-            "id": assignment.id,
-            "vehicle_group_id": assignment.vehicle_group_id,
-            "vehicle_group_name": (
-                assignment.vehicle_group.name if assignment.vehicle_group else None
-            ),
-            "onboarding_completed": assignment.onboarding_completed,
-            "assigned_at": assignment.assigned_at,
-        }
-        
-        driver_info = {
-            "driverProfileId": driver_profile.driverProfileId,
-            "email": driver_profile.email,
-            "name": getattr(driver_profile, "name", None),
-            "phone": getattr(driver_profile, "phoneNumber", None),
-            "assignment": assignment_info,
-            "vehicle": vehicle_info,
-            "safety_score": None,
-            "total_trips": 0,
-            "last_active": None,
         }
         drivers.append(driver_info)
     
