@@ -50,4 +50,16 @@ Creating NEW Admin and Researcher Keys
 
 3091711202
 
+• Collected adb logcat -d (saved as artifacts/monkey-logcat.log) and searched for “Crash”; only handset/system services (Facebook AppManager,
+  AppCenter crash-service lifecycle, ANR detector hooks) reported “Crash” entries—nothing pointing to com.uoa.safedriveafrica crashes during the
+  latest run (see artifacts/monkey-logcat.log:24055,134930-135821,136247,139762,174497,175943,230259,230474,249654).
+
+  Next steps:
+
+  1. Keep this log file with the artifacts; if a future crash occurs, rerun rg -n "Crash" artifacts/monkey-logcat.log or add filters for your
+     package to see timestamps.
+  2. To catch the earlier long-tail crash, consider leaving adb logcat streaming to a rolling file while the device runs overnight so you can
+     capture the stack trace when it happens.
+
+
 

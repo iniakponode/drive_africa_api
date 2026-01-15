@@ -62,8 +62,8 @@ DEBUG = os.getenv("DEBUG") == "True"
 
 # CORS Configuration from environment
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "")
-if ALLOWED_ORIGINS:
-    origins = [origin.strip() for origin in ALLOWED_ORIGINS.split(",")]
+if ALLOWED_ORIGINS and ALLOWED_ORIGINS.strip():
+    origins = [origin.strip() for origin in ALLOWED_ORIGINS.split(",") if origin.strip()]
 else:
     # Default origins for production
     origins = [
@@ -75,6 +75,8 @@ else:
 # Allow all origins in development
 if ENVIRONMENT == "development":
     origins = ["*"]
+
+logger.info(f"CORS configured with origins: {origins}")
 
 # Add CORS Middleware
 app.add_middleware(
