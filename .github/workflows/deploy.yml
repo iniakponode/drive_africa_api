@@ -42,7 +42,7 @@ jobs:
       
       - name: Run tests
         env:
-          DATABASE_URL: sqlite:///:memory:
+          DATABASE_URL: "sqlite:///:memory:"
         run: |
           python -m pytest tests/ -v --cov=safedrive --cov-report=xml --cov-report=term
       
