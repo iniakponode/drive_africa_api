@@ -32,6 +32,7 @@ from safedrive.api.v1.endpoints.auth import router as auth_router
 from safedrive.api.v1.endpoints.analytics import router as analytics_router
 from safedrive.api.v1.endpoints.driver_auth import router as driver_auth_router
 from safedrive.api.v1.endpoints.vehicles import router as vehicles_router
+from safedrive.api.v1.endpoints.user_management import router as user_management_router
 from safedrive.core.security import (
     Role,
     get_current_client,
@@ -209,6 +210,12 @@ safe_drive_africa_api_router.include_router(
     admin_router,
     prefix="/api",
     tags=["Admin"],
+    dependencies=[Depends(require_roles(Role.ADMIN))],
+)
+safe_drive_africa_api_router.include_router(
+    user_management_router,
+    prefix="/api",
+    tags=["User Management"],
     dependencies=[Depends(require_roles(Role.ADMIN))],
 )
 safe_drive_africa_api_router.include_router(

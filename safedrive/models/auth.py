@@ -27,6 +27,8 @@ class ApiClient(Base):
         ForeignKey("insurance_partner.id"),
         nullable=True,
     )
+    email = Column(String(255), nullable=True, unique=True)
+    last_login_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     insurance_partner = relationship("InsurancePartner", back_populates="api_clients")
