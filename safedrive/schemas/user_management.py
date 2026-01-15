@@ -9,7 +9,7 @@ from pydantic import BaseModel, EmailStr, Field
 
 class UserAccountBase(BaseModel):
     """Base schema for UserAccount data."""
-    email: EmailStr = Field(..., description="User's email address")
+    email: Optional[EmailStr] = Field(None, description="User's email address")
     name: Optional[str] = Field(None, max_length=255, description="Display name")
     role: str = Field(..., description="User role (admin, driver, researcher, fleet_manager, insurance_partner)")
     active: bool = Field(True, description="Whether the account is active")
