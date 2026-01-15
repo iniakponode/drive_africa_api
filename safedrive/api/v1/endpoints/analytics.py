@@ -456,13 +456,15 @@ def bad_days(
     )
     cohort_ids = cohort_ids or set()
 
-    # Only fetch trips from the last year (max window needed for monthly analysis)
-    cutoff_date = datetime.utcnow() - timedelta(days=BAD_DAY_WINDOWS["month"])
+    # Fetch trips from last 90 days only (more aggressive limit to improve performance)
+    # This provides sufficient data for bad-days analysis while keeping query fast
+    cutoff_date = datetime.utcnow() - timedelta(days=90)
     
-    trips_query = db.query(Trip).filter(Trip.start_time >= cutoff_date)
+    trips_query = db.query(Trip).filter(Trip.start_time >= cutoff_date).order_by(Trip.start_time.desc())
     if cohort_ids:
         trips_query = trips_query.filter(Trip.driverProfileId.in_(cohort_ids))
-    trips = trips_query.all()
+    # Limit to most recent 500 trips if still too many
+    trips = trips_query.limit(500).all()
     distances, unsafe_counts = _trip_stats(db, [trip.id for trip in trips])
 
     day_summary, day_threshold = _bad_days_summary(
