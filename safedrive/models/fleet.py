@@ -42,7 +42,7 @@ class VehicleGroup(Base):
         return f"<VehicleGroup(id={self.id}, name={self.name}, fleet_id={self.fleet_id})>"
 
 
-class DriverFleetAssignment(Base):
+class OldDriverFleetAssignment(Base):
     __tablename__ = "driver_fleet_assignment"
 
     id = Column(UUIDType(binary=True), primary_key=True, default=uuid4)
@@ -58,7 +58,7 @@ class DriverFleetAssignment(Base):
     vehicle_group = relationship("VehicleGroup", back_populates="assignments")
 
     def __repr__(self):
-        return f"<DriverFleetAssignment(driver={self.driverProfileId}, fleet={self.fleet_id})>"
+        return f"<OldDriverFleetAssignment(driver={self.driverProfileId}, fleet={self.fleet_id})>"
 
 
 class DriverTripEvent(Base):
