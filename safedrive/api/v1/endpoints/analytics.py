@@ -461,30 +461,40 @@ def bad_days(
         db, current_client, fleet_id, insurance_partner_id, require_scope=False
     )
     
-    # Use database aggregation for massive performance improvement
-    # This computes everything at the database level instead of loading data into Python
+    # Use database aggregation with optimized query structure
+    # Pre-aggregate distances per trip to avoid massive join before GROUP BY
     cutoff_date = datetime.utcnow() - timedelta(days=BAD_DAY_WINDOWS["month"])
     cutoff_timestamp_ms = int(cutoff_date.timestamp() * 1000)  # Convert to milliseconds
     
-    # Build base query with cohort filter
+    # Pre-aggregate distances by trip in a subquery (avoids 8M+ row aggregation)
+    distance_subq = (
+        db.query(
+            RawSensorData.trip_id,
+            func.coalesce(func.sum(Location.distance), 0).label("total_distance")
+        )
+        .outerjoin(Location, Location.id == RawSensorData.location_id)
+        .group_by(RawSensorData.trip_id)
+        .subquery()
+    )
+    
+    # Build main query joining pre-aggregated distances
     base_query = (
         db.query(
             Trip.driverProfileId,
             Trip.id.label("trip_id"),
             Trip.start_time,
             Trip.start_date,
-            func.coalesce(func.sum(Location.distance), 0).label("distance_m"),
+            func.coalesce(distance_subq.c.total_distance, 0).label("distance_m"),
         )
-        .outerjoin(RawSensorData, RawSensorData.trip_id == Trip.id)
-        .outerjoin(Location, Location.id == RawSensorData.location_id)
+        .outerjoin(distance_subq, distance_subq.c.trip_id == Trip.id)
         .filter(Trip.start_time >= cutoff_timestamp_ms)
     )
     
     if cohort_ids:
         base_query = base_query.filter(Trip.driverProfileId.in_(cohort_ids))
     
-    # Group by trip to get distance per trip
-    trip_distances = base_query.group_by(Trip.id, Trip.driverProfileId, Trip.start_time, Trip.start_date).subquery()
+    # No GROUP BY needed since distances are pre-aggregated
+    trip_distances = base_query.subquery()
     
     # Get unsafe counts per trip
     unsafe_subq = (
