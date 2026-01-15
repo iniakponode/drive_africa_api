@@ -464,6 +464,7 @@ def bad_days(
     # Use database aggregation for massive performance improvement
     # This computes everything at the database level instead of loading data into Python
     cutoff_date = datetime.utcnow() - timedelta(days=BAD_DAY_WINDOWS["month"])
+    cutoff_timestamp_ms = int(cutoff_date.timestamp() * 1000)  # Convert to milliseconds
     
     # Build base query with cohort filter
     base_query = (
@@ -475,7 +476,7 @@ def bad_days(
         )
         .outerjoin(RawSensorData, RawSensorData.trip_id == Trip.id)
         .outerjoin(Location, Location.id == RawSensorData.location_id)
-        .filter(Trip.start_time >= cutoff_date)
+        .filter(Trip.start_time >= cutoff_timestamp_ms)
     )
     
     if cohort_ids:
