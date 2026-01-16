@@ -807,6 +807,11 @@ def add_driver_to_fleet(
     response_model=schemas.FleetAssignmentInfo,
     summary="Update driver's fleet assignment",
 )
+@router.patch(
+    "/fleet/{fleet_id}/drivers/{driver_profile_id}",
+    response_model=schemas.FleetAssignmentInfo,
+    summary="Update driver's fleet assignment",
+)
 def update_fleet_driver(
     fleet_id: UUID,
     driver_profile_id: UUID,
