@@ -6,7 +6,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
-from safedrive.core.security import Role, get_current_client, require_roles
+from safedrive.core.security import Role, get_current_client, get_current_client_or_driver, require_roles
 from safedrive.crud import fleet_driver as crud
 from safedrive.database.db import get_db
 from safedrive.models.auth import ApiClient
@@ -882,15 +882,15 @@ def get_unassigned_drivers(
 def submit_join_request(
     data: schemas.DriverJoinRequestSubmit,
     db: Session = Depends(get_db),
-    current_client: ApiClient = Depends(get_current_client),
+    current_client = Depends(get_current_client_or_driver),
 ):
     """
     Submit a request to join a fleet using an invite code.
     
-    **Authorization:** Authenticated driver (JWT)
+    **Authorization:** Authenticated driver (JWT or API Key)
     """
     # Verify user is a driver
-    if current_client.role != Role.DRIVER.value:
+    if current_client.role != Role.DRIVER:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Only drivers can join fleets",
@@ -973,14 +973,14 @@ def submit_join_request(
 )
 def get_driver_fleet_status(
     db: Session = Depends(get_db),
-    current_client: ApiClient = Depends(get_current_client),
+    current_client = Depends(get_current_client_or_driver),
 ):
     """
     Get the driver's current fleet membership status.
     
-    **Authorization:** Authenticated driver (JWT)
+    **Authorization:** Authenticated driver (JWT or API Key)
     """
-    if current_client.role != Role.DRIVER.value:
+    if current_client.role != Role.DRIVER:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Only drivers can check fleet status",
