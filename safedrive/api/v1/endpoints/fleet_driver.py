@@ -243,6 +243,55 @@ def list_my_fleet_drivers(
     }
 
 
+@router.get(
+    "/fleet/my/join-requests",
+    response_model=schemas.JoinRequestListResponse,
+    summary="List my fleet's join requests",
+)
+def list_my_fleet_join_requests(
+    status_filter: Optional[str] = Query(
+        None, alias="status", description="Filter by status"
+    ),
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    List pending join requests for the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager (fleet_id derived from auth token)
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Fleet manager is not associated with a fleet",
+        )
+    
+    requests = crud.crud_driver_join_request.get_by_fleet(
+        db, fleet_id=current_client.fleet_id, status=status_filter
+    )
+    
+    # Build response with driver info
+    request_list = []
+    for req in requests:
+        request_info = {
+            "id": req.id,
+            "fleet_id": req.fleet_id,
+            "driver_profile_id": req.driver_profile_id,
+            "driver_email": req.driver_profile.email if req.driver_profile else None,
+            "driver_name": (
+                getattr(req.driver_profile, "name", None)
+                if req.driver_profile
+                else None
+            ),
+            "invite_code_used": req.invite_code.code if req.invite_code else None,
+            "status": req.status,
+            "requested_at": req.requested_at,
+        }
+        request_list.append(request_info)
+    
+    return {"requests": request_list}
+
+
 # --- Parameterized Fleet Endpoints (After "my" routes) ---
 
 
