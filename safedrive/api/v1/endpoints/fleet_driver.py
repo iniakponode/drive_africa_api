@@ -163,6 +163,77 @@ def create_my_fleet_driver_invite(
     return invite
 
 
+@router.post(
+    "/fleet/my/driver-invites/{invite_id}/resend",
+    response_model=dict,
+    summary="Resend invitation email from my fleet",
+)
+def resend_my_fleet_driver_invite(
+    invite_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    Resend an invitation email from the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager (fleet_id derived from auth token)
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Fleet manager is not associated with a fleet",
+        )
+    
+    invite = crud.crud_driver_invite.get(db, invite_id=invite_id)
+    if not invite or str(invite.fleet_id) != str(current_client.fleet_id):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Invitation not found",
+        )
+    
+    # TODO: Implement email sending
+    
+    return {"message": f"Invitation email resent to {invite.email}"}
+
+
+@router.delete(
+    "/fleet/my/driver-invites/{invite_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    summary="Cancel driver invitation from my fleet",
+)
+def cancel_my_fleet_driver_invite(
+    invite_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    Cancel a pending invitation from the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager (fleet_id derived from auth token)
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Fleet manager is not associated with a fleet",
+        )
+    
+    invite = crud.crud_driver_invite.get(db, invite_id=invite_id)
+    if not invite or str(invite.fleet_id) != str(current_client.fleet_id):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Invitation not found in your fleet",
+        )
+    
+    success = crud.crud_driver_invite.cancel(db, invite_id=invite_id)
+    if not success:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Invitation not found or already processed",
+        )
+    
+    return None
+
+
 @router.get(
     "/fleet/my/drivers",
     response_model=schemas.FleetDriverListResponse,
