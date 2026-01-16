@@ -198,7 +198,7 @@ def resend_my_fleet_driver_invite(
 
 @router.delete(
     "/fleet/my/driver-invites/{invite_id}",
-    status_code=status.HTTP_204_NO_CONTENT,
+    response_model=dict,
     summary="Cancel driver invitation from my fleet",
 )
 def cancel_my_fleet_driver_invite(
@@ -231,7 +231,7 @@ def cancel_my_fleet_driver_invite(
             detail="Invitation not found or already processed",
         )
     
-    return None
+    return {"message": "Invitation cancelled successfully"}
 
 
 @router.get(
