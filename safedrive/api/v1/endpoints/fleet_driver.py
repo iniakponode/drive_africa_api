@@ -11,6 +11,7 @@ from safedrive.crud import fleet_driver as crud
 from safedrive.database.db import get_db
 from safedrive.models.auth import ApiClient
 from safedrive.models.fleet import Fleet
+from safedrive.models.fleet_driver import FleetInviteCode
 from safedrive.schemas import fleet_driver as schemas
 
 router = APIRouter()
@@ -107,7 +108,7 @@ def revoke_my_fleet_invite_code(
         )
     
     # Verify the code belongs to the fleet manager's fleet
-    code = crud.crud_fleet_invite_code.get(db, code_id=code_id)
+    code = db.query(FleetInviteCode).filter(FleetInviteCode.id == code_id).first()
     if not code or str(code.fleet_id) != str(current_client.fleet_id):
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
