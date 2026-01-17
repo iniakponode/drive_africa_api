@@ -403,6 +403,99 @@ def list_my_fleet_join_requests(
     return {"requests": request_list}
 
 
+@router.post(
+    "/fleet/my/join-requests/{request_id}/approve",
+    response_model=dict,
+    summary="Approve join request for my fleet",
+)
+def approve_my_fleet_join_request(
+    request_id: UUID,
+    data: schemas.JoinRequestApprove,
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    Approve a join request for the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager (fleet_id derived from auth token)
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Fleet manager is not associated with a fleet",
+        )
+    
+    # Verify the request belongs to the fleet manager's fleet
+    request = crud.crud_driver_join_request.get(db, request_id=request_id)
+    if not request or str(request.fleet_id) != str(current_client.fleet_id):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Join request not found in your fleet",
+        )
+    
+    # Approve the request
+    request = crud.crud_driver_join_request.approve(
+        db,
+        request_id=request_id,
+        reviewed_by=current_client.id,
+        vehicle_group_id=data.vehicle_group_id,
+    )
+    
+    # Create the fleet assignment
+    assignment = crud.crud_driver_fleet_assignment.create(
+        db,
+        fleet_id=current_client.fleet_id,
+        driver_profile_id=request.driver_profile_id,
+        vehicle_group_id=data.vehicle_group_id,
+        assigned_by=current_client.id,
+    )
+    
+    return {
+        "message": "Driver approved and assigned to fleet",
+        "assignment_id": str(assignment.id),
+    }
+
+
+@router.post(
+    "/fleet/my/join-requests/{request_id}/reject",
+    response_model=dict,
+    summary="Reject join request for my fleet",
+)
+def reject_my_fleet_join_request(
+    request_id: UUID,
+    data: schemas.JoinRequestReject,
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    Reject a join request for the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager (fleet_id derived from auth token)
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Fleet manager is not associated with a fleet",
+        )
+    
+    # Verify the request belongs to the fleet manager's fleet
+    request = crud.crud_driver_join_request.get(db, request_id=request_id)
+    if not request or str(request.fleet_id) != str(current_client.fleet_id):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Join request not found in your fleet",
+        )
+    
+    crud.crud_driver_join_request.reject(
+        db,
+        request_id=request_id,
+        reviewed_by=current_client.id,
+        reason=data.reason,
+    )
+    
+    return {"message": "Join request rejected successfully"}
+
+
 # --- Parameterized Fleet Endpoints (After "my" routes) ---
 
 
