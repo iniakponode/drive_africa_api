@@ -85,6 +85,45 @@ def create_my_fleet_invite_code(
     return invite_code
 
 
+@router.delete(
+    "/fleet/my/invite-codes/{code_id}",
+    response_model=dict,
+    summary="Revoke invite code from my fleet",
+)
+def revoke_my_fleet_invite_code(
+    code_id: UUID,
+    db: Session = Depends(get_db),
+    current_client: ApiClient = Depends(require_roles(Role.FLEET_MANAGER)),
+):
+    """
+    Revoke an invite code from the authenticated fleet manager's fleet.
+    
+    **Authorization:** Fleet manager only
+    """
+    if not current_client.fleet_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Fleet manager must be assigned to a fleet",
+        )
+    
+    # Verify the code belongs to the fleet manager's fleet
+    code = crud.crud_fleet_invite_code.get(db, code_id=code_id)
+    if not code or str(code.fleet_id) != str(current_client.fleet_id):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Invite code not found in your fleet",
+        )
+    
+    success = crud.crud_fleet_invite_code.revoke(db, code_id=code_id)
+    if not success:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Invite code not found",
+        )
+    
+    return {"message": "Invite code revoked successfully"}
+
+
 @router.get(
     "/fleet/my/driver-invites",
     response_model=schemas.DriverInviteListResponse,
