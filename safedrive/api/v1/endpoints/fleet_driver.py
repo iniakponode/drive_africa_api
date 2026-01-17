@@ -1063,7 +1063,7 @@ def submit_join_request(
     
     # Check if driver already has a fleet
     existing_assignment = crud.crud_driver_fleet_assignment.get_by_driver(
-        db, driver_profile_id=current_client.driverProfileId
+        db, driver_profile_id=current_client.driver_profile_id
     )
     if existing_assignment:
         raise HTTPException(
@@ -1112,7 +1112,7 @@ def submit_join_request(
     request = crud.crud_driver_join_request.create(
         db,
         fleet_id=invite_code.fleet_id,
-        driver_profile_id=current_client.driverProfileId,
+        driver_profile_id=current_client.driver_profile_id,
         invite_code_id=invite_code.id,
     )
     
@@ -1153,7 +1153,7 @@ def get_driver_fleet_status(
     
     # Check if driver is assigned to a fleet
     assignment = crud.crud_driver_fleet_assignment.get_by_driver(
-        db, driver_profile_id=current_client.driverProfileId
+        db, driver_profile_id=current_client.driver_profile_id
     )
     
     if assignment:
@@ -1177,7 +1177,7 @@ def get_driver_fleet_status(
     
     # Check for pending request
     pending_request = crud.crud_driver_join_request.get_pending_by_driver(
-        db, driver_profile_id=current_client.driverProfileId
+        db, driver_profile_id=current_client.driver_profile_id
     )
     
     if pending_request:
@@ -1225,7 +1225,7 @@ def cancel_driver_join_request(
         )
     
     success = crud.crud_driver_join_request.cancel_by_driver(
-        db, driver_profile_id=current_client.driverProfileId
+        db, driver_profile_id=current_client.driver_profile_id
     )
     
     if not success:
